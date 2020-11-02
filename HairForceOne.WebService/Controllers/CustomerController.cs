@@ -24,7 +24,7 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        public void Post([FromBody] Customer c)
+        public HttpResponseMessage Post([FromBody] Customer c)
         {
             string sql = "INSERT INTO [dbo].[Customer] ([FirstName],[LastName],[Email],[PhoneNumber])" +
                          "VALUES (@FirstName, @LastName, @Email, @PhoneNumber)";
@@ -41,7 +41,7 @@ namespace HairForceOne.WebService.Controllers
                     PhoneNumber = c.PhoneNumber
                 });
             }
-           // return HttpResponseMessage(HttpStatusCode.Created);
+            return Request.CreateResponse(HttpStatusCode.Accepted);
         }
     }
 }
