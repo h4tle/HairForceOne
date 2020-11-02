@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
-    public class CustomerController : ApiController
+    public class CustomersController : ApiController
     {
         public IEnumerable<Customer> GetAllCustomers()
         {
