@@ -92,13 +92,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Break.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\Salon.cs" />
-    <Compile Include="Models\Shift.cs" />
-    <Compile Include="Models\Task.cs" />
-    <Compile Include="Models\TimeBooking.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

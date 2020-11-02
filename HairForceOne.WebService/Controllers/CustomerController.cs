@@ -23,5 +23,25 @@ namespace HairForceOne.WebService.Controllers
                 return customers;
             }
         }
+
+        public void Post([FromBody] Customer c)
+        {
+            string sql = "INSERT INTO [dbo].[Customer] ([FirstName],[LastName],[Email],[PhoneNumber])" +
+                         "VALUES (@FirstName, @LastName, @Email, @PhoneNumber)";
+
+
+
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            {
+                var affectedRows = connection.Execute(sql, new
+                {
+                    FirstName = c.FirstName,
+                    LastName = c.LastName,
+                    Email = c.Email,
+                    PhoneNumber = c.PhoneNumber
+                });
+            }
+           // return HttpResponseMessage(HttpStatusCode.Created);
+        }
     }
 }

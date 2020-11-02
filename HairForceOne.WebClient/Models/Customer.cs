@@ -6,15 +6,19 @@ namespace HairForceOne.WebClient.Models
 {
     public class Customer
     {
+        public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public String LastName { get; set; }
         public string Email { get; set; }
-        public int PhoneNumber { get; set; }
-    
+        public String PhoneNumber { get; set; }
 
-        public Customer()
+
+        public Customer(String FirstName, String LastName, String Email, String PhoneNumber)
         {
-        
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.Email = Email;
+            this.PhoneNumber = PhoneNumber;
         }
     }
 }
