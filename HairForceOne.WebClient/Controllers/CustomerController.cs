@@ -17,7 +17,7 @@ namespace HairForceOne.WebClient.Controllers
 
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:44352/api/");
+                    client.BaseAddress = new Uri("https://localhost:44382/api/");
 
                     //Called Member default GET All records  
                     //GetAsync to send a GET request   

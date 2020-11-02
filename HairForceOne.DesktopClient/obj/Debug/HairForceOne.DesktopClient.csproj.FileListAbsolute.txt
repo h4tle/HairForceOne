@@ -1,0 +1,9 @@
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.exe.config
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.exe
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.pdb
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csprojAssemblyReference.cache
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.Properties.Resources.resources
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.GenerateResource.cache
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.CoreCompileInputs.cache
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.exe
+C:\projekt\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.pdb
