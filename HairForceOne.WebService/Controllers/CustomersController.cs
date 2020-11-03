@@ -24,6 +24,17 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        public Customer GetCustomer(int id)
+        {
+            String sql = $"select * FROM Customer WHERE CustomerID = {id}";
+
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            {
+                Customer c = connection.Query<Customer>(sql).FirstOrDefault();
+                return c;
+            }
+        }
+
         public HttpResponseMessage Post([FromBody] Customer c)
         {
             string sql = "INSERT INTO [dbo].[Customer] ([FirstName],[LastName],[Email],[PhoneNumber])" +
@@ -43,5 +54,26 @@ namespace HairForceOne.WebService.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
+
+        public int Put(Customer c)
+        {
+            String sql = $"UPDATE Customer SET FirstName = '{c.FirstName}', LastName = '{c.LastName}', Email = '{c.Email}', PhoneNumber = '{c.PhoneNumber}' WHERE CustomerId = '{c.CustomerId}'";
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            {
+                int CustomerId = connection.Execute(sql);
+                return CustomerId;
+            }
+        }
+
+        public void Delete(int id)
+        {
+            String sql = $"DELETE FROM Customer WHERE CustomerId = '{id}'";
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            {
+                connection.Execute(sql);
+            }
+
+        }
+
     }
 }

@@ -12,6 +12,10 @@ namespace HairForceOne.WebClient.Models
         public string Email { get; set; }
         public String PhoneNumber { get; set; }
 
+        public Customer()
+        {
+                
+        }
 
         public Customer(String FirstName, String LastName, String Email, String PhoneNumber)
         {

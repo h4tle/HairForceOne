@@ -51,7 +51,8 @@ namespace HairForceOne.WebClient.Controllers
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Customer c = GetCustomer(id);
+            return View(c);
         }
 
         // GET: Customer/Create
@@ -104,13 +105,44 @@ namespace HairForceOne.WebClient.Controllers
 
         // POST: Customer/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, String FirstName, String LastName, String Email, String PhoneNumber)
         {
             try
             {
-                // TODO: Add update logic here
+                Customer c = new Customer(FirstName, LastName, Email, PhoneNumber);
+                c.CustomerId = id;
 
-                return RedirectToAction("Index");
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44382/api/");
+
+                    //Called Member default GET All records  
+                    //GetAsync to send a GET request   
+                    // PutAsync to send a PUT request  
+                    var JCustomer = new StringContent(JsonConvert.SerializeObject(c), Encoding.UTF8, "application/json");
+                    var responseTask = client.PutAsync($"customers/{id}", JCustomer);
+                    responseTask.Wait();
+
+                    //To store result of web api response.   
+                    var result = responseTask.Result;
+
+                    //If success received   
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<Customer>();
+                        readTask.Wait();
+
+                        c = readTask.Result;
+                        return RedirectToAction("Customers");
+                    }
+                    else
+                    {
+                        //Error response received   
+                        //cars = Enumerable.Empty<Car>();
+                        ModelState.AddModelError(string.Empty, "Server error try after some time.");
+                        return View("ERROR");
+                    }
+                }
             }
             catch
             {
@@ -121,23 +153,80 @@ namespace HairForceOne.WebClient.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Customer c = GetCustomer(id);
+            return View(c);
         }
 
         // POST: Customer/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Customer c)
         {
             try
             {
-                // TODO: Add delete logic here
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44382/api/");
 
-                return RedirectToAction("Index");
+                    //Called Member default GET All records  
+                    //GetAsync to send a GET request   
+                    // PutAsync to send a PUT request  
+                    var responseTask = client.DeleteAsync($"customers/{id}");
+                    responseTask.Wait();
+
+                    //To store result of web api response.   
+                    var result = responseTask.Result;
+
+                    //If success received   
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsAsync<Customer>();
+                        readTask.Wait();
+
+                        c = readTask.Result;
+                        return RedirectToAction("Customers");
+                    }
+                    else
+                    {
+                        //Error response received   
+                       // c = Enumerable.Empty<Customer>();
+                        ModelState.AddModelError(string.Empty, "Server error try after some time.");
+                        return View("ERROR");
+                    }
+                }
+                
             }
             catch
             {
                 return View();
             }
+        }
+
+        private Customer GetCustomer(int id)
+        {
+            Customer c = new Customer();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44382/api/");
+
+                    var responseTask = client.GetAsync($"customers/{id}");
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+
+                    var readTask = result.Content.ReadAsAsync<Customer>();
+                    readTask.Wait();
+
+                    c = readTask.Result;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return c;
         }
     }
 }
