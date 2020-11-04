@@ -24,11 +24,13 @@ namespace HairForceOne.WebService.Providers
 
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                string email = context.UserName;
-                string passwordHash = ComputeHash(context.Password); // computing hash of password
+                string Email = context.UserName;
+                string PasswordHash = ComputeHash(context.Password); // computing hash of password
 
+                //String sql = $"SELECT * FROM hfo_User WHERE Email = '{email}' AND Password = '{passwordHash}'";
                 // searching the user in the database
-                User user = conn.QuerySingleOrDefault<User>($"SELECT * FROM hfo_User WHERE Email = {email} AND Password = {passwordHash}");
+                User user = conn.QuerySingleOrDefault<User>("SELECT * FROM hfo_User WHERE Email =@Email AND Password =@PasswordHash",
+                    new {Email, PasswordHash});
 
                 // if the user is found, claims are added
                 if (user != null)
