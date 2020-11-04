@@ -25,8 +25,7 @@ namespace HairForceOne.WebService.Providers
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
                 string username = context.UserName;
-                //string passwordHash = ComputeHash(context.Password); // computing hash of password
-                string passwordHash = context.Password;
+                string passwordHash = ComputeHash(context.Password); // computing hash of password
 
                 // searching the user in the database
                 var user = conn.QuerySingleOrDefault<Customer>("SELECT * FROM Customer WHERE Email = @username AND PhoneNumber = @passwordHash"
@@ -47,7 +46,7 @@ namespace HairForceOne.WebService.Providers
             }
         }
 
-        private string ComputeHash(string input)
+        public string ComputeHash(string input)
         {
             using (var sha = SHA512.Create())
             {
@@ -58,7 +57,7 @@ namespace HairForceOne.WebService.Providers
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
-                    builder.Append(bytes[i].ToString("x2"));
+                    builder.Append(bytes[i].ToString("X2"));
                 }
                 return builder.ToString();
             }

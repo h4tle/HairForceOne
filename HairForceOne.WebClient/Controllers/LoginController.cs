@@ -20,14 +20,8 @@ namespace HairForceOne.WebClient.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(String Email, String PhoneNumber)
+        public ActionResult Index(String Email, String Password)
         {
-            Customer c = new Customer(Email, PhoneNumber);
-            c.UserName = "gmaybury0@abc.net.au";
-            c.Password = "4520744842";
-            c.grant_type = "password";
-
-            var JCustomer = new StringContent(JsonConvert.SerializeObject(c), Encoding.UTF8, "application/json");
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:44382");
@@ -35,7 +29,7 @@ namespace HairForceOne.WebClient.Controllers
                 //Called Member default GET All records  
                 //GetAsync to send a GET request   
                 // PutAsync to send a PUT request  
-                var responseTask = client.PostAsync("token", new StringContent(string.Format("grant_type=password&username={0}&password={1}", c.UserName, c.Password), Encoding.UTF8));
+                var responseTask = client.PostAsync("token", new StringContent(string.Format("grant_type=password&username={0}&password={1}", Email, Password), Encoding.UTF8));
 
                 responseTask.Wait();
 
@@ -51,7 +45,7 @@ namespace HairForceOne.WebClient.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("customers");
+                    return RedirectToAction("Error");
                 }
             }
             //using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))

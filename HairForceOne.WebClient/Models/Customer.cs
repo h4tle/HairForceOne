@@ -9,10 +9,8 @@ namespace HairForceOne.WebClient.Models
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public String LastName { get; set; }
-        public string UserName { get; set; }
-        public String Password { get; set; }
-        public bool IsAuthenticated { get; set; }
-        public string grant_type { get; set; }
+        public string Email { get; set; }
+        public String PhoneNumber { get; set; }
 
         public Customer()
         {
@@ -23,14 +21,14 @@ namespace HairForceOne.WebClient.Models
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
-            this.UserName = Email;
-            this.Password = PhoneNumber;
+            this.Email = Email;
+            this.PhoneNumber = PhoneNumber;
         }
 
         public Customer(string email, string phoneNumber)
         {
-            UserName = email;
-            Password = phoneNumber;
+            Email = email;
+            PhoneNumber = phoneNumber;
         }
     }
 }

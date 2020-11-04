@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using HairForceOne.WebService.Models;
+using HairForceOne.WebService.Providers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -37,6 +38,9 @@ namespace HairForceOne.WebService.Controllers
 
         public HttpResponseMessage Post([FromBody] Customer c)
         {
+            var Hash = new OAuthProvider();
+            c.PhoneNumber = Hash.ComputeHash(c.PhoneNumber);
+            
             string sql = "INSERT INTO [dbo].[Customer] ([FirstName],[LastName],[Email],[PhoneNumber])" +
                          "VALUES (@FirstName, @LastName, @Email, @PhoneNumber)";
 
