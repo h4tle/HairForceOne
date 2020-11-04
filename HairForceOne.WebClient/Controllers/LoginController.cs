@@ -41,25 +41,14 @@ namespace HairForceOne.WebClient.Controllers
                 if (responseTask.Result.IsSuccessStatusCode)
                 {
 
-                    return RedirectToAction("customers");
+                    return RedirectToAction("users");
                 }
                 else
                 {
                     return RedirectToAction("Error");
                 }
             }
-            //using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
-            //{
-            //    string sql = $"SELECT * FROM UsernamePassword WHERE Username = '{c.Email}' AND Password = '{c.PhoneNumber}'";
-
-            //    var result = conn.(sql);
-
-            //    dto.ExecutedSQL = sql;
-            //    dto.IsAuthenticated = result.Any();
-            //}
-
-
-            //return View(dto);
+           
         }
     }
 }

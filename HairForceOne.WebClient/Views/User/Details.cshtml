@@ -1,4 +1,4 @@
-﻿@model HairForceOne.WebClient.Models.Customer
+﻿@model HairForceOne.WebClient.Models.User
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Customer</h4>
+    <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.FirstName)
         </dd>
 
     </dl>

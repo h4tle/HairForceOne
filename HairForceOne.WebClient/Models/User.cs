@@ -4,31 +4,32 @@ using System.Text;
 
 namespace HairForceOne.WebClient.Models
 {
-    public class Customer
+    public class User
     {
-        public int CustomerId { get; set; }
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public String LastName { get; set; }
         public string Email { get; set; }
-        public String PhoneNumber { get; set; }
+        public String PhoneNo { get; set; }
+        public String Password { get; set; }
 
-        public Customer()
+        public User()
         {
                 
         }
 
-        public Customer(String FirstName, String LastName, String Email, String PhoneNumber)
+        public User(String FirstName, String LastName, String Email, String PhoneNumber)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.Email = Email;
-            this.PhoneNumber = PhoneNumber;
+            this.PhoneNo = PhoneNumber;
         }
 
-        public Customer(string email, string phoneNumber)
+        public User(string email, string phoneNumber)
         {
             Email = email;
-            PhoneNumber = phoneNumber;
+            PhoneNo = phoneNumber;
         }
     }
 }

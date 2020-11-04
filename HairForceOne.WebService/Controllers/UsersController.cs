@@ -12,37 +12,37 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
-    public class CustomersController : ApiController
+    public class UsersController : ApiController
     {
-        public IEnumerable<Customer> GetAllCustomers()
+        public IEnumerable<User> GetAllUsers()
         {
-            String sql = "SELECT * FROM Customer";
+            String sql = "SELECT * FROM hfo_User";
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                var customers = connection.Query<Customer>(sql).ToList();
-                return customers;
+                var users = connection.Query<User>(sql).ToList();
+                return users;
             }
         }
 
-        public Customer GetCustomer(int id)
+        public User GetUser(int id)
         {
-            String sql = $"select * FROM Customer WHERE CustomerID = {id}";
+            String sql = $"select * FROM hfo_User WHERE UserId = {id}";
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                Customer c = connection.Query<Customer>(sql).FirstOrDefault();
+                User c = connection.Query<User>(sql).FirstOrDefault();
                 return c;
             }
         }
 
-        public HttpResponseMessage Post([FromBody] Customer c)
+        public HttpResponseMessage Post([FromBody] User c)
         {
             var Hash = new OAuthProvider();
-            c.PhoneNumber = Hash.ComputeHash(c.PhoneNumber);
+            c.Password = Hash.ComputeHash(c.Password);
             
-            string sql = "INSERT INTO [dbo].[Customer] ([FirstName],[LastName],[Email],[PhoneNumber])" +
-                         "VALUES (@FirstName, @LastName, @Email, @PhoneNumber)";
+            string sql = "INSERT INTO hfo_User (FirstName,LastName,Email,PhoneNo,Password)" +
+                         "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Password)";
 
 
 
@@ -53,25 +53,28 @@ namespace HairForceOne.WebService.Controllers
                     FirstName = c.FirstName,
                     LastName = c.LastName,
                     Email = c.Email,
-                    PhoneNumber = c.PhoneNumber
+                    PhoneNo = c.PhoneNo,
+                    Password = c.Password
                 });
             }
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
 
-        public int Put(Customer c)
+        public int Put(User c)
         {
-            String sql = $"UPDATE Customer SET FirstName = '{c.FirstName}', LastName = '{c.LastName}', Email = '{c.Email}', PhoneNumber = '{c.PhoneNumber}' WHERE CustomerId = '{c.CustomerId}'";
+            OAuthProvider Hash = new OAuthProvider();
+            c.Password = Hash.ComputeHash(c.Password);
+            String sql = $"UPDATE hfo_User SET FirstName = '{c.FirstName}', LastName = '{c.LastName}', Email = '{c.Email}', PhoneNo = '{c.PhoneNo}', PasswordHash = '{c.Password}' WHERE UserId = '{c.UserId}'";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                int CustomerId = connection.Execute(sql);
-                return CustomerId;
+                int UserId = connection.Execute(sql);
+                return UserId;
             }
         }
 
         public void Delete(int id)
         {
-            String sql = $"DELETE FROM Customer WHERE CustomerId = '{id}'";
+            String sql = $"DELETE FROM hfo_User WHERE UserId = '{id}'";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
                 connection.Execute(sql);

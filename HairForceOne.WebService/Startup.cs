@@ -33,8 +33,6 @@ namespace HairForceOne.WebService
             app.UseOAuthBearerTokens(oauthoptions);
             app.UseOAuthAuthorizationServer(oauthoptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
-            GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
 }

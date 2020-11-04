@@ -1,4 +1,4 @@
-﻿@model HairForceOne.WebClient.Models.Customer
+﻿@model HairForceOne.WebClient.Models.User
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Customer</h4>
+    <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -36,16 +36,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.PhoneNo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @Html.DisplayFor(model => model.PhoneNo)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm("Delete", "Customer")) {
+    @using (Html.BeginForm("Delete", "User")) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
