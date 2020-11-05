@@ -1,13 +1,19 @@
 ﻿using Dapper;
 using HairForceOne.WebService.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HairForceOne.WebService.Providers
 {
@@ -20,14 +26,18 @@ namespace HairForceOne.WebService.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
+
+           
+            //var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationType);
+
+            //new System.Security.Claims.ClaimsPrincipal(identity);
+           
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
                 string Email = context.UserName;
                 string PasswordHash = ComputeHash(context.Password); // computing hash of password
 
-                //String sql = $"SELECT * FROM hfo_User WHERE Email = '{email}' AND Password = '{passwordHash}'";
                 // searching the user in the database
                 User user = conn.QuerySingleOrDefault<User>("SELECT * FROM hfo_User WHERE Email =@Email AND Password =@PasswordHash",
                     new {Email, PasswordHash});
@@ -35,12 +45,35 @@ namespace HairForceOne.WebService.Providers
                 // if the user is found, claims are added
                 if (user != null)
                 {
-                    identity.AddClaim(new Claim(ClaimTypes.Name, user.FirstName));
-                    identity.AddClaim(new Claim("LoggedOn", DateTime.Now.ToString()));
-                    await Task.Run(() => context.Validated(identity));
+                    var Claims = new List<Claim>();
+                    Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
+                    Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
+                    Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString()));
+                    Claims.Add(new Claim(ClaimTypes.Role,"Admin"));
+
+                    ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
+                    ClaimsIdentity cookiesClaimIdentity = new ClaimsIdentity(Claims, DefaultAuthenticationTypes.ApplicationCookie);
+                    HttpContext.Current.User = new ClaimsPrincipal(oAuthClaimIdentity);
+
+                    var ctx = context.OwinContext;
+                    var authenticationManager = ctx.Authentication;
+                    authenticationManager.SignIn(cookiesClaimIdentity);
+
+                    AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
+                    //context.Request.Context.Authentication.SignIn(cookiesClaimIdentity);
+                   
+                    await Task.Run(() => context.Validated(ticket));
+
+                    var test1 = HttpContext.Current.User.Identity;
+                    var test2 = Thread.CurrentPrincipal = new ClaimsPrincipal(HttpContext.Current.User.Identity);
+                    //var ctx = context.OwinContext.Authentication;
+                    //ctx.SignIn(identity);
+                    //ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                    //System.Web.HttpContext.Current.User = principal;
+                    //AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
                 }
-                else
-                {
+                else { 
+                
                     context.SetError("Wrong Crendentials", "Provided username and password is incorrect");
                 }
 
@@ -61,6 +94,13 @@ namespace HairForceOne.WebService.Providers
                     builder.Append(bytes[i].ToString("X2"));
                 }
                 return builder.ToString();
+            }
+        }
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.Current.GetOwinContext().Authentication;
             }
         }
     }

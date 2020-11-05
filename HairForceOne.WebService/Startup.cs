@@ -6,8 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using HairForceOne.WebService.Providers;
+//using HairForceOne.WebService.Providers;
 using System.Web.Http;
+using HairForceOne.WebService.Providers;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartup(typeof(HairForceOne.WebService.Startup))]
 
@@ -19,6 +22,11 @@ namespace HairForceOne.WebService
         {
             
             app.UseCors(CorsOptions.AllowAll); // enables cross origin http requests
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/token")
+            });
 
             // creating options object 
             var oauthoptions = new OAuthAuthorizationServerOptions
