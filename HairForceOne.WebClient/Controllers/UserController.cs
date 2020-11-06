@@ -22,6 +22,10 @@ namespace HairForceOne.WebClient.Controllers
             using (var client = new HttpClient())
             {
                 var token = Session["Token"] as Token;
+                if(token == null)
+                {
+                    return RedirectToAction("","Login");
+                }
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                 client.BaseAddress = new Uri("https://localhost:44382/api/");
 
@@ -75,14 +79,17 @@ namespace HairForceOne.WebClient.Controllers
             var JUser = new StringContent(JsonConvert.SerializeObject(c), Encoding.UTF8, "application/json");
             using (var client = new HttpClient())
             {
+                var token = Session["Token"] as Token;
+                if (token == null)
+                {
+                    return RedirectToAction("", "Login");
+                }
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                 client.BaseAddress = new Uri("https://localhost:44382/api/");
 
                 //Called Member default GET All records  
                 //GetAsync to send a GET request   
                 // PutAsync to send a PUT request 
-                var token = Session["Token"] as Token;
-                client.DefaultRequestHeaders.Add("Token", token.AccessToken);
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                 var responseTask = client.PostAsync("users", JUser);
 
                 responseTask.Wait();

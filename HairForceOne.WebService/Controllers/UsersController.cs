@@ -41,7 +41,7 @@ namespace HairForceOne.WebService.Controllers
                 return c;
             }
         }
-        
+        [Authorize(Roles = "Admin")]
         public HttpResponseMessage Post([FromBody] User c)
         {
             var Hash = new OAuthProvider();
