@@ -13,6 +13,8 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
+using System.Windows.Forms;
 
 namespace HairForceOne.WebClient.Controllers
 {
@@ -25,7 +27,6 @@ namespace HairForceOne.WebClient.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public object Index(String Email, String Password)
         {
@@ -37,7 +38,16 @@ namespace HairForceOne.WebClient.Controllers
                 responseTask.Wait();
                 //var claims = client.GetAsync("api/login");
                 //claims.Wait();
-                //var test333 = claims.Result.Content.ReadAsStringAsync();
+                //var p = claims.Result.Content.ReadAsAsync<ClaimsPrincipal>();
+                //HttpContext.User = p.Result;
+                //Thread.CurrentPrincipal = HttpContext.User;
+                var test21 = Thread.CurrentPrincipal.Identity;
+
+                Token token = responseTask.Result.Content.ReadAsAsync<Token>().Result;
+                //DestinationPage.aspx gets the value from the Application State
+                Session["Token"] = token;
+
+                //Thread.CurrentPrincipal = (IPrincipal)claims.Result.Content.ReadAsAsync<IPrincipal>();
                 //ClaimsPrincipal.Current = claims.Result;
 
                 //HttpContext.User = responseTask.Result.Content.Headers;
@@ -55,8 +65,8 @@ namespace HairForceOne.WebClient.Controllers
                 var test5 = ClaimsPrincipal.Current.Identities.ToList();
                 var test6 = ClaimsPrincipal.Current.Claims.ToList();
 
-                TokenResponse TokenResponse = JsonConvert.DeserializeObject<TokenResponse>(result.Result);
-                String id = TokenResponse.UserId;
+                //TokenResponse TokenResponse = JsonConvert.DeserializeObject<TokenResponse>(result.Result);
+                //String id = TokenResponse.UserId;
 
 
                 //If success received   

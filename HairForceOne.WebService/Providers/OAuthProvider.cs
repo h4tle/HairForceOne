@@ -52,20 +52,28 @@ namespace HairForceOne.WebService.Providers
                     Claims.Add(new Claim(ClaimTypes.Role,"Admin"));
 
                     ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
-                    ClaimsIdentity cookiesClaimIdentity = new ClaimsIdentity(Claims, DefaultAuthenticationTypes.ApplicationCookie);
+                    //ClaimsIdentity cookiesClaimIdentity = new ClaimsIdentity(Claims, DefaultAuthenticationTypes.ApplicationCookie);
                     HttpContext.Current.User = new ClaimsPrincipal(oAuthClaimIdentity);
+                    Thread.CurrentPrincipal = HttpContext.Current.User;
 
-                    var ctx = context.OwinContext;
-                    var authenticationManager = ctx.Authentication;
-                    authenticationManager.SignIn(cookiesClaimIdentity);
+                    AuthenticationManager.SignIn(new AuthenticationProperties()
+                    {
+                        AllowRefresh = true,
+                        IsPersistent = true
+                    }, oAuthClaimIdentity);
+
+                    //var ctx = context.OwinContext;
+                    //var authenticationManager = ctx.Authentication;
+                    //authenticationManager.SignIn(oAuthClaimIdentity);
 
                     AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
                     //context.Request.Context.Authentication.SignIn(cookiesClaimIdentity);
-                   
+
+                    //context.Response.Cookies.Append("Authorization","Bearer" + context.Options.AccessTokenFormat.Protect(ticket));
                     await Task.Run(() => context.Validated(ticket));
 
                     var test1 = HttpContext.Current.User.Identity;
-                    var test2 = Thread.CurrentPrincipal = new ClaimsPrincipal(HttpContext.Current.User.Identity);
+                    var test2 = Thread.CurrentPrincipal;
                     //var ctx = context.OwinContext.Authentication;
                     //ctx.SignIn(identity);
                     //ClaimsPrincipal principal = new ClaimsPrincipal(identity);

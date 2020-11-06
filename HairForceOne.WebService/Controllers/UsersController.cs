@@ -8,14 +8,20 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Threading;
+using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
     public class UsersController : ApiController
     {
+        [Authorize]
         public IEnumerable<User> GetAllUsers()
         {
+            var test1 = Thread.CurrentPrincipal.Identity;
+            var test2 = HttpContext.Current.User;
             String sql = "SELECT * FROM hfo_User";
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
@@ -35,7 +41,7 @@ namespace HairForceOne.WebService.Controllers
                 return c;
             }
         }
-
+        
         public HttpResponseMessage Post([FromBody] User c)
         {
             var Hash = new OAuthProvider();

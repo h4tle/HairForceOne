@@ -7,18 +7,23 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Security.Principal;
 using System.Threading;
+using System.Security.Claims;
+using Microsoft.Owin.Security;
 
 namespace HairForceOne.WebService.Controllers
 {
     public class LoginController : ApiController
     {
         // GET: api/Login
-        public IPrincipal Get()
+        
+        public ClaimsPrincipal Get()
         {
-            var test4 = Request.GetOwinContext().Request.User;
+          //  AuthenticationTicket manager = new AuthenticationTicket()
+           // var test4 = Request.GetOwinContext().Request.User;
             var test = Thread.CurrentPrincipal;
             var test2 = HttpContext.Current.User.Identity;
-            return HttpContext.Current.User;
+            ClaimsPrincipal c = HttpContext.Current.User as ClaimsPrincipal;
+            return c;
         }
 
         // GET: api/Login/5

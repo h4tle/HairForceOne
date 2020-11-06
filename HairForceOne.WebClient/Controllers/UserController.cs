@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -13,7 +14,6 @@ namespace HairForceOne.WebClient.Controllers
 {
     public class UserController : Controller
     {
-        Var token = null;
         // GET: User
         public ActionResult Users()
         {
@@ -21,6 +21,8 @@ namespace HairForceOne.WebClient.Controllers
 
             using (var client = new HttpClient())
             {
+                var token = Session["Token"] as Token;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                 client.BaseAddress = new Uri("https://localhost:44382/api/");
 
                 //Called Member default GET All records  
@@ -77,7 +79,10 @@ namespace HairForceOne.WebClient.Controllers
 
                 //Called Member default GET All records  
                 //GetAsync to send a GET request   
-                // PutAsync to send a PUT request  
+                // PutAsync to send a PUT request 
+                var token = Session["Token"] as Token;
+                client.DefaultRequestHeaders.Add("Token", token.AccessToken);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                 var responseTask = client.PostAsync("users", JUser);
 
                 responseTask.Wait();
