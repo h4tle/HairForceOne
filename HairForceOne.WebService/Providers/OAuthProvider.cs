@@ -49,7 +49,7 @@ namespace HairForceOne.WebService.Providers
                     Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
                     Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
                     Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString()));
-                    Claims.Add(new Claim(ClaimTypes.Role,"Admin"));
+                    Claims.Add(new Claim(ClaimTypes.Role,"Test"));
 
                     ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
                     //ClaimsIdentity cookiesClaimIdentity = new ClaimsIdentity(Claims, DefaultAuthenticationTypes.ApplicationCookie);
@@ -69,7 +69,7 @@ namespace HairForceOne.WebService.Providers
                     AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
                     //context.Request.Context.Authentication.SignIn(cookiesClaimIdentity);
 
-                    //context.Response.Cookies.Append("Authorization","Bearer" + context.Options.AccessTokenFormat.Protect(ticket));
+                    //context.Response.Cookies.Append("Authorization","Bearer " + context.Options.AccessTokenFormat.Protect(ticket));
                     await Task.Run(() => context.Validated(ticket));
 
                     var test1 = HttpContext.Current.User.Identity;
