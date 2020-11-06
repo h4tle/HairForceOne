@@ -23,16 +23,8 @@ namespace HairForceOne.WebService.Providers
         {
             await Task.Run(() => context.Validated());
         }
-
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-
-
-           
-            //var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationType);
-
-            //new System.Security.Claims.ClaimsPrincipal(identity);
-           
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
                 string Email = context.UserName;
@@ -48,59 +40,29 @@ namespace HairForceOne.WebService.Providers
                     var Claims = new List<Claim>();
                     Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
                     Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
-                    Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString()));
-                    Claims.Add(new Claim(ClaimTypes.Role,"Admin"));
-
+                    Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
+                    Claims.Add(new Claim(ClaimTypes.Role, user.Roles));
                     ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
-                    //ClaimsIdentity cookiesClaimIdentity = new ClaimsIdentity(Claims, DefaultAuthenticationTypes.ApplicationCookie);
-                    HttpContext.Current.User = new ClaimsPrincipal(oAuthClaimIdentity);
-                    Thread.CurrentPrincipal = HttpContext.Current.User;
 
-                    AuthenticationManager.SignIn(new AuthenticationProperties()
-                    {
-                        AllowRefresh = true,
-                        IsPersistent = true
-                    }, oAuthClaimIdentity);
-
-                    //var ctx = context.OwinContext;
-                    //var authenticationManager = ctx.Authentication;
-                    //authenticationManager.SignIn(oAuthClaimIdentity);
-
+                    // Ticket har din identity
                     AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
-                    //context.Request.Context.Authentication.SignIn(cookiesClaimIdentity);
-
-                    //context.Response.Cookies.Append("Authorization","Bearer" + context.Options.AccessTokenFormat.Protect(ticket));
                     await Task.Run(() => context.Validated(ticket));
-
-                    var test1 = HttpContext.Current.User.Identity;
-                    var test2 = Thread.CurrentPrincipal;
-                    //var ctx = context.OwinContext.Authentication;
-                    //ctx.SignIn(identity);
-                    //ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-                    //System.Web.HttpContext.Current.User = principal;
-                    //AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
                 }
                 else { 
-                
                     context.SetError("Wrong Crendentials", "Provided username and password is incorrect");
                 }
-
             }
         }
-
         public string ComputeHash(string input)
         {
             using (var sha = SHA512.Create())
             {
                 // ComputeHash - returns byte array  
                 byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(input));
-
                 // Convert byte array to a string   
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("X2"));
-                }
+                {builder.Append(bytes[i].ToString("X2")); }
                 return builder.ToString();
             }
         }

@@ -22,15 +22,15 @@ namespace HairForceOne.WebService
         {
             
             app.UseCors(CorsOptions.AllowAll); // enables cross origin http requests
-            HttpConfiguration config = new HttpConfiguration();
+            //HttpConfiguration config = new HttpConfiguration();
             
-            WebApiConfig.Register(config);
+            //WebApiConfig.Register(config);
             // creating options object 
             var oauthoptions = new OAuthAuthorizationServerOptions
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(900), //token expiration time  
+                AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60), //token expiration time  
                 Provider = new OAuthProvider() // oauthprovider is a custom implementation
             };
 
@@ -40,7 +40,7 @@ namespace HairForceOne.WebService
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            app.UseWebApi(config);
+            //app.UseWebApi(config);
         }
     }
 }

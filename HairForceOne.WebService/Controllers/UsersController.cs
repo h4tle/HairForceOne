@@ -17,7 +17,7 @@ namespace HairForceOne.WebService.Controllers
 {
     public class UsersController : ApiController
     {
-        [Authorize]
+        [Authorize(Roles ="admin")]
         public IEnumerable<User> GetAllUsers()
         {
             var test1 = Thread.CurrentPrincipal.Identity;
