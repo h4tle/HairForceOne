@@ -15,6 +15,7 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
+    [Authorize]
     public class UsersController : ApiController
     {
         [Authorize(Roles ="admin")]
@@ -78,6 +79,7 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         public void Delete(int id)
         {
             String sql = $"DELETE FROM hfo_User WHERE UserId = '{id}'";

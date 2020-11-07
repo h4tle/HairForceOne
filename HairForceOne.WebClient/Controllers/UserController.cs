@@ -59,6 +59,11 @@ namespace HairForceOne.WebClient.Controllers
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
+            var token = Session["Token"] as Token;
+            if (token == null)
+            {
+                return RedirectToAction("", "Login");
+            }
             User c = GetUser(id);
             return View(c);
         }
@@ -66,7 +71,12 @@ namespace HairForceOne.WebClient.Controllers
         // GET: User/Create
         public ActionResult Create()
         {
-            return View();
+            var token = Session["Token"] as Token;
+            if (token == null)
+            {
+                return RedirectToAction("", "Login");
+            }
+                return View();
         }
 
         // POST: User/Create
@@ -115,6 +125,11 @@ namespace HairForceOne.WebClient.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
+            var token = Session["Token"] as Token;
+            if (token == null)
+            {
+                return RedirectToAction("", "Login");
+            }
             return View();
         }
 
@@ -171,6 +186,11 @@ namespace HairForceOne.WebClient.Controllers
         // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
+            var token = Session["Token"] as Token;
+            if (token == null)
+            {
+                return RedirectToAction("", "Login");
+            }
             User c = GetUser(id);
             return View(c);
         }

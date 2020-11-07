@@ -42,12 +42,12 @@ namespace HairForceOne.WebClient.Controllers
                 client.BaseAddress = new Uri("https://localhost:44382");
                 var responseTask = client.PostAsync("token", new StringContent(string.Format("grant_type=password&username={0}&password={1}", Email, Password), Encoding.UTF8));
                 responseTask.Wait();
-                Token token = responseTask.Result.Content.ReadAsAsync<Token>().Result;
-                Session["Token"] = token;
 
                 //If success received   
                 if (responseTask.Result.IsSuccessStatusCode)
                 {
+                    Token token = responseTask.Result.Content.ReadAsAsync<Token>().Result;
+                    Session["Token"] = token;
                     return RedirectToAction("Users", "User");
                 }
                 else
