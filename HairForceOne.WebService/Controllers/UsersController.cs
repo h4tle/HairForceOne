@@ -19,79 +19,82 @@ namespace HairForceOne.WebService.Controllers
     [Authorize]
     public class UsersController : ApiController
     {
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles = "admin")]
         public IEnumerable<User> GetAllUsers()
         {
-            var test1 = Thread.CurrentPrincipal.Identity;
-            var test2 = HttpContext.Current.User;
-            String sql = "SELECT * FROM hfo_User";
+            string sql = "SELECT * FROM hfo_User";
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                var users = connection.Query<User>(sql).ToList();
-                return users;
+                return connection.Query<User>(sql).ToList();
             }
         }
-
         public User GetUser(int id)
         {
-            String sql = $"select * FROM hfo_User WHERE UserId = {id}";
-
+            string sql = $"select * FROM hfo_User WHERE UserId = @id";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                User c = connection.Query<User>(sql).FirstOrDefault();
-                return c;
+                return connection.Query<User>(sql, new { id}).FirstOrDefault();
             }
         }
         [Authorize(Roles = "admin")]
-        public HttpResponseMessage Post([FromBody] User c)
+        public HttpResponseMessage Post([FromBody] User u)
         {
             string salt = PasswordHelper.GenerateSalt();
-            c.Password = PasswordHelper.ComputeHash(c.Password, salt);
-            
+            u.Password = PasswordHelper.ComputeHash(u.Password, salt);
+
             string sql = "INSERT INTO hfo_User (FirstName,LastName,Email,PhoneNo,Password,Salt)" +
                          "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Password, @Salt)";
-
-
-
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
                 var affectedRows = connection.Execute(sql, new
                 {
-                    FirstName = c.FirstName,
-                    LastName = c.LastName,
-                    Email = c.Email,
-                    PhoneNo = c.PhoneNo,
-                    Password = c.Password,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Email = u.Email,
+                    PhoneNo = u.PhoneNo,
+                    Password = u.Password,
                     Salt = salt
                 });
+                return Request.CreateResponse(HttpStatusCode.Accepted);
             }
-            return Request.CreateResponse(HttpStatusCode.Accepted);
         }
-
         [Authorize(Roles = "admin")]
-        public int Put(User c)
+        public int Put(User u)
         {
-            //OAuthProvider Hash = new OAuthProvider();
-            //c.Password = Hash.ComputeHash(c.Password);
-            String sql = $"UPDATE hfo_User SET FirstName = '{c.FirstName}', LastName = '{c.LastName}', Email = '{c.Email}', PhoneNo = '{c.PhoneNo}', PasswordHash = '{c.Password}' WHERE UserId = '{c.UserId}'";
+            string salt = PasswordHelper.GenerateSalt();
+            u.Password = PasswordHelper.ComputeHash(u.Password, salt);
+            string sql = $"UPDATE hfo_User SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Password = @Password, Salt = @Salt WHERE UserId = @UserId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                int UserId = connection.Execute(sql);
+                int UserId = connection.Execute(sql, new
+                {
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Email = u.Email,
+                    PhoneNo = u.PhoneNo,
+                    Password = u.Password,
+                    Salt = salt
+                });
                 return UserId;
             }
+            //OAuthProvider Hash = new OAuthProvider();
+            ////c.Password = Hash.ComputeHash(c.Password);
+            //String sql = $"UPDATE hfo_User SET FirstName = '{c.FirstName}', LastName = '{c.LastName}', Email = '{c.Email}', PhoneNo = '{c.PhoneNo}', PasswordHash = '{c.Password}' WHERE UserId = '{c.UserId}'";
+            //using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            //{
+            //    int UserId = connection.Execute(sql);
+            //    return UserId;
+            //}
         }
-
         [Authorize(Roles = "admin")]
         public void Delete(int id)
         {
-            String sql = $"DELETE FROM hfo_User WHERE UserId = '{id}'";
+            string sql = $"DELETE FROM hfo_User WHERE UserId = @Id";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                connection.Execute(sql);
+               connection.Execute(sql, new { id});
             }
-
         }
-
     }
 }

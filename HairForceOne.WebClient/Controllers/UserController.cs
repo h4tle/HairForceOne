@@ -18,7 +18,6 @@ namespace HairForceOne.WebClient.Controllers
         public ActionResult Users()
         {
             IEnumerable<User> users = null;
-
             using (var client = new HttpClient())
             {
                 var token = Session["Token"] as Token;
@@ -43,7 +42,6 @@ namespace HairForceOne.WebClient.Controllers
                 {
                     var readTask = result.Content.ReadAsAsync<IList<User>>();
                     readTask.Wait();
-
                     users = readTask.Result;
                 }
                 else
@@ -55,7 +53,6 @@ namespace HairForceOne.WebClient.Controllers
             }
             return View(users);
         }
-
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
@@ -64,10 +61,9 @@ namespace HairForceOne.WebClient.Controllers
             {
                 return RedirectToAction("", "Login");
             }
-            User c = GetUser(id);
-            return View(c);
+            User u = GetUser(id);
+            return View(u);
         }
-
         // GET: User/Create
         public ActionResult Create()
         {
@@ -78,17 +74,17 @@ namespace HairForceOne.WebClient.Controllers
             }
             return View();
         }
-
         // POST: User/Create
         [HttpPost]
         public ActionResult Create(string FirstName, String LastName, String Email, String PhoneNo, String Password)
         {
-            User c = new User(FirstName, LastName, Email, PhoneNo);
-            c.Password = Password;
+            User u = new User(FirstName, LastName, Email, PhoneNo);
+            u.Password = Password;
 
-            var JUser = new StringContent(JsonConvert.SerializeObject(c), Encoding.UTF8, "application/json");
+            var JUser = new StringContent(JsonConvert.SerializeObject(u), Encoding.UTF8, "application/json");
             using (var client = new HttpClient())
             {
+                //To do - fix token == null -> gladsmiley
                 var token = Session["Token"] as Token;
                 if (token == null)
                 {
@@ -112,7 +108,6 @@ namespace HairForceOne.WebClient.Controllers
                 {
                     var readTask = result.Content.ReadAsAsync<IList<User>>();
                     readTask.Wait();
-
                     return RedirectToAction("users");
                 }
                 else
@@ -139,9 +134,9 @@ namespace HairForceOne.WebClient.Controllers
         {
             try
             {
-                User c = new User(FirstName, LastName, Email, PhoneNo);
-                c.UserId = id;
-                c.Password = Password;
+                User u = new User(FirstName, LastName, Email, PhoneNo);
+                u.UserId = id;
+                u.Password = Password;
 
                 using (var client = new HttpClient())
                 {
@@ -151,7 +146,7 @@ namespace HairForceOne.WebClient.Controllers
                     //GetAsync to send a GET request   
                     // PutAsync to send a PUT request  
                     Dictionary<string, string> jsonValues = new Dictionary<string, string>();
-                    var JUser = new StringContent(JsonConvert.SerializeObject(c), Encoding.UTF8, "application/json");
+                    var JUser = new StringContent(JsonConvert.SerializeObject(u), Encoding.UTF8, "application/json");
                     //var Jpass = new StringContent(string.Format("password={0}", Password), Encoding.UTF8);
                     var responseTask = client.PutAsync($"users/{id}", JUser);
                     responseTask.Wait();
@@ -165,7 +160,7 @@ namespace HairForceOne.WebClient.Controllers
                         var readTask = result.Content.ReadAsAsync<User>();
                         readTask.Wait();
 
-                        c = readTask.Result;
+                        u = readTask.Result;
                         return RedirectToAction("users");
                     }
                     else
@@ -191,13 +186,13 @@ namespace HairForceOne.WebClient.Controllers
             {
                 return RedirectToAction("", "Login");
             }
-            User c = GetUser(id);
-            return View(c);
+            User u = GetUser(id);
+            return View(u);
         }
 
         // POST: User/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, User c)
+        public ActionResult Delete(int id, User u)
         {
             try
             {
@@ -220,7 +215,7 @@ namespace HairForceOne.WebClient.Controllers
                         var readTask = result.Content.ReadAsAsync<User>();
                         readTask.Wait();
 
-                        c = readTask.Result;
+                        u = readTask.Result;
                         return RedirectToAction("users");
                     }
                     else
@@ -231,7 +226,6 @@ namespace HairForceOne.WebClient.Controllers
                         return View("ERROR");
                     }
                 }
-
             }
             catch
             {
@@ -241,7 +235,7 @@ namespace HairForceOne.WebClient.Controllers
 
         private User GetUser(int id)
         {
-            User c = new User();
+            User u = new User();
             try
             {
                 using (var client = new HttpClient())
@@ -256,7 +250,7 @@ namespace HairForceOne.WebClient.Controllers
                     var readTask = result.Content.ReadAsAsync<User>();
                     readTask.Wait();
 
-                    c = readTask.Result;
+                    u = readTask.Result;
                 }
             }
             catch (Exception)
@@ -264,7 +258,7 @@ namespace HairForceOne.WebClient.Controllers
 
                 throw;
             }
-            return c;
+            return u;
         }
     }
 }

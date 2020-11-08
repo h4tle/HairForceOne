@@ -51,14 +51,12 @@ namespace HairForceOne.WebService.Providers
                         AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
                         await Task.Run(() => context.Validated(ticket));
                     }
-                   
                 }
                 else { 
                     context.SetError("Wrong Crendentials", "Provided username and password is incorrect");
                 }
             }
         }
-        
         private IAuthenticationManager AuthenticationManager
         {
             get

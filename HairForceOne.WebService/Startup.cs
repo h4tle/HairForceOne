@@ -22,9 +22,6 @@ namespace HairForceOne.WebService
         {
             
             app.UseCors(CorsOptions.AllowAll); // enables cross origin http requests
-            //HttpConfiguration config = new HttpConfiguration();
-            
-            //WebApiConfig.Register(config);
             // creating options object 
             var oauthoptions = new OAuthAuthorizationServerOptions
             {
@@ -40,7 +37,6 @@ namespace HairForceOne.WebService
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            //app.UseWebApi(config);
         }
     }
 }
