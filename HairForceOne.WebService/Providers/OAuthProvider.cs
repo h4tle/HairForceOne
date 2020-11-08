@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using HairForceOne.WebService.Models;
+using HairForceOne.WebService.Util;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -28,44 +29,36 @@ namespace HairForceOne.WebService.Providers
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
                 string Email = context.UserName;
-                string PasswordHash = ComputeHash(context.Password); // computing hash of password
+                string password = context.Password;
 
                 // searching the user in the database
-                User user = conn.QuerySingleOrDefault<User>("SELECT * FROM hfo_User WHERE Email =@Email AND Password =@PasswordHash",
-                    new {Email, PasswordHash});
+                var user = conn.QuerySingleOrDefault<User>("SELECT * FROM hfo_User WHERE Email =@Email",
+                    new {Email});
 
                 // if the user is found, claims are added
                 if (user != null)
                 {
-                    var Claims = new List<Claim>();
-                    Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
-                    Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
-                    Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
-                    Claims.Add(new Claim(ClaimTypes.Role, user.Roles));
-                    ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
+                    if(PasswordHelper.ComparePass(password, user.Password, user.Salt))
+                    {
+                        var Claims = new List<Claim>();
+                        Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
+                        Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
+                        Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
+                        Claims.Add(new Claim(ClaimTypes.Role, user.Roles));
+                        ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
 
-                    // Ticket har din identity
-                    AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
-                    await Task.Run(() => context.Validated(ticket));
+                        // Ticket har din identity
+                        AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
+                        await Task.Run(() => context.Validated(ticket));
+                    }
+                   
                 }
                 else { 
                     context.SetError("Wrong Crendentials", "Provided username and password is incorrect");
                 }
             }
         }
-        public string ComputeHash(string input)
-        {
-            using (var sha = SHA512.Create())
-            {
-                // ComputeHash - returns byte array  
-                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(input));
-                // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {builder.Append(bytes[i].ToString("X2")); }
-                return builder.ToString();
-            }
-        }
+        
         private IAuthenticationManager AuthenticationManager
         {
             get

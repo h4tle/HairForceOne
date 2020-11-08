@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using HairForceOne.WebService.Models;
 using HairForceOne.WebService.Providers;
+using HairForceOne.WebService.Util;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -42,14 +43,14 @@ namespace HairForceOne.WebService.Controllers
                 return c;
             }
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "admin")]
         public HttpResponseMessage Post([FromBody] User c)
         {
-            var Hash = new OAuthProvider();
-            c.Password = Hash.ComputeHash(c.Password);
+            string salt = PasswordHelper.GenerateSalt();
+            c.Password = PasswordHelper.ComputeHash(c.Password, salt);
             
-            string sql = "INSERT INTO hfo_User (FirstName,LastName,Email,PhoneNo,Password)" +
-                         "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Password)";
+            string sql = "INSERT INTO hfo_User (FirstName,LastName,Email,PhoneNo,Password,Salt)" +
+                         "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Password, @Salt)";
 
 
 
@@ -61,16 +62,18 @@ namespace HairForceOne.WebService.Controllers
                     LastName = c.LastName,
                     Email = c.Email,
                     PhoneNo = c.PhoneNo,
-                    Password = c.Password
+                    Password = c.Password,
+                    Salt = salt
                 });
             }
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
 
+        [Authorize(Roles = "admin")]
         public int Put(User c)
         {
-            OAuthProvider Hash = new OAuthProvider();
-            c.Password = Hash.ComputeHash(c.Password);
+            //OAuthProvider Hash = new OAuthProvider();
+            //c.Password = Hash.ComputeHash(c.Password);
             String sql = $"UPDATE hfo_User SET FirstName = '{c.FirstName}', LastName = '{c.LastName}', Email = '{c.Email}', PhoneNo = '{c.PhoneNo}', PasswordHash = '{c.Password}' WHERE UserId = '{c.UserId}'";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {

@@ -12,6 +12,7 @@ namespace HairForceOne.WebService.Models
         public string Email { get; set; }
         public string PhoneNo { get; set; }
         public String Password { get; set; }
+        public String Salt { get; set; }
         public string Roles { get; set; }
 
         public User()

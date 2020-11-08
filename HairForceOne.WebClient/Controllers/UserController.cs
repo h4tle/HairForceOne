@@ -76,7 +76,7 @@ namespace HairForceOne.WebClient.Controllers
             {
                 return RedirectToAction("", "Login");
             }
-                return View();
+            return View();
         }
 
         // POST: User/Create
