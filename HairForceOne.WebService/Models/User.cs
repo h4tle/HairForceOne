@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HairForceOne.WebService.Models
 {
@@ -14,9 +12,9 @@ namespace HairForceOne.WebService.Models
         public String Password { get; set; }
         public String Salt { get; set; }
         public string Roles { get; set; }
+
         public User()
         {
-
         }
     }
 }

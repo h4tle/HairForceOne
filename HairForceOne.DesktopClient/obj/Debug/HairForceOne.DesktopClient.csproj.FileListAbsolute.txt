@@ -16,3 +16,12 @@ C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.DesktopClient\obj\Debu
 C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.CoreCompileInputs.cache
 C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.exe
 C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.pdb
+C:\hfo\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.exe.config
+C:\hfo\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.exe
+C:\hfo\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.pdb
+C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csprojAssemblyReference.cache
+C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.Properties.Resources.resources
+C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.GenerateResource.cache
+C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.CoreCompileInputs.cache
+C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.exe
+C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.pdb

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace HairForceOne.WebClient
+﻿namespace HairForceOne.WebClient
 {
     public class CheckToken
     {
         public CheckToken()
         {
-
         }
     }
 }

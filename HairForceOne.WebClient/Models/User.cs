@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HairForceOne.WebClient.Models
 {
@@ -15,7 +13,6 @@ namespace HairForceOne.WebClient.Models
 
         public User()
         {
-                
         }
 
         public User(String FirstName, String LastName, String Email, String PhoneNumber)
