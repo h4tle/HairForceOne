@@ -1,18 +1,13 @@
 ﻿using Dapper;
 using HairForceOne.WebService.Models;
 using HairForceOne.WebService.Util;
-using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -24,6 +19,7 @@ namespace HairForceOne.WebService.Providers
         {
             await Task.Run(() => context.Validated());
         }
+
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
@@ -33,12 +29,12 @@ namespace HairForceOne.WebService.Providers
 
                 // searching the user in the database
                 var user = conn.QuerySingleOrDefault<User>("SELECT * FROM hfo_User WHERE Email =@Email",
-                    new {Email});
+                    new { Email });
 
                 // if the user is found, claims are added
                 if (user != null)
                 {
-                    if(PasswordHelper.ComparePass(password, user.Password, user.Salt))
+                    if (PasswordHelper.ComparePass(password, user.Password, user.Salt))
                     {
                         var Claims = new List<Claim>();
                         Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
@@ -52,11 +48,13 @@ namespace HairForceOne.WebService.Providers
                         await Task.Run(() => context.Validated(ticket));
                     }
                 }
-                else { 
+                else
+                {
                     context.SetError("Wrong Crendentials", "Provided username and password is incorrect");
                 }
             }
         }
+
         private IAuthenticationManager AuthenticationManager
         {
             get

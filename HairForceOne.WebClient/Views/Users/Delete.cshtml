@@ -42,10 +42,10 @@
         <dd>
             @Html.DisplayFor(model => model.PhoneNo)
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm("Delete", "User")) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
