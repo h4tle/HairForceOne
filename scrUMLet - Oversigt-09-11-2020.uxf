@@ -1,0 +1,2457 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>320</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg 
+gerne kunne bestille 
+en tid
+bg=green
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>384</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg 
+vælge i min tidsbestilling 
+hvilke ydelser jeg vil have
+bg=green
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>448</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg kunne
+annullere min tidsbestilling
+bg=green
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>496</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Som kunde ønsker jeg selv
+at kunne vælge tidspunkt
+bg=green
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>544</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Som kunde ønsker jeg selv
+at kunne vælge medarbejder
+bg=green
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>288</x>
+      <y>320</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg 
+modtage min tidsbestillinger
+for dagen, ugen, måneden
+bg=red
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>288</x>
+      <y>384</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg kunne
+rette kunders tidsbestillinger
+bg=red
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>288</x>
+      <y>448</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg kunne
+se en vagt plan
+bg=red
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>504</x>
+      <y>320</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette medarbejder
+bg=blue
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>504</x>
+      <y>432</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette ydelser
+bg=blue
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>504</x>
+      <y>488</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette tidsbestillinger
+bg=blue
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>504</x>
+      <y>544</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette vagtplan
+bg=blue
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>40</x>
+      <y>272</y>
+      <w>688</w>
+      <h>416</h>
+    </coordinates>
+    <panel_attributes>UserStories</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>768</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Funktioner
+bg=blue
+6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>808</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Dapper Connection
+bg=blue
+7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>848</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>RESTfull Api
+bg=blue
+8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>40</x>
+      <y>720</y>
+      <w>688</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>TechnicalStories</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>768</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>restSharp Connection
+bg=yellow
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>808</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Tidsbestilling
+bg=yellow
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>848</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Medarbejder
+bg=blue
+12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>888</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Ydelser
+bg=yellow
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>928</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Produkter
+bg=yellow
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>968</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Vagtplan
+bg=blue
+13</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>192</x>
+      <y>1008</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Roller
+bg=blue
+14</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>888</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>PasswordHash
+bg=blue
+9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>928</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Salt
+bg=blue
+10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>968</y>
+      <w>112</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Authentication &amp;
+authorization
+bg=blue
+11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>328</x>
+      <y>768</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Api Connection
+bg=green
+8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>328</x>
+      <y>808</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Opret Tidsbestilling
+bg=green
+9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>328</x>
+      <y>848</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Slet Tidsbestilling
+bg=green
+10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>328</x>
+      <y>888</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Se Kalender
+bg=green
+11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>472</x>
+      <y>768</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>MSSQL Database
+Hildur
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>472</x>
+      <y>808</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>MSSQL Database
+DBup
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>600</x>
+      <y>768</y>
+      <w>112</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Rapport
+Systemudvikling
+bg=black
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>600</x>
+      <y>824</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Rapport
+Programmering
+Teknologi
+bg=black
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>0</x>
+      <y>240</y>
+      <w>768</w>
+      <h>840</h>
+    </coordinates>
+    <panel_attributes>Backlog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>88</x>
+      <y>296</y>
+      <w>48</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>User
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>296</y>
+      <w>48</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>Employee
+bg=red
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>552</x>
+      <y>296</y>
+      <w>48</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>Owner
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>88</x>
+      <y>744</y>
+      <w>72</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>WebService
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>344</x>
+      <y>744</y>
+      <w>72</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>WebClient
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>216</x>
+      <y>744</y>
+      <w>72</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>DesktopClint
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>488</x>
+      <y>744</y>
+      <w>72</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>MSSQL
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>616</x>
+      <y>744</y>
+      <w>72</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>Rapport
+bg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>768</x>
+      <y>240</y>
+      <w>640</w>
+      <h>840</h>
+    </coordinates>
+    <panel_attributes>Sprint 0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>592</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Som Kunde skal jeg logge 
+ind for at bestille en tid
+bg=green
+6
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>64</x>
+      <y>640</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Som Kunde skal jeg oprette
+et login 
+bg=green
+7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>288</x>
+      <y>504</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Medarbejder skal jeg have
+et login
+bg=red
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>808</x>
+      <y>288</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som Kunde skal jeg oprette
+et login 
+bg=green
+7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>960</x>
+      <y>288</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Medarbejder skal jeg have
+et login
+bg=red
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1112</x>
+      <y>288</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette medarbejder
+bg=blue
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>504</x>
+      <y>376</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette kunde
+bg=blue
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>336</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Funktioner
+bg=blue
+6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>368</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Dapper Connection
+bg=blue
+7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>400</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>RESTfull Api
+bg=blue
+8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>432</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>PasswordHash
+bg=blue
+9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>464</y>
+      <w>112</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Authentication &amp;
+authorization
+bg=blue
+11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1264</x>
+      <y>352</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>restSharp Connection
+bg=yellow
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>328</x>
+      <y>928</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Opret User
+bg=green
+12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>808</x>
+      <y>368</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Opret User
+bg=green
+12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>808</x>
+      <y>336</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Api Connection
+bg=green
+8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1264</x>
+      <y>384</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>MSSQL Database
+Hildur
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>776</x>
+      <y>264</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>Sprint 0 - Backlog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>776</x>
+      <y>536</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>To Do</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>776</x>
+      <y>808</y>
+      <w>616</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>Done</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1408</x>
+      <y>240</y>
+      <w>640</w>
+      <h>840</h>
+    </coordinates>
+    <panel_attributes>Sprint 1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1416</x>
+      <y>264</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>Sprint 1 - Backlog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1416</x>
+      <y>536</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>To Do</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>1416</x>
+      <y>808</y>
+      <w>616</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>Done</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1888</x>
+      <y>352</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Medarbejder
+bg=blue
+12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1888</x>
+      <y>448</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Roller
+bg=blue
+14</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1888</x>
+      <y>384</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Ydelser
+bg=yellow
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1888</x>
+      <y>416</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Produkter
+bg=yellow
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2232</x>
+      <y>296</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg kunne
+rette kunders tidsbestillinger
+bg=red
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1736</x>
+      <y>296</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette kunde
+bg=blue
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1736</x>
+      <y>344</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette ydelser
+bg=blue
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2384</x>
+      <y>296</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette tidsbestillinger
+bg=blue
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2048</x>
+      <y>240</y>
+      <w>640</w>
+      <h>840</h>
+    </coordinates>
+    <panel_attributes>Sprint 2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2056</x>
+      <y>264</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>Sprint 2 - Backlog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2056</x>
+      <y>536</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>To Do</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2056</x>
+      <y>808</y>
+      <w>616</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>Done</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2720</x>
+      <y>304</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som kunde ønsker jeg selv
+at kunne vælge tidspunkt
+bg=green
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2080</x>
+      <y>352</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg kunne
+annullere min tidsbestilling
+bg=green
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2080</x>
+      <y>296</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg 
+vælge i min tidsbestilling 
+hvilke ydelser jeg vil have
+bg=green
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1432</x>
+      <y>296</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som Kunde skal jeg logge 
+ind
+bg=green
+6
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2688</x>
+      <y>240</y>
+      <w>640</w>
+      <h>840</h>
+    </coordinates>
+    <panel_attributes>Sprint 3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2696</x>
+      <y>264</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>Sprint 3 - Backlog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2696</x>
+      <y>536</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>To Do</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>2696</x>
+      <y>808</y>
+      <w>616</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>Done</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2720</x>
+      <y>352</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som kunde ønsker jeg selv
+at kunne vælge medarbejder
+bg=green
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2872</x>
+      <y>304</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg 
+modtage min tidsbestillinger
+for dagen, ugen, måneden
+bg=red
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2872</x>
+      <y>360</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg kunne
+se en vagt plan
+bg=red
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>288</x>
+      <y>560</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som medarbejder vil jeg 
+kunne oprette tidsbestillinger
+bg=red
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3024</x>
+      <y>304</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som medarbejder vil jeg 
+kunne oprette tidsbestillinger
+bg=blue
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2720</x>
+      <y>400</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Se Kalender
+bg=green
+11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1432</x>
+      <y>344</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg 
+gerne kunne bestille 
+en tid
+bg=green
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1432</x>
+      <y>400</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Opret Tidsbestilling
+bg=green
+9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2080</x>
+      <y>400</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Slet Tidsbestilling
+bg=green
+10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1584</x>
+      <y>296</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som medarbejder vil jeg 
+kunne oprette tidsbestillinger
+bg=red
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2536</x>
+      <y>320</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Tidsbestilling
+bg=yellow
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3064</x>
+      <y>352</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Vagtplan
+bg=blue
+13</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>3328</x>
+      <y>240</y>
+      <w>640</w>
+      <h>840</h>
+    </coordinates>
+    <panel_attributes>Sprint 4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>3336</x>
+      <y>264</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>Sprint 4 - Backlog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>3336</x>
+      <y>808</y>
+      <w>616</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>Done</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>3336</x>
+      <y>536</y>
+      <w>616</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>To Do</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3696</x>
+      <y>336</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>MSSQL Database
+DBup
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3824</x>
+      <y>296</y>
+      <w>112</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Rapport
+Systemudvikling
+bg=black
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3824</x>
+      <y>352</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Rapport
+Programmering
+Teknologi
+bg=black
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>472</x>
+      <y>856</y>
+      <w>72</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>Style
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>472</x>
+      <y>888</y>
+      <w>128</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Login - Web+Desktop
+bg=orange
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>472</x>
+      <y>928</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Register - Web
+bg=orange
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>472</x>
+      <y>968</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Tidsbestilling Web+Desktop
+bg=orange
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>472</x>
+      <y>1008</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Vagtplan Web+Desktop
+bg=orange
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3576</x>
+      <y>296</y>
+      <w>128</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Login - Web+Desktop
+bg=orange
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3576</x>
+      <y>336</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Register - Web
+bg=orange
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3576</x>
+      <y>376</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Tidsbestilling Web+Desktop
+bg=orange
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3576</x>
+      <y>416</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Vagtplan Web+Desktop
+bg=orange
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>808</x>
+      <y>832</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som Kunde skal jeg oprette
+et login 
+bg=green
+7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>808</x>
+      <y>880</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Api Connection
+bg=green
+8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>808</x>
+      <y>912</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Opret User
+bg=green
+12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>960</x>
+      <y>832</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Medarbejder skal have et 
+login
+bg=red
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1112</x>
+      <y>832</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette medarbejder
+bg=blue
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>880</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Funktioner
+bg=blue
+6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>912</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Dapper Connection
+bg=blue
+7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>944</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>RESTfull Api
+bg=blue
+8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>976</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>PasswordHash
+bg=blue
+9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1152</x>
+      <y>1008</y>
+      <w>112</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Authentication &amp;
+authorization
+bg=blue
+11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1272</x>
+      <y>632</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>restSharp Connection
+bg=yellow
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1264</x>
+      <y>944</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>MSSQL Database
+Hildur
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1440</x>
+      <y>568</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som Kunde skal jeg logge 
+ind
+bg=green
+6
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1440</x>
+      <y>616</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg 
+gerne kunne bestille 
+en tid
+bg=green
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1440</x>
+      <y>672</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Opret Tidsbestilling
+bg=green
+9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1592</x>
+      <y>568</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som medarbejder vil jeg 
+kunne oprette tidsbestillinger
+bg=red
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1744</x>
+      <y>568</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette kunde
+bg=blue
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1744</x>
+      <y>616</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette ydelser
+bg=blue
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1896</x>
+      <y>624</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Medarbejder
+bg=blue
+12</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1896</x>
+      <y>656</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Ydelser
+bg=yellow
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1896</x>
+      <y>688</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Produkter
+bg=yellow
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1896</x>
+      <y>720</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Roller
+bg=blue
+14</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2088</x>
+      <y>576</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg 
+vælge i min tidsbestilling 
+hvilke ydelser jeg vil have
+bg=green
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2088</x>
+      <y>632</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som kunde vil jeg kunne
+annullere min tidsbestilling
+bg=green
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2088</x>
+      <y>680</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Slet Tidsbestilling
+bg=green
+10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2240</x>
+      <y>576</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg kunne
+rette kunders tidsbestillinger
+bg=red
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2392</x>
+      <y>576</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som ejer vil jeg kunne
+oprette tidsbestillinger
+bg=blue
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2544</x>
+      <y>600</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Tidsbestilling
+bg=yellow
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2720</x>
+      <y>568</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som kunde ønsker jeg selv
+at kunne vælge tidspunkt
+bg=green
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2720</x>
+      <y>616</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som kunde ønsker jeg selv
+at kunne vælge medarbejder
+bg=green
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2720</x>
+      <y>664</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Se Kalender
+bg=green
+11</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2872</x>
+      <y>624</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg kunne
+se en vagt plan
+bg=red
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2872</x>
+      <y>568</y>
+      <w>152</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Som frisør vil jeg 
+modtage min tidsbestillinger
+for dagen, ugen, måneden
+bg=red
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3024</x>
+      <y>568</y>
+      <w>152</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Som medarbejder vil jeg 
+kunne oprette tidsbestillinger
+bg=blue
+5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3064</x>
+      <y>616</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>CRUD Vagtplan
+bg=blue
+13</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3576</x>
+      <y>560</y>
+      <w>128</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Login - Web+Desktop
+bg=orange
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3576</x>
+      <y>600</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Register - Web
+bg=orange
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3576</x>
+      <y>640</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Tidsbestilling Web+Desktop
+bg=orange
+3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3576</x>
+      <y>680</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Vagtplan Web+Desktop
+bg=orange
+4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3696</x>
+      <y>600</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>MSSQL Database
+DBup
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3824</x>
+      <y>560</y>
+      <w>112</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Rapport
+Systemudvikling
+bg=black
+1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3824</x>
+      <y>616</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Rapport
+Programmering
+Teknologi
+bg=black
+2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>0</x>
+      <y>1168</y>
+      <w>3960</w>
+      <h>720</h>
+    </coordinates>
+    <panel_attributes>Scrum
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>72</x>
+      <y>1200</y>
+      <w>248</w>
+      <h>416</h>
+    </coordinates>
+    <panel_attributes>Scrum er defineret ved følgende elementer:
+-
+- 3 Roller
+
+ProductOwner
+DevelopmentTeam
+ScrumMaster
+
+-
+- 3 Artifacts
+ProductBacklog
+SprintBacklog
+Incrementet
+
+-
+- 5 events
+
+1: Sprint
+2: Sprint planning
+3: Daily Scrum
+4: Sprint review
+5: Sprint retrospective
+
+-
+- Regler og begreber
+
+Et Development team er sammensat med alle
+nødvendige kompetencer. Opgaver er synliggjort
+i en samlet og prioriteret Backlog.
+
+Development team arbejder kun med opgaver
+fra Product Backlog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>72</x>
+      <y>1624</y>
+      <w>248</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>Hvem bruger Scrum og hvorfor?
+-
+
+Først set i 1995
+
+Benyttes i videnarbejde (komplekst arbejde)
+som er udført af tværfaglige teams.
+
+Mange skifter til Scrum for at hurtigere kunne
+levere større værdig til deres bruger og kunder
+
+Scrum Implementerer en empirisk måde at
+arbejde på, som netop understøtter hurtigere 
+feedback og levering af større værdi. 
+
+Scrum skaber en struktur, som giver langt større
+medarbejderinddragelse</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>352</x>
+      <y>1200</y>
+      <w>248</w>
+      <h>416</h>
+    </coordinates>
+    <panel_attributes>Hvad kræver Scrum?
+-
+Helt overordnet skal man bruge de 11
+grundlæggende elementer
+
+3 roller + 3 artifacts + 5 events
+-
+Scrum Roller
+
+Product Owner: Er ansvarlig for at maksimere
+værdi, repræsentere interessenter til Scrum
+teamet samt prioritere og vedligeholde Product
+Backloggen.
+
+Development Team: Er ansvarlig for at arbejde
+som et selvorganiseret team. Det styrer sit eget
+arbejde inden for rammerne af et Sprint, 
+samt leverer værdi i helt færdige
+(Done) Increments.
+
+Scrum Master: Er ansvarlig for brug og forståelse
+af Scrum i både Scrum teamet og i 
+organisationen, samt for at coache/undervise,
+når der er brug for det.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>352</x>
+      <y>1512</y>
+      <w>88</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Scrum Master</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>432</x>
+      <y>1512</y>
+      <w>88</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>ProductOwner</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>512</x>
+      <y>1512</y>
+      <w>88</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Teammember</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>632</x>
+      <y>1200</y>
+      <w>248</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>ProductBacklog(PBL)
+-
+
+Er en samlet liste med ønsker og behov for 
+et produkt. Det er en liste som er transparent,
+forståelig og hele tiden skal vedligeholdes
+i forhold til feedback, læring og optimering
+af indhold frem mod overordnede mål.
+
+ProductOwner har sidste ord til indhold
+og rangering af en backlog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>632</x>
+      <y>1360</y>
+      <w>248</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>SprintBacklog(SBL)
+-
+
+Synliggør de PBI'er, som teamet har trukket ind
+i sprintet, samt en plan over løsning
+
+Sprint Backloggen oprettes og vedligeholdes
+kun af DevelopmentTeamet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>632</x>
+      <y>1488</y>
+      <w>248</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Increment
+-
+
+De "incrementale" tilføjelser til produktet, 
+som DevelopmentTeamet lavet i hvert Sprint
+Incrementet bygger videre fra tidligere sprints
+og skal være færdige i forhold til projektet.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>1160</y>
+      <w>24</w>
+      <h>744</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;910.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>328</x>
+      <y>1160</y>
+      <w>24</w>
+      <h>744</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;910.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>1160</y>
+      <w>24</w>
+      <h>744</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;910.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>912</x>
+      <y>1200</y>
+      <w>248</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Sprint
+-
+
+Er en Container event, som indeholder de fire 
+formelle events. Det efterfølgende Sprint starter
+umiddelbart efter, at det foregående Sprint er 
+afsluttet. Sprint og iterationer er det samme.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>912</x>
+      <y>1312</y>
+      <w>248</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Sprint Planning
+-
+Det første formelle event i Sprintet, hvor hele 
+Scrum Teamet deltager. Development Teamet 
+trækker PBI’er ind, baseret på erfaringer fra 
+tidligere Sprints. Et Sprint Goal udformes, til at 
+styre Sprintet efter.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>912</x>
+      <y>1424</y>
+      <w>248</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Daily Scrum
+-
+Er den daglige rytme, som får Development
+Teamet til at synkronisere og revidere
+fremdift af sit eget arbejde i Sprintet.
+Mange udfører Daily Scrum som et Daily 
+standup, selvom det ikke er en teknik 
+som er krævet i Scrum.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>912</x>
+      <y>1560</y>
+      <w>248</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Sprint review
+-
+For at få feedback fra relevante interessenter
+på det eller de Increments, som er lavet 
+i Sprintet. 
+For hele Scrum Teamet og interessenter.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>912</x>
+      <y>1656</y>
+      <w>248</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Sprint Retrospective
+-
+For at forbedre processer, samarbejde,
+teknikker, værktøjer os så videre
+i Scrum Teamet. Minimum én action 
+tages med i næste Sprint. 
+For hele Scrum Teamet.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1168</x>
+      <y>1160</y>
+      <w>24</w>
+      <h>744</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;910.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>768</x>
+      <y>0</y>
+      <w>640</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>Note..
+
+Spørgsmål til Lars:
+Test , hvor, hvor mange, til hvad formål?
+Salt - 
+token - &gt; session
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1504</x>
+      <y>64</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Note..</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
