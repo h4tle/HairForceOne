@@ -23,6 +23,7 @@ namespace HairForceOne.WebClient.Controllers
                 {
                     return RedirectToAction("", "Login");
                 }
+                
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                 client.BaseAddress = new Uri("https://localhost:44382/api/");
 
@@ -41,15 +42,17 @@ namespace HairForceOne.WebClient.Controllers
                     var readTask = result.Content.ReadAsAsync<IList<User>>();
                     readTask.Wait();
                     users = readTask.Result;
+                    return View(users);
+
                 }
                 else
                 {
                     //Error response received
                     users = Enumerable.Empty<User>();
                     ModelState.AddModelError(string.Empty, "Server error try after some time.");
+                    return RedirectToAction("Details", new { id = 1 });
                 }
             }
-            return View(users);
         }
 
         // GET: User/Details/5
@@ -109,11 +112,11 @@ namespace HairForceOne.WebClient.Controllers
                 {
                     var readTask = result.Content.ReadAsAsync<IList<User>>();
                     readTask.Wait();
-                    return RedirectToAction("users");
+                    return RedirectToAction("Index");
                 }
                 else
                 {
-                    return RedirectToAction("users");
+                    return RedirectToAction("Index");
                 }
             }
         }

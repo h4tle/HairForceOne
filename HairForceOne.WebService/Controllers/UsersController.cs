@@ -1,36 +1,40 @@
 ﻿using Dapper;
 using HairForceOne.WebService.Models;
 using HairForceOne.WebService.Util;
+using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
     [Authorize]
+
     public class UsersController : ApiController
     {
         [Authorize(Roles = "admin")]
         public IEnumerable<User> GetAllUsers()
         {
             string sql = "SELECT * FROM hfo_User";
-
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
                 return connection.Query<User>(sql).ToList();
             }
         }
-
+        [AllowAnonymous]
         public User GetUser(int id)
         {
-            string sql = $"select * FROM hfo_User WHERE UserId = @id";
+            string UserId = HttpContext.Current.User.Identity.GetUserId();
+            string sql = $"select * FROM hfo_User WHERE UserId = @UserId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
             {
-                return connection.Query<User>(sql, new { id }).FirstOrDefault();
+                return connection.Query<User>(sql, new { UserId }).FirstOrDefault();
             }
         }
 
