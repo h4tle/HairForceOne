@@ -136,3 +136,299 @@ C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\
 C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.csproj.CopyComplete
 C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.dll
 C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.pdb
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNetCore.Cors.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.Options.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Cors.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Security.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Owin.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Buffers.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.ComponentModel.Annotations.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Memory.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Numerics.Vectors.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Text.Encodings.Web.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Web.Cors.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Web.Http.Owin.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNetCore.Cors.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.Options.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Cors.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Security.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Buffers.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Memory.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Numerics.Vectors.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Text.Encodings.Web.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebService\bin\System.Web.Http.Owin.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\HairForceOne.WebService.dll.config
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\HairForceOne.WebService.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\HairForceOne.WebService.pdb
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\csc.exe
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\csc.exe.config
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\csc.rsp
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\csi.exe
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\csi.exe.config
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\csi.rsp
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.AppContext.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Console.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.IO.Compression.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Net.Http.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Net.Sockets.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.ValueTuple.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Xml.XPath.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\vbc.exe
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\vbc.exe.config
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\vbc.rsp
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\VBCSCompiler.exe
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Dapper.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNetCore.Cors.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.Options.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Cors.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Security.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Newtonsoft.Json.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Owin.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Buffers.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.ComponentModel.Annotations.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Memory.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Net.Http.Formatting.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Numerics.Vectors.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Text.Encodings.Web.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Web.Cors.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Web.Http.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Web.Http.Owin.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Web.Http.WebHost.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Dapper.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNetCore.Cors.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.Options.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Cors.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Security.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Buffers.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Memory.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Numerics.Vectors.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Text.Encodings.Web.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Web.Http.Owin.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Newtonsoft.Json.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Net.Http.Formatting.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Web.Http.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\System.Web.Http.WebHost.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.csproj.CoreCompileInputs.cache
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.csproj.CopyComplete
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.dll
+C:\Users\justa\Documents\GitHub\HairForceOne\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.pdb
+C:\hfo\HairForceOne.WebService\bin\HairForceOne.WebService.dll.config
+C:\hfo\HairForceOne.WebService\bin\HairForceOne.WebService.dll
+C:\hfo\HairForceOne.WebService\bin\HairForceOne.WebService.pdb
+C:\hfo\HairForceOne.WebService\bin\roslyn\csc.exe
+C:\hfo\HairForceOne.WebService\bin\roslyn\csc.exe.config
+C:\hfo\HairForceOne.WebService\bin\roslyn\csc.rsp
+C:\hfo\HairForceOne.WebService\bin\roslyn\csi.exe
+C:\hfo\HairForceOne.WebService\bin\roslyn\csi.exe.config
+C:\hfo\HairForceOne.WebService\bin\roslyn\csi.rsp
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.Managed.Core.targets
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\hfo\HairForceOne.WebService\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.AppContext.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Collections.Immutable.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Console.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Globalization.Calendars.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.IO.Compression.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.IO.FileSystem.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Net.Http.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Net.Sockets.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Reflection.Metadata.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.ValueTuple.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Xml.XmlDocument.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Xml.XPath.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\hfo\HairForceOne.WebService\bin\roslyn\vbc.exe
+C:\hfo\HairForceOne.WebService\bin\roslyn\vbc.exe.config
+C:\hfo\HairForceOne.WebService\bin\roslyn\vbc.rsp
+C:\hfo\HairForceOne.WebService\bin\roslyn\VBCSCompiler.exe
+C:\hfo\HairForceOne.WebService\bin\roslyn\VBCSCompiler.exe.config
+C:\hfo\HairForceOne.WebService\bin\Dapper.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Core.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNetCore.Cors.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Extensions.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.Options.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.Primitives.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Net.Http.Headers.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Cors.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Security.Cookies.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Security.dll
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Security.OAuth.dll
+C:\hfo\HairForceOne.WebService\bin\Newtonsoft.Json.dll
+C:\hfo\HairForceOne.WebService\bin\Owin.dll
+C:\hfo\HairForceOne.WebService\bin\System.Buffers.dll
+C:\hfo\HairForceOne.WebService\bin\System.ComponentModel.Annotations.dll
+C:\hfo\HairForceOne.WebService\bin\System.Memory.dll
+C:\hfo\HairForceOne.WebService\bin\System.Net.Http.Formatting.dll
+C:\hfo\HairForceOne.WebService\bin\System.Numerics.Vectors.dll
+C:\hfo\HairForceOne.WebService\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\hfo\HairForceOne.WebService\bin\System.Text.Encodings.Web.dll
+C:\hfo\HairForceOne.WebService\bin\System.Web.Cors.dll
+C:\hfo\HairForceOne.WebService\bin\System.Web.Http.dll
+C:\hfo\HairForceOne.WebService\bin\System.Web.Http.Owin.dll
+C:\hfo\HairForceOne.WebService\bin\System.Web.Http.WebHost.dll
+C:\hfo\HairForceOne.WebService\bin\Dapper.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Core.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNetCore.Cors.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Extensions.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.FileProviders.Abstractions.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.Options.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Extensions.Primitives.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Net.Http.Headers.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Cors.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Security.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Security.Cookies.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.Owin.Security.OAuth.xml
+C:\hfo\HairForceOne.WebService\bin\System.Buffers.xml
+C:\hfo\HairForceOne.WebService\bin\System.Memory.xml
+C:\hfo\HairForceOne.WebService\bin\System.Numerics.Vectors.xml
+C:\hfo\HairForceOne.WebService\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\hfo\HairForceOne.WebService\bin\System.Text.Encodings.Web.xml
+C:\hfo\HairForceOne.WebService\bin\System.Web.Http.Owin.xml
+C:\hfo\HairForceOne.WebService\bin\Newtonsoft.Json.xml
+C:\hfo\HairForceOne.WebService\bin\System.Net.Http.Formatting.xml
+C:\hfo\HairForceOne.WebService\bin\System.Web.Http.xml
+C:\hfo\HairForceOne.WebService\bin\System.Web.Http.WebHost.xml
+C:\hfo\HairForceOne.WebService\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\hfo\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.csprojAssemblyReference.cache
+C:\hfo\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.csproj.CoreCompileInputs.cache
+C:\hfo\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.csproj.CopyComplete
+C:\hfo\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.dll
+C:\hfo\HairForceOne.WebService\obj\Debug\HairForceOne.WebService.pdb

@@ -160,3 +160,120 @@ C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\
 C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\obj\Debug\HairForceOne.WebClient.csproj.CopyComplete
 C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\obj\Debug\HairForceOne.WebClient.dll
 C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\obj\Debug\HairForceOne.WebClient.pdb
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Owin.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.Cors.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.Security.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\System.Web.Cors.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.Cors.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.Security.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Identity.Client.dll
+C:\Users\marti\OneDrive - Professionshøjskolen UCN\UCN Datamatiker\Semester 03\SemesterProjekt Kode Rigtig\HairForceOne.WebClient\bin\Microsoft.Identity.Client.xml
+C:\hfo\HairForceOne.WebClient\bin\HairForceOne.WebClient.dll.config
+C:\hfo\HairForceOne.WebClient\bin\HairForceOne.WebClient.dll
+C:\hfo\HairForceOne.WebClient\bin\HairForceOne.WebClient.pdb
+C:\hfo\HairForceOne.WebClient\bin\roslyn\csc.exe
+C:\hfo\HairForceOne.WebClient\bin\roslyn\csc.exe.config
+C:\hfo\HairForceOne.WebClient\bin\roslyn\csc.rsp
+C:\hfo\HairForceOne.WebClient\bin\roslyn\csi.exe
+C:\hfo\HairForceOne.WebClient\bin\roslyn\csi.exe.config
+C:\hfo\HairForceOne.WebClient\bin\roslyn\csi.rsp
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.Managed.Core.targets
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\hfo\HairForceOne.WebClient\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.AppContext.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Collections.Immutable.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Console.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Globalization.Calendars.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.IO.Compression.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.IO.FileSystem.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Net.Http.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Net.Sockets.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Reflection.Metadata.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.ValueTuple.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Xml.XmlDocument.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Xml.XPath.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\hfo\HairForceOne.WebClient\bin\roslyn\vbc.exe
+C:\hfo\HairForceOne.WebClient\bin\roslyn\vbc.exe.config
+C:\hfo\HairForceOne.WebClient\bin\roslyn\vbc.rsp
+C:\hfo\HairForceOne.WebClient\bin\roslyn\VBCSCompiler.exe
+C:\hfo\HairForceOne.WebClient\bin\roslyn\VBCSCompiler.exe.config
+C:\hfo\HairForceOne.WebClient\bin\Antlr3.Runtime.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.AspNet.Identity.Core.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Identity.Client.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.Cors.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.Security.Cookies.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.Security.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.Security.OAuth.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Web.Infrastructure.dll
+C:\hfo\HairForceOne.WebClient\bin\Newtonsoft.Json.dll
+C:\hfo\HairForceOne.WebClient\bin\Owin.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Net.Http.Formatting.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Cors.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Helpers.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Mvc.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Optimization.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Razor.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Web.WebPages.Deployment.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Web.WebPages.dll
+C:\hfo\HairForceOne.WebClient\bin\System.Web.WebPages.Razor.dll
+C:\hfo\HairForceOne.WebClient\bin\WebGrease.dll
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.AspNet.Identity.Core.xml
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Identity.Client.xml
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.xml
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.Cors.xml
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.Security.xml
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.Security.Cookies.xml
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.Owin.Security.OAuth.xml
+C:\hfo\HairForceOne.WebClient\bin\System.Net.Http.Formatting.xml
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Helpers.xml
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Mvc.xml
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Optimization.xml
+C:\hfo\HairForceOne.WebClient\bin\System.Web.Razor.xml
+C:\hfo\HairForceOne.WebClient\bin\System.Web.WebPages.xml
+C:\hfo\HairForceOne.WebClient\bin\System.Web.WebPages.Deployment.xml
+C:\hfo\HairForceOne.WebClient\bin\System.Web.WebPages.Razor.xml
+C:\hfo\HairForceOne.WebClient\bin\Newtonsoft.Json.xml
+C:\hfo\HairForceOne.WebClient\bin\Antlr3.Runtime.pdb
+C:\hfo\HairForceOne.WebClient\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\hfo\HairForceOne.WebClient\obj\Debug\HairForceOne.WebClient.csprojAssemblyReference.cache
+C:\hfo\HairForceOne.WebClient\obj\Debug\HairForceOne.WebClient.csproj.CoreCompileInputs.cache
+C:\hfo\HairForceOne.WebClient\obj\Debug\HairForceOne.WebClient.csproj.CopyComplete
+C:\hfo\HairForceOne.WebClient\obj\Debug\HairForceOne.WebClient.dll
+C:\hfo\HairForceOne.WebClient\obj\Debug\HairForceOne.WebClient.pdb
