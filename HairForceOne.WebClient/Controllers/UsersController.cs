@@ -204,6 +204,8 @@ namespace HairForceOne.WebClient.Controllers
             {
                 using (var client = new HttpClient())
                 {
+                    var token = Session["Token"] as Token;
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                     client.BaseAddress = new Uri("https://localhost:44382/api/");
 
                     //Called Member default GET All records
@@ -222,7 +224,7 @@ namespace HairForceOne.WebClient.Controllers
                         readTask.Wait();
 
                         u = readTask.Result;
-                        return RedirectToAction("users");
+                        return RedirectToAction("Index");
                     }
                     else
                     {
@@ -246,6 +248,8 @@ namespace HairForceOne.WebClient.Controllers
             {
                 using (var client = new HttpClient())
                 {
+                    var token = Session["Token"] as Token;
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
                     client.BaseAddress = new Uri("https://localhost:44382/api/");
 
                     var responseTask = client.GetAsync($"users/{id}");

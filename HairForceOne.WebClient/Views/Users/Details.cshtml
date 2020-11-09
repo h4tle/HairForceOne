@@ -39,11 +39,11 @@
         </dt>
 
         <dd>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.PhoneNo)
         </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit") |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
