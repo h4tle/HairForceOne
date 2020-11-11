@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Web;
 
 namespace HairForceOne.WebService.Models
 {
     public class Employee
     {
-        public string Name { get; set; }
+        public int EmployeeId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
-        public int PhoneNumber { get; set; }
-        public List<Shift> Shifts { get; set; }
+        public string PhoneNo { get; set; }
+        public String Password { get; set; }
+        public String Salt { get; set; }
+        public string Roles { get; set; }
+
     }
 }

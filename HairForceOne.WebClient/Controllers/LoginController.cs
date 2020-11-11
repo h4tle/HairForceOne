@@ -1,6 +1,7 @@
 ﻿using HairForceOne.WebClient.Models;
 using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Web.Mvc;
 
@@ -36,7 +37,27 @@ namespace HairForceOne.WebClient.Controllers
                 {
                     Token token = responseTask.Result.Content.ReadAsAsync<Token>().Result;
                     Session["Token"] = token;
-                    return RedirectToAction("Index", "Users");
+
+                    using (var client2 = new HttpClient())
+                    {
+                        client2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
+                        client2.BaseAddress = new Uri("https://localhost:44382/api/");
+
+                        responseTask = client2.GetAsync($"users/1");
+                        responseTask.Wait();
+
+                        if (responseTask.Result.IsSuccessStatusCode)
+                        {
+                            Session["User"] = responseTask.Result.Content.ReadAsAsync<User>().Result;
+
+                            return RedirectToAction("Index", "Users");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Error");
+                        }
+                    }
+
                 }
                 else
                 {
