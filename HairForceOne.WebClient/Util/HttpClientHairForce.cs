@@ -13,16 +13,12 @@ namespace HairForceOne.WebClient.Util
         {
             SetBase();
         }
-
         public HttpClient SetBase()
         {
             HttpClient h = new HttpClient();
             Token t = HttpContext.Current.Session["Token"] as Token;
             if (t != null)
-            {
-                h.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", t.AccessToken);
-            }
-
+            {h.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", t.AccessToken);}
             h.BaseAddress = new Uri(ConfigurationManager.AppSettings["BaseAddress"]);
             return h;
         }

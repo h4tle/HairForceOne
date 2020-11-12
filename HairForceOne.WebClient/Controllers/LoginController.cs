@@ -1,9 +1,7 @@
 ﻿using HairForceOne.WebClient.Models;
 using HairForceOne.WebClient.Util;
 using System;
-using System.Configuration;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Web.Mvc;
 
@@ -13,7 +11,6 @@ namespace HairForceOne.WebClient.Controllers
     [AllowAnonymous]
     public class LoginController : Controller
     {
-        // GET: Login
         public ActionResult Index()
         {
             return View();
@@ -24,11 +21,8 @@ namespace HairForceOne.WebClient.Controllers
         {
             using (HttpClient client = new HttpClientHairForce().SetBase())
             {
-               
                 var responseTask = client.PostAsync("token", new StringContent(string.Format("grant_type=password&username={0}&password={1}", Email, Password), Encoding.UTF8));
                 responseTask.Wait();
-
-                //If success received
                 if (responseTask.Result.IsSuccessStatusCode)
                 {
                     Token token = responseTask.Result.Content.ReadAsAsync<Token>().Result;
@@ -42,7 +36,6 @@ namespace HairForceOne.WebClient.Controllers
                         if (responseTask.Result.IsSuccessStatusCode)
                         {
                             Session["User"] = responseTask.Result.Content.ReadAsAsync<User>().Result;
-
                             return RedirectToAction("Index", "Users");
                         }
                         else
@@ -50,7 +43,6 @@ namespace HairForceOne.WebClient.Controllers
                             return RedirectToAction("Error");
                         }
                     }
-
                 }
                 else
                 {
