@@ -1,5 +1,7 @@
 ﻿using HairForceOne.WebClient.Models;
+using HairForceOne.WebClient.Util;
 using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -17,18 +19,12 @@ namespace HairForceOne.WebClient.Controllers
             return View();
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="Email"></param>
-        /// <param name="Password"></param>
-        /// <returns></returns>
         [HttpPost]
         public object Index(String Email, String Password)
         {
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClientHairForce().SetBase())
             {
-                client.BaseAddress = new Uri("https://localhost:44382");
+               
                 var responseTask = client.PostAsync("token", new StringContent(string.Format("grant_type=password&username={0}&password={1}", Email, Password), Encoding.UTF8));
                 responseTask.Wait();
 
@@ -38,11 +34,8 @@ namespace HairForceOne.WebClient.Controllers
                     Token token = responseTask.Result.Content.ReadAsAsync<Token>().Result;
                     Session["Token"] = token;
 
-                    using (var client2 = new HttpClient())
+                    using (HttpClient client2 = new HttpClientHairForce().SetBase())
                     {
-                        client2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
-                        client2.BaseAddress = new Uri("https://localhost:44382/api/");
-
                         responseTask = client2.GetAsync($"users/1");
                         responseTask.Wait();
 

@@ -1,7 +1,9 @@
 ﻿using HairForceOne.WebClient.Models;
+using HairForceOne.WebClient.Util;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -16,20 +18,8 @@ namespace HairForceOne.WebClient.Controllers
         public ActionResult Index()
         {
             IEnumerable<User> users = null;
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClientHairForce().SetBase())
             {
-                var token = Session["Token"] as Token;
-                if (token == null)
-                {
-                    return RedirectToAction("", "Login");
-                }
-                
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
-                client.BaseAddress = new Uri("https://localhost:44382/api/");
-
-                //Called Member default GET All records
-                //GetAsync to send a GET request
-                // PutAsync to send a PUT request
                 var responseTask = client.GetAsync("users");
                 responseTask.Wait();
 
@@ -47,6 +37,11 @@ namespace HairForceOne.WebClient.Controllers
                 }
                 else
                 {
+                    var token = Session["Token"] as Token;
+                    if (token == null)
+                    {
+                        return RedirectToAction("", "Login");
+                    }
                     //Error response received
                     users = Enumerable.Empty<User>();
                     ModelState.AddModelError(string.Empty, "Server error try after some time.");
@@ -86,20 +81,8 @@ namespace HairForceOne.WebClient.Controllers
             u.Password = Password;
 
             var JUser = new StringContent(JsonConvert.SerializeObject(u), Encoding.UTF8, "application/json");
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClientHairForce().SetBase())
             {
-                //To do - fix token == null -> gladsmiley
-                var token = Session["Token"] as Token;
-                if (token == null)
-                {
-                    return RedirectToAction("", "Login");
-                }
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
-                client.BaseAddress = new Uri("https://localhost:44382/api/");
-
-                //Called Member default GET All records
-                //GetAsync to send a GET request
-                // PutAsync to send a PUT request
                 var responseTask = client.PostAsync("users", JUser);
 
                 responseTask.Wait();
@@ -116,6 +99,11 @@ namespace HairForceOne.WebClient.Controllers
                 }
                 else
                 {
+                    var token = Session["Token"] as Token;
+                    if (token == null)
+                    {
+                        return RedirectToAction("", "Login");
+                    }
                     return RedirectToAction("Index");
                 }
             }
@@ -142,21 +130,9 @@ namespace HairForceOne.WebClient.Controllers
                 u.UserId = id;
                 u.Password = Password;
 
-                using (var client = new HttpClient())
+                using (HttpClient client = new HttpClientHairForce().SetBase())
                 {
-                    var token = Session["Token"] as Token;
-                    if (token == null)
-                    {
-                        return RedirectToAction("", "Login");
-                    }
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
-                    client.BaseAddress = new Uri("https://localhost:44382/api/");
-
-                    //Called Member default GET All records
-                    //GetAsync to send a GET request
-                    // PutAsync to send a PUT request
                     var JUser = new StringContent(JsonConvert.SerializeObject(u), Encoding.UTF8, "application/json");
-                    //var Jpass = new StringContent(string.Format("password={0}", Password), Encoding.UTF8);
                     var responseTask = client.PutAsync($"users/{id}", JUser);
                     responseTask.Wait();
 
@@ -174,8 +150,11 @@ namespace HairForceOne.WebClient.Controllers
                     }
                     else
                     {
-                        //Error response received
-                        //cars = Enumerable.Empty<Car>();
+                        var token = Session["Token"] as Token;
+                        if (token == null)
+                        {
+                            return RedirectToAction("", "Login");
+                        }
                         ModelState.AddModelError(string.Empty, "Server error try after some time.");
                         return View("ERROR");
                     }
@@ -205,15 +184,8 @@ namespace HairForceOne.WebClient.Controllers
         {
             try
             {
-                using (var client = new HttpClient())
+                using (HttpClient client = new HttpClientHairForce().SetBase())
                 {
-                    var token = Session["Token"] as Token;
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
-                    client.BaseAddress = new Uri("https://localhost:44382/api/");
-
-                    //Called Member default GET All records
-                    //GetAsync to send a GET request
-                    // PutAsync to send a PUT request
                     var responseTask = client.DeleteAsync($"users/{id}");
                     responseTask.Wait();
 
@@ -231,8 +203,6 @@ namespace HairForceOne.WebClient.Controllers
                     }
                     else
                     {
-                        //Error response received
-                        // c = Enumerable.Empty<User>();
                         ModelState.AddModelError(string.Empty, "Server error try after some time.");
                         return View("ERROR");
                     }
@@ -246,15 +216,12 @@ namespace HairForceOne.WebClient.Controllers
 
         private User GetUser(int id)
         {
+            // TO DO
             User u = new User();
             try
             {
-                using (var client = new HttpClient())
+                using (HttpClient client = new HttpClientHairForce().SetBase())
                 {
-                    var token = Session["Token"] as Token;
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token.AccessToken);
-                    client.BaseAddress = new Uri("https://localhost:44382/api/");
-
                     var responseTask = client.GetAsync($"users/{id}");
                     responseTask.Wait();
 

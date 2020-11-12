@@ -22,7 +22,7 @@ namespace HairForceOne.WebService.Controllers
         public IEnumerable<User> GetAllUsers()
         {
             string sql = "SELECT * FROM hfo_User";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<User>(sql).ToList();
             }
@@ -32,7 +32,7 @@ namespace HairForceOne.WebService.Controllers
         {
             string UserId = HttpContext.Current.User.Identity.GetUserId();
             string sql = $"select * FROM hfo_User WHERE UserId = @UserId";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<User>(sql, new { UserId }).FirstOrDefault();
             }
@@ -46,7 +46,7 @@ namespace HairForceOne.WebService.Controllers
 
             string sql = "INSERT INTO hfo_User (FirstName,LastName,Email,PhoneNo,Password,Salt)" +
                          "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Password, @Salt)";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 var affectedRows = connection.Execute(sql, new
                 {
@@ -67,7 +67,7 @@ namespace HairForceOne.WebService.Controllers
             string salt = PasswordHelper.GenerateSalt();
             u.Password = PasswordHelper.ComputeHash(u.Password, salt);
             string sql = $"UPDATE hfo_User SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Password = @Password, Salt = @Salt WHERE UserId = @UserId";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int UserId = connection.Execute(sql, new
                 {
@@ -84,7 +84,7 @@ namespace HairForceOne.WebService.Controllers
             //OAuthProvider Hash = new OAuthProvider();
             ////c.Password = Hash.ComputeHash(c.Password);
             //String sql = $"UPDATE hfo_User SET FirstName = '{c.FirstName}', LastName = '{c.LastName}', Email = '{c.Email}', PhoneNo = '{c.PhoneNo}', PasswordHash = '{c.Password}' WHERE UserId = '{c.UserId}'";
-            //using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            //using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             //{
             //    int UserId = connection.Execute(sql);
             //    return UserId;
@@ -95,7 +95,7 @@ namespace HairForceOne.WebService.Controllers
         public void Delete(int id)
         {
             string sql = $"DELETE FROM hfo_User WHERE UserId = @Id";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 connection.Execute(sql, new { id });
             }
