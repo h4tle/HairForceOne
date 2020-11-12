@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Web.Mvc;
+using System.Xml.Serialization;
 
 namespace HairForceOne.WebClient.Controllers
 {
@@ -63,6 +64,9 @@ namespace HairForceOne.WebClient.Controllers
         }
 
         [HttpPost]
+        // binding
+        // ([Bind(Include = "FirstName")]Expense expense)
+        // public ActionResult Create(string FirstName, String LastName, String Email, String PhoneNo, String Password)
         public ActionResult Create(string FirstName, String LastName, String Email, String PhoneNo, String Password)
         {
             User u = new User(FirstName, LastName, Email, PhoneNo);
