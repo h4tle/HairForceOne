@@ -8,14 +8,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
     [Authorize]
-
     public class UsersController : ApiController
     {
         [Authorize(Roles = "admin")]
@@ -27,6 +25,7 @@ namespace HairForceOne.WebService.Controllers
                 return connection.Query<User>(sql).ToList();
             }
         }
+
         [AllowAnonymous]
         public User GetUser(int id)
         {
