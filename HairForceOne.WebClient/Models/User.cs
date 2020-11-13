@@ -11,7 +11,7 @@ namespace HairForceOne.WebClient.Models
         public String PhoneNo { get; set; }
         public String Password { get; set; }
 
-        public User()
+        public User(int id)
         {
         }
 
@@ -27,6 +27,10 @@ namespace HairForceOne.WebClient.Models
         {
             Email = email;
             PhoneNo = phoneNumber;
+        }
+
+        public User()
+        {
         }
     }
 }
