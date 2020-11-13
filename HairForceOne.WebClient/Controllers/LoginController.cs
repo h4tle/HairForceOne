@@ -15,7 +15,6 @@ namespace HairForceOne.WebClient.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public object Index(String Email, String Password)
         {
