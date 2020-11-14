@@ -22,11 +22,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        public IEnumerable<Service> GetAllServicesT(string type)
+        public IEnumerable<Service> GetAllServices(string type)
         {
             string sql = "SELECT * from hfo_Service WHERE Type LIKE CONCAT('%',@Type,'%')";
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<Service>(sql, new { Type = type }).ToList();
             }
@@ -36,7 +36,7 @@ namespace HairForceOne.WebService.Controllers
         {
             string sql = "SELECT * from hfo_Service WHERE Gender LIKE CONCAT('%',@Gender,'%')";
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<Service>(sql, new { Gender = gender }).ToList();
             }

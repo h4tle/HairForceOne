@@ -25,7 +25,7 @@ namespace HairForceOne.WebService.Controllers
         {
             string sql = "SELECT * from hfo_Product WHERE Brand LIKE CONCAT('%',@Brand,'%')";
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<Product>(sql, new { Brand = brand }).ToList();
             }
@@ -35,7 +35,7 @@ namespace HairForceOne.WebService.Controllers
         {
             string sql = "SELECT * from hfo_Product WHERE Gender LIKE CONCAT('%',@Gender,'%')";
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<Product>(sql, new { Gender = gender }).ToList();
             }
@@ -45,7 +45,7 @@ namespace HairForceOne.WebService.Controllers
         {
             string sql = "SELECT * from hfo_Product WHERE Color LIKE CONCAT('%',@Color,'%')";
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dapperConnStr"].ConnectionString))
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<Product>(sql, new { Color = color }).ToList();
             }
