@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Web.Mvc;
-using System.Xml.Serialization;
 
 namespace HairForceOne.WebClient.Controllers
 {

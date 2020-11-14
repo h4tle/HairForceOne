@@ -22,7 +22,7 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        public IEnumerable<Service> GetAllServices(string type)
+        public IEnumerable<Service> GetAllServicesT(string type)
         {
             string sql = "SELECT * from hfo_Service WHERE Type LIKE CONCAT('%',@Type,'%')";
 

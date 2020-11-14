@@ -25,5 +25,10 @@ namespace HairForceOne.WebService.Models
 			this.Gender = Gender_;
 			this.Type = Type_;
 		}
+        public Service()
+        {
+
+        }
 	}
+
 }
