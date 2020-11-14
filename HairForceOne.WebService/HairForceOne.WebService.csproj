@@ -174,8 +174,10 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Service.cs" />
     <Compile Include="Providers\OAuthProvider.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\User.cs" />
