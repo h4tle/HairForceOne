@@ -27,7 +27,6 @@ namespace HairForceOne.WebService.Models
 		}
         public Service()
         {
-
         }
 	}
 
