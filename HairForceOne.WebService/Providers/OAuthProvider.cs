@@ -27,26 +27,49 @@ namespace HairForceOne.WebService.Providers
                 string Email = context.UserName;
                 string password = context.Password;
 
+
                 // searching the user in the database
-                var user = conn.QuerySingleOrDefault<User>("SELECT * FROM hfo_User WHERE Email =@Email",
+                var reader = conn.QueryMultiple("SELECT * FROM hfo_User WHERE Email =@Email; SELECT * FROM hfo_Employee WHERE Email =@Email",
                     new { Email });
+                User u = reader.ReadSingleOrDefault<User>();
+                Employee e = reader.ReadSingleOrDefault<Employee>();
 
                 // if the user is found, claims are added
-                if (user != null)
+                if (u != null || e != null)
                 {
-                    if (PasswordHelper.ComparePass(password, user.Password, user.Salt))
+                    if(u != null)
                     {
-                        var Claims = new List<Claim>();
-                        Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
-                        Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
-                        Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
-                        Claims.Add(new Claim(ClaimTypes.Role, user.Roles));
-                        ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
+                        if (PasswordHelper.ComparePass(password, u.Password, u.Salt))
+                        {
+                            var Claims = new List<Claim>();
+                            Claims.Add(new Claim(ClaimTypes.Name, u.FirstName));
+                            Claims.Add(new Claim(ClaimTypes.NameIdentifier, u.UserId.ToString()));
+                            Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
+                            Claims.Add(new Claim(ClaimTypes.Role, u.Roles));
+                            ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
 
-                        // Ticket har din identity
-                        AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
-                        await Task.Run(() => context.Validated(ticket));
+                            // Ticket har din identity
+                            AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
+                            await Task.Run(() => context.Validated(ticket));
+                        }
                     }
+                    else
+                    {
+                        if (PasswordHelper.ComparePass(password, e.PasswordHash, e.Salt))
+                        {
+                            var Claims = new List<Claim>();
+                            Claims.Add(new Claim(ClaimTypes.Name, e.FirstName));
+                            Claims.Add(new Claim(ClaimTypes.NameIdentifier, e.EmployeeId.ToString()));
+                            Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
+                            Claims.Add(new Claim(ClaimTypes.Role, e.Roles));
+                            ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
+
+                            // Ticket har din identity
+                            AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
+                            await Task.Run(() => context.Validated(ticket));
+                        }
+                    }
+                    
                 }
                 else
                 {
