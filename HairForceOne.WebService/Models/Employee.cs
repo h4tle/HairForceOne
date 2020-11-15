@@ -14,9 +14,10 @@ namespace HairForceOne.WebService.Models
 		public string ProfilePicture { get; set; }
 		public string Biography { get; set; }
 		public string PasswordHash { get; set; }
+		public string Roles { get; set; }
 		public string Salt { get; set; }
 
-		public Employee(int EmployeeId_, string FirstName_, string LastName_, string Email_, string PhoneNo_, int Experience_, string Gender_, string ProfilePicture_, string Biography_, string PasswordHash_, string Salt_)
+		public Employee(int EmployeeId_, string FirstName_, string LastName_, string Email_, string PhoneNo_, int Experience_, string Gender_, string ProfilePicture_, string Biography_, string PasswordHash_, string Roles_, string Salt_)
 		{
 			this.EmployeeId = EmployeeId_;
 			this.FirstName = FirstName_;
@@ -28,6 +29,8 @@ namespace HairForceOne.WebService.Models
 			this.ProfilePicture = ProfilePicture_;
 			this.Biography = Biography_;
 			this.PasswordHash = PasswordHash_;
+			this.Roles = Roles_;
 			this.Salt = Salt_;
 		}
 	}
+}
