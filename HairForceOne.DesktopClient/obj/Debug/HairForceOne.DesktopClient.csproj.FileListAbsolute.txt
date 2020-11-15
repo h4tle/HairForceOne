@@ -25,3 +25,15 @@ C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.Ge
 C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.CoreCompileInputs.cache
 C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.exe
 C:\hfo\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.pdb
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.exe.config
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.exe
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\bin\Debug\HairForceOne.DesktopClient.pdb
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csprojAssemblyReference.cache
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.Properties.Resources.resources
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.GenerateResource.cache
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.csproj.CoreCompileInputs.cache
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.exe
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.pdb
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.MainView.resources
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.AllTimeBookings.resources
+C:\Users\Holger Toft Nielsen\Documents\HairForceOne\HairForceOne.DesktopClient\obj\Debug\HairForceOne.DesktopClient.AllServices.resources
