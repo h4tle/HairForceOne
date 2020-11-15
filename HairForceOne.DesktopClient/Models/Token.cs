@@ -1,4 +1,6 @@
-﻿namespace HairForceOne.DesktopClient.Models
+﻿using Newtonsoft.Json;
+
+namespace HairForceOne.DesktopClient.Models
 {
     public class Token
     {
