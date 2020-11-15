@@ -28,25 +28,50 @@ namespace HairForceOne.WebService.Providers
                 string password = context.Password;
 
                 // searching the user in the database
-                var user = conn.QuerySingleOrDefault<User>("SELECT * FROM hfo_User WHERE Email =@Email",
+                //var user = conn.QuerySingleOrDefault<Employee>("SELECT * FROM hfo_Employee WHERE Email =@Email",
+                //    new { Email });
+
+                var result = conn.QueryMultiple("SELECT * FROM hfo_Employee WHERE Email = @Email; SELECT * FROM hfo_User WHERE Email = @Email",
                     new { Email });
-
+                Employee employee = result.ReadSingleOrDefault<Employee>();
+                User user = result.ReadSingleOrDefault<User>();
                 // if the user is found, claims are added
-                if (user != null)
+                if (user != null || employee != null)
                 {
-                    if (PasswordHelper.ComparePass(password, user.Password, user.Salt))
+                    if (user != null)
                     {
-                        var Claims = new List<Claim>();
-                        Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
-                        Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
-                        Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
-                        Claims.Add(new Claim(ClaimTypes.Role, user.Roles));
-                        ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
+                        if (PasswordHelper.ComparePass(password, user.Password, user.Salt))
+                        {
+                            var Claims = new List<Claim>();
+                            Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
+                            Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
+                            Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
+                            Claims.Add(new Claim(ClaimTypes.Role, user.Roles));
+                            ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
 
-                        // Ticket har din identity
-                        AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
-                        await Task.Run(() => context.Validated(ticket));
+                            // Ticket har din identity
+                            AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
+                            await Task.Run(() => context.Validated(ticket));
+                        }
                     }
+                    else
+                    {
+                        if (PasswordHelper.ComparePass(password, employee.PasswordHash, employee.Salt))
+                        {
+                            var Claims = new List<Claim>();
+                            Claims.Add(new Claim(ClaimTypes.Name, employee.FirstName));
+                            Claims.Add(new Claim(ClaimTypes.NameIdentifier, employee.EmployeeId.ToString()));
+                            Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
+                            Claims.Add(new Claim(ClaimTypes.Role, employee.Roles));
+                            Claims.Add(new Claim("Experience", employee.Experience.ToString()));
+                            ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
+
+                            // Ticket har din identity
+                            AuthenticationTicket ticket = new AuthenticationTicket(oAuthClaimIdentity, new AuthenticationProperties());
+                            await Task.Run(() => context.Validated(ticket));
+                        }
+                    }
+                    
                 }
                 else
                 {
