@@ -8,7 +8,6 @@ using System.Web.Mvc;
 namespace HairForceOne.WebClient.Controllers
 {
     [Authorize]
-    [AllowAnonymous]
     public class LoginController : Controller
     {
         public ActionResult Index()
@@ -16,6 +15,7 @@ namespace HairForceOne.WebClient.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public object Index(String Email, String Password)
         {
