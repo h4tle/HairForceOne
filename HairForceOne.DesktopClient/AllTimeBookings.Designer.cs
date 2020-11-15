@@ -30,7 +30,7 @@
         {
             this.splitAllTimeBookings = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
             this.comboEmployees = new System.Windows.Forms.ComboBox();
@@ -67,21 +67,21 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.lblTitle);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1226, 1024);
             this.panel2.TabIndex = 0;
             // 
-            // label2
+            // lblTitle
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(196, 29);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tidsbestillinger";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(19, 18);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(196, 29);
+            this.lblTitle.TabIndex = 3;
+            this.lblTitle.Text = "Tidsbestillinger";
             // 
             // monthCalendar1
             // 
@@ -141,6 +141,6 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboEmployees;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
