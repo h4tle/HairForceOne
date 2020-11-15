@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HairForceOne.WebClient.Models
+namespace HairForceOne.DesktopClient.Models
 {
     public class User
     {

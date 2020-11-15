@@ -1,4 +1,4 @@
-﻿namespace HairForceOne.WebService.Models
+﻿namespace HairForceOne.DesktopClient.Models
 {
     public class Employee
     {

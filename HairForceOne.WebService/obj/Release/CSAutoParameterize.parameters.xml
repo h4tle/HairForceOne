@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="OdeToFoodDbContext-Web.config Connection String" description="OdeToFoodDbContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=85.203.190.207,1433;Network Library=DBMSSOCN;Initial Catalog=HairForceOne;User ID=SA;Password=Huskdenkode9" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\projekt\\HairForceOne\\HairForceOne\.WebService\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OdeToFoodDbContext']/@connectionString" />
-  </parameter>
-</parameters>
