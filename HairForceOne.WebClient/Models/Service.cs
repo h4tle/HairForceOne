@@ -1,4 +1,4 @@
-﻿namespace HairForceOne.WebService.Models
+﻿namespace HairForceOne.WebClient.Models
 {
     public class Service
     {

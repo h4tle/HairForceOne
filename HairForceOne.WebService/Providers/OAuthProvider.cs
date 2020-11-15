@@ -71,7 +71,6 @@ namespace HairForceOne.WebService.Providers
                             await Task.Run(() => context.Validated(ticket));
                         }
                     }
-                    
                 }
                 else
                 {

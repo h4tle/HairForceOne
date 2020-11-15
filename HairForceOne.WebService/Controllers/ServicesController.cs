@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper;
+using HairForceOne.WebService.Models;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -6,8 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Dapper;
-using HairForceOne.WebService.Models;
 
 namespace HairForceOne.WebService.Controllers
 {
@@ -41,6 +40,7 @@ namespace HairForceOne.WebService.Controllers
                 return connection.Query<Service>(sql, new { Gender = gender }).ToList();
             }
         }
+
         public Service GetService(int id)
         {
             string sql = $"select * FROM hfo_Service WHERE ServiceId = @ServiceId";
@@ -49,6 +49,7 @@ namespace HairForceOne.WebService.Controllers
                 return connection.QuerySingleOrDefault<Service>(sql, new { ServiceId = id });
             }
         }
+
         public HttpResponseMessage Post([FromBody] Service s)
         {
             string sql = "INSERT INTO hfo_Service (Title,Decription,Duration,Price,Gender,Type)" +
@@ -63,7 +64,6 @@ namespace HairForceOne.WebService.Controllers
                     Price = s.Price,
                     Gender = s.Gender,
                     Type = s.Type
-
                 });
                 return Request.CreateResponse(HttpStatusCode.Accepted);
             }
