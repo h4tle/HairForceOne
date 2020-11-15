@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.MenuPanel = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelMenu = new System.Windows.Forms.Label();
             this.btnShowAllTimeBookings = new System.Windows.Forms.Button();
@@ -40,31 +40,32 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.tablessControl1 = new HairForceOne.DesktopClient.TablessControl();
+            this.tablessControl = new HairForceOne.DesktopClient.TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.allTimeBookings1 = new HairForceOne.DesktopClient.AllTimeBookings();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.allServices1 = new HairForceOne.DesktopClient.AllServices();
-            this.panel1.SuspendLayout();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.MenuPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.tablessControl1.SuspendLayout();
+            this.tablessControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // MenuPanel
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.MinimumSize = new System.Drawing.Size(100, 200);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 1024);
-            this.panel1.TabIndex = 0;
+            this.MenuPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.MenuPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MenuPanel.Controls.Add(this.flowLayoutPanel1);
+            this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MenuPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuPanel.Location = new System.Drawing.Point(0, 0);
+            this.MenuPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.MenuPanel.MinimumSize = new System.Drawing.Size(100, 200);
+            this.MenuPanel.Name = "MenuPanel";
+            this.MenuPanel.Size = new System.Drawing.Size(304, 1024);
+            this.MenuPanel.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
@@ -209,19 +210,20 @@
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // tablessControl1
+            // tablessControl
             // 
-            this.tablessControl1.Controls.Add(this.tabPage1);
-            this.tablessControl1.Controls.Add(this.tabPage2);
-            this.tablessControl1.Controls.Add(this.tabPage3);
-            this.tablessControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablessControl1.Location = new System.Drawing.Point(304, 0);
-            this.tablessControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.tablessControl1.Multiline = true;
-            this.tablessControl1.Name = "tablessControl1";
-            this.tablessControl1.SelectedIndex = 0;
-            this.tablessControl1.Size = new System.Drawing.Size(1594, 1024);
-            this.tablessControl1.TabIndex = 1;
+            this.tablessControl.Controls.Add(this.tabPage1);
+            this.tablessControl.Controls.Add(this.tabPage2);
+            this.tablessControl.Controls.Add(this.tabPage3);
+            this.tablessControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tablessControl.Location = new System.Drawing.Point(304, 0);
+            this.tablessControl.Margin = new System.Windows.Forms.Padding(0);
+            this.tablessControl.Multiline = true;
+            this.tablessControl.Name = "tablessControl";
+            this.tablessControl.Padding = new System.Drawing.Point(0, 0);
+            this.tablessControl.SelectedIndex = 0;
+            this.tablessControl.Size = new System.Drawing.Size(1594, 1024);
+            this.tablessControl.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -255,6 +257,15 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // allServices1
+            // 
+            this.allServices1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allServices1.Location = new System.Drawing.Point(3, 3);
+            this.allServices1.Margin = new System.Windows.Forms.Padding(0);
+            this.allServices1.Name = "allServices1";
+            this.allServices1.Size = new System.Drawing.Size(1580, 985);
+            this.allServices1.TabIndex = 0;
+            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
@@ -265,30 +276,21 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // allServices1
-            // 
-            this.allServices1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.allServices1.Location = new System.Drawing.Point(3, 3);
-            this.allServices1.Margin = new System.Windows.Forms.Padding(0);
-            this.allServices1.Name = "allServices1";
-            this.allServices1.Size = new System.Drawing.Size(1580, 985);
-            this.allServices1.TabIndex = 0;
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
-            this.Controls.Add(this.tablessControl1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tablessControl);
+            this.Controls.Add(this.MenuPanel);
             this.MinimumSize = new System.Drawing.Size(1000, 800);
             this.Name = "MainView";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.MenuPanel.ResumeLayout(false);
+            this.MenuPanel.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.tablessControl1.ResumeLayout(false);
+            this.tablessControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -297,7 +299,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel MenuPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnShowAllTimeBookings;
         private System.Windows.Forms.Button btnServices;
@@ -309,7 +311,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label labelMenu;
-        private TablessControl tablessControl1;
+        private TablessControl tablessControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private AllTimeBookings allTimeBookings1;

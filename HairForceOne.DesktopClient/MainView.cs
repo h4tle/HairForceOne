@@ -41,12 +41,12 @@ namespace HairForceOne.DesktopClient
 
         private void btnShowAllTimeBookings_Click(object sender, System.EventArgs e)
         {
-            tablessControl1.SelectedIndex = 0;
+            tablessControl.SelectedIndex = 0;
         }
 
         private void btnServices_Click(object sender, System.EventArgs e)
         {
-            tablessControl1.SelectedIndex = 1;
+            tablessControl.SelectedIndex = 1;
         }
     }
 }

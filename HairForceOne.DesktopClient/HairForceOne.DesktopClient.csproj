@@ -46,16 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllServices.cs">
+    <Compile Include="Cards\AllProducts.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AllServices.Designer.cs">
+    <Compile Include="Cards\AllProducts.Designer.cs">
+      <DependentUpon>AllProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cards\AllServices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Cards\AllServices.Designer.cs">
       <DependentUpon>AllServices.cs</DependentUpon>
     </Compile>
-    <Compile Include="AllTimeBookings.cs">
+    <Compile Include="Cards\AllTimeBookings.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AllTimeBookings.Designer.cs">
+    <Compile Include="Cards\AllTimeBookings.Designer.cs">
       <DependentUpon>AllTimeBookings.cs</DependentUpon>
     </Compile>
     <Compile Include="MainView.cs">
@@ -66,13 +72,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TablessControl.cs">
+    <Compile Include="Reusable\TablessControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="AllServices.resx">
+    <EmbeddedResource Include="Cards\AllServices.resx">
       <DependentUpon>AllServices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AllTimeBookings.resx">
+    <EmbeddedResource Include="Cards\AllTimeBookings.resx">
       <DependentUpon>AllTimeBookings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainView.resx">
