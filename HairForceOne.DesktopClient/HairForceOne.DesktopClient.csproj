@@ -75,6 +75,15 @@
     <Compile Include="Reusable\TablessControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reusable\TimeBooking.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reusable\TimeBooking.Designer.cs">
+      <DependentUpon>TimeBooking.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Cards\AllProducts.resx">
+      <DependentUpon>AllProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cards\AllServices.resx">
       <DependentUpon>AllServices.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +102,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reusable\TimeBooking.resx">
+      <DependentUpon>TimeBooking.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

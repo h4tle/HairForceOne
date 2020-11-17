@@ -1,6 +1,6 @@
 ﻿namespace HairForceOne.DesktopClient
 {
-    partial class AllTimeBookings
+    public partial class AllTimeBookings
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,15 +30,18 @@
         {
             this.splitAllTimeBookings = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.FlowLayoutListPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
             this.comboEmployees = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitAllTimeBookings)).BeginInit();
             this.splitAllTimeBookings.Panel1.SuspendLayout();
             this.splitAllTimeBookings.Panel2.SuspendLayout();
             this.splitAllTimeBookings.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitAllTimeBookings
@@ -67,17 +70,31 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lblTitle);
+            this.panel2.Controls.Add(this.panel1);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1226, 1024);
             this.panel2.TabIndex = 0;
             // 
+            // FlowLayoutListPanel
+            // 
+            this.FlowLayoutListPanel.AutoScroll = true;
+            this.FlowLayoutListPanel.BackColor = System.Drawing.Color.DimGray;
+            this.FlowLayoutListPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.FlowLayoutListPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.FlowLayoutListPanel.Location = new System.Drawing.Point(0, 57);
+            this.FlowLayoutListPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.FlowLayoutListPanel.Name = "FlowLayoutListPanel";
+            this.FlowLayoutListPanel.Padding = new System.Windows.Forms.Padding(20, 0, 3, 0);
+            this.FlowLayoutListPanel.Size = new System.Drawing.Size(1226, 967);
+            this.FlowLayoutListPanel.TabIndex = 3;
+            this.FlowLayoutListPanel.WrapContents = false;
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(19, 18);
+            this.lblTitle.Location = new System.Drawing.Point(27, 8);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(196, 29);
             this.lblTitle.TabIndex = 3;
@@ -116,6 +133,16 @@
             this.comboEmployees.TabIndex = 0;
             this.comboEmployees.Text = "Medarbejder";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblTitle);
+            this.panel1.Controls.Add(this.FlowLayoutListPanel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1226, 1024);
+            this.panel1.TabIndex = 4;
+            // 
             // AllTimeBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -129,7 +156,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitAllTimeBookings)).EndInit();
             this.splitAllTimeBookings.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -142,5 +170,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboEmployees;
         private System.Windows.Forms.Label lblTitle;
+        public System.Windows.Forms.FlowLayoutPanel FlowLayoutListPanel;
+        private System.Windows.Forms.Panel panel1;
     }
 }
