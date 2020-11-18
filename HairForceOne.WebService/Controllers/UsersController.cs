@@ -19,7 +19,7 @@ namespace HairForceOne.WebService.Controllers
         [Authorize(Roles = "admin")]
         public IEnumerable<User> GetAllUsers()
         {
-            string sql = "SELECT * FROM hfo_User";
+            string sql = "SELECT 'FirstName', 'LastName', 'Email', 'PhoneNo' FROM hfo_User";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<User>(sql).ToList();
