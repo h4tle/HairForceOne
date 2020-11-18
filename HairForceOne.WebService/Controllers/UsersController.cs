@@ -17,12 +17,12 @@ namespace HairForceOne.WebService.Controllers
     public class UsersController : ApiController
     {
         [Authorize(Roles = "admin")]
-        public IEnumerable<User> GetAllUsers()
+        public IEnumerable<dynamic> GetAllUsers()
         {
-            string sql = "SELECT 'FirstName', 'LastName', 'Email', 'PhoneNo' FROM hfo_User";
+            string sql = "SELECT FirstName, LastName, Email, PhoneNo FROM hfo_User";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<User>(sql).ToList();
+                return connection.Query<dynamic>(sql).ToList();
             }
         }
 
