@@ -17,12 +17,12 @@ namespace HairForceOne.WebService.Controllers
     public class UsersController : ApiController
     {
         [Authorize(Roles = "admin")]
-        public IEnumerable<dynamic> GetAllUsers()
+        public IEnumerable<User> GetAllUsers()
         {
             string sql = "SELECT FirstName, LastName, Email, PhoneNo FROM hfo_User";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<dynamic>(sql).ToList();
+                return connection.Query<User>(sql).ToList();
             }
         }
 
@@ -36,8 +36,7 @@ namespace HairForceOne.WebService.Controllers
                 return connection.Query<User>(sql, new { UserId }).FirstOrDefault();
             }
         }
-
-        [Authorize(Roles = "admin")]
+        [AllowAnonymous]
         public HttpResponseMessage Post([FromBody] User u)
         {
             string salt = PasswordHelper.GenerateSalt();

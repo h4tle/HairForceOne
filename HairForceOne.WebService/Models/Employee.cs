@@ -30,5 +30,10 @@
             this.Salt = Salt;
             this.Roles = Roles;
         }
+
+        public Employee()
+        {
+                
+        }
     }
 }

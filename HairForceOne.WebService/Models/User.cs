@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace HairForceOne.WebService.Models
 {
@@ -10,6 +11,7 @@ namespace HairForceOne.WebService.Models
         public string Email { get; set; }
         public string PhoneNo { get; set; }
         public String Password { get; set; }
+        [JsonIgnore]
         public String Salt { get; set; }
         public string Roles { get; set; }
 

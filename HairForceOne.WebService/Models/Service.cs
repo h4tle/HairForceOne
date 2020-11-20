@@ -1,4 +1,6 @@
-﻿namespace HairForceOne.WebService.Models
+﻿using Newtonsoft.Json;
+namespace HairForceOne.WebService.Models
+
 {
     public class Service
     {

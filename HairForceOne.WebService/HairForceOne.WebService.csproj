@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
@@ -188,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\hairforceone - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\HairForceOneAPI.pubxml" />
     <None Include="Properties\PublishProfiles\selftesting - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
