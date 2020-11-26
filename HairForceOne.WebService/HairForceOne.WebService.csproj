@@ -175,10 +175,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Providers\OAuthProvider.cs" />
