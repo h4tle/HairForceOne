@@ -12,7 +12,7 @@ namespace HairForceOne.WebService.Controllers
 {
     public class ServicesController : ApiController
     {
-        [Authorize]
+        [AllowAnonymous]
         public IEnumerable<Service> GetAllSerices()
         {
             string sql = "SELECT * FROM hfo_Service";
