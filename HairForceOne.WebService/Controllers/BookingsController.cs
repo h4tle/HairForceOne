@@ -30,9 +30,9 @@ namespace HairForceOne.WebService.Controllers
                 return connection.QuerySingleOrDefault<Booking>(sql, new { ProductId = id });
             }
         }
-        public HttpResponseMessage Post([FromBody] MultipartContent booking )
+        public HttpResponseMessage Post([FromBody] AltBooking booking )
         {
-            booking.ToList();
+            var test2 = booking;
             string sql = "INSERT INTO hfo_Booking (StartTime,EndTime,TotalPrice,Comment)" +
                          "VALUES (@Brand, @Title, @StartTime, @EndTime, @TotalPrice, @Comment)";
             //using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
