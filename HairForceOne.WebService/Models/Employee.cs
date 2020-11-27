@@ -1,4 +1,6 @@
-﻿namespace HairForceOne.WebService.Models
+﻿using Newtonsoft.Json;
+
+namespace HairForceOne.WebService.Models
 {
     public class Employee
     {
@@ -11,7 +13,11 @@
         public string Gender { get; set; }
         public string ProfilePicture { get; set; }
         public string Biography { get; set; }
+        [JsonIgnore]
+
         public string PasswordHash { get; set; }
+        [JsonIgnore]
+
         public string Salt { get; set; }
         public string Roles { get; set; }
 
