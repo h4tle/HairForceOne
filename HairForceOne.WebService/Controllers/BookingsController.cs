@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
+using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
@@ -32,13 +34,15 @@ namespace HairForceOne.WebService.Controllers
         }
         public HttpResponseMessage Post([FromBody] AltBooking b )
         {
-            
-            string sql = "INSERT INTO hfo_AltBooking (StartTime,Duration,TotalPrice,Comment,EmployeeId, ProductId, ServiceId)" +
+            ClaimsPrincipal user = HttpContext.Current.User as ClaimsPrincipal;
+            var UserId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
+            string sql = "INSERT INTO hfo_AltBooking (StartTime,Duration,TotalPrice,Comment, UserId, EmployeeId, ProductId, ServiceId)" +
                          "VALUES (@StartTime, @Duration, @TotalPrice, @Comment, @EmployeeId, @ProductId, @ServiceId)";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 var affectedRows = connection.Execute(sql, new
                 {
+                    UserId,
                     b.StartTime,
                     b.Duration,
                     b.TotalPrice,

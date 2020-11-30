@@ -10,14 +10,19 @@ namespace HairForceOne.WebService.Models
 		public int EventId { get; set; }
 		public string Title { get; set; }
 		public DateTime Start { get; set; }
-		public DateTime End { get; set; }
+		public int Duration { get; set; }
 
-		public Event(int EventId_, string Title_, DateTime Start_, DateTime End_)
+        public Event()
+        {
+
+        }
+
+		public Event(int EventId_, string Title_, DateTime Start_, int Duration_)
 		{
 			this.EventId = EventId_;
 			this.Title = Title_;
 			this.Start = Start_;
-			this.End = End_;
+			this.Duration = Duration_;
 		}
 	}
 }
