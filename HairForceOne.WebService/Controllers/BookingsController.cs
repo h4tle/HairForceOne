@@ -30,22 +30,25 @@ namespace HairForceOne.WebService.Controllers
                 return connection.QuerySingleOrDefault<Booking>(sql, new { ProductId = id });
             }
         }
-        public HttpResponseMessage Post([FromBody] AltBooking booking )
+        public HttpResponseMessage Post([FromBody] AltBooking b )
         {
-            var test2 = booking;
-            string sql = "INSERT INTO hfo_Booking (StartTime,EndTime,TotalPrice,Comment)" +
-                         "VALUES (@Brand, @Title, @StartTime, @EndTime, @TotalPrice, @Comment)";
-            //using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            //{
-            //    var affectedRows = connection.Execute(sql, new
-            //    {
-            //        StartTime = b.StartTime,
-            //        EndTime = b.EndTime,
-            //        TotalPrice = b.TotalPrice,
-            //        Comment = b.Comment
-            //    });
+            
+            string sql = "INSERT INTO hfo_AltBooking (StartTime,Duration,TotalPrice,Comment,EmployeeId, ProductId, ServiceId)" +
+                         "VALUES (@StartTime, @Duration, @TotalPrice, @Comment, @EmployeeId, @ProductId, @ServiceId)";
+            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            {
+                var affectedRows = connection.Execute(sql, new
+                {
+                    b.StartTime,
+                    b.Duration,
+                    b.TotalPrice,
+                    b.Comment,
+                    b.Employee.EmployeeId,
+                    b.Products.First<Product>().ProductId,
+                    b.Services.First<Service>().ServiceId
+                });
                 return Request.CreateResponse(HttpStatusCode.Accepted);
-            //}
+            }
         }
         public int Put(Booking b)
         {

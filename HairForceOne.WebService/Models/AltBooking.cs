@@ -9,9 +9,11 @@ namespace HairForceOne.WebService.Models
     {
         public List<Product> Products { get; set; }
         public List<Service> Services { get; set; }
+        public DateTime StartTime { get; set; }
         public Employee Employee { get; set; }
         public int Duration { get; set; }
-        public float Price { get; set; }
+        public float TotalPrice { get; set; }
+        public string Comment { get; set; }
 
     }
 }
