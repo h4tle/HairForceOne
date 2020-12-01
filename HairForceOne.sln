@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairForceOne.WebService", "HairForceOne.WebService\HairForceOne.WebService.csproj", "{3FA577DF-3FC1-4023-BFCA-37742F929E96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairForceOne.DesktopClient", "HairForceOne.DesktopClient\HairForceOne.DesktopClient.csproj", "{7AE89DEA-AEA3-436B-97F3-CCCFF6FE2EC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairForceOne.WinFormsDesktopClient", "HairForceOne.WinFormsDesktopClient\HairForceOne.WinFormsDesktopClient.csproj", "{3961DDB8-709C-4779-8C78-D8108C4D3193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{3FA577DF-3FC1-4023-BFCA-37742F929E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FA577DF-3FC1-4023-BFCA-37742F929E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FA577DF-3FC1-4023-BFCA-37742F929E96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AE89DEA-AEA3-436B-97F3-CCCFF6FE2EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AE89DEA-AEA3-436B-97F3-CCCFF6FE2EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AE89DEA-AEA3-436B-97F3-CCCFF6FE2EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AE89DEA-AEA3-436B-97F3-CCCFF6FE2EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3961DDB8-709C-4779-8C78-D8108C4D3193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3961DDB8-709C-4779-8C78-D8108C4D3193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3961DDB8-709C-4779-8C78-D8108C4D3193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3961DDB8-709C-4779-8C78-D8108C4D3193}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
