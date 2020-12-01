@@ -46,6 +46,9 @@
             this.cbb_gender = new System.Windows.Forms.ComboBox();
             this.lbl_product_gender = new System.Windows.Forms.Label();
             this.btn_create = new System.Windows.Forms.Button();
+            this.btn_employee_upload = new System.Windows.Forms.Button();
+            this.lbl_employee_picture = new System.Windows.Forms.Label();
+            this.txt_employee_picture = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,12 +221,43 @@
             this.btn_create.Text = "Opret";
             this.btn_create.UseVisualStyleBackColor = false;
             // 
+            // btn_employee_upload
+            // 
+            this.btn_employee_upload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
+            this.btn_employee_upload.Location = new System.Drawing.Point(821, 564);
+            this.btn_employee_upload.Name = "btn_employee_upload";
+            this.btn_employee_upload.Size = new System.Drawing.Size(75, 23);
+            this.btn_employee_upload.TabIndex = 70;
+            this.btn_employee_upload.Text = "Upload";
+            this.btn_employee_upload.UseVisualStyleBackColor = false;
+            // 
+            // lbl_employee_picture
+            // 
+            this.lbl_employee_picture.AutoSize = true;
+            this.lbl_employee_picture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_employee_picture.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
+            this.lbl_employee_picture.Location = new System.Drawing.Point(611, 543);
+            this.lbl_employee_picture.Name = "lbl_employee_picture";
+            this.lbl_employee_picture.Size = new System.Drawing.Size(113, 20);
+            this.lbl_employee_picture.TabIndex = 69;
+            this.lbl_employee_picture.Text = "Billede: ????";
+            // 
+            // txt_employee_picture
+            // 
+            this.txt_employee_picture.Location = new System.Drawing.Point(612, 566);
+            this.txt_employee_picture.Name = "txt_employee_picture";
+            this.txt_employee_picture.Size = new System.Drawing.Size(176, 20);
+            this.txt_employee_picture.TabIndex = 68;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btn_employee_upload);
+            this.Controls.Add(this.lbl_employee_picture);
+            this.Controls.Add(this.txt_employee_picture);
             this.Controls.Add(this.btn_create);
             this.Controls.Add(this.cbb_gender);
             this.Controls.Add(this.lbl_product_gender);
@@ -270,5 +304,8 @@
         private System.Windows.Forms.ComboBox cbb_gender;
         private System.Windows.Forms.Label lbl_product_gender;
         private System.Windows.Forms.Button btn_create;
+        private System.Windows.Forms.Button btn_employee_upload;
+        private System.Windows.Forms.Label lbl_employee_picture;
+        private System.Windows.Forms.TextBox txt_employee_picture;
     }
 }

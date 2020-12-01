@@ -44,9 +44,6 @@
             this.lbl_price = new System.Windows.Forms.Label();
             this.lbl_service_gender = new System.Windows.Forms.Label();
             this.ccb_service_product = new System.Windows.Forms.ComboBox();
-            this.btn_employee_upload = new System.Windows.Forms.Button();
-            this.lbl_employee_picture = new System.Windows.Forms.Label();
-            this.txt_employee_picture = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +76,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(482, 436);
             this.dataGridView1.TabIndex = 29;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btn_update
             // 
@@ -116,6 +114,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(284, 20);
             this.textBox1.TabIndex = 33;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -130,6 +129,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(284, 20);
             this.textBox3.TabIndex = 35;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
@@ -202,43 +202,12 @@
             this.ccb_service_product.Size = new System.Drawing.Size(150, 21);
             this.ccb_service_product.TabIndex = 42;
             // 
-            // btn_employee_upload
-            // 
-            this.btn_employee_upload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_employee_upload.Location = new System.Drawing.Point(820, 464);
-            this.btn_employee_upload.Name = "btn_employee_upload";
-            this.btn_employee_upload.Size = new System.Drawing.Size(75, 23);
-            this.btn_employee_upload.TabIndex = 67;
-            this.btn_employee_upload.Text = "Upload";
-            this.btn_employee_upload.UseVisualStyleBackColor = false;
-            // 
-            // lbl_employee_picture
-            // 
-            this.lbl_employee_picture.AutoSize = true;
-            this.lbl_employee_picture.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_employee_picture.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.lbl_employee_picture.Location = new System.Drawing.Point(610, 443);
-            this.lbl_employee_picture.Name = "lbl_employee_picture";
-            this.lbl_employee_picture.Size = new System.Drawing.Size(113, 20);
-            this.lbl_employee_picture.TabIndex = 66;
-            this.lbl_employee_picture.Text = "Billede: ????";
-            // 
-            // txt_employee_picture
-            // 
-            this.txt_employee_picture.Location = new System.Drawing.Point(611, 466);
-            this.txt_employee_picture.Name = "txt_employee_picture";
-            this.txt_employee_picture.Size = new System.Drawing.Size(176, 20);
-            this.txt_employee_picture.TabIndex = 65;
-            // 
             // ServiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.btn_employee_upload);
-            this.Controls.Add(this.lbl_employee_picture);
-            this.Controls.Add(this.txt_employee_picture);
             this.Controls.Add(this.ccb_service_product);
             this.Controls.Add(this.lbl_service_gender);
             this.Controls.Add(this.lbl_price);
@@ -281,8 +250,5 @@
         private System.Windows.Forms.Label lbl_price;
         private System.Windows.Forms.Label lbl_service_gender;
         private System.Windows.Forms.ComboBox ccb_service_product;
-        private System.Windows.Forms.Button btn_employee_upload;
-        private System.Windows.Forms.Label lbl_employee_picture;
-        private System.Windows.Forms.TextBox txt_employee_picture;
     }
 }

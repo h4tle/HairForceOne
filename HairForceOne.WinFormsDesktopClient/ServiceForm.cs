@@ -16,5 +16,6 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             InitializeComponent();
         }
+
     }
 }
