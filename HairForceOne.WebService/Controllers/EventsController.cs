@@ -14,12 +14,16 @@ namespace HairForceOne.WebService.Controllers
     public class EventsController : ApiController
     {
         [AllowAnonymous]
-        public IEnumerable<Event> GetAllEvents()
+        public IEnumerable<dynamic> GetAllEvents()
         {
-            string sql = "SELECT * FROM hfo_Event";
+            string sql = "exec [GetSomeTable]";
+
+            //string sql = "SELECT * FROM hfo_Event";
+
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<Event>(sql).ToList();
+                var results = connection.Query<dynamic>(sql).ToList();
+                return results;
             }
         }
 
