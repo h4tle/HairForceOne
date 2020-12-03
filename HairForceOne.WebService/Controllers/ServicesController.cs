@@ -53,8 +53,8 @@ namespace HairForceOne.WebService.Controllers
 
         public HttpResponseMessage Post([FromBody] Service s)
         {
-            string sql = "INSERT INTO hfo_Service (Title,Decription,Duration,Price,Gender,Type)" +
-                         "VALUES (@Title, @Description, @Duration, @Price, @Gender, @Type)";
+            string sql = "INSERT INTO hfo_Service (Title,Description,Duration,Price,Gender)" +
+                         "VALUES (@Title, @Description, @Duration, @Price, @Gender)";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 var affectedRows = connection.Execute(sql, new
@@ -64,7 +64,6 @@ namespace HairForceOne.WebService.Controllers
                     Duration = s.Duration,
                     Price = s.Price,
                     Gender = s.Gender,
-                    Type = s.Type
                 });
                 return Request.CreateResponse(HttpStatusCode.Accepted);
             }
@@ -72,7 +71,7 @@ namespace HairForceOne.WebService.Controllers
 
         public int Put(Service s)
         {
-            string sql = $"UPDATE hfo_Service SET Title = @Title, Description = @Description, Duration = @Duration, Price = @Price, Gender = @Gender, Type = @Type, WHERE ServiceId = @ServiceId";
+            string sql = $"UPDATE hfo_Service SET Title = @Title, Description = @Description, Duration = @Duration, Price = @Price, Gender = @Gender WHERE ServiceId = @ServiceId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int ProductId = connection.Execute(sql, new
@@ -83,7 +82,6 @@ namespace HairForceOne.WebService.Controllers
                     Duration = s.Duration,
                     Price = s.Price,
                     Gender = s.Gender,
-                    Type = s.Type
                 });
                 return ProductId;
             }

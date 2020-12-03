@@ -11,8 +11,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
     {
         List<Service> GetServices();
         Service GetService(int id);
-        void Create(Service Service);
-        void Update(int id, Service Service);
-        void Delete(int id);
+        NotImplementedException Create(Service Service);
+        NotImplementedException Update(Service Service);
+        NotImplementedException Delete(int id);
     }
 }

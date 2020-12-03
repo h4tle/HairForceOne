@@ -26,5 +26,17 @@ namespace HairForceOne.WinFormsDesktopClient
         {
 
         }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var main = new MainForm();
+            main.Show();
+        }
+
+        private void txt_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

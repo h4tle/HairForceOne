@@ -15,7 +15,7 @@ namespace HairForceOne.WinFormsDesktopClient.Model
 		public int EmployeeId { get; set; }
 		public DateTime BookedDate { get; set; }
 
-	public Event(int EventId_, string Title_, DateTime StartTime_, int Duration_, int EmployeeId_, DateTime BookedDate_,)
+	public Event(int EventId_, string Title_, DateTime StartTime_, int Duration_, int EmployeeId_, DateTime BookedDate_)
 	{
 		this.EventId = EventId_;
 		this.Title = Title_;
