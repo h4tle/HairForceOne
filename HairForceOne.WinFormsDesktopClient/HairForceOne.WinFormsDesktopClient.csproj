@@ -66,6 +66,8 @@
     <Compile Include="CheckoutForm.Designer.cs">
       <DependentUpon>CheckoutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller\EmployeesController.cs" />
+    <Compile Include="Controller\IEmployeesController.cs" />
     <Compile Include="Controller\IProductsController.cs" />
     <Compile Include="Controller\IServicesController.cs" />
     <Compile Include="Controller\ProductsController.cs" />
@@ -94,6 +96,12 @@
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="NewEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewEmployeeForm.Designer.cs">
+      <DependentUpon>NewEmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +149,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewEmployeeForm.resx">
+      <DependentUpon>NewEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewProductForm.resx">
       <DependentUpon>NewProductForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,6 +192,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Util\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HairForceOne.WebService\HairForceOne.WebService.csproj">
+      <Project>{3FA577DF-3FC1-4023-BFCA-37742F929E96}</Project>
+      <Name>HairForceOne.WebService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

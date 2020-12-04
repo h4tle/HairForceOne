@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
 {
-    internal partial class NewProductForm : Form
+    internal partial class NewEmployeeForm : Form
     {
-        ProductsController productsController;
-        public NewProductForm(ProductsController productsController)
+        EmployeesController employeesController;
+        public NewEmployeeForm(EmployeesController employeesController)
         {
-            this.productsController = productsController;
+            this.employeesController = employeesController;
             InitializeComponent();
         }
 
@@ -32,11 +32,20 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 malefemale = "Male";
             }
-            Product p = new Product(0, txt_brand.Text, txt_title.Text, txt_description.Text, txt_weight.Text, decimal.Parse(txt_purchaseprice.Text), decimal.Parse(txt_retailprice.Text), null, malefemale);
-            productsController.Create(p);
+            String role = "";
+            if (cbb_employee_roles.SelectedIndex == 0)
+            {
+                role = "admin";
+            }
+            else
+            {
+                role = "owner";
+            }
+            
+            Employee employee = new Employee(0, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int)num_employee_exp.Value, malefemale, null, txt_employee_biography.Text, txt_employee_password.Text, null, role);
+            employeesController.Create(employee);
             this.Close();
         }
-
         private void textBoxes_TextChanged(object sender, EventArgs e)
         {
             EnableButton();

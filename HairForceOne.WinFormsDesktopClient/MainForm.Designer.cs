@@ -76,6 +76,7 @@
             this.btn_employee.TabIndex = 3;
             this.btn_employee.Text = "Employee";
             this.btn_employee.UseVisualStyleBackColor = true;
+            this.btn_employee.Click += new System.EventHandler(this.btn_employee_Click);
             // 
             // btn_product
             // 
