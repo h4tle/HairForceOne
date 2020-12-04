@@ -166,7 +166,6 @@
             this.lbl_main_watch.Name = "lbl_main_watch";
             this.lbl_main_watch.Size = new System.Drawing.Size(486, 252);
             this.lbl_main_watch.TabIndex = 10;
-            this.lbl_main_watch.Text = "11:48";
             this.lbl_main_watch.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_main_watch.Click += new System.EventHandler(this.lbl_main_watch_Click);
             // 

@@ -62,23 +62,31 @@ namespace HairForceOne.WebService.Controllers
 
         public HttpResponseMessage Post([FromBody] Product p)
         {
-            string sql = "INSERT INTO hfo_Product (Brand,Title,Decription,Weight,PurchasePrice,RetailPrice,Color,Gender)" +
-                         "VALUES (@Brand, @Title, @Description, @Weight, @PurchasePrice, @RetailPrice, @Color, @Gender)";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            try
             {
-                var affectedRows = connection.Execute(sql, new
+                string sql = "INSERT INTO hfo_Product (Brand,Title,Description,Weight,PurchasePrice,RetailPrice,Color,Gender)" +
+                             "VALUES (@Brand, @Title, @Description, @Weight, @PurchasePrice, @RetailPrice, @Color, @Gender)";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    Brand = p.Brand,
-                    Title = p.Title,
-                    Description = p.Description,
-                    Weight = p.Weight,
-                    PurchasePrice = p.PurchasePrice,
-                    RetailPrice = p.RetailPrice,
-                    Color = p.Color,
-                    Gender = p.Gender
-                });
-                return Request.CreateResponse(HttpStatusCode.Accepted);
+                    var affectedRows = connection.Execute(sql, new
+                    {
+                        Brand = p.Brand,
+                        Title = p.Title,
+                        Description = p.Description,
+                        Weight = p.Weight,
+                        PurchasePrice = p.PurchasePrice,
+                        RetailPrice = p.RetailPrice,
+                        Color = p.Color,
+                        Gender = p.Gender
+                    });
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
             }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
+            
         }
 
         public int Put(Product p)

@@ -94,6 +94,12 @@
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="NewProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewProductForm.Designer.cs">
+      <DependentUpon>NewProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewServiceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewProductForm.resx">
+      <DependentUpon>NewProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewServiceForm.resx">
       <DependentUpon>NewServiceForm.cs</DependentUpon>

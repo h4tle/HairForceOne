@@ -221,6 +221,7 @@
             this.btn_create.TabIndex = 50;
             this.btn_create.Text = "Opret";
             this.btn_create.UseVisualStyleBackColor = false;
+            this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
             // 
             // btn_employee_upload
             // 

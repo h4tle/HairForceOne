@@ -90,5 +90,17 @@ namespace HairForceOne.WinFormsDesktopClient
             productsController.Delete(selectedProduct.ProductId);
             ReloadForm();
         }
+
+        private void btn_create_Click(object sender, EventArgs e)
+        {
+            Form f = new NewProductForm(productsController);
+            f.FormClosed += F2_FormClosed;
+            f.ShowDialog();
+        }
+
+        private void F2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ReloadForm();
+        }
     }
 }

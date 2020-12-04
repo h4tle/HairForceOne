@@ -21,6 +21,7 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            lbl_main_watch.Text = DateTime.Now.ToString("g");
             // Too much FullScreen
             //this.TopMost = true;
             //this.FormBorderStyle = FormBorderStyle.None;
@@ -45,7 +46,6 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void clockTimer_Tick(object sender, EventArgs e)
         {
-
             lbl_main_watch.Text = DateTime.Now.ToString("g");
         }
 
