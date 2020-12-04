@@ -55,5 +55,12 @@ namespace HairForceOne.WinFormsDesktopClient
             serviceForm.Show();
             this.Hide();
         }
+
+        private void btn_product_Click(object sender, EventArgs e)
+        {
+            Form productForm = new ProductForm();
+            productForm.Show();
+            this.Hide();
+        }
     }
 }

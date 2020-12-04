@@ -86,10 +86,5 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 }
             
         }
-
-        NotImplementedException IServicesController.Create(Service Service)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
