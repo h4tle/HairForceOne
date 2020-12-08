@@ -28,33 +28,64 @@ namespace HairForceOne.WebService.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<DateTime> Post(SelectedPayload TimeThing)
+        public IEnumerable<TimeSpan> Post(SelectedPayload TimeThing)
         {
+            var newTimezz = TimeThing.SelectedDate.Date.AddTicks(DateTime.Now.TimeOfDay.Ticks);
             TimeSpan Duration = new TimeSpan(0, TimeThing.Duration, 0);
             int empId = 1;
-            DateTime open = DateTime.Now;
-            open.AddHours(9.00);
-            DateTime close = DateTime.Now;
-            close.AddHours(16.00);
-            string test1 = close.ToString();
-            string sql = $"SELECT * FROM hfo_Event WHERE StartTime > '2020-12-1' AND EmployeeId = 1";
+            TimeSpan open = new TimeSpan(9, 0, 0);
+            if (newTimezz.TimeOfDay < open)
+            {
+                DateTime test2 = newTimezz.Date.AddTicks(open.Ticks);
+                newTimezz = test2;
+            }
+            TimeSpan close = new TimeSpan(16, 0, 0);
+            TimeSpan interval = new TimeSpan(0, 15, 0);
+            DateTime selectedDate = new DateTime((newTimezz.Ticks + interval.Ticks - 1) / interval.Ticks * interval.Ticks, newTimezz.Kind);
+            if (selectedDate.Date != DateTime.Now.Date)
+            {
+
+                DateTime test3 = selectedDate.Date.AddTicks(open.Ticks);
+                selectedDate = test3;
+            }
+            string sql = $"SELECT * FROM hfo_Event WHERE StartTime > @selectedDate AND EmployeeId = 1";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 var result = connection.Query<Event>(sql, new
                 {
-                    eployeeId = empId,
-                    selectedDate = TimeThing.SelectedDate,
+                    employeeId = empId,
+                    selectedDate,
                 });
+                List<Event> events = result.OrderBy(d => d.StartTime).ToList();
                 //Calculating available times
-                List<DateTime> availableTimes = new List<DateTime>();
-                for (DateTime i = open; i < close; i = i + Duration)
+                List<TimeSpan> availableTimes = new List<TimeSpan>();
+                for (TimeSpan i = selectedDate.TimeOfDay; i < close; i = i + interval)
                 {
-                    foreach (Event e in result)
+                    if (i + Duration > close)
                     {
-                        if (open + Duration < e.Start)
+                        return availableTimes;
+                    }
+                    bool avail = true;
+                    for (int i2 = 0; i2 < events.Count; i2++)
+                    {
+                        if (i + Duration <= events.ElementAt(i2).StartTime.TimeOfDay || i >= events.ElementAt(i2).StartTime.TimeOfDay + Duration)
                         {
-                            availableTimes.Add(open);
+
                         }
+                        else
+                        {
+                            if (i2 > 0)
+                            {
+
+                                events.RemoveAt(i2 - 1);
+                            }
+                            avail = false;
+                            break;
+                        }
+                    }
+                    if (avail)
+                    {
+                        availableTimes.Add(i);
                     }
                 }
 

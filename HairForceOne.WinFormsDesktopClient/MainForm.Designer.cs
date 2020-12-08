@@ -190,6 +190,7 @@
             this.btn_booking.TabIndex = 12;
             this.btn_booking.Text = "Booking";
             this.btn_booking.UseVisualStyleBackColor = true;
+            this.btn_booking.Click += new System.EventHandler(this.btn_booking_Click);
             // 
             // clockTimer
             // 

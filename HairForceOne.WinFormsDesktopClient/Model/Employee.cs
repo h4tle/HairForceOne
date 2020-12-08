@@ -18,7 +18,8 @@ namespace HairForceOne.WinFormsDesktopClient.Model
 		public string ProfilePicture { get; set; }
 		public string Biography { get; set; }
 		public string PasswordHash { get; set; }
-		public string Salt { get; set; }
+        public string Password { get; set; }
+        public string Salt { get; set; }
 		public string Roles { get; set; }
 
 		public Employee(int EmployeeId_, string FirstName_, string LastName_, string Email_, string PhoneNo_, int Experience_, string Gender_, string ProfilePicture_, string Biography_, string PasswordHash_, string Salt_, string Roles_)

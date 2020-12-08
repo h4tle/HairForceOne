@@ -44,7 +44,6 @@
             this.lbl_employee_biography = new System.Windows.Forms.Label();
             this.txt_employee_biography = new System.Windows.Forms.TextBox();
             this.lbl_employee_picture = new System.Windows.Forms.Label();
-            this.txt_employee_picture = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbb_employee_roles = new System.Windows.Forms.ComboBox();
             this.lbl_employee_roles = new System.Windows.Forms.Label();
@@ -193,7 +192,7 @@
             // btn_employee_upload
             // 
             this.btn_employee_upload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_employee_upload.Location = new System.Drawing.Point(498, 394);
+            this.btn_employee_upload.Location = new System.Drawing.Point(187, 397);
             this.btn_employee_upload.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_employee_upload.Name = "btn_employee_upload";
             this.btn_employee_upload.Size = new System.Drawing.Size(112, 35);
@@ -234,14 +233,6 @@
             this.lbl_employee_picture.Size = new System.Drawing.Size(119, 20);
             this.lbl_employee_picture.TabIndex = 81;
             this.lbl_employee_picture.Text = "Billede: ????";
-            // 
-            // txt_employee_picture
-            // 
-            this.txt_employee_picture.Location = new System.Drawing.Point(185, 397);
-            this.txt_employee_picture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_employee_picture.Name = "txt_employee_picture";
-            this.txt_employee_picture.Size = new System.Drawing.Size(262, 26);
-            this.txt_employee_picture.TabIndex = 80;
             // 
             // label2
             // 
@@ -309,6 +300,7 @@
             this.txt_employee_password.Name = "txt_employee_password";
             this.txt_employee_password.Size = new System.Drawing.Size(262, 26);
             this.txt_employee_password.TabIndex = 89;
+            this.txt_employee_password.TextChanged += new System.EventHandler(this.textBoxes_TextChanged);
             // 
             // btn_create
             // 
@@ -339,7 +331,6 @@
             this.Controls.Add(this.lbl_employee_biography);
             this.Controls.Add(this.txt_employee_biography);
             this.Controls.Add(this.lbl_employee_picture);
-            this.Controls.Add(this.txt_employee_picture);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.num_employee_exp);
             this.Controls.Add(this.lbl_employee_exp);
@@ -377,7 +368,6 @@
         private System.Windows.Forms.Label lbl_employee_biography;
         private System.Windows.Forms.TextBox txt_employee_biography;
         private System.Windows.Forms.Label lbl_employee_picture;
-        private System.Windows.Forms.TextBox txt_employee_picture;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbb_employee_roles;
         private System.Windows.Forms.Label lbl_employee_roles;

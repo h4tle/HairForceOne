@@ -19,6 +19,7 @@ namespace HairForceOne.WebService.Models
         [JsonIgnore]
 
         public string Salt { get; set; }
+        public string Password { get; set; }
         public string Roles { get; set; }
 
         public Employee(int EmployeeId, string FirstName, string LastName, string Email, string PhoneNo, int Experience, string Gender, string ProfilePicture, string Biography, string PasswordHash, string Salt, string Roles)

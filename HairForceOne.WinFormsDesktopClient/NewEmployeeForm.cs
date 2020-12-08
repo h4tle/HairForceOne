@@ -42,7 +42,8 @@ namespace HairForceOne.WinFormsDesktopClient
                 role = "owner";
             }
             
-            Employee employee = new Employee(0, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int)num_employee_exp.Value, malefemale, null, txt_employee_biography.Text, txt_employee_password.Text, null, role);
+            Employee employee = new Employee(0, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int)num_employee_exp.Value, malefemale, null, txt_employee_biography.Text, null, null, role);
+            employee.Password = txt_employee_password.Text;
             employeesController.Create(employee);
             this.Close();
         }
@@ -55,5 +56,6 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             btn_create.Enabled = !Controls.OfType<TextBox>().Any(x => string.IsNullOrEmpty(x.Text));
         }
+
     }
 }

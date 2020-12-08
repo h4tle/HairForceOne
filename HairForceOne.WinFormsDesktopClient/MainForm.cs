@@ -69,5 +69,12 @@ namespace HairForceOne.WinFormsDesktopClient
             employeeForm.Show();
             this.Hide();
         }
+
+        private void btn_booking_Click(object sender, EventArgs e)
+        {
+            Form bookingForm = new BookingForm();
+            bookingForm.Show();
+            this.Hide();
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace HairForceOne.WebService.Controllers
         public HttpResponseMessage Post([FromBody] Employee employee)
         {
             string salt = PasswordHelper.GenerateSalt();
-            employee.PasswordHash = PasswordHelper.ComputeHash(employee.PasswordHash, salt);
+            employee.PasswordHash = PasswordHelper.ComputeHash(employee.Password, salt);
 
             // sql default role -> admin?
             try
@@ -70,10 +70,10 @@ namespace HairForceOne.WebService.Controllers
 
         public int Put(Employee e)
         {
-            if(e.PasswordHash != null)
+            if(!string.IsNullOrWhiteSpace(e.Password))
             {
                 e.Salt = PasswordHelper.GenerateSalt();
-                e.PasswordHash = PasswordHelper.ComputeHash(e.PasswordHash, e.Salt);
+                e.PasswordHash = PasswordHelper.ComputeHash(e.Password, e.Salt);
             }
             string sql = $"UPDATE hfo_Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Experience = @Experience, Gender = @Gender, ProfilePicture = @ProfilePicture, Biography = @Biography, PasswordHash = @PasswordHash, Salt = @Salt, Roles = @Roles WHERE EmployeeId = @EmployeeId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
