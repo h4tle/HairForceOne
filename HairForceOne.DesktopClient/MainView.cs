@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using HairForceOne.DesktopClient.Reusable;
+using System;
+using System.Windows.Forms;
 
 namespace HairForceOne.DesktopClient
 {
@@ -47,6 +49,45 @@ namespace HairForceOne.DesktopClient
         private void btnServices_Click(object sender, System.EventArgs e)
         {
             tablessControl.SelectedIndex = 1;
+        }
+
+        private void tabPage3_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void btnProducts_Click(object sender, System.EventArgs e)
+        {
+            tablessControl.SelectedIndex = 2;
+        }
+
+        private void btnUpdate_Click(object sender, System.EventArgs e)
+        {
+            populateItems();
+        }
+
+        private void populateItems()
+        {
+            var panel = allTimeBookings1.FlowLayoutListPanel;
+           
+            TimeBooking[] listItems = new TimeBooking[20];
+            // Loop through each and set custom properties
+            for (int i = 0; i < listItems.Length; i++)
+            {
+                listItems[i] = new TimeBooking();
+                //listItems[i].startTime = blah
+
+                if (panel.Controls.Count < 0)
+                {
+                    panel.Controls.Clear();
+                }
+                else
+                {
+                    panel.Controls.Add(listItems[i]);
+                }
+            }
+
+
         }
     }
 }

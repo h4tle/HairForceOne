@@ -42,15 +42,18 @@
             this.button9 = new System.Windows.Forms.Button();
             this.tablessControl = new HairForceOne.DesktopClient.TablessControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.allTimeBookings1 = new HairForceOne.DesktopClient.AllTimeBookings();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.allServices1 = new HairForceOne.DesktopClient.AllServices();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.allProducts = new HairForceOne.DesktopClient.Cards.AllProducts();
             this.MenuPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tablessControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuPanel
@@ -137,6 +140,7 @@
             this.btnProducts.TabIndex = 2;
             this.btnProducts.Text = "Produkter";
             this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
             // button4
             // 
@@ -227,6 +231,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnUpdate);
             this.tabPage1.Controls.Add(this.allTimeBookings1);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(0);
@@ -236,9 +241,19 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(886, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(341, 50);
+            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.Text = "Opdater";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // allTimeBookings1
             // 
-            this.allTimeBookings1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.allTimeBookings1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.allTimeBookings1.Location = new System.Drawing.Point(0, 0);
             this.allTimeBookings1.Margin = new System.Windows.Forms.Padding(0);
             this.allTimeBookings1.Name = "allTimeBookings1";
@@ -268,6 +283,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.allProducts);
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -275,6 +291,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // allProducts
+            // 
+            this.allProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allProducts.Location = new System.Drawing.Point(3, 3);
+            this.allProducts.Margin = new System.Windows.Forms.Padding(0);
+            this.allProducts.Name = "allProducts";
+            this.allProducts.Size = new System.Drawing.Size(1580, 985);
+            this.allProducts.TabIndex = 2;
             // 
             // MainView
             // 
@@ -293,6 +319,7 @@
             this.tablessControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -317,6 +344,8 @@
         private AllTimeBookings allTimeBookings1;
         private System.Windows.Forms.TabPage tabPage3;
         private AllServices allServices1;
+        private Cards.AllProducts allProducts;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 
