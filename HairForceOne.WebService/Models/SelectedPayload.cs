@@ -8,6 +8,6 @@ namespace HairForceOne.WebService.Controllers
     {
         public int Duration { get; set; }
         public DateTime SelectedDate { get; set; }
-        public List<Employee> Employee { get; set; }
+        public int EmployeeId { get; set; }
     }
 }

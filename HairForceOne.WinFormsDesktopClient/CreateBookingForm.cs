@@ -55,7 +55,7 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             if(lb_employee.SelectedIndex > -1 && lv_services.CheckedItems.Count > 0 && dateTimePicker.Value >= DateTime.Now.AddHours(-1))
             {
-                Event ev = new Event(dateTimePicker.Value, getDuration(), (Employee)lb_employee.SelectedItem);
+                Event ev = new Event(dateTimePicker.Value, getDuration(), ((Employee)lb_employee.SelectedItem).EmployeeId);
                 lb_availabletimes.DataSource = bookingsController.GetAvailableTimes(ev);
             }
             else

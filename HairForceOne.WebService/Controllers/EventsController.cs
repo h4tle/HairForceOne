@@ -32,7 +32,7 @@ namespace HairForceOne.WebService.Controllers
         {
             var newTimezz = TimeThing.SelectedDate.Date.AddTicks(DateTime.Now.TimeOfDay.Ticks);
             TimeSpan Duration = new TimeSpan(0, TimeThing.Duration, 0);
-            int empId = 1;
+            int empId = TimeThing.EmployeeId;
             TimeSpan open = new TimeSpan(9, 0, 0);
             if (newTimezz.TimeOfDay < open)
             {
@@ -48,49 +48,59 @@ namespace HairForceOne.WebService.Controllers
                 DateTime test3 = selectedDate.Date.AddTicks(open.Ticks);
                 selectedDate = test3;
             }
-            string sql = $"SELECT * FROM hfo_AltBooking WHERE DateAdd(Minute,Duration,StartTime) > @selectedDate AND EmployeeId = 1";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            try
             {
-                var result = connection.Query<AltBooking>(sql, new
+                string sql = $"SELECT * FROM hfo_AltBooking WHERE DATEDIFF( d , StartTime , @selectedDate ) = 0 AND EmployeeId = @employeeId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    employeeId = empId,
-                    selectedDate,
-                });
-                List<AltBooking> events = result.OrderBy(d => d.StartTime).ToList();
-                //Calculating available times
-                List<TimeSpan> availableTimes = new List<TimeSpan>();
-                for (TimeSpan i = selectedDate.TimeOfDay; i < close; i = i + interval)
-                {
-                    if (i + Duration > close)
+                    var result = connection.Query<AltBooking>(sql, new
                     {
-                        return availableTimes;
-                    }
-                    bool avail = true;
-                    for (int i2 = 0; i2 < events.Count; i2++)
+                        employeeId = empId,
+                        selectedDate,
+                    });
+                    List<AltBooking> events = result.OrderBy(d => d.StartTime).ToList();
+                    //Calculating available times
+                    List<TimeSpan> availableTimes = new List<TimeSpan>();
+                    for (TimeSpan i = selectedDate.TimeOfDay; i < close; i = i + interval)
                     {
-                        if (i + Duration <= events.ElementAt(i2).StartTime.TimeOfDay || i >= events.ElementAt(i2).StartTime.TimeOfDay + Duration)
+                        if (i + Duration > close)
                         {
-
+                            return availableTimes;
                         }
-                        else
+                        bool avail = true;
+                        for (int i2 = 0; i2 < events.Count; i2++)
                         {
-                            if (i2 > 0)
+                            TimeSpan eventDuration = new TimeSpan(0, events.ElementAt(i2).Duration, 0);
+                            if (i + Duration <= events.ElementAt(i2).StartTime.TimeOfDay || i >= events.ElementAt(i2).StartTime.TimeOfDay.Add(eventDuration))
                             {
 
-                                events.RemoveAt(i2 - 1);
                             }
-                            avail = false;
-                            break;
+                            else
+                            {
+                                if (i2 > 0)
+                                {
+
+                                    events.RemoveAt(i2 - 1);
+                                }
+                                avail = false;
+                                break;
+                            }
+                        }
+                        if (avail)
+                        {
+                            availableTimes.Add(i);
                         }
                     }
-                    if (avail)
-                    {
-                        availableTimes.Add(i);
-                    }
-                }
 
-                return availableTimes;
+                    return availableTimes;
+                }
             }
+            catch (SqlException e)
+            {
+
+                throw e;
+            }
+            
         }
     }
 }

@@ -6,13 +6,13 @@ namespace HairForceOne.WinFormsDesktopClient.Model
     {
         public DateTime SelectedDate { get; set; }
         public int Duration { get; set; }
-        public Employee Employee { get; set; }
+        public int EmployeeId { get; set; }
 
-        public Event(DateTime selectedDate, int duration, Employee employee)
+        public Event(DateTime selectedDate, int duration, int employeeId)
         {
             this.SelectedDate = selectedDate;
             this.Duration = duration;
-            this.Employee = employee;
+            this.EmployeeId = employeeId;
         }
     }
 }
