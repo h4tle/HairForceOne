@@ -1,28 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HairForceOne.WinFormsDesktopClient.Model
 {
-	public class Event
-	{
-		public int EventId { get; set; }
-		public string Title { get; set; }
-		public DateTime StartTime { get; set; }
-		public int Duration { get; set; }
-		public int EmployeeId { get; set; }
-		public DateTime BookedDate { get; set; }
+    public class Event
+    {
+        public DateTime SelectedDate { get; set; }
+        public int Duration { get; set; }
+        public Employee Employee { get; set; }
 
-	public Event(int EventId_, string Title_, DateTime StartTime_, int Duration_, int EmployeeId_, DateTime BookedDate_)
-	{
-		this.EventId = EventId_;
-		this.Title = Title_;
-		this.StartTime = StartTime_;
-		this.Duration = Duration_;
-		this.EmployeeId = EmployeeId_;
-		this.BookedDate = BookedDate_;
-	}
-}
+        public Event(DateTime selectedDate, int duration, Employee employee)
+        {
+            this.SelectedDate = selectedDate;
+            this.Duration = duration;
+            this.Employee = employee;
+        }
+    }
 }

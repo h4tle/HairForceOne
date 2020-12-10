@@ -48,15 +48,15 @@ namespace HairForceOne.WebService.Controllers
                 DateTime test3 = selectedDate.Date.AddTicks(open.Ticks);
                 selectedDate = test3;
             }
-            string sql = $"SELECT * FROM hfo_Event WHERE StartTime > @selectedDate AND EmployeeId = 1";
+            string sql = $"SELECT * FROM hfo_AltBooking WHERE DateAdd(Minute,Duration,StartTime) > @selectedDate AND EmployeeId = 1";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                var result = connection.Query<Event>(sql, new
+                var result = connection.Query<AltBooking>(sql, new
                 {
                     employeeId = empId,
                     selectedDate,
                 });
-                List<Event> events = result.OrderBy(d => d.StartTime).ToList();
+                List<AltBooking> events = result.OrderBy(d => d.StartTime).ToList();
                 //Calculating available times
                 List<TimeSpan> availableTimes = new List<TimeSpan>();
                 for (TimeSpan i = selectedDate.TimeOfDay; i < close; i = i + interval)

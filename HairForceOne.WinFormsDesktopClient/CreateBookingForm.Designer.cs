@@ -1,6 +1,6 @@
 ﻿namespace HairForceOne.WinFormsDesktopClient
 {
-    partial class BookingForm
+    partial class CreateBookingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,8 +35,9 @@
             this.lb_availabletimes = new System.Windows.Forms.ListBox();
             this.lb_users = new System.Windows.Forms.ListBox();
             this.lb_employee = new System.Windows.Forms.ListBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.lv_services = new System.Windows.Forms.ListView();
+            this.lv_products = new System.Windows.Forms.ListView();
+            this.btn_createBooking = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +83,7 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(200, 26);
             this.dateTimePicker.TabIndex = 33;
-            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.lists_SelectedIndexChanged);
             // 
             // lb_availabletimes
             // 
@@ -92,6 +93,7 @@
             this.lb_availabletimes.Name = "lb_availabletimes";
             this.lb_availabletimes.Size = new System.Drawing.Size(200, 344);
             this.lb_availabletimes.TabIndex = 34;
+            this.lb_availabletimes.SelectedIndexChanged += new System.EventHandler(this.lb_availabletimes_SelectedIndexChanged);
             // 
             // lb_users
             // 
@@ -110,40 +112,54 @@
             this.lb_employee.Name = "lb_employee";
             this.lb_employee.Size = new System.Drawing.Size(238, 264);
             this.lb_employee.TabIndex = 36;
-            this.lb_employee.SelectedIndexChanged += new System.EventHandler(this.lb_employee_SelectedIndexChanged);
+            this.lb_employee.SelectedIndexChanged += new System.EventHandler(this.lists_SelectedIndexChanged);
             // 
-            // listView1
+            // lv_services
             // 
-            this.listView1.CheckBoxes = true;
-            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(128, 51);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(252, 257);
-            this.listView1.TabIndex = 37;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.lv_services.CheckBoxes = true;
+            this.lv_services.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lv_services.HideSelection = false;
+            this.lv_services.Location = new System.Drawing.Point(128, 51);
+            this.lv_services.MultiSelect = false;
+            this.lv_services.Name = "lv_services";
+            this.lv_services.Size = new System.Drawing.Size(252, 257);
+            this.lv_services.TabIndex = 37;
+            this.lv_services.UseCompatibleStateImageBehavior = false;
+            this.lv_services.View = System.Windows.Forms.View.List;
+            this.lv_services.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lv_services_ItemChecked);
             // 
-            // listView2
+            // lv_products
             // 
-            this.listView2.CheckBoxes = true;
-            this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(430, 51);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(252, 257);
-            this.listView2.TabIndex = 38;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.List;
+            this.lv_products.CheckBoxes = true;
+            this.lv_products.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lv_products.HideSelection = false;
+            this.lv_products.Location = new System.Drawing.Point(430, 51);
+            this.lv_products.Name = "lv_products";
+            this.lv_products.Size = new System.Drawing.Size(252, 257);
+            this.lv_products.TabIndex = 38;
+            this.lv_products.UseCompatibleStateImageBehavior = false;
+            this.lv_products.View = System.Windows.Forms.View.List;
             // 
-            // BookingForm
+            // btn_createBooking
+            // 
+            this.btn_createBooking.Enabled = false;
+            this.btn_createBooking.Location = new System.Drawing.Point(752, 439);
+            this.btn_createBooking.Name = "btn_createBooking";
+            this.btn_createBooking.Size = new System.Drawing.Size(176, 61);
+            this.btn_createBooking.TabIndex = 39;
+            this.btn_createBooking.Text = "Opret Booking";
+            this.btn_createBooking.UseVisualStyleBackColor = true;
+            this.btn_createBooking.Click += new System.EventHandler(this.btn_createBooking_Click);
+            // 
+            // CreateBookingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1512, 1050);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.btn_createBooking);
+            this.Controls.Add(this.lv_products);
+            this.Controls.Add(this.lv_services);
             this.Controls.Add(this.lb_employee);
             this.Controls.Add(this.lb_users);
             this.Controls.Add(this.lb_availabletimes);
@@ -152,7 +168,7 @@
             this.Controls.Add(this.btn_backtomain);
             this.Controls.Add(this.lbl_mainheader);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "BookingForm";
+            this.Name = "CreateBookingForm";
             this.Text = "BookingForm";
             this.Load += new System.EventHandler(this.BookingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -170,7 +186,8 @@
         private System.Windows.Forms.ListBox lb_availabletimes;
         private System.Windows.Forms.ListBox lb_users;
         private System.Windows.Forms.ListBox lb_employee;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView lv_services;
+        private System.Windows.Forms.ListView lv_products;
+        private System.Windows.Forms.Button btn_createBooking;
     }
 }

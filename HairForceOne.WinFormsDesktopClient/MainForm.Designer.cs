@@ -180,6 +180,7 @@
             this.btn_createbooking.TabIndex = 11;
             this.btn_createbooking.Text = "Opret Booking";
             this.btn_createbooking.UseVisualStyleBackColor = false;
+            this.btn_createbooking.Click += new System.EventHandler(this.btn_createbooking_Click);
             // 
             // btn_booking
             // 

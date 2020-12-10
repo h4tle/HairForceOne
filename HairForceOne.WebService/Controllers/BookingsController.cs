@@ -34,25 +34,35 @@ namespace HairForceOne.WebService.Controllers
         }
         public HttpResponseMessage Post([FromBody] AltBooking b )
         {
-            ClaimsPrincipal user = HttpContext.Current.User as ClaimsPrincipal;
-            var UserId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
-            string sql = "INSERT INTO hfo_AltBooking (StartTime,Duration,TotalPrice,Comment, UserId, EmployeeId, ProductId, ServiceId)" +
-                         "VALUES (@StartTime, @Duration, @TotalPrice, @Comment, @EmployeeId, @ProductId, @ServiceId)";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            //ClaimsPrincipal user = HttpContext.Current.User as ClaimsPrincipal;
+            //var UserId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
+            try
             {
-                var affectedRows = connection.Execute(sql, new
+                var UserId = 1;
+                string sql = "INSERT INTO hfo_AltBooking (StartTime, Duration, TotalPrice, Comment, UserId, EmployeeId, ProductId, ServiceId)" +
+                             "VALUES (@StartTime, @Duration, @TotalPrice, @Comment, @UserId, @EmployeeId, @ProductId, @ServiceId)";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    UserId,
-                    b.StartTime,
-                    b.Duration,
-                    b.TotalPrice,
-                    b.Comment,
-                    b.Employee.EmployeeId,
-                    b.Products.First<Product>().ProductId,
-                    b.Services.First<Service>().ServiceId
-                });
-                return Request.CreateResponse(HttpStatusCode.Accepted);
+                    var affectedRows = connection.Execute(sql, new
+                    {
+                        UserId,
+                        b.StartTime,
+                        b.Duration,
+                        b.TotalPrice,
+                        b.Comment,
+                        b.Employee.EmployeeId,
+                        b.Products.FirstOrDefault<Product>().ProductId,
+                        b.Services.First<Service>().ServiceId
+                    });
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
             }
+            catch (SqlException e)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+            }
+            
         }
         public int Put(Booking b)
         {
