@@ -46,7 +46,7 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void clockTimer_Tick(object sender, EventArgs e)
         {
-            lbl_main_watch.Text = DateTime.Now.ToString("g");
+           lbl_main_watch.Text = DateTime.Now.ToString("g");
         }
 
         private void btn_service_Click(object sender, EventArgs e)
@@ -83,6 +83,13 @@ namespace HairForceOne.WinFormsDesktopClient
             CreateBookingForm.Show();
             this.Hide();
 
+        }
+
+        private void btn_user_Click(object sender, EventArgs e)
+        {
+            Form UserForm = new UserForm();
+            UserForm.Show();
+            this.Hide();
         }
     }
 }

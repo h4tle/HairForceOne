@@ -23,15 +23,15 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
-            listBox1.DataSource = employeesController.GetEmployees();
-            listBox1.DisplayMember = "FirstName";
+            lb_employees.DataSource = employeesController.GetEmployees();
+            lb_employees.DisplayMember = "FirstName";
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex != -1)
+            if (lb_employees.SelectedIndex != -1)
             {
-                selectedEmployee = (Employee) listBox1.SelectedItem;
+                selectedEmployee = (Employee) lb_employees.SelectedItem;
                 txt_employee_biography.Text = selectedEmployee.Biography;
                 txt_employee_email.Text = selectedEmployee.Email;
                 txt_employee_firstname.Text = selectedEmployee.FirstName;
@@ -103,10 +103,10 @@ namespace HairForceOne.WinFormsDesktopClient
             txt_employee_biography.Clear();
             cbb_employee_roles.ResetText();
             txt_employee_password.Clear();
-            listBox1.SelectedIndex = -1;
-            listBox1.DataSource = null;
-            listBox1.DataSource = employeesController.GetEmployees();
-            listBox1.DisplayMember = "FirstName";
+            lb_employees.SelectedIndex = -1;
+            lb_employees.DataSource = null;
+            lb_employees.DataSource = employeesController.GetEmployees();
+            lb_employees.DisplayMember = "FirstName";
         }
 
         private void btn_delete_Click(object sender, EventArgs e)

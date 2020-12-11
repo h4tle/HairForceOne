@@ -30,8 +30,6 @@
         {
             this.lbl_mainheader = new System.Windows.Forms.Label();
             this.btn_backtomain = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.lbl_booking_name = new System.Windows.Forms.Label();
             this.lbl_user = new System.Windows.Forms.Label();
@@ -41,7 +39,7 @@
             this.lbl_userphoneno = new System.Windows.Forms.Label();
             this.lbl_amount = new System.Windows.Forms.Label();
             this.lbl_events_services = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lb_users = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lbl_mainheader
@@ -65,25 +63,6 @@
             this.btn_backtomain.Text = "Tilbage";
             this.btn_backtomain.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(64, 127);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(482, 436);
-            this.dataGridView1.TabIndex = 32;
-            // 
-            // btn_update
-            // 
-            this.btn_update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_update.Location = new System.Drawing.Point(381, 589);
-            this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(75, 23);
-            this.btn_update.TabIndex = 33;
-            this.btn_update.Text = "Rediger";
-            this.btn_update.UseVisualStyleBackColor = false;
-            // 
             // btn_delete
             // 
             this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
@@ -93,6 +72,7 @@
             this.btn_delete.TabIndex = 34;
             this.btn_delete.Text = "Slet";
             this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // lbl_booking_name
             // 
@@ -182,12 +162,22 @@
             this.lbl_events_services.TabIndex = 41;
             this.lbl_events_services.Text = "Antal behandlinger";
             // 
+            // lb_users
+            // 
+            this.lb_users.FormattingEnabled = true;
+            this.lb_users.Location = new System.Drawing.Point(234, 125);
+            this.lb_users.Name = "lb_users";
+            this.lb_users.Size = new System.Drawing.Size(288, 238);
+            this.lb_users.TabIndex = 43;
+            this.lb_users.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.lb_users);
             this.Controls.Add(this.lbl_amount);
             this.Controls.Add(this.lbl_events_services);
             this.Controls.Add(this.lbl_userphoneno);
@@ -197,13 +187,11 @@
             this.Controls.Add(this.lbl_booking_name);
             this.Controls.Add(this.lbl_user);
             this.Controls.Add(this.btn_delete);
-            this.Controls.Add(this.btn_update);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_backtomain);
             this.Controls.Add(this.lbl_mainheader);
             this.Name = "UserForm";
             this.Text = "UserForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.UserForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,8 +201,6 @@
 
         private System.Windows.Forms.Label lbl_mainheader;
         private System.Windows.Forms.Button btn_backtomain;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Label lbl_booking_name;
         private System.Windows.Forms.Label lbl_user;
@@ -224,5 +210,6 @@
         private System.Windows.Forms.Label lbl_userphoneno;
         private System.Windows.Forms.Label lbl_amount;
         private System.Windows.Forms.Label lbl_events_services;
+        private System.Windows.Forms.ListBox lb_users;
     }
 }
