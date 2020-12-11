@@ -29,5 +29,9 @@ namespace HairForceOne.WebService.Models
 			this.ServiceId = ServiceId_;
 			this.Comment = Comment_;
 		}
+        public Booking()
+        {
+
+        }
 	}
 }

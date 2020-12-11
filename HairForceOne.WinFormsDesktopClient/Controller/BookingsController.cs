@@ -59,7 +59,17 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 
         public List<Booking> GetAllBookings()
         {
-            throw new NotImplementedException();
+            Task<HttpResponseMessage> responseTask = client.GetAsync($"bookings/");
+            responseTask.Wait();
+
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<List<Booking>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public List<TimeSpan> GetAvailableTimes(Event e)

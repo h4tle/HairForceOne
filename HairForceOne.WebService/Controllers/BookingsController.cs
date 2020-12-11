@@ -16,12 +16,23 @@ namespace HairForceOne.WebService.Controllers
     public class BookingsController : ApiController
     {
         // GET: api/Bookings
+        [HttpGet]
         public IEnumerable<Booking> GetAllBookings()
         {
-            string sql = "SELECT * FROM hfo_Booking";
+            try
+            {
+            string sql = "SELECT * FROM hfo_AltBooking";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<Booking>(sql).ToList();
+                    var a = connection.Query<Booking>(sql).ToList();
+                    int i = a.Count();
+                    return a;
+            }
+            }
+            catch (SqlException e)
+            {
+
+                throw e;
             }
         }
         public Booking GetBooking(int id)
