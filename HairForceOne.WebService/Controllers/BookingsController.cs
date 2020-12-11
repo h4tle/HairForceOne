@@ -13,7 +13,7 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
-    [RoutePrefix("bookings")]
+    [RoutePrefix("api/bookings")]
     public class BookingsController : ApiController
     {
         // GET: api/Bookings
@@ -36,15 +36,14 @@ namespace HairForceOne.WebService.Controllers
         }
         [HttpPost]
         [Route("date")]
-        public IEnumerable<AltBooking> GetBookingsByDate(DateTime date)
+        public IEnumerable<AltBooking> BookingsByDate([FromBody] DateTime date)
         {
             try
             {
                 string sql = "SELECT * FROM hfo_AltBooking WHERE datediff(dd, StartTime, @date) = 0";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    var l = connection.Query<AltBooking>(sql, new { date });
-                    return l;
+                    return connection.Query<AltBooking>(sql, new { date });
                 }
             }
             catch (SqlException e)
