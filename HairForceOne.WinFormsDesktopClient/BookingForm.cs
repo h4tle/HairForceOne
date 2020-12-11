@@ -1,4 +1,5 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
+using HairForceOne.WinFormsDesktopClient.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,9 +26,24 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void BookingForm_Load(object sender, EventArgs e)
         {
-            dgv_bookings.DataSource = bookingsController.GetAllBookings();
+            var test1 = bookingsController.GetAllBookings();
+            dgv_bookings.DataSource = test1;
             cb_employee.DataSource = employeeController.GetEmployees();
+            cb_employee.DisplayMember = "FirstName";
 
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            Booking booking = (Booking)dgv_bookings.CurrentRow.DataBoundItem;
+            bookingsController.Delete(booking.BookingId);
+            dgv_bookings.ClearSelection();
+            dgv_bookings.DataSource = bookingsController.GetAllBookings();
+        }
+
+        private void dateTime1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            dgv_bookings.DataSource = bookingsController.GetBookingsById(dateTime1.SelectionStart);
         }
     }
 }

@@ -13,20 +13,19 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
+    [RoutePrefix("bookings/")]
     public class BookingsController : ApiController
     {
         // GET: api/Bookings
         [HttpGet]
-        public IEnumerable<Booking> GetAllBookings()
+        public IEnumerable<AltBooking> GetAllBookings()
         {
             try
             {
             string sql = "SELECT * FROM hfo_AltBooking";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                    var a = connection.Query<Booking>(sql).ToList();
-                    int i = a.Count();
-                    return a;
+                     return connection.Query<AltBooking>(sql).ToList();
             }
             }
             catch (SqlException e)
@@ -35,6 +34,26 @@ namespace HairForceOne.WebService.Controllers
                 throw e;
             }
         }
+        [HttpGet]
+        [Route("date")]
+        public IEnumerable<AltBooking> GetBookingsByDate(DateTime date)
+        {
+            try
+            {
+                string sql = "SELECT * FROM hfo_AltBooking WHERE datediff(dd, StartTime, @date) = 0";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    var l = connection.Query<AltBooking>(sql, new { date });
+                    return l;
+                }
+            }
+            catch (SqlException e)
+            {
+
+                throw e;
+            }
+        }
+
         public Booking GetBooking(int id)
         {
             string sql = $"select * FROM hfo_Booking WHERE BookingId = @BookingId";
@@ -61,9 +80,9 @@ namespace HairForceOne.WebService.Controllers
                         b.Duration,
                         b.TotalPrice,
                         b.Comment,
-                        b.Employee.EmployeeId,
-                        b.Products.FirstOrDefault<Product>().ProductId,
-                        b.Services.First<Service>().ServiceId
+                        b.EmployeeId,
+                        b.ProductId,
+                        b.ServiceId
                     });
                     return Request.CreateResponse(HttpStatusCode.Accepted);
                 }
@@ -91,12 +110,13 @@ namespace HairForceOne.WebService.Controllers
                 return BookingId;
             }
         }
+        [HttpDelete]
         public void Delete(int id)
         {
-            string sql = $"DELETE FROM hfo_Booking WHERE BookingId = @BookingId";
+            string sql = $"DELETE FROM hfo_AltBooking WHERE BookingId = @id";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                connection.Execute(sql, new { ProductId = id });
+                connection.Execute(sql, new { id });
             }
         }
     }

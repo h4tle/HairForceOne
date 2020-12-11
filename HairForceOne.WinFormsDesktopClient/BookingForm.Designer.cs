@@ -44,6 +44,7 @@
             this.dateTime1.Location = new System.Drawing.Point(18, 18);
             this.dateTime1.Name = "dateTime1";
             this.dateTime1.TabIndex = 3;
+            this.dateTime1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.dateTime1_DateChanged);
             // 
             // dgv_bookings
             // 
@@ -79,6 +80,7 @@
             this.btn_delete.TabIndex = 6;
             this.btn_delete.Text = "Slet";
             this.btn_delete.UseVisualStyleBackColor = false;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_checkout
             // 
