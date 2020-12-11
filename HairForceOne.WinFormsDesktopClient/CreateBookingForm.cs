@@ -88,7 +88,7 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 products.Add((Product)item.Tag);
             }
-            Booking booking = new Booking(products, services, 1, (Employee)lb_employee.SelectedItem, selectedDate, getDuration(), GetTotalPrice(), "Dette er en test kommentar fra DesktopClient");
+            Booking booking = new Booking(products.FirstOrDefault().ProductId, services.FirstOrDefault().ServiceId, 1, ((Employee)lb_employee.SelectedItem).EmployeeId, selectedDate, getDuration(), GetTotalPrice(), "Dette er en test kommentar fra DesktopClient");
             bookingsController.Create(booking);
             lb_availabletimes.DataSource = null;
             foreach (ListViewItem service in lv_services.CheckedItems)

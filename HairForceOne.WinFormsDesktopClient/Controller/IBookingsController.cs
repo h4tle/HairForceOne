@@ -12,7 +12,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         List<Booking> GetAllBookings();
         List<TimeSpan> GetAvailableTimes(Event e);
         NotImplementedException Create(Booking b);
-        NotImplementedException Delete(Booking b);
+        NotImplementedException Delete(int bookingId);
         NotImplementedException Edit(Booking b);
 
     }

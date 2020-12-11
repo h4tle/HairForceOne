@@ -47,9 +47,19 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             
         }
 
-        public NotImplementedException Delete(Booking b)
+        public NotImplementedException Delete(int bookingId)
         {
-            throw new NotImplementedException();
+            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"bookings/{bookingId}");
+            responseTask.Wait();
+
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return new NotImplementedException();
+            }
+            else
+            {
+                return new NotImplementedException();
+            }
         }
 
         public NotImplementedException Edit(Booking b)
@@ -60,6 +70,23 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         public List<Booking> GetAllBookings()
         {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"bookings/");
+            responseTask.Wait();
+
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<List<Booking>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public List<Booking> GetBookingsById(DateTime date)
+        {
+
+            var JDate = new StringContent(JsonConvert.SerializeObject(date), Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> responseTask = client.PostAsync($"bookings/date/", JDate);
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)
