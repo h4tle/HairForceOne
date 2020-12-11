@@ -13,7 +13,7 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
-    [RoutePrefix("bookings/")]
+    [RoutePrefix("bookings")]
     public class BookingsController : ApiController
     {
         // GET: api/Bookings
@@ -34,7 +34,7 @@ namespace HairForceOne.WebService.Controllers
                 throw e;
             }
         }
-        [HttpGet]
+        [HttpPost]
         [Route("date")]
         public IEnumerable<AltBooking> GetBookingsByDate(DateTime date)
         {
@@ -53,7 +53,6 @@ namespace HairForceOne.WebService.Controllers
                 throw e;
             }
         }
-
         public Booking GetBooking(int id)
         {
             string sql = $"select * FROM hfo_Booking WHERE BookingId = @BookingId";
