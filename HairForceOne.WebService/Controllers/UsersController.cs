@@ -13,13 +13,17 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class UsersController : ApiController
     {
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
+        [AllowAnonymous]
+
         public IEnumerable<User> GetAllUsers()
         {
-            string sql = "SELECT FirstName, LastName, Email, PhoneNo FROM hfo_User";
+            //string sql = "SELECT FirstName, LastName, Email, PhoneNo FROM hfo_User";
+            string sql = "SELECT * FROM hfo_User";
+
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<User>(sql).ToList();

@@ -62,6 +62,9 @@
     </Compile>
     <Compile Include="Controller\BookingsController.cs" />
     <Compile Include="Controller\IBookingsController.cs" />
+    <Compile Include="Controller\ILoginsControlller.cs" />
+    <Compile Include="Controller\IUsersController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="CreateBookingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +190,7 @@
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Controller\UsersController.cs" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
