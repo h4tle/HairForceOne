@@ -13,6 +13,9 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
+    /// <summary>
+    /// This class contains the methods that handle the booking instance
+    /// </summary>
     [RoutePrefix("api/bookings")]
     public class BookingsController : ApiController
     {
