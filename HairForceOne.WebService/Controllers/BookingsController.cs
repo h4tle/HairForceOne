@@ -7,8 +7,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Security.Claims;
-using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
@@ -22,18 +20,18 @@ namespace HairForceOne.WebService.Controllers
         {
             try
             {
-            string sql = "SELECT * FROM hfo_AltBooking";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            {
-                     return connection.Query<AltBooking>(sql).ToList();
-            }
+                string sql = "SELECT * FROM hfo_AltBooking";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    return connection.Query<AltBooking>(sql).ToList();
+                }
             }
             catch (SqlException e)
             {
-
                 throw e;
             }
         }
+
         [HttpPost]
         [Route("date")]
         public IEnumerable<AltBooking> BookingsByDate([FromBody] DateTime date)
@@ -48,10 +46,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-
                 throw e;
             }
         }
+
         public Booking GetBooking(int id)
         {
             string sql = $"select * FROM hfo_Booking WHERE BookingId = @BookingId";
@@ -60,7 +58,8 @@ namespace HairForceOne.WebService.Controllers
                 return connection.QuerySingleOrDefault<Booking>(sql, new { ProductId = id });
             }
         }
-        public HttpResponseMessage Post([FromBody] AltBooking b )
+
+        public HttpResponseMessage Post([FromBody] AltBooking b)
         {
             //ClaimsPrincipal user = HttpContext.Current.User as ClaimsPrincipal;
             //var UserId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -87,11 +86,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-
                 return Request.CreateResponse(HttpStatusCode.BadRequest, e);
             }
-            
         }
+
         public int Put(Booking b)
         {
             string sql = $"UPDATE hfo_Booking SET StartTime = @StartTime, EndTime = @EndTime, TotalPrice = @TotalPrice, Comment = @Comment WHERE BookingId = @BookingId";
@@ -108,6 +106,7 @@ namespace HairForceOne.WebService.Controllers
                 return BookingId;
             }
         }
+
         [HttpDelete]
         public void Delete(int id)
         {

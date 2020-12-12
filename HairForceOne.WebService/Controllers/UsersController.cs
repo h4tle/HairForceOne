@@ -18,7 +18,6 @@ namespace HairForceOne.WebService.Controllers
     {
         //[Authorize(Roles = "admin")]
         [AllowAnonymous]
-
         public IEnumerable<User> GetAllUsers()
         {
             //string sql = "SELECT FirstName, LastName, Email, PhoneNo FROM hfo_User";
@@ -40,6 +39,7 @@ namespace HairForceOne.WebService.Controllers
                 return connection.Query<User>(sql, new { UserId }).FirstOrDefault();
             }
         }
+
         [AllowAnonymous]
         public HttpResponseMessage Post([FromBody] User u)
         {

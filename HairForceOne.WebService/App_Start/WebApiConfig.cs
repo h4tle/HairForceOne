@@ -2,8 +2,15 @@
 
 namespace HairForceOne.WebService
 {
+    /// <summary>
+    /// This class contains the config for WebApi
+    /// </summary>
     public static class WebApiConfig
     {
+        /// <summary>
+        /// This method handle the config
+        /// </summary>
+        /// <param name="config"></param>
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services

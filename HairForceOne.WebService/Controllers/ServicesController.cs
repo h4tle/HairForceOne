@@ -10,10 +10,17 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
+    /// <summary>
+    /// This class contains all methods for handling services
+    /// </summary>
     public class ServicesController : ApiController
     {
+        /// <summary>
+        /// This method gets a list of all services
+        /// </summary>
+        /// <returns>List of services</returns>
         [AllowAnonymous]
-        public IEnumerable<Service> GetAllSerices()
+        public IEnumerable<Service> GetAllServices()
         {
             string sql = "SELECT * FROM hfo_Service";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
@@ -22,16 +29,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        public IEnumerable<Service> GetAllServices(string type)
-        {
-            string sql = "SELECT * from hfo_Service WHERE Type LIKE CONCAT('%',@Type,'%')";
-
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            {
-                return connection.Query<Service>(sql, new { Type = type }).ToList();
-            }
-        }
-
+        /// <summary>
+        /// This method gets a list of all services based on Gender parameter
+        /// </summary>
+        /// <param name="gender"></param>
+        /// <returns></returns>
         public IEnumerable<Service> GetAllServicesGender(string gender)
         {
             string sql = "SELECT * from hfo_Service WHERE Gender LIKE CONCAT('%',@Gender,'%')";
@@ -42,6 +44,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        /// <summary>
+        /// This method gets a service based on specific ServiceId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Service based on ServiceId</returns>
         public Service GetService(int id)
         {
             string sql = $"select * FROM hfo_Service WHERE ServiceId = @ServiceId";
@@ -51,7 +58,12 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        public HttpResponseMessage Post([FromBody] Service s)
+        /// <summary>
+        /// This method posts a new service
+        /// </summary>
+        /// <param name="service"></param>
+        /// <returns></returns>
+        public HttpResponseMessage Post([FromBody] Service service)
         {
             string sql = "INSERT INTO hfo_Service (Title,Description,Duration,Price,Gender)" +
                          "VALUES (@Title, @Description, @Duration, @Price, @Gender)";
@@ -59,34 +71,43 @@ namespace HairForceOne.WebService.Controllers
             {
                 var affectedRows = connection.Execute(sql, new
                 {
-                    Title = s.Title,
-                    Description = s.Description,
-                    Duration = s.Duration,
-                    Price = s.Price,
-                    Gender = s.Gender,
+                    Title = service.Title,
+                    Description = service.Description,
+                    Duration = service.Duration,
+                    Price = service.Price,
+                    Gender = service.Gender,
                 });
                 return Request.CreateResponse(HttpStatusCode.Accepted);
             }
         }
 
-        public int Put(Service s)
+        /// <summary>
+        /// This method edits and updates a service
+        /// </summary>
+        /// <param name="service"></param>
+        /// <returns></returns>
+        public int Put(Service service)
         {
             string sql = $"UPDATE hfo_Service SET Title = @Title, Description = @Description, Duration = @Duration, Price = @Price, Gender = @Gender WHERE ServiceId = @ServiceId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int ProductId = connection.Execute(sql, new
                 {
-                    ServiceId = s.ServiceId,
-                    Title = s.Title,
-                    Description = s.Description,
-                    Duration = s.Duration,
-                    Price = s.Price,
-                    Gender = s.Gender,
+                    ServiceId = service.ServiceId,
+                    Title = service.Title,
+                    Description = service.Description,
+                    Duration = service.Duration,
+                    Price = service.Price,
+                    Gender = service.Gender,
                 });
                 return ProductId;
             }
         }
 
+        /// <summary>
+        /// This method deletes a service
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             string sql = $"DELETE FROM hfo_Service WHERE ServiceId = @ServiceId";

@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
@@ -44,7 +42,6 @@ namespace HairForceOne.WebService.Controllers
             DateTime selectedDate = new DateTime((newTimezz.Ticks + interval.Ticks - 1) / interval.Ticks * interval.Ticks, newTimezz.Kind);
             if (selectedDate.Date != DateTime.Now.Date)
             {
-
                 DateTime test3 = selectedDate.Date.AddTicks(open.Ticks);
                 selectedDate = test3;
             }
@@ -73,13 +70,11 @@ namespace HairForceOne.WebService.Controllers
                             TimeSpan eventDuration = new TimeSpan(0, events.ElementAt(i2).Duration, 0);
                             if (i + Duration <= events.ElementAt(i2).StartTime.TimeOfDay || i >= events.ElementAt(i2).StartTime.TimeOfDay.Add(eventDuration))
                             {
-
                             }
                             else
                             {
                                 if (i2 > 0)
                                 {
-
                                     events.RemoveAt(i2 - 1);
                                 }
                                 avail = false;
@@ -97,10 +92,8 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-
                 throw e;
             }
-            
         }
     }
 }

@@ -9,9 +9,17 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
+
+/// <summary>
+/// This class contains all methods for handling products
+/// </summary>
 {
     public class ProductsController : ApiController
     {
+        /// <summary>
+        /// This method gets a list of all products
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Product> GetAllProducts()
         {
             string sql = "SELECT * FROM hfo_Product";
@@ -21,6 +29,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        /// <summary>
+        /// This method gets a list of all products based on brand parameter
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
         public IEnumerable<Product> GetAllProducts(string brand)
         {
             string sql = "SELECT * from hfo_Product WHERE Brand LIKE CONCAT('%',@Brand,'%')";
@@ -31,6 +44,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        /// <summary>
+        /// This method gets a list of all products based on gender parameter
+        /// </summary>
+        /// <param name="gender"></param>
+        /// <returns></returns>
         public IEnumerable<Product> GetAllProductsGender(string gender)
         {
             string sql = "SELECT * from hfo_Product WHERE Gender LIKE CONCAT('%',@Gender,'%')";
@@ -41,6 +59,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        /// <summary>
+        /// This method gets a list of all products based on color parameter
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public IEnumerable<Product> GetAllProductsColor(string color)
         {
             string sql = "SELECT * from hfo_Product WHERE Color LIKE CONCAT('%',@Color,'%')";
@@ -51,6 +74,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        /// <summary>
+        /// This method gets a product based on specific ProductId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Product GetProduct(int id)
         {
             string sql = $"select * FROM hfo_Product WHERE ProductId = @ProductId";
@@ -60,7 +88,12 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        public HttpResponseMessage Post([FromBody] Product p)
+        /// <summary>
+        /// This method posts a new product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public HttpResponseMessage Post([FromBody] Product product)
         {
             try
             {
@@ -70,14 +103,14 @@ namespace HairForceOne.WebService.Controllers
                 {
                     var affectedRows = connection.Execute(sql, new
                     {
-                        Brand = p.Brand,
-                        Title = p.Title,
-                        Description = p.Description,
-                        Weight = p.Weight,
-                        PurchasePrice = p.PurchasePrice,
-                        RetailPrice = p.RetailPrice,
-                        Color = p.Color,
-                        Gender = p.Gender
+                        Brand = product.Brand,
+                        Title = product.Title,
+                        Description = product.Description,
+                        Weight = product.Weight,
+                        PurchasePrice = product.PurchasePrice,
+                        RetailPrice = product.RetailPrice,
+                        Color = product.Color,
+                        Gender = product.Gender
                     });
                     return Request.CreateResponse(HttpStatusCode.Accepted);
                 }
@@ -86,30 +119,38 @@ namespace HairForceOne.WebService.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
             }
-            
         }
 
-        public int Put(Product p)
+        /// <summary>
+        /// This method edits and updates a product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public int Put(Product product)
         {
             string sql = $"UPDATE hfo_Product SET Brand = @Brand, Title = @Title, Description = @Description, Weight = @Weight, PurchasePrice = @PurchasePrice, RetailPrice = @RetailPrice, Color = @Color, Gender = @Gender WHERE ProductId = @ProductId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int ProductId = connection.Execute(sql, new
                 {
-                    ProductId = p.ProductId,
-                    Brand = p.Brand,
-                    Title = p.Title,
-                    Description = p.Description,
-                    Weight = p.Weight,
-                    PurchasePrice = p.PurchasePrice,
-                    RetailPrice = p.RetailPrice,
-                    Color = p.Color,
-                    Gender = p.Gender
+                    ProductId = product.ProductId,
+                    Brand = product.Brand,
+                    Title = product.Title,
+                    Description = product.Description,
+                    Weight = product.Weight,
+                    PurchasePrice = product.PurchasePrice,
+                    RetailPrice = product.RetailPrice,
+                    Color = product.Color,
+                    Gender = product.Gender
                 });
                 return ProductId;
             }
         }
 
+        /// <summary>
+        /// This method deletes a product
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
             string sql = $"DELETE FROM hfo_Product WHERE ProductId = @ProductId";

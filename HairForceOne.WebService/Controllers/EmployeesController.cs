@@ -11,8 +11,15 @@ using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
 {
+    /// <summary>
+    /// This class contains all methods for handling employees
+    /// </summary>
     public class EmployeesController : ApiController
     {
+        /// <summary>
+        /// This method gets a list of all employees
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Employee> GetAllEmployees()
         {
             string sql = "SELECT * FROM hfo_Employee";
@@ -33,6 +40,11 @@ namespace HairForceOne.WebService.Controllers
         //    }
         //}
 
+        /// <summary>
+        /// This method posts a new employee
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
         public HttpResponseMessage Post([FromBody] Employee employee)
         {
             string salt = PasswordHelper.GenerateSalt();
@@ -41,12 +53,51 @@ namespace HairForceOne.WebService.Controllers
             // sql default role -> admin?
             try
             {
-            string sql = "INSERT INTO hfo_Employee (FirstName,LastName,Email,PhoneNo,Experience,Gender,ProfilePicture,Biography,PasswordHash,Salt,Roles)" +
-                         "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Experience, @Gender, @ProfilePicture, @Biography, @PasswordHash, @Salt, @Roles)";
+                string sql = "INSERT INTO hfo_Employee (FirstName,LastName,Email,PhoneNo,Experience,Gender,ProfilePicture,Biography,PasswordHash,Salt,Roles)" +
+                             "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Experience, @Gender, @ProfilePicture, @Biography, @PasswordHash, @Salt, @Roles)";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    var affectedRows = connection.Execute(sql, new
+                    {
+                        FirstName = employee.FirstName,
+                        LastName = employee.LastName,
+                        Email = employee.Email,
+                        PhoneNo = employee.PhoneNo,
+                        Experience = employee.Experience,
+                        Gender = employee.Gender,
+                        ProfilePicture = employee.ProfilePicture,
+                        Biography = employee.Biography,
+                        PasswordHash = employee.PasswordHash,
+                        Salt = salt,
+                        Roles = employee.Roles
+                    });
+                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+            }
+        }
+
+        /// <summary>
+        /// This method edits and updates a employee
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        public int Put(Employee employee)
+        {
+            if (!string.IsNullOrWhiteSpace(employee.Password))
+            {
+                employee.Salt = PasswordHelper.GenerateSalt();
+                employee.PasswordHash = PasswordHelper.ComputeHash(employee.Password, employee.Salt);
+            }
+            string sql = $"UPDATE hfo_Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Experience = @Experience, Gender = @Gender, ProfilePicture = @ProfilePicture, Biography = @Biography, PasswordHash = @PasswordHash, Salt = @Salt, Roles = @Roles WHERE EmployeeId = @EmployeeId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                var affectedRows = connection.Execute(sql, new
+                int EmployeeId = connection.Execute(sql, new
                 {
+                    EmployeeId = employee.EmployeeId,
                     FirstName = employee.FirstName,
                     LastName = employee.LastName,
                     Email = employee.Email,
@@ -56,46 +107,17 @@ namespace HairForceOne.WebService.Controllers
                     ProfilePicture = employee.ProfilePicture,
                     Biography = employee.Biography,
                     PasswordHash = employee.PasswordHash,
-                    Salt = salt,
+                    Salt = employee.Salt,
                     Roles = employee.Roles
-                });
-                return Request.CreateResponse(HttpStatusCode.Accepted);
-            }
-            }
-            catch(SqlException e)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
-            }
-        }
-
-        public int Put(Employee e)
-        {
-            if(!string.IsNullOrWhiteSpace(e.Password))
-            {
-                e.Salt = PasswordHelper.GenerateSalt();
-                e.PasswordHash = PasswordHelper.ComputeHash(e.Password, e.Salt);
-            }
-            string sql = $"UPDATE hfo_Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Experience = @Experience, Gender = @Gender, ProfilePicture = @ProfilePicture, Biography = @Biography, PasswordHash = @PasswordHash, Salt = @Salt, Roles = @Roles WHERE EmployeeId = @EmployeeId";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            {
-                int EmployeeId = connection.Execute(sql, new
-                {
-                    EmployeeId = e.EmployeeId,
-                    FirstName = e.FirstName,
-                    LastName = e.LastName,
-                    Email = e.Email,
-                    PhoneNo = e.PhoneNo,
-                    Experience = e.Experience,
-                    Gender = e.Gender,
-                    ProfilePicture = e.ProfilePicture,
-                    Biography = e.Biography,
-                    PasswordHash = e.PasswordHash,
-                    Salt = e.Salt,
-                    Roles = e.Roles
                 });
                 return EmployeeId;
             }
         }
+
+        /// <summary>
+        /// This method deletes a employee
+        /// </summary>
+        /// <param name="id"></param>
 
         public void Delete(int id)
         {
