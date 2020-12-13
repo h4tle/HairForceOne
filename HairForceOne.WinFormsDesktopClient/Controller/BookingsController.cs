@@ -82,7 +82,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-        public List<Booking> GetBookingsById(DateTime date)
+
+        public List<Booking> GetBookingsByDate(DateTime date)
         {
 
             var JDate = new StringContent(JsonConvert.SerializeObject(date), Encoding.UTF8, "application/json");
@@ -96,6 +97,27 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             else
             {
                 throw new NotImplementedException();
+            }
+        }
+
+        public List<Booking> GetBookingsByEmployee(Employee employee, DateTime date)
+        {
+            List<Booking> bookings = GetBookingsByDate(date); 
+            if(employee == null)
+            {
+                return bookings;
+            }
+            else
+            {
+                List<Booking> employeeBookings = new List<Booking>();
+                foreach (Booking booking in bookings)
+                {
+                    if(booking.EmployeeId == employee.EmployeeId)
+                    {
+                        employeeBookings.Add(booking);
+                    }
+                }
+                return employeeBookings;
             }
         }
 
@@ -114,5 +136,6 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 throw new NotImplementedException();
             }
         }
+
     }
 }

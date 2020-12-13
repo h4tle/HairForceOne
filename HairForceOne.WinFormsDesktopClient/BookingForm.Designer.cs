@@ -69,6 +69,7 @@
             this.cb_employee.Name = "cb_employee";
             this.cb_employee.Size = new System.Drawing.Size(199, 28);
             this.cb_employee.TabIndex = 5;
+            this.cb_employee.SelectedIndexChanged += new System.EventHandler(this.cb_employee_SelectedIndexChanged);
             // 
             // btn_delete
             // 

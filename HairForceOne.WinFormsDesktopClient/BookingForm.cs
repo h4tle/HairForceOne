@@ -26,15 +26,16 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void BookingForm_Load(object sender, EventArgs e)
         {
-            var test1 = bookingsController.GetAllBookings();
-            dgv_bookings.DataSource = test1;
             cb_employee.DataSource = employeeController.GetEmployees();
             cb_employee.DisplayMember = "FirstName";
+            var test1 = bookingsController.GetAllBookings();
+            dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
 
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
+            
             Booking booking = (Booking)dgv_bookings.CurrentRow.DataBoundItem;
             bookingsController.Delete(booking.BookingId);
             dgv_bookings.ClearSelection();
@@ -43,7 +44,13 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void dateTime1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            dgv_bookings.DataSource = bookingsController.GetBookingsById(dateTime1.SelectionStart);
+            dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem,dateTime1.SelectionStart);
+
+        }
+
+        private void cb_employee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
         }
     }
 }
