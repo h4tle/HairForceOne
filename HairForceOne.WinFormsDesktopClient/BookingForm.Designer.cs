@@ -59,7 +59,7 @@
             this.dgv_bookings.RowHeadersWidth = 62;
             this.dgv_bookings.RowTemplate.Height = 28;
             this.dgv_bookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_bookings.Size = new System.Drawing.Size(535, 437);
+            this.dgv_bookings.Size = new System.Drawing.Size(1055, 437);
             this.dgv_bookings.TabIndex = 4;
             // 
             // cb_employee
