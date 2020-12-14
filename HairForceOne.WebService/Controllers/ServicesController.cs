@@ -1,9 +1,8 @@
 ﻿using Dapper;
-using HairForceOne.WebService.Models;
+using HairForceOne.WebService.Model;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -28,7 +27,7 @@ namespace HairForceOne.WebService.Controllers
             string sql = "SELECT * FROM hfo_Service";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<Service>(sql).ToList();
+                return connection.Query<Service>(sql).AsList();
             }
         }
 
@@ -45,7 +44,7 @@ namespace HairForceOne.WebService.Controllers
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<Service>(sql, new { Gender = gender }).ToList();
+                return connection.Query<Service>(sql, new { Gender = gender }).AsList();
             }
         }
 
@@ -76,11 +75,11 @@ namespace HairForceOne.WebService.Controllers
             {
                 var affectedRows = connection.Execute(sql, new
                 {
-                    Title = service.Title,
-                    Description = service.Description,
-                    Duration = service.Duration,
-                    Price = service.Price,
-                    Gender = service.Gender,
+                    service.Title,
+                    service.Description,
+                    service.Duration,
+                    service.Price,
+                    service.Gender,
                 });
                 return Request.CreateResponse(HttpStatusCode.Accepted);
             }
@@ -98,12 +97,12 @@ namespace HairForceOne.WebService.Controllers
             {
                 int ProductId = connection.Execute(sql, new
                 {
-                    ServiceId = service.ServiceId,
-                    Title = service.Title,
-                    Description = service.Description,
-                    Duration = service.Duration,
-                    Price = service.Price,
-                    Gender = service.Gender,
+                    service.ServiceId,
+                    service.Title,
+                    service.Description,
+                    service.Duration,
+                    service.Price,
+                    service.Gender,
                 });
                 return ProductId;
             }
@@ -115,7 +114,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="id"></param>
         public void Delete(int id)
         {
-            string sql = $"DELETE FROM hfo_Service WHERE ServiceId = @ServiceId";
+            string sql = "DELETE FROM hfo_Service WHERE ServiceId = @ServiceId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 connection.Execute(sql, new { ServiceId = id });
