@@ -20,15 +20,15 @@ namespace HairForceOne.WebService.Controllers
     {
         // GET: api/Bookings
         [HttpGet]
-        public IEnumerable<AltBooking> GetAllBookings()
+        public IEnumerable<Booking> GetAllBookings()
         {
             try
             {
                 //hfo_Booking
-                string sql = "SELECT * FROM hfo_AltBooking";
+                string sql = "SELECT * FROM hfo_Booking";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    return connection.Query<AltBooking>(sql).ToList();
+                    return connection.Query<Booking>(sql).ToList();
                 }
             }
             // return HttpStatusCode with execption
@@ -42,14 +42,14 @@ namespace HairForceOne.WebService.Controllers
         // ret navn
         [HttpPost]
         [Route("date")]
-        public IEnumerable<AltBooking> BookingsByDate([FromBody] DateTime date)
+        public IEnumerable<Booking> BookingsByDate([FromBody] DateTime date)
         {
             try
             {
-                string sql = "SELECT * FROM hfo_AltBooking WHERE datediff(dd, StartTime, @date) = 0";
+                string sql = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    return connection.Query<AltBooking>(sql, new { date });
+                    return connection.Query<Booking>(sql, new { date });
                 }
             }
             catch (SqlException e)
