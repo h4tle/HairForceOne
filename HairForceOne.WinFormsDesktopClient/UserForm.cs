@@ -45,7 +45,7 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            usersController.Delete(selectedUser.UserId);
+            usersController.DeleteUser(selectedUser.UserId);
         }
     }
 }

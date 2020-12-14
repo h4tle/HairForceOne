@@ -1,9 +1,9 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Model;
+using Meziantou.Framework.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -14,18 +14,38 @@ using System.Threading.Tasks;
 // try catch (Måske)
 // navngiv metoder
 // async
+
+/// <summary>
+/// This class contains the HttpClient methods that handles User instance
+/// </summary>
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
-    class UsersController : IUsersController
+    internal class UsersController : IUsersController
     {
-        HttpClient client = new HttpClient();
+        private readonly HttpClient client = new HttpClient();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UsersController"/> class.
+        /// </summary>
         public UsersController()
         {
-            client = new HttpClient();
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "Your Oauth token");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
-        public NotImplementedException Create(User user)
+
+        /// <summary>
+        /// This method gets a list of all User object using HttpClient
+        /// </summary>
+        /// <returns>A List of Users</returns>
+        public List<User> GetUsers()
+        {
+            Task<HttpResponseMessage> responseTask = client.GetAsync($"users");
+            responseTask.Wait();
+            List<User> ul = JsonConvert.DeserializeObject<List<User>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            return ul;
+        }
+
+        public NotImplementedException CreateNewUser(User user)
         {
             var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PostAsync($"users/", JUser);
@@ -41,10 +61,10 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-
-        public NotImplementedException Delete(int id)
+        public NotImplementedException EditUser(User user)
         {
-            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"users/{id}");
+            var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> responseTask = client.PutAsync($"users/{user.UserId}", JUser);
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)
@@ -57,19 +77,9 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-        public List<User> GetUsers()
+        public NotImplementedException DeleteUser(int id)
         {
-            Task<HttpResponseMessage> responseTask = client.GetAsync($"users");
-            responseTask.Wait();
-            List<User> ul = JsonConvert.DeserializeObject<List<User>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return ul;
-        }
-
-
-        public NotImplementedException Update(User user)
-        {
-            var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client.PutAsync($"users/{user.UserId}", JUser);
+            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"users/{id}");
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)

@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 /// </summary>
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
-     class ServicesController : IServicesController
+     internal class ServicesController : IServicesController
     {
         private readonly HttpClient client = new HttpClient();
 
@@ -30,7 +30,6 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         public ServicesController()
         {
-            client = new HttpClient();
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }

@@ -41,9 +41,10 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             List<Product> l = JsonConvert.DeserializeObject<List<Product>>(responseTask.Result.Content.ReadAsStringAsync().Result);
             return l;
         }
+
         /// <summary>
         /// This method gets a specific ProductId from the list of Product objects using HttpClient
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns>A Product object by ProductId</returns>
@@ -51,6 +52,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             throw new NotImplementedException();
         }
+
         /// <summary>
         /// This methods posts a new Product object using HttpClient
         /// </summary>
@@ -92,6 +94,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 return new NotImplementedException();
             }
         }
+
         /// <summary>
         /// This method deletes the Product object from the database, using HttpClient
         /// </summary>
