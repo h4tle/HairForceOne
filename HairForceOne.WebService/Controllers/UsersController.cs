@@ -1,110 +1,189 @@
 ﻿using Dapper;
-using HairForceOne.WebService.Models;
+using HairForceOne.WebService.Model;
 using HairForceOne.WebService.Util;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
-    //Authorize tags mangler
-    // trycatch mangler
-    //navne ændres
-
-    //Martin johansen christensen
 {
-    //[Authorize]
+    /// <summary>
+    /// This class contains the dapper methods that handles the User instance and SQL connection
+    /// </summary>
+
+    [Authorize]
     public class UsersController : ApiController
     {
+        /// <summary>
+        /// This method gets the list of User objects using Dapper
+        /// </summary>
+        /// <returns>List of Users</returns>
+
+        [Authorize(Roles = "1")]
+        [HttpGet]
+        public HttpResponseMessage GetAllUsers()
+        {
+            try
+            {
+                string sql = "SELECT * FROM hfo_User";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    List<User> users = connection.Query<User>(sql).AsList();
+                    return Request.CreateResponse(HttpStatusCode.OK, users);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
+        }
+
+        /// <summary>
+        /// This method gets a specific UserId from the list of User objects using Dapper
+        /// </summary>
+        /// <returns>An User object by UserId</returns>
+
+        //[Authorize(Roles = "1")]
+        //[AllowAnonymous]
+
+        // HVAD FANDEN?! int id
+        [HttpGet]
+        public HttpResponseMessage GetUser(int id)
+        {
+            try
+            {
+                // Identity contains the UserId
+                string UserId = HttpContext.Current.User.Identity.GetUserId();
+
+                string sql = "select * FROM hfo_User WHERE UserId = @UserId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    User user = connection.QuerySingleOrDefault<User>(sql, new { UserId });
+                    return Request.CreateResponse(HttpStatusCode.OK, user);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
+        }
+
+        /// <summary>
+        /// This method posts a new User object to the Database using Dapper
+        /// When creating a new User, Passworld.Helper.GenerateSalt() generates a new unique Salt
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+
+        [AllowAnonymous]
+        [HttpPost]
+        public HttpResponseMessage CreateNewUser([FromBody] User user)
+        {
+            try
+            {
+                // Generates Salt
+                string salt = PasswordHelper.GenerateSalt();
+
+                // Hashing the password + salt
+                user.PasswordHash = PasswordHelper.ComputeHash(user.Password, salt);
+
+                string sql = "INSERT INTO hfo_User (FirstName,LastName,Email,PhoneNo,PasswordHash,Salt)" +
+                             "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @PasswordHash, @Salt)";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    int UserId = connection.Execute(sql, new
+                    {
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        PhoneNo = user.PhoneNo,
+                        PasswordHash = user.PasswordHash,
+                        Salt = salt
+                    });
+                    return Request.CreateResponse(HttpStatusCode.Created, UserId);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
+        }
+
+        /// <summary>
+        /// This method updates the exsisting User Object using dapper
+        /// If no Password changes, it dosent generate new salt
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+
+        [Authorize(Roles = "1")]
+        [HttpPut]
+        public HttpResponseMessage UpdateUser(User user)
+        {
+            try
+            {
+                // checks for password updates
+                if (!string.IsNullOrWhiteSpace(user.Password))
+                {
+                    // Generates Salt
+                    user.Salt = PasswordHelper.GenerateSalt();
+
+                    // Hashing the password + salt
+                    user.Password = PasswordHelper.ComputeHash(user.Password, user.Salt);
+                }
+
+                string sql = "UPDATE hfo_User SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, PasswordHash = @PasswordHash, Salt = @Salt WHERE UserId = @UserId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    int UserId = connection.Execute(sql, new
+                    {
+                        UserId = user.UserId,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        PhoneNo = user.PhoneNo,
+                        Password = user.Password,
+                        Salt = user.Salt
+                    });
+
+                    return Request.CreateResponse(HttpStatusCode.OK, UserId);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
+        }
+
+        /// <summary>
+        /// This method deletes the User Object from the database, using a specific UserId
+        /// </summary>
+        /// <param name="id"></param>
         //[Authorize(Roles = "admin")]
-        [AllowAnonymous]
-        public IEnumerable<User> GetAllUsers()
-        {
-            string sql = "SELECT * FROM hfo_User";
 
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            {
-                return connection.Query<User>(sql).ToList();
-            }
-        }
-
-        [AllowAnonymous]
-        public User GetUser(int id)
+        // HVAD FANDEN?! int id
+        [HttpDelete]
+        public HttpResponseMessage DeleteUser(int id)
         {
-            string UserId = HttpContext.Current.User.Identity.GetUserId();
-            string sql = "select * FROM hfo_User WHERE UserId = @UserId";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            try
             {
-                return connection.Query<User>(sql, new { UserId }).FirstOrDefault();
-            }
-        }
-        // USer u
-        [AllowAnonymous]
-        public HttpResponseMessage Post([FromBody] User u)
-        {
-            string salt = PasswordHelper.GenerateSalt();
-            u.Password = PasswordHelper.ComputeHash(u.Password, salt);
+                string UserId = HttpContext.Current.User.Identity.GetUserId();
 
-            string sql = "INSERT INTO hfo_User (FirstName,LastName,Email,PhoneNo,Password,Salt)" +
-                         "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Password, @Salt)";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            {
-                var affectedRows = connection.Execute(sql, new
+                string sql = "DELETE FROM hfo_User WHERE UserId = @UserId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                    Email = u.Email,
-                    PhoneNo = u.PhoneNo,
-                    Password = u.Password,
-                    Salt = salt
-                });
-                return Request.CreateResponse(HttpStatusCode.Accepted);
+                    connection.Execute(sql, new { UserId });
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
             }
-        }
-
-        // hash og salt metode skal ikke køres når pass ikke ændres
-        [Authorize(Roles = "admin")]
-        public int Put(User u)
-        {
-            string salt = PasswordHelper.GenerateSalt();
-            u.Password = PasswordHelper.ComputeHash(u.Password, salt);
-            string sql = $"UPDATE hfo_User SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Password = @Password, Salt = @Salt WHERE UserId = @UserId";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            catch (SqlException e)
             {
-                int UserId = connection.Execute(sql, new
-                {
-                    UserId = u.UserId,
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                    Email = u.Email,
-                    PhoneNo = u.PhoneNo,
-                    Password = u.Password,
-                    Salt = salt
-                });
-                return UserId;
-            }
-            //OAuthProvider Hash = new OAuthProvider();
-            ////c.Password = Hash.ComputeHash(c.Password);
-            //String sql = $"UPDATE hfo_User SET FirstName = '{c.FirstName}', LastName = '{c.LastName}', Email = '{c.Email}', PhoneNo = '{c.PhoneNo}', PasswordHash = '{c.Password}' WHERE UserId = '{c.UserId}'";
-            //using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            //{
-            //    int UserId = connection.Execute(sql);
-            //    return UserId;
-            //}
-        }
-
-        [Authorize(Roles = "admin")]
-        public void Delete(int id)
-        {
-            string sql = "DELETE FROM hfo_User WHERE UserId = @Id";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            {
-                connection.Execute(sql, new { id });
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
             }
         }
     }

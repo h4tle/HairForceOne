@@ -37,6 +37,11 @@
         public string PasswordHash { get; set; }
 
         /// <summary>
+        /// Gets and sets the Password for the User instance
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
         /// Gets and sets the RoleId for the User instance
         /// </summary>
         public int RoleId { get; set; }
