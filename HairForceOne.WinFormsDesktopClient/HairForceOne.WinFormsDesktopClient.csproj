@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Meziantou.Framework.Win32.CredentialManager, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Meziantou.Framework.Win32.CredentialManager.1.4.0\lib\net461\Meziantou.Framework.Win32.CredentialManager.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -106,6 +109,7 @@
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Model\Token.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="NewEmployeeForm.cs">
       <SubType>Form</SubType>

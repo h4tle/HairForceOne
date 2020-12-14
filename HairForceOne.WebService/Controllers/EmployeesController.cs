@@ -24,10 +24,10 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <returns>A List of Employees</returns>
 
-        //[Authorize(Roles = "1")]
         [HttpGet]
         public HttpResponseMessage GetAllEmployees()
         {
+            var test231 = HttpContext.Current.User.Identity;
             try
             {
                 string sql = "SELECT * FROM hfo_Employee";
@@ -93,7 +93,7 @@ namespace HairForceOne.WebService.Controllers
             try
             {
                 string sql = "INSERT INTO hfo_Employee (FirstName, LastName, Email, PhoneNo, Experience, Gender, Biography, PasswordHash, Salt, RoleId)" +
-                             "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Experience, @Gender, @Biography, @PasswordHash, @Salt, @RoleId)";
+                                            "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Experience, @Gender, @Biography, @PasswordHash, @Salt, @RoleId)";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     int EmployeeId = connection.Execute(sql, new

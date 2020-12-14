@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HairForceOne.WinFormsDesktopClient.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace HairForceOne.WinFormsDesktopClient
     // regex ??
     public partial class LoginForm : Form
     {
+        LoginController loginController = new LoginController();
         public LoginForm()
         {
             InitializeComponent();
@@ -31,9 +33,17 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+            bool LoggedIn = loginController.Login(txt_email.Text, txt_password.Text);
+            if (LoggedIn)
+            {
             this.Hide();
             var main = new MainForm();
             main.Show();
+            }
+            else
+            {
+                lbl_header.Text = "Prøv igen";
+            }
         }
 
         private void txt_password_TextChanged(object sender, EventArgs e)

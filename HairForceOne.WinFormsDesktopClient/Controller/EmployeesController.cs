@@ -1,4 +1,5 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Model;
+using Meziantou.Framework.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             client = new HttpClient();
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "Your Oauth token");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
 
         public NotImplementedException Create(Employee employee)
