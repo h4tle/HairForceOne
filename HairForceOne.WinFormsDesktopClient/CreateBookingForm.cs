@@ -35,7 +35,7 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             lb_employee.DataSource = employeeController.GetEmployees();
             lb_employee.DisplayMember = "FirstName";
-            foreach (Service service in servicesController.GetServices())
+            foreach (Service service in servicesController.GetAllServices())
             {
                 ListViewItem i = new ListViewItem();
                 i.Tag = service;
@@ -43,7 +43,7 @@ namespace HairForceOne.WinFormsDesktopClient
                 i.ToolTipText = service.Price.ToString();
                 lv_services.Items.Add(i);
             }
-            foreach (Product product in productsController.GetProducts())
+            foreach (Product product in productsController.GetAllProducts())
             {
                 ListViewItem i = new ListViewItem();
                 i.Tag = product;

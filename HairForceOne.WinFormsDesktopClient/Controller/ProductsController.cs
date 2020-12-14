@@ -1,9 +1,9 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Model;
+using Meziantou.Framework.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -14,19 +14,49 @@ using System.Threading.Tasks;
 // try catch (Måske)
 // navngiv metoder
 // async
+
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
-    class ProductsController : IProductsController
+    internal class ProductsController : IProductsController
     {
-        HttpClient client = new HttpClient();
+        private readonly HttpClient client = new HttpClient();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductsController"/> class.
+        /// </summary>
         public ProductsController()
         {
-            client = new HttpClient();
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "Your Oauth token");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
 
-        public NotImplementedException Create(Product product)
+        /// <summary>
+        /// This method gets a list of all Product objects using HttpClient
+        /// </summary>
+        /// <returns>A list of Products</returns>
+        public List<Product> GetAllProducts()
+        {
+            Task<HttpResponseMessage> responseTask = client.GetAsync($"products");
+            responseTask.Wait();
+            List<Product> l = JsonConvert.DeserializeObject<List<Product>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            return l;
+        }
+        /// <summary>
+        /// This method gets a specific ProductId from the list of Product objects using HttpClient
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A Product object by ProductId</returns>
+        public Service GetProduct(int id)
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// This methods posts a new Product object using HttpClient
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public NotImplementedException CreateNewProduct(Product product)
         {
             var JProduct = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PostAsync($"products/", JProduct);
@@ -42,9 +72,15 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-        public NotImplementedException Delete(int id)
+        /// <summary>
+        /// This method updates the exsisting Product object using HttpClient
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public NotImplementedException EditProduct(Product product)
         {
-            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"products/{id}");
+            var JProduct = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> responseTask = client.PutAsync($"products/{product.ProductId}", JProduct);
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)
@@ -56,25 +92,14 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 return new NotImplementedException();
             }
         }
-
-        public Service GetProduct(int id)
+        /// <summary>
+        /// This method deletes the Product object from the database, using HttpClient
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public NotImplementedException DeleteProduct(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Product> GetProducts()
-        {
-
-            Task<HttpResponseMessage> responseTask = client.GetAsync($"products");
-            responseTask.Wait();
-            List<Product> l = JsonConvert.DeserializeObject<List<Product>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return l;
-        }
-
-        public NotImplementedException Update(Product product)
-        {
-            var JProduct = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client.PutAsync($"products/{product.ProductId}", JProduct);
+            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"products/{id}");
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)

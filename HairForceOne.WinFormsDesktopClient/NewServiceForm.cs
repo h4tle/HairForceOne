@@ -34,8 +34,8 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 malefemale = "Male";
             }
-            Service s = new Service(0, textBox1.Text, textBox2.Text, int.Parse(textBox3.Text), decimal.Parse(textBox4.Text), malefemale);
-            sc.Create(s);
+            Service s = new Service(0, txt_service_title.Text, txt_service_description.Text, int.Parse(txt_service_duration.Text), decimal.Parse(txt_service_price.Text), malefemale);
+            sc.CreateNewService(s);
             this.Close();
         }
 
@@ -49,6 +49,9 @@ namespace HairForceOne.WinFormsDesktopClient
             btn_create.Enabled = !Controls.OfType<TextBox>().Any(x => string.IsNullOrEmpty(x.Text));
         }
 
-        
+        private void NewServiceForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

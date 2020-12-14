@@ -19,10 +19,13 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 {
     class EmployeesController : IEmployeesController
     {
-        HttpClient client = new HttpClient();
+        private readonly HttpClient client = new HttpClient();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmployeesController"/> class.
+        /// </summary>
         public EmployeesController()
         {
-            client = new HttpClient();
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
