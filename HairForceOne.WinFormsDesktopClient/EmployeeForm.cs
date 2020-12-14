@@ -43,7 +43,7 @@ namespace HairForceOne.WinFormsDesktopClient
                 txt_employee_phoneno.Text = selectedEmployee.PhoneNo;
                 num_employee_exp.Value = selectedEmployee.Experience;
 
-                if (selectedEmployee.Roles == "admin")
+                if (selectedEmployee.RoleId == 2)
                 {
                     cbb_employee_roles.SelectedIndex = 0;
                 }
@@ -75,20 +75,20 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 malefemale = "Male";
             }
-            String role = "";
+            int role = 0;
             if (cbb_employee_roles.SelectedIndex == 0)
             {
-                role = "admin";
+                role = 2;
             }
             else
             {
-                role = "owner";
+                role = 3;
             }
             if (string.IsNullOrWhiteSpace(txt_employee_password.Text))
             {
                 txt_employee_password.Text = null;
             }
-            Employee employee = new Employee(selectedEmployee.EmployeeId, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int) num_employee_exp.Value, malefemale, selectedEmployee.ProfilePicture, txt_employee_biography.Text, null, selectedEmployee.Salt, role);
+            Employee employee = new Employee(selectedEmployee.EmployeeId, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int) num_employee_exp.Value, malefemale, txt_employee_biography.Text, null, selectedEmployee.Salt, role);
             employee.Password = txt_employee_password.Text;
             employeesController.Update(employee);
             ReloadForm();

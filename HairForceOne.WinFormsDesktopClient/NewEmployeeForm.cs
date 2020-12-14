@@ -35,17 +35,17 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 malefemale = "Male";
             }
-            String role = "";
+            int role = 0;
             if (cbb_employee_roles.SelectedIndex == 0)
             {
-                role = "admin";
+                role = 2;
             }
             else
             {
-                role = "owner";
+                role = 3;
             }
             
-            Employee employee = new Employee(0, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int)num_employee_exp.Value, malefemale, null, txt_employee_biography.Text, null, null, role);
+            Employee employee = new Employee(0, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int)num_employee_exp.Value, malefemale, txt_employee_biography.Text, null, null, role);
             employee.Password = txt_employee_password.Text;
             employeesController.Create(employee);
             this.Close();
