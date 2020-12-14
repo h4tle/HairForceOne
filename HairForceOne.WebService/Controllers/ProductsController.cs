@@ -1,9 +1,8 @@
 ﻿using Dapper;
-using HairForceOne.WebService.Models;
+using HairForceOne.WebService.Model;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -28,7 +27,7 @@ namespace HairForceOne.WebService.Controllers
             string sql = "SELECT * FROM hfo_Product";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<Product>(sql).ToList();
+                return connection.Query<Product>(sql).AsList();
             }
         }
 
@@ -45,7 +44,7 @@ namespace HairForceOne.WebService.Controllers
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<Product>(sql, new { Brand = brand }).ToList();
+                return connection.Query<Product>(sql, new { Brand = brand }).AsList();
             }
         }
 
@@ -62,7 +61,7 @@ namespace HairForceOne.WebService.Controllers
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<Product>(sql, new { Gender = gender }).ToList();
+                return connection.Query<Product>(sql, new { Gender = gender }).AsList();
             }
         }
 
@@ -85,24 +84,23 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public HttpResponseMessage Post([FromBody] Product product)
+        [HttpPost]
+        public HttpResponseMessage CreateProduct([FromBody] Product product)
         {
             try
             {
-                string sql = "INSERT INTO hfo_Product (Brand,Title,Description,Weight,PurchasePrice,RetailPrice,Color,Gender)" +
-                             "VALUES (@Brand, @Title, @Description, @Weight, @PurchasePrice, @RetailPrice, @Color, @Gender)";
+                string sql = "INSERT INTO hfo_Product (Brand, Title, Description, PurchasePrice, RetailPrice, Gender)" +
+                             "VALUES (@Brand, @Title, @Description, @PurchasePrice, @RetailPrice, @Gender)";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     var affectedRows = connection.Execute(sql, new
                     {
-                        Brand = product.Brand,
-                        Title = product.Title,
-                        Description = product.Description,
-                        Weight = product.Weight,
-                        PurchasePrice = product.PurchasePrice,
-                        RetailPrice = product.RetailPrice,
-                        Color = product.Color,
-                        Gender = product.Gender
+                        product.Brand,
+                        product.Title,
+                        product.Description,
+                        product.PurchasePrice,
+                        product.RetailPrice,
+                        product.Gender
                     });
                     return Request.CreateResponse(HttpStatusCode.Accepted);
                 }
@@ -118,22 +116,21 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public int Put(Product product)
+        [HttpPut]
+        public int EditProduct(Product product)
         {
-            string sql = $"UPDATE hfo_Product SET Brand = @Brand, Title = @Title, Description = @Description, Weight = @Weight, PurchasePrice = @PurchasePrice, RetailPrice = @RetailPrice, Color = @Color, Gender = @Gender WHERE ProductId = @ProductId";
+            string sql = $"UPDATE hfo_Product SET Brand = @Brand, Title = @Title, Description = @Description, PurchasePrice = @PurchasePrice, RetailPrice = @RetailPrice, Gender = @Gender WHERE ProductId = @ProductId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int ProductId = connection.Execute(sql, new
                 {
-                    ProductId = product.ProductId,
-                    Brand = product.Brand,
-                    Title = product.Title,
-                    Description = product.Description,
-                    Weight = product.Weight,
-                    PurchasePrice = product.PurchasePrice,
-                    RetailPrice = product.RetailPrice,
-                    Color = product.Color,
-                    Gender = product.Gender
+                    product.ProductId,
+                    product.Brand,
+                    product.Title,
+                    product.Description,
+                    product.PurchasePrice,
+                    product.RetailPrice,
+                    product.Gender
                 });
                 return ProductId;
             }

@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using HairForceOne.WebService.Models;
+using HairForceOne.WebService.Model;
 using HairForceOne.WebService.Util;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
@@ -41,14 +41,14 @@ namespace HairForceOne.WebService.Providers
                 {
                     if (user != null)
                     {
-                        if (PasswordHelper.ComparePass(password, user.Password, user.Salt))
+                        if (PasswordHelper.ComparePass(password, user.PasswordHash, user.Salt))
                         {
                             // nye claims / færre claims
                             var Claims = new List<Claim>();
                             Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
                             Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
                             Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
-                            Claims.Add(new Claim(ClaimTypes.Role, user.Roles));
+                            Claims.Add(new Claim(ClaimTypes.Role, user.RoleId.ToString()));
                             ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
 
                             // Ticket har din identity
@@ -64,7 +64,7 @@ namespace HairForceOne.WebService.Providers
                             Claims.Add(new Claim(ClaimTypes.Name, employee.FirstName));
                             Claims.Add(new Claim(ClaimTypes.NameIdentifier, employee.EmployeeId.ToString()));
                             Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
-                            Claims.Add(new Claim(ClaimTypes.Role, employee.Roles));
+                            Claims.Add(new Claim(ClaimTypes.Role, employee.RoleId.ToString()));
                             Claims.Add(new Claim("Experience", employee.Experience.ToString()));
                             ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
 
