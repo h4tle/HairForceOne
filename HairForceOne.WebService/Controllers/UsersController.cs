@@ -22,7 +22,7 @@ namespace HairForceOne.WebService.Controllers
         /// <summary>
         /// This method gets the list of User objects using Dapper
         /// </summary>
-        /// <returns>List of Users</returns>
+        /// <returns>A List of Users</returns>
 
         [Authorize(Roles = "1")]
         [HttpGet]
@@ -46,7 +46,7 @@ namespace HairForceOne.WebService.Controllers
         /// <summary>
         /// This method gets a specific UserId from the list of User objects using Dapper
         /// </summary>
-        /// <returns>An User object by UserId</returns>
+        /// <returns>A User object by UserId</returns>
 
         //[Authorize(Roles = "1")]
         //[AllowAnonymous]
@@ -60,7 +60,7 @@ namespace HairForceOne.WebService.Controllers
                 // Identity contains the UserId
                 string UserId = HttpContext.Current.User.Identity.GetUserId();
 
-                string sql = "select * FROM hfo_User WHERE UserId = @UserId";
+                string sql = "SELECT * FROM hfo_User WHERE UserId = @UserId";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     User user = connection.QuerySingleOrDefault<User>(sql, new { UserId });
@@ -98,12 +98,12 @@ namespace HairForceOne.WebService.Controllers
                 {
                     int UserId = connection.Execute(sql, new
                     {
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        Email = user.Email,
-                        PhoneNo = user.PhoneNo,
-                        PasswordHash = user.PasswordHash,
-                        Salt = salt
+                        user.FirstName,
+                        user.LastName,
+                        user.Email,
+                        user.PhoneNo,
+                        user.PasswordHash,
+                        salt
                     });
                     return Request.CreateResponse(HttpStatusCode.Created, UserId);
                 }
@@ -123,7 +123,7 @@ namespace HairForceOne.WebService.Controllers
 
         [Authorize(Roles = "1")]
         [HttpPut]
-        public HttpResponseMessage UpdateUser(User user)
+        public HttpResponseMessage EditUser(User user)
         {
             try
             {
@@ -142,13 +142,13 @@ namespace HairForceOne.WebService.Controllers
                 {
                     int UserId = connection.Execute(sql, new
                     {
-                        UserId = user.UserId,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        Email = user.Email,
-                        PhoneNo = user.PhoneNo,
-                        Password = user.Password,
-                        Salt = user.Salt
+                        user.UserId,
+                        user.FirstName,
+                        user.LastName,
+                        user.Email,
+                        user.PhoneNo,
+                        user.Password,
+                        user.Salt
                     });
 
                     return Request.CreateResponse(HttpStatusCode.OK, UserId);
@@ -167,6 +167,7 @@ namespace HairForceOne.WebService.Controllers
         //[Authorize(Roles = "admin")]
 
         // HVAD FANDEN?! int id
+        [Authorize(Roles = "1")]
         [HttpDelete]
         public HttpResponseMessage DeleteUser(int id)
         {

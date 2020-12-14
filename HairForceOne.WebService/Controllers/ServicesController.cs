@@ -19,7 +19,7 @@ namespace HairForceOne.WebService.Controllers
         /// <summary>
         /// This method gets the list of Service objects using Dapper
         /// </summary>
-        /// <returns>List of Services</returns>
+        /// <returns>A List of Services</returns>
 
         [AllowAnonymous]
         [HttpGet]
@@ -41,10 +41,10 @@ namespace HairForceOne.WebService.Controllers
         }
 
         /// <summary>
-        /// This method gets a list of all Servvice objects based on the Gender parameter
+        /// This method gets a list of all Service objects based on the Gender parameter
         /// </summary>
         /// <param name="gender"></param>
-        /// <returns>List of Services by Gender</returns>
+        /// <returns>A List of Services by Gender</returns>
 
         [AllowAnonymous]
         [HttpGet]
@@ -78,7 +78,7 @@ namespace HairForceOne.WebService.Controllers
         {
             try
             {
-                string sql = $"select * FROM hfo_Service WHERE ServiceId = @ServiceId";
+                string sql = "select * FROM hfo_Service WHERE ServiceId = @ServiceId";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     Service service = connection.QuerySingleOrDefault<Service>(sql, new { ServiceId = id });
@@ -95,7 +95,7 @@ namespace HairForceOne.WebService.Controllers
         /// This method posts a new Service object to the Database using Dapper
         /// </summary>
         /// <param name="service"></param>
-        /// <returns></returns>
+        /// <returns>A Service object by ServiceId</returns>
 
         [Authorize(Roles = "2")]
         [HttpPost]
@@ -132,7 +132,7 @@ namespace HairForceOne.WebService.Controllers
 
         [Authorize(Roles = "2")]
         [HttpPut]
-        public HttpResponseMessage UpdateService(Service service)
+        public HttpResponseMessage EditService(Service service)
         {
             try
             {
