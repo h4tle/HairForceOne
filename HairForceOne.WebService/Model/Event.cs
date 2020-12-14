@@ -1,7 +1,8 @@
 ﻿using System;
+
 // models??
-namespace HairForceOne.WebService.Models
-    // skal måske slettes
+namespace HairForceOne.WebService.Model
+// skal måske slettes
 {
     /// <summary>
     /// This class contains the properties for the Event instance
@@ -9,9 +10,9 @@ namespace HairForceOne.WebService.Models
     public class Event
     {
         /// <summary>
-        /// Gets and sets the Employee
+        /// Gets and sets the Duration
         /// </summary>
-        public Employee employee { get; set; }
+        public int Duration { get; set; }
 
         /// <summary>
         /// Gets and sets the SelectedDate
@@ -19,8 +20,8 @@ namespace HairForceOne.WebService.Models
         public DateTime SelectedDate { get; set; }
 
         /// <summary>
-        /// Gets and sets the Duration
+        /// Gets and sets the EmployeeId
         /// </summary>
-        public int Duration { get; set; }
+        public int EmployeeId { get; set; }
     }
 }

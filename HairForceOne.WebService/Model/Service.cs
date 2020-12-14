@@ -1,4 +1,4 @@
-﻿namespace HairForceOne.WebService.Models
+﻿namespace HairForceOne.WebService.Model
 
 {
     /// <summary>
@@ -7,41 +7,36 @@
     public class Service
     {
         /// <summary>
-        /// Gets and sets the ServiceId
+        /// Gets and sets the ServiceId for the Service instance
         /// </summary>
         public int ServiceId { get; set; }
 
         /// <summary>
-        /// Gets and sets the Title
+        /// Gets and sets the Title for the Service instance
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets and sets the Description
+        /// Gets and sets the Description for the Service instance
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets and sets the Duration
+        /// Gets and sets the Duration in minuts for the Service instance
         /// </summary>
-        public string Duration { get; set; }
+        public int Duration { get; set; }
 
         /// <summary>
-        /// Gets and sets the Price
+        /// Gets and sets the Price in DKK for the Service instance
         /// </summary>
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         /// <summary>
-        /// Gets and sets the Gender
+        /// Gets and sets the Gender for the Service instance
         /// </summary>
         public string Gender { get; set; }
 
-        /// <summary>
-        /// Gets and sets the Type
-        /// </summary>
-        public string Type { get; set; }
-
-        public Service(int ServiceId_, string Title_, string Description_, string Duration_, double Price_, string Gender_, string Type_)
+        public Service(int ServiceId_, string Title_, string Description_, int Duration_, decimal Price_, string Gender_)
         {
             this.ServiceId = ServiceId_;
             this.Title = Title_;
@@ -49,11 +44,10 @@
             this.Duration = Duration_;
             this.Price = Price_;
             this.Gender = Gender_;
-            this.Type = Type_;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Service"/>
+        /// Initializes a new instance for the <see cref="Service"/>
         /// </summary>
         public Service()
         {

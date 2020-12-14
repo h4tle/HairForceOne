@@ -177,9 +177,7 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Model\SelectedPayload.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
-    <Compile Include="Model\AltBooking.cs" />
     <Compile Include="Model\Booking.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Event.cs" />
