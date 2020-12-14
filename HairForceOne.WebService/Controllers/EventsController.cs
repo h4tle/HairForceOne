@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using HairForceOne.WebService.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
-    //skal måske slettes
+//skal måske slettes
 {
     public class EventsController : ApiController
     {

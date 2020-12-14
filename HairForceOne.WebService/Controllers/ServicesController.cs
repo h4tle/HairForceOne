@@ -13,7 +13,7 @@ namespace HairForceOne.WebService.Controllers
     /// This class contains the dapper methods that handles the Service instance and SQL connection
     /// </summary>
 
-    [AllowAnonymous]
+    [Authorize]
     public class ServicesController : ApiController
     {
         /// <summary>
@@ -21,7 +21,6 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <returns>A List of Services</returns>
 
-        [AllowAnonymous]
         [HttpGet]
         public HttpResponseMessage GetAllServices()
         {
@@ -36,7 +35,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -46,7 +45,6 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="gender"></param>
         /// <returns>A List of Services by Gender</returns>
 
-        [AllowAnonymous]
         [HttpGet]
         public HttpResponseMessage GetAllServicesByGender(string gender)
         {
@@ -62,7 +60,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -72,7 +70,6 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="id"></param>
         /// <returns>A Service object by ServiceId</returns>
 
-        [AllowAnonymous]
         [HttpGet]
         public HttpResponseMessage GetService(int id)
         {
@@ -87,7 +84,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -97,7 +94,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="service"></param>
         /// <returns>A Service object by ServiceId</returns>
 
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "2,3")]
         [HttpPost]
         public HttpResponseMessage CreateNewService([FromBody] Service service)
         {
@@ -120,7 +117,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -130,7 +127,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="service"></param>
         /// <returns></returns>
 
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "2,3")]
         [HttpPut]
         public HttpResponseMessage EditService(Service service)
         {
@@ -153,7 +150,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -162,7 +159,7 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <param name="id"></param>
 
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "2,3")]
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
@@ -177,7 +174,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
     }
