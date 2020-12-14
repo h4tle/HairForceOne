@@ -15,6 +15,8 @@ namespace HairForceOne.WebService.Controllers
     //Authorize tags mangler
     // trycatch mangler
     //navne ændres
+
+    //Martin johansen christensen
 {
     //[Authorize]
     public class UsersController : ApiController
