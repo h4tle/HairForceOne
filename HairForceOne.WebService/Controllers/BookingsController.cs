@@ -11,7 +11,6 @@ using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
-// Authorizeation tags mangler
 {
     /// <summary>
     /// This class contains the methods that handles the booking instance
@@ -21,6 +20,10 @@ namespace HairForceOne.WebService.Controllers
     public class BookingsController : ApiController
     {
         // GET: api/Bookings
+        /// <summary>
+        /// Gets a list of all bookings from the DB.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Authorize(Roles = "1")]
         public HttpResponseMessage GetAllBookings()
@@ -42,7 +45,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        // ret navn
+        /// <summary>
+        /// Gets a list of all bookings from a specified date.
+        /// </summary>
+        /// <param name="date">Look for bookings from this date.</param>
+        /// <returns></returns>
         [HttpPost]
         [Route("date")]
         [Authorize(Roles = "1")]
