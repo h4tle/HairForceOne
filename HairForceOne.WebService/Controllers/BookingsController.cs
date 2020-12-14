@@ -1,26 +1,29 @@
 ﻿using Dapper;
-using HairForceOne.WebService.Models;
+using HairForceOne.WebService.Model;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
-    // Authorizeation tags mangler
+// Authorizeation tags mangler
 {
     /// <summary>
     /// This class contains the methods that handles the booking instance
     /// </summary>
     [RoutePrefix("api/bookings")]
+    [Authorize]
     public class BookingsController : ApiController
     {
         // GET: api/Bookings
         [HttpGet]
-        public IEnumerable<Booking> GetAllBookings()
+        [Authorize(Roles = "1")]
+        public HttpResponseMessage GetAllBookings()
         {
             try
             {
@@ -28,60 +31,90 @@ namespace HairForceOne.WebService.Controllers
                 string sql = "SELECT * FROM hfo_Booking";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    return connection.Query<Booking>(sql).ToList();
+                    List<Booking> bookings = connection.Query<Booking>(sql).AsList();
+                    return Request.CreateResponse(HttpStatusCode.OK, bookings);
                 }
             }
             // return HttpStatusCode with execption
-
             catch (SqlException e)
             {
-                throw e;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
         // ret navn
         [HttpPost]
         [Route("date")]
-        public IEnumerable<Booking> BookingsByDate([FromBody] DateTime date)
+        [Authorize(Roles = "1")]
+        public HttpResponseMessage GetBookingsByDate([FromBody] DateTime date)
         {
             try
             {
                 string sql = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    return connection.Query<Booking>(sql, new { date });
+                    List<Booking> bookings = connection.Query<Booking>(sql, new { date }).AsList();
+                    return Request.CreateResponse(HttpStatusCode.OK, bookings);
                 }
             }
             catch (SqlException e)
             {
-                throw e;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+        }
+
+        // Ret navn på route
+        [HttpGet]
+        [Route("mybookings")]
+        public HttpResponseMessage GetBookingsByUser()
+        {
+            try
+            {
+                string UserId = HttpContext.Current.User.Identity.GetUserId();
+                string sql = "SELECT * FROM hfo_Booking WHERE UserId = @UserId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    List<Booking> bookings = connection.Query<Booking>(sql, new { UserId }).AsList();
+                    return Request.CreateResponse(HttpStatusCode.OK, bookings);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
         //Bruger ikke endnu, mangler try/catch
-        public Booking GetBooking(int id)
+        [HttpGet]
+        [Authorize(Roles = "1")]
+        public HttpResponseMessage GetBooking(int id)
         {
-            string sql = "select * FROM hfo_Booking WHERE BookingId = @BookingId";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            try
             {
-                return connection.QuerySingleOrDefault<Booking>(sql, new { BookingId = id });
+                string sql = "SELECT * FROM hfo_Booking WHERE BookingId = @BookingId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    Booking booking = connection.QuerySingleOrDefault<Booking>(sql, new { BookingId = id });
+                    return Request.CreateResponse(HttpStatusCode.OK, booking);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
-        // Try/Catch virker som den skal her (Kan bruges i andre metoder)
-        //Skal refaktureres 
+        //Skal refaktureres
         [HttpPost]
-        public HttpResponseMessage CreateNewBooking([FromBody] Booking booking)
+        public HttpResponseMessage CreateBooking([FromBody] Booking booking)
         {
-            //ClaimsPrincipal user = HttpContext.Current.User as ClaimsPrincipal;
-            //var UserId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
             try
             {
                 string sql = "INSERT INTO hfo_Booking (TotalPrice, EmployeeId, UserId, Comment, StartTime, Duration)" +
                              "VALUES (@TotalPrice, @EmployeeId, @UserId, @Comment, @StartTime, @Duration)";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    var affectedRows = connection.Execute(sql, new
+                    var BookingId = connection.Execute(sql, new
                     {
                         booking.TotalPrice,
                         booking.EmployeeId,
@@ -90,7 +123,7 @@ namespace HairForceOne.WebService.Controllers
                         booking.StartTime,
                         booking.Duration,
                     });
-                    return Request.CreateResponse(HttpStatusCode.Accepted);
+                    return Request.CreateResponse(HttpStatusCode.Accepted, BookingId);
                 }
             }
             catch (SqlException e)
@@ -100,34 +133,49 @@ namespace HairForceOne.WebService.Controllers
         }
 
         [HttpPut]
-        public int UpdateBooking(Booking booking)
+        public HttpResponseMessage UpdateBooking(Booking booking)
         {
-            string sql = "UPDATE hfo_Booking SET TotalPrice = @TotalPrice, EmployeeId = @EmployeeId, UserId = @UserId, Comment = @Comment, StartTime = @StartTime, Duration = @Duration, IsDone = @IsDone WHERE BookingId = @BookingId";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            try
             {
-                int BookingId = connection.Execute(sql, new
+                string sql = "UPDATE hfo_Booking SET TotalPrice = @TotalPrice, EmployeeId = @EmployeeId, UserId = @UserId, Comment = @Comment, StartTime = @StartTime, Duration = @Duration, IsDone = @IsDone WHERE BookingId = @BookingId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    TotalPrice = booking.TotalPrice,
-                    EmployeeId = booking.EmployeeId,
-                    UserId = booking.UserId,
-                    booking.Comment,
-                    StartTime = booking.StartTime,
-                    booking.Duration,
-                    booking.CreatedAt,
-                    booking.IsDone,
-                    BookingId = booking.BookingId,
-                });
-                return BookingId;
+                    int BookingId = connection.Execute(sql, new
+                    {
+                        booking.TotalPrice,
+                        booking.EmployeeId,
+                        booking.UserId,
+                        booking.Comment,
+                        booking.StartTime,
+                        booking.Duration,
+                        booking.CreatedAt,
+                        booking.IsDone,
+                        booking.BookingId,
+                    });
+                    return Request.CreateResponse(HttpStatusCode.OK, BookingId);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
         [HttpDelete]
-        public void DeleteBooking(int bookingId)
+        public HttpResponseMessage DeleteBooking(int bookingId)
         {
-            string sql = "DELETE FROM hfo_Booking WHERE BookingId = @bookingId";
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+            try
             {
-                connection.Execute(sql, new { bookingId });
+                string sql = "DELETE FROM hfo_Booking WHERE BookingId = @bookingId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    connection.Execute(sql, new { bookingId });
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+            }
+            catch (SqlException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
     }
