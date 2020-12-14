@@ -15,7 +15,6 @@ namespace HairForceOne.WebService.Controllers
     /// <summary>
     /// This class contains the dapper methods that handles the User instance and SQL connection
     /// </summary>
-    ///
 
     [Authorize]
     public class UsersController : ApiController
@@ -23,7 +22,7 @@ namespace HairForceOne.WebService.Controllers
         /// <summary>
         /// This method gets the list of User objects using Dapper
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of Users</returns>
 
         [Authorize(Roles = "1")]
         [HttpGet]
@@ -32,7 +31,6 @@ namespace HairForceOne.WebService.Controllers
             try
             {
                 string sql = "SELECT * FROM hfo_User";
-
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     List<User> users = connection.Query<User>(sql).AsList();
@@ -48,7 +46,7 @@ namespace HairForceOne.WebService.Controllers
         /// <summary>
         /// This method gets a specific UserId from the list of User objects using Dapper
         /// </summary>
-        /// <returns></returns>
+        /// <returns>An User object by UserId</returns>
 
         //[Authorize(Roles = "1")]
         //[AllowAnonymous]
@@ -98,7 +96,7 @@ namespace HairForceOne.WebService.Controllers
                              "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @PasswordHash, @Salt)";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    var affectedRows = connection.Execute(sql, new
+                    int UserId = connection.Execute(sql, new
                     {
                         FirstName = user.FirstName,
                         LastName = user.LastName,
@@ -107,7 +105,7 @@ namespace HairForceOne.WebService.Controllers
                         PasswordHash = user.PasswordHash,
                         Salt = salt
                     });
-                    return Request.CreateResponse(HttpStatusCode.Created);
+                    return Request.CreateResponse(HttpStatusCode.Created, UserId);
                 }
             }
             catch (SqlException e)
