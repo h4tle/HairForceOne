@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// ændring af navne
 namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class ProductForm : Form

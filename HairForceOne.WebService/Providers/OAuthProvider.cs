@@ -20,6 +20,7 @@ namespace HairForceOne.WebService.Providers
             await Task.Run(() => context.Validated());
         }
 
+        // Gennemgå metode, skriv kommentarer
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
@@ -42,6 +43,7 @@ namespace HairForceOne.WebService.Providers
                     {
                         if (PasswordHelper.ComparePass(password, user.Password, user.Salt))
                         {
+                            // nye claims / færre claims
                             var Claims = new List<Claim>();
                             Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
                             Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));

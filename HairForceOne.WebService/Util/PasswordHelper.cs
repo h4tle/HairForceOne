@@ -6,6 +6,7 @@ namespace HairForceOne.WebService.Util
 {
     public static class PasswordHelper
     {
+        // generer tilfældig streng
         public static string GenerateSalt()
         {
             int length = 32;
@@ -15,6 +16,9 @@ namespace HairForceOne.WebService.Util
             return Convert.ToBase64String(buffer);
         }
 
+        // hasher password og salt
+        // skal gennemgås
+        // uppercase?
         public static string ComputeHash(string password, string salt)
         {
             SHA512Managed sHA512ManagedString = new SHA512Managed();
@@ -38,6 +42,8 @@ namespace HairForceOne.WebService.Util
         //        return builder.ToString();
         //    }
         //}
+
+        // hasher og salter pass og tjekker om det er ens med det hashede og saltede pass fra db
         public static bool ComparePass(string password, string passwordHash, string salt)
         {
             string newHashedPin = ComputeHash(password, salt);

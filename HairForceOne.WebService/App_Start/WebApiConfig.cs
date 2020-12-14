@@ -8,7 +8,7 @@ namespace HairForceOne.WebService
     public static class WebApiConfig
     {
         /// <summary>
-        /// This method handle the config
+        /// This method handles the config
         /// </summary>
         /// <param name="config"></param>
         public static void Register(HttpConfiguration config)
@@ -16,8 +16,10 @@ namespace HairForceOne.WebService
             // Web API configuration and services
 
             // Web API routes
-            config.MapHttpAttributeRoutes();
 
+            // Route specific actions
+            config.MapHttpAttributeRoutes();
+            // Default Routes
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

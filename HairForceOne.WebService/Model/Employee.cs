@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 namespace HairForceOne.WebService.Models
+    // husk password
 {
     /// <summary>
     /// This class contains all the properties for the Employee instance

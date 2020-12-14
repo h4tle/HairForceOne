@@ -1,6 +1,7 @@
 ﻿using System;
 
 namespace HairForceOne.WebService.Controllers
+    // skal ændres til event måske? Det hedder den på desktop klient
 {
     /// <summary>
     /// This class contains the properties for the SelectedPayload instance

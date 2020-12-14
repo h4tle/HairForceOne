@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
+    //skal måske slettes
 {
     public class EventsController : ApiController
     {

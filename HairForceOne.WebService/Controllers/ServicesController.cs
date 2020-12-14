@@ -9,6 +9,9 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
+    //navne ændres
+    // trycatch mangler
+    // Authorization tags
 {
     /// <summary>
     /// This class contains all methods for handling services
@@ -28,6 +31,8 @@ namespace HairForceOne.WebService.Controllers
                 return connection.Query<Service>(sql).ToList();
             }
         }
+
+        // skal slettes
 
         /// <summary>
         /// This method gets a list of all services based on Gender parameter
@@ -88,7 +93,7 @@ namespace HairForceOne.WebService.Controllers
         /// <returns></returns>
         public int Put(Service service)
         {
-            string sql = $"UPDATE hfo_Service SET Title = @Title, Description = @Description, Duration = @Duration, Price = @Price, Gender = @Gender WHERE ServiceId = @ServiceId";
+            string sql = "UPDATE hfo_Service SET Title = @Title, Description = @Description, Duration = @Duration, Price = @Price, Gender = @Gender WHERE ServiceId = @ServiceId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int ProductId = connection.Execute(sql, new

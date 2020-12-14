@@ -10,6 +10,9 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
+    //Authorization tags mangler
+    //try/catch mangler
+    //navne skal ændres
 {
     /// <summary>
     /// This class contains all methods for handling employees
@@ -92,7 +95,7 @@ namespace HairForceOne.WebService.Controllers
                 employee.Salt = PasswordHelper.GenerateSalt();
                 employee.PasswordHash = PasswordHelper.ComputeHash(employee.Password, employee.Salt);
             }
-            string sql = $"UPDATE hfo_Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Experience = @Experience, Gender = @Gender, ProfilePicture = @ProfilePicture, Biography = @Biography, PasswordHash = @PasswordHash, Salt = @Salt, Roles = @Roles WHERE EmployeeId = @EmployeeId";
+            string sql = "UPDATE hfo_Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Experience = @Experience, Gender = @Gender, ProfilePicture = @ProfilePicture, Biography = @Biography, PasswordHash = @PasswordHash, Salt = @Salt, Roles = @Roles WHERE EmployeeId = @EmployeeId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int EmployeeId = connection.Execute(sql, new
@@ -115,7 +118,7 @@ namespace HairForceOne.WebService.Controllers
         }
 
         /// <summary>
-        /// This method deletes a employee
+        /// This method deletes an employee
         /// </summary>
         /// <param name="id"></param>
 

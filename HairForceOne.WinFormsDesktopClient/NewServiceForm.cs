@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HairForceOne.WinFormsDesktopClient.Model;
 
+// ændring af navne
+// tjek om enable af create knap virker
 namespace HairForceOne.WinFormsDesktopClient
 {
     internal partial class NewServiceForm : Form

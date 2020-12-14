@@ -2,6 +2,7 @@
 using System;
 
 namespace HairForceOne.WebService.Models
+    // Husk password
 {
     /// <summary>
     /// This class contains the properties of the User instance

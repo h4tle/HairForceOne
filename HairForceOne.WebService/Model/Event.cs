@@ -1,6 +1,7 @@
 ﻿using System;
-
+// models??
 namespace HairForceOne.WebService.Models
+    // skal måske slettes
 {
     /// <summary>
     /// This class contains the properties for the Event instance

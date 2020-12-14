@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// implementer User
+// ændring af navne
 namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class CreateBookingForm : Form
@@ -75,6 +77,7 @@ namespace HairForceOne.WinFormsDesktopClient
             btn_createBooking.Enabled = true;
         }
 
+        // gennemgå metode
         private void btn_createBooking_Click(object sender, EventArgs e)
         {
             List<Service> services = new List<Service>();

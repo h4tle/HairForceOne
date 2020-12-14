@@ -10,9 +10,10 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
+    // Authorizeation tags mangler
 {
     /// <summary>
-    /// This class contains the methods that handle the booking instance
+    /// This class contains the methods that handles the booking instance
     /// </summary>
     [RoutePrefix("api/bookings")]
     public class BookingsController : ApiController
@@ -23,18 +24,22 @@ namespace HairForceOne.WebService.Controllers
         {
             try
             {
+                //hfo_Booking
                 string sql = "SELECT * FROM hfo_AltBooking";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     return connection.Query<AltBooking>(sql).ToList();
                 }
             }
+            // return HttpStatusCode with execption
+
             catch (SqlException e)
             {
                 throw e;
             }
         }
 
+        // ret navn
         [HttpPost]
         [Route("date")]
         public IEnumerable<AltBooking> BookingsByDate([FromBody] DateTime date)
@@ -53,6 +58,7 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        //Bruger ikke endnu, mangler try/catch
         public Booking GetBooking(int id)
         {
             string sql = $"select * FROM hfo_Booking WHERE BookingId = @BookingId";
@@ -62,7 +68,10 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        public HttpResponseMessage Post([FromBody] AltBooking b)
+        // Try/Catch virker som den skal her (Kan bruges i andre metoder)
+        //Skal refaktureres 
+        [HttpPost]
+        public HttpResponseMessage CreateNewBooking([FromBody] AltBooking b)
         {
             //ClaimsPrincipal user = HttpContext.Current.User as ClaimsPrincipal;
             //var UserId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -93,9 +102,10 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        // ret navn
         public int Put(Booking b)
         {
-            string sql = $"UPDATE hfo_Booking SET StartTime = @StartTime, EndTime = @EndTime, TotalPrice = @TotalPrice, Comment = @Comment WHERE BookingId = @BookingId";
+            string sql = "UPDATE hfo_Booking SET StartTime = @StartTime, EndTime = @EndTime, TotalPrice = @TotalPrice, Comment = @Comment WHERE BookingId = @BookingId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int BookingId = connection.Execute(sql, new
@@ -110,10 +120,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        // ret navn
         [HttpDelete]
         public void Delete(int id)
         {
-            string sql = $"DELETE FROM hfo_AltBooking WHERE BookingId = @id";
+            string sql = "DELETE FROM hfo_AltBooking WHERE BookingId = @id";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 connection.Execute(sql, new { id });

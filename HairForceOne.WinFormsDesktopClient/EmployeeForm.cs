@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
 {
+    // ændring af navne
+    // Regex
+
     public partial class EmployeeForm : Form
     {
         EmployeesController employeesController = new EmployeesController();

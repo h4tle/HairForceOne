@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// ændring af navne
+// tjek om eneable på create knap virker
 namespace HairForceOne.WinFormsDesktopClient
 {
     internal partial class NewProductForm : Form

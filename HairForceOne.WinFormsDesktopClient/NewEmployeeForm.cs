@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
 {
+    // ændring af navne
+    // regex
+    // tjek om enable af create knap virker
     internal partial class NewEmployeeForm : Form
     {
         EmployeesController employeesController;

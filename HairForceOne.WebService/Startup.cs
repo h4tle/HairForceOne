@@ -14,6 +14,8 @@ namespace HairForceOne.WebService
 {
     public class Startup
     {
+        // skal gennemgås + kommentarer
+        // cors?
         public void Configuration(IAppBuilder app)
         {
             app.UseCors(CorsOptions.AllowAll); // enables cross origin http requests

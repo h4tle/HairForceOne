@@ -1,6 +1,7 @@
 ﻿using System;
 
 namespace HairForceOne.WebService.Models
+    // skal slettes
 {
     public class AltBooking
     {

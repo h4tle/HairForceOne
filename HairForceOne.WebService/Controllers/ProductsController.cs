@@ -9,6 +9,9 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
+    //try/catch
+    //navne ændres
+    // Authorization tags mangler
 
 /// <summary>
 /// This class contains all methods for handling products
@@ -29,12 +32,14 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        //Skal måske slettes
+
         /// <summary>
         /// This method gets a list of all products based on brand parameter
         /// </summary>
         /// <param name="brand"></param>
         /// <returns></returns>
-        public IEnumerable<Product> GetAllProducts(string brand)
+        public IEnumerable<Product> GetProductsByBrand(string brand)
         {
             string sql = "SELECT * from hfo_Product WHERE Brand LIKE CONCAT('%',@Brand,'%')";
 
@@ -43,6 +48,8 @@ namespace HairForceOne.WebService.Controllers
                 return connection.Query<Product>(sql, new { Brand = brand }).ToList();
             }
         }
+
+        // Skal måske slettes
 
         /// <summary>
         /// This method gets a list of all products based on gender parameter
@@ -60,28 +67,13 @@ namespace HairForceOne.WebService.Controllers
         }
 
         /// <summary>
-        /// This method gets a list of all products based on color parameter
-        /// </summary>
-        /// <param name="color"></param>
-        /// <returns></returns>
-        public IEnumerable<Product> GetAllProductsColor(string color)
-        {
-            string sql = "SELECT * from hfo_Product WHERE Color LIKE CONCAT('%',@Color,'%')";
-
-            using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
-            {
-                return connection.Query<Product>(sql, new { Color = color }).ToList();
-            }
-        }
-
-        /// <summary>
         /// This method gets a product based on specific ProductId
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public Product GetProduct(int id)
         {
-            string sql = $"select * FROM hfo_Product WHERE ProductId = @ProductId";
+            string sql = "select * FROM hfo_Product WHERE ProductId = @ProductId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.QuerySingleOrDefault<Product>(sql, new { ProductId = id });

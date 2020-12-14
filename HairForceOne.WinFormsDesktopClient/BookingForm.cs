@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
+    // ændring af navne
+
 {
     public partial class BookingForm : Form
     {

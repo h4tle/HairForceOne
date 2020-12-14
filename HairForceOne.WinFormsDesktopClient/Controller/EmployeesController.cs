@@ -9,6 +9,11 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
+// håndter exceptions (custom exception??)
+// tag exception fra statuscode og håndter den
+// try catch (Måske)
+// navngiv metoder
+// async
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
     class EmployeesController : IEmployeesController

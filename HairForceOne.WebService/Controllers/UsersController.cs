@@ -12,6 +12,9 @@ using System.Web;
 using System.Web.Http;
 
 namespace HairForceOne.WebService.Controllers
+    //Authorize tags mangler
+    // trycatch mangler
+    //navne ændres
 {
     //[Authorize]
     public class UsersController : ApiController
@@ -20,7 +23,6 @@ namespace HairForceOne.WebService.Controllers
         [AllowAnonymous]
         public IEnumerable<User> GetAllUsers()
         {
-            //string sql = "SELECT FirstName, LastName, Email, PhoneNo FROM hfo_User";
             string sql = "SELECT * FROM hfo_User";
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
@@ -33,13 +35,13 @@ namespace HairForceOne.WebService.Controllers
         public User GetUser(int id)
         {
             string UserId = HttpContext.Current.User.Identity.GetUserId();
-            string sql = $"select * FROM hfo_User WHERE UserId = @UserId";
+            string sql = "select * FROM hfo_User WHERE UserId = @UserId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 return connection.Query<User>(sql, new { UserId }).FirstOrDefault();
             }
         }
-
+        // USer u
         [AllowAnonymous]
         public HttpResponseMessage Post([FromBody] User u)
         {
@@ -63,6 +65,7 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        // hash og salt metode skal ikke køres når pass ikke ændres
         [Authorize(Roles = "admin")]
         public int Put(User u)
         {
@@ -96,7 +99,7 @@ namespace HairForceOne.WebService.Controllers
         [Authorize(Roles = "admin")]
         public void Delete(int id)
         {
-            string sql = $"DELETE FROM hfo_User WHERE UserId = @Id";
+            string sql = "DELETE FROM hfo_User WHERE UserId = @Id";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 connection.Execute(sql, new { id });

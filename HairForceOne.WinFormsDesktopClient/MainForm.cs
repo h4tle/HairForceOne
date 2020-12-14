@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// ændring af navne
+// slet/implementer labels
+// show/hide skal gennemgås (gøres det rigtigt?)
 namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class MainForm : Form

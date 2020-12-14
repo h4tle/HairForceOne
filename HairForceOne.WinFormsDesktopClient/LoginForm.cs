@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
 {
+    // ændring af navne
+    // regex ??
     public partial class LoginForm : Form
     {
         public LoginForm()

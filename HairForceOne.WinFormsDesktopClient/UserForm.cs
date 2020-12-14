@@ -10,7 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
+// ændring af navne
+// vis antal bookings ud fra kunde
 namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class UserForm : Form

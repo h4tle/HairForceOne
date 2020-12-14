@@ -14,6 +14,7 @@ namespace HairForceOne.WinFormsDesktopClient
         [STAThread]
         static void Main()
         {
+            // hide login form? Programmet kan ikke lukkes derefter. Find løsning
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
