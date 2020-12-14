@@ -1,10 +1,9 @@
 ﻿using Dapper;
-using HairForceOne.WebService.Models;
+using HairForceOne.WebService.Model;
 using HairForceOne.WebService.Util;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -28,7 +27,7 @@ namespace HairForceOne.WebService.Controllers
             string sql = "SELECT * FROM hfo_Employee";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.Query<Employee>(sql).ToList();
+                return connection.Query<Employee>(sql).AsList();
             }
         }
 
@@ -56,23 +55,22 @@ namespace HairForceOne.WebService.Controllers
             // sql default role -> admin?
             try
             {
-                string sql = "INSERT INTO hfo_Employee (FirstName,LastName,Email,PhoneNo,Experience,Gender,ProfilePicture,Biography,PasswordHash,Salt,Roles)" +
-                             "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Experience, @Gender, @ProfilePicture, @Biography, @PasswordHash, @Salt, @Roles)";
+                string sql = "INSERT INTO hfo_Employee (FirstName, LastName, Email, PhoneNo, Experience, Gender, Biography, PasswordHash, Salt, RoleId)" +
+                             "VALUES (@FirstName, @LastName, @Email, @PhoneNo, @Experience, @Gender, @Biography, @PasswordHash, @Salt, @RoleId)";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     var affectedRows = connection.Execute(sql, new
                     {
-                        FirstName = employee.FirstName,
-                        LastName = employee.LastName,
-                        Email = employee.Email,
-                        PhoneNo = employee.PhoneNo,
-                        Experience = employee.Experience,
-                        Gender = employee.Gender,
-                        ProfilePicture = employee.ProfilePicture,
-                        Biography = employee.Biography,
-                        PasswordHash = employee.PasswordHash,
+                        employee.FirstName,
+                        employee.LastName,
+                        employee.Email,
+                        employee.PhoneNo,
+                        employee.Experience,
+                        employee.Gender,
+                        employee.Biography,
+                        employee.PasswordHash,
                         Salt = salt,
-                        Roles = employee.Roles
+                        employee.RoleId
                     });
                     return Request.CreateResponse(HttpStatusCode.Accepted);
                 }
@@ -88,30 +86,30 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
-        public int Put(Employee employee)
+       [HttpPut]
+        public int EditEmployee(Employee employee)
         {
             if (!string.IsNullOrWhiteSpace(employee.Password))
             {
                 employee.Salt = PasswordHelper.GenerateSalt();
                 employee.PasswordHash = PasswordHelper.ComputeHash(employee.Password, employee.Salt);
             }
-            string sql = "UPDATE hfo_Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Experience = @Experience, Gender = @Gender, ProfilePicture = @ProfilePicture, Biography = @Biography, PasswordHash = @PasswordHash, Salt = @Salt, Roles = @Roles WHERE EmployeeId = @EmployeeId";
+            string sql = "UPDATE hfo_Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, PhoneNo = @PhoneNo, Experience = @Experience, Gender = @Gender, Biography = @Biography, PasswordHash = @PasswordHash, Salt = @Salt, RoleId = @RoleId WHERE EmployeeId = @EmployeeId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int EmployeeId = connection.Execute(sql, new
                 {
-                    EmployeeId = employee.EmployeeId,
-                    FirstName = employee.FirstName,
-                    LastName = employee.LastName,
-                    Email = employee.Email,
-                    PhoneNo = employee.PhoneNo,
-                    Experience = employee.Experience,
-                    Gender = employee.Gender,
-                    ProfilePicture = employee.ProfilePicture,
-                    Biography = employee.Biography,
-                    PasswordHash = employee.PasswordHash,
-                    Salt = employee.Salt,
-                    Roles = employee.Roles
+                    employee.EmployeeId,
+                    employee.FirstName,
+                    employee.LastName,
+                    employee.Email,
+                    employee.PhoneNo,
+                    employee.Experience,
+                    employee.Gender,
+                    employee.Biography,
+                    employee.PasswordHash,
+                    employee.Salt,
+                    employee.RoleId
                 });
                 return EmployeeId;
             }
