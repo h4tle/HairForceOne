@@ -61,37 +61,34 @@ namespace HairForceOne.WebService.Controllers
         //Bruger ikke endnu, mangler try/catch
         public Booking GetBooking(int id)
         {
-            string sql = $"select * FROM hfo_Booking WHERE BookingId = @BookingId";
+            string sql = "select * FROM hfo_Booking WHERE BookingId = @BookingId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                return connection.QuerySingleOrDefault<Booking>(sql, new { ProductId = id });
+                return connection.QuerySingleOrDefault<Booking>(sql, new { BookingId = id });
             }
         }
 
         // Try/Catch virker som den skal her (Kan bruges i andre metoder)
         //Skal refaktureres 
         [HttpPost]
-        public HttpResponseMessage CreateNewBooking([FromBody] AltBooking b)
+        public HttpResponseMessage CreateNewBooking([FromBody] Booking booking)
         {
             //ClaimsPrincipal user = HttpContext.Current.User as ClaimsPrincipal;
             //var UserId = user.FindFirst(ClaimTypes.NameIdentifier).Value;
             try
             {
-                var UserId = 1;
-                string sql = "INSERT INTO hfo_AltBooking (StartTime, Duration, TotalPrice, Comment, UserId, EmployeeId, ProductId, ServiceId)" +
-                             "VALUES (@StartTime, @Duration, @TotalPrice, @Comment, @UserId, @EmployeeId, @ProductId, @ServiceId)";
+                string sql = "INSERT INTO hfo_Booking (TotalPrice, EmployeeId, UserId, Comment, StartTime, Duration)" +
+                             "VALUES (@TotalPrice, @EmployeeId, @UserId, @Comment, @StartTime, @Duration)";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     var affectedRows = connection.Execute(sql, new
                     {
-                        UserId,
-                        b.StartTime,
-                        b.Duration,
-                        b.TotalPrice,
-                        b.Comment,
-                        b.EmployeeId,
-                        b.ProductId,
-                        b.ServiceId
+                        booking.TotalPrice,
+                        booking.EmployeeId,
+                        booking.UserId,
+                        booking.Comment,
+                        booking.StartTime,
+                        booking.Duration,
                     });
                     return Request.CreateResponse(HttpStatusCode.Accepted);
                 }
@@ -102,32 +99,35 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
-        // ret navn
-        public int Put(Booking b)
+        [HttpPut]
+        public int UpdateBooking(Booking booking)
         {
-            string sql = "UPDATE hfo_Booking SET StartTime = @StartTime, EndTime = @EndTime, TotalPrice = @TotalPrice, Comment = @Comment WHERE BookingId = @BookingId";
+            string sql = "UPDATE hfo_Booking SET TotalPrice = @TotalPrice, EmployeeId = @EmployeeId, UserId = @UserId, Comment = @Comment, StartTime = @StartTime, Duration = @Duration, IsDone = @IsDone WHERE BookingId = @BookingId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
                 int BookingId = connection.Execute(sql, new
                 {
-                    ProductId = b.BookingId,
-                    StartTime = b.StartTime,
-                    EndTime = b.EndTime,
-                    TotalPrice = b.TotalPrice,
-                    Comment = b.Comment
+                    TotalPrice = booking.TotalPrice,
+                    EmployeeId = booking.EmployeeId,
+                    UserId = booking.UserId,
+                    booking.Comment,
+                    StartTime = booking.StartTime,
+                    booking.Duration,
+                    booking.CreatedAt,
+                    booking.IsDone,
+                    BookingId = booking.BookingId,
                 });
                 return BookingId;
             }
         }
 
-        // ret navn
         [HttpDelete]
-        public void Delete(int id)
+        public void DeleteBooking(int bookingId)
         {
-            string sql = "DELETE FROM hfo_AltBooking WHERE BookingId = @id";
+            string sql = "DELETE FROM hfo_Booking WHERE BookingId = @bookingId";
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
             {
-                connection.Execute(sql, new { id });
+                connection.Execute(sql, new { bookingId });
             }
         }
     }
