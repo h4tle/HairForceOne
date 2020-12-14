@@ -35,7 +35,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -60,7 +60,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -85,7 +85,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -109,7 +109,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -143,7 +143,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -178,7 +178,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -203,7 +203,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
     }
