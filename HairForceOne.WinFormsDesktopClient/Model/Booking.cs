@@ -9,25 +9,39 @@ namespace HairForceOne.WinFormsDesktopClient.Model
 	public class Booking
 	{
         public int BookingId { get; set; }
-        public int ProductId { get; set; }
-		public int ServiceId { get; set; }
 		public int UserId { get; set; }
 		public int EmployeeId { get; set; }
 		public DateTime StartTime { get; set; }
 		public int Duration { get; set; }
 		public decimal TotalPrice { get; set; }
 		public string Comment { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public bool IsDone { get; set; }
 
-        public Booking(int productId, int serviceId, int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment)
+        public Booking(int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment, DateTime createdAt, bool isDone)
         {
-			this.ProductId = productId;
-			this.ServiceId = serviceId;
 			this.UserId = userId;
 			this.EmployeeId = employeeId;
 			this.StartTime = startTime;
 			this.Duration = duration;
 			this.TotalPrice = totalPrice;
 			this.Comment = comment;
+			this.CreatedAt = createdAt;
+			this.IsDone = isDone;
+        }
+
+		public Booking(int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment)
+		{
+			this.UserId = userId;
+			this.EmployeeId = employeeId;
+			this.StartTime = startTime;
+			this.Duration = duration;
+			this.TotalPrice = totalPrice;
+			this.Comment = comment;
+		}
+        public Booking()
+        {
+
         }
 	}
 }

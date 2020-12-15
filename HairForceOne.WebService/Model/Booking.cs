@@ -53,15 +53,15 @@ namespace HairForceOne.WebService.Model
         /// </summary>
         public bool IsDone { get; set; }
 
-        /// <summary>
-        /// Gets and sets the Products list for the Booking instance
-        /// </summary>
-        public List<Product> Products { get; set; }
+        ///// <summary>
+        ///// Gets and sets the Products list for the Booking instance
+        ///// </summary>
+        //public List<Product> Products { get; set; }
 
-        /// <summary>
-        /// Gets and sets the Services list for the Booking instance
-        /// </summary>
-        public List<Service> Services { get; set; }
+        ///// <summary>
+        ///// Gets and sets the Services list for the Booking instance
+        ///// </summary>
+        //public List<Service> Services { get; set; }
 
         public Booking(int BookingId_, decimal TotalPrice_, int EmployeeId_, int UserId_, string Comment_, DateTime StartTime_, int Duration_, DateTime CreatedAt_, bool IsDone_)
         {

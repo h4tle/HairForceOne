@@ -30,8 +30,9 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             cb_employee.DataSource = employeeController.GetEmployees();
             cb_employee.DisplayMember = "FirstName";
-            var test1 = bookingsController.GetAllBookings();
-            dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
+            //dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
+            dgv_bookings.DataSource = bookingsController.GetAllBookings();
+
 
         }
 
