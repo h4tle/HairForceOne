@@ -71,7 +71,7 @@
             // btn_update
             // 
             this.btn_update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_update.Location = new System.Drawing.Point(381, 589);
+            this.btn_update.Location = new System.Drawing.Point(418, 411);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(75, 23);
             this.btn_update.TabIndex = 31;
@@ -82,7 +82,7 @@
             // btn_delete
             // 
             this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_delete.Location = new System.Drawing.Point(471, 589);
+            this.btn_delete.Location = new System.Drawing.Point(337, 411);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 32;
@@ -175,10 +175,10 @@
             // 
             // btn_create
             // 
-            this.btn_create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_create.Location = new System.Drawing.Point(897, 589);
+            this.btn_create.BackColor = System.Drawing.Color.Lime;
+            this.btn_create.Location = new System.Drawing.Point(304, 488);
             this.btn_create.Name = "btn_create";
-            this.btn_create.Size = new System.Drawing.Size(75, 23);
+            this.btn_create.Size = new System.Drawing.Size(159, 33);
             this.btn_create.TabIndex = 50;
             this.btn_create.Text = "Opret";
             this.btn_create.UseVisualStyleBackColor = false;
@@ -188,9 +188,9 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(162, 145);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(331, 82);
+            this.listBox1.Size = new System.Drawing.Size(331, 251);
             this.listBox1.TabIndex = 71;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -198,7 +198,7 @@
             // 
             this.rb_male.AutoSize = true;
             this.rb_male.Location = new System.Drawing.Point(612, 442);
-            this.rb_male.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_male.Margin = new System.Windows.Forms.Padding(2);
             this.rb_male.Name = "rb_male";
             this.rb_male.Size = new System.Drawing.Size(52, 17);
             this.rb_male.TabIndex = 72;
@@ -211,7 +211,7 @@
             // 
             this.rb_female.AutoSize = true;
             this.rb_female.Location = new System.Drawing.Point(734, 442);
-            this.rb_female.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_female.Margin = new System.Windows.Forms.Padding(2);
             this.rb_female.Name = "rb_female";
             this.rb_female.Size = new System.Drawing.Size(58, 17);
             this.rb_female.TabIndex = 73;

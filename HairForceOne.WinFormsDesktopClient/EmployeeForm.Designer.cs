@@ -42,17 +42,13 @@
             this.txt_employee_phoneno = new System.Windows.Forms.TextBox();
             this.lbl_employee_exp = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lbl_employee_picture = new System.Windows.Forms.Label();
-            this.txt_employee_picture = new System.Windows.Forms.TextBox();
             this.lbl_employee_biography = new System.Windows.Forms.Label();
             this.txt_employee_biography = new System.Windows.Forms.TextBox();
             this.txt_employee_password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_password_generate = new System.Windows.Forms.Button();
             this.cbb_employee_roles = new System.Windows.Forms.ComboBox();
             this.lbl_employee_roles = new System.Windows.Forms.Label();
             this.btn_create = new System.Windows.Forms.Button();
-            this.btn_employee_upload = new System.Windows.Forms.Button();
             this.lb_employees = new System.Windows.Forms.ListBox();
             this.rb_male = new System.Windows.Forms.RadioButton();
             this.rb_female = new System.Windows.Forms.RadioButton();
@@ -84,7 +80,7 @@
             // btn_update
             // 
             this.btn_update.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_update.Location = new System.Drawing.Point(381, 589);
+            this.btn_update.Location = new System.Drawing.Point(447, 417);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(75, 23);
             this.btn_update.TabIndex = 32;
@@ -95,7 +91,7 @@
             // btn_delete
             // 
             this.btn_delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_delete.Location = new System.Drawing.Point(471, 589);
+            this.btn_delete.Location = new System.Drawing.Point(366, 417);
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(75, 23);
             this.btn_delete.TabIndex = 33;
@@ -197,30 +193,12 @@
             this.label2.TabIndex = 52;
             this.label2.Text = "Køn:";
             // 
-            // lbl_employee_picture
-            // 
-            this.lbl_employee_picture.AutoSize = true;
-            this.lbl_employee_picture.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_employee_picture.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.lbl_employee_picture.Location = new System.Drawing.Point(607, 361);
-            this.lbl_employee_picture.Name = "lbl_employee_picture";
-            this.lbl_employee_picture.Size = new System.Drawing.Size(81, 13);
-            this.lbl_employee_picture.TabIndex = 55;
-            this.lbl_employee_picture.Text = "Billede: ????";
-            // 
-            // txt_employee_picture
-            // 
-            this.txt_employee_picture.Location = new System.Drawing.Point(610, 377);
-            this.txt_employee_picture.Name = "txt_employee_picture";
-            this.txt_employee_picture.Size = new System.Drawing.Size(176, 20);
-            this.txt_employee_picture.TabIndex = 54;
-            // 
             // lbl_employee_biography
             // 
             this.lbl_employee_biography.AutoSize = true;
             this.lbl_employee_biography.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_employee_biography.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.lbl_employee_biography.Location = new System.Drawing.Point(607, 403);
+            this.lbl_employee_biography.Location = new System.Drawing.Point(607, 361);
             this.lbl_employee_biography.Name = "lbl_employee_biography";
             this.lbl_employee_biography.Size = new System.Drawing.Size(58, 13);
             this.lbl_employee_biography.TabIndex = 57;
@@ -228,7 +206,7 @@
             // 
             // txt_employee_biography
             // 
-            this.txt_employee_biography.Location = new System.Drawing.Point(610, 419);
+            this.txt_employee_biography.Location = new System.Drawing.Point(610, 377);
             this.txt_employee_biography.Multiline = true;
             this.txt_employee_biography.Name = "txt_employee_biography";
             this.txt_employee_biography.Size = new System.Drawing.Size(284, 63);
@@ -236,7 +214,7 @@
             // 
             // txt_employee_password
             // 
-            this.txt_employee_password.Location = new System.Drawing.Point(610, 543);
+            this.txt_employee_password.Location = new System.Drawing.Point(610, 501);
             this.txt_employee_password.Name = "txt_employee_password";
             this.txt_employee_password.Size = new System.Drawing.Size(176, 20);
             this.txt_employee_password.TabIndex = 58;
@@ -246,21 +224,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.label3.Location = new System.Drawing.Point(607, 527);
+            this.label3.Location = new System.Drawing.Point(607, 485);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 59;
             this.label3.Text = "Adgangskode:";
-            // 
-            // btn_password_generate
-            // 
-            this.btn_password_generate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_password_generate.Location = new System.Drawing.Point(819, 541);
-            this.btn_password_generate.Name = "btn_password_generate";
-            this.btn_password_generate.Size = new System.Drawing.Size(75, 23);
-            this.btn_password_generate.TabIndex = 60;
-            this.btn_password_generate.Text = "Generér";
-            this.btn_password_generate.UseVisualStyleBackColor = false;
             // 
             // cbb_employee_roles
             // 
@@ -268,7 +236,7 @@
             this.cbb_employee_roles.Items.AddRange(new object[] {
             "Medarbejder",
             "Ejer"});
-            this.cbb_employee_roles.Location = new System.Drawing.Point(610, 500);
+            this.cbb_employee_roles.Location = new System.Drawing.Point(610, 458);
             this.cbb_employee_roles.Name = "cbb_employee_roles";
             this.cbb_employee_roles.Size = new System.Drawing.Size(150, 21);
             this.cbb_employee_roles.TabIndex = 62;
@@ -278,7 +246,7 @@
             this.lbl_employee_roles.AutoSize = true;
             this.lbl_employee_roles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_employee_roles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.lbl_employee_roles.Location = new System.Drawing.Point(607, 484);
+            this.lbl_employee_roles.Location = new System.Drawing.Point(607, 442);
             this.lbl_employee_roles.Name = "lbl_employee_roles";
             this.lbl_employee_roles.Size = new System.Drawing.Size(40, 13);
             this.lbl_employee_roles.TabIndex = 61;
@@ -286,32 +254,22 @@
             // 
             // btn_create
             // 
-            this.btn_create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_create.Location = new System.Drawing.Point(897, 589);
+            this.btn_create.BackColor = System.Drawing.Color.Lime;
+            this.btn_create.Location = new System.Drawing.Point(304, 488);
             this.btn_create.Name = "btn_create";
-            this.btn_create.Size = new System.Drawing.Size(75, 23);
+            this.btn_create.Size = new System.Drawing.Size(159, 33);
             this.btn_create.TabIndex = 63;
             this.btn_create.Text = "Opret";
             this.btn_create.UseVisualStyleBackColor = false;
             this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
             // 
-            // btn_employee_upload
-            // 
-            this.btn_employee_upload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_employee_upload.Location = new System.Drawing.Point(819, 375);
-            this.btn_employee_upload.Name = "btn_employee_upload";
-            this.btn_employee_upload.Size = new System.Drawing.Size(75, 23);
-            this.btn_employee_upload.TabIndex = 64;
-            this.btn_employee_upload.Text = "Upload";
-            this.btn_employee_upload.UseVisualStyleBackColor = false;
-            // 
             // lb_employees
             // 
             this.lb_employees.FormattingEnabled = true;
             this.lb_employees.Location = new System.Drawing.Point(234, 125);
-            this.lb_employees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lb_employees.Margin = new System.Windows.Forms.Padding(2);
             this.lb_employees.Name = "lb_employees";
-            this.lb_employees.Size = new System.Drawing.Size(288, 238);
+            this.lb_employees.Size = new System.Drawing.Size(288, 277);
             this.lb_employees.TabIndex = 65;
             this.lb_employees.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -319,7 +277,7 @@
             // 
             this.rb_male.AutoSize = true;
             this.rb_male.Location = new System.Drawing.Point(610, 336);
-            this.rb_male.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_male.Margin = new System.Windows.Forms.Padding(2);
             this.rb_male.Name = "rb_male";
             this.rb_male.Size = new System.Drawing.Size(52, 17);
             this.rb_male.TabIndex = 66;
@@ -331,7 +289,7 @@
             // 
             this.rb_female.AutoSize = true;
             this.rb_female.Location = new System.Drawing.Point(701, 336);
-            this.rb_female.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_female.Margin = new System.Windows.Forms.Padding(2);
             this.rb_female.Name = "rb_female";
             this.rb_female.Size = new System.Drawing.Size(58, 17);
             this.rb_female.TabIndex = 67;
@@ -342,7 +300,7 @@
             // num_employee_exp
             // 
             this.num_employee_exp.Location = new System.Drawing.Point(609, 296);
-            this.num_employee_exp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.num_employee_exp.Margin = new System.Windows.Forms.Padding(2);
             this.num_employee_exp.Minimum = new decimal(new int[] {
             1,
             0,
@@ -367,17 +325,13 @@
             this.Controls.Add(this.rb_female);
             this.Controls.Add(this.rb_male);
             this.Controls.Add(this.lb_employees);
-            this.Controls.Add(this.btn_employee_upload);
             this.Controls.Add(this.btn_create);
             this.Controls.Add(this.cbb_employee_roles);
             this.Controls.Add(this.lbl_employee_roles);
-            this.Controls.Add(this.btn_password_generate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_employee_password);
             this.Controls.Add(this.lbl_employee_biography);
             this.Controls.Add(this.txt_employee_biography);
-            this.Controls.Add(this.lbl_employee_picture);
-            this.Controls.Add(this.txt_employee_picture);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbl_employee_exp);
             this.Controls.Add(this.label1);
@@ -417,17 +371,13 @@
         private System.Windows.Forms.TextBox txt_employee_phoneno;
         private System.Windows.Forms.Label lbl_employee_exp;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lbl_employee_picture;
-        private System.Windows.Forms.TextBox txt_employee_picture;
         private System.Windows.Forms.Label lbl_employee_biography;
         private System.Windows.Forms.TextBox txt_employee_biography;
         private System.Windows.Forms.TextBox txt_employee_password;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_password_generate;
         private System.Windows.Forms.ComboBox cbb_employee_roles;
         private System.Windows.Forms.Label lbl_employee_roles;
         private System.Windows.Forms.Button btn_create;
-        private System.Windows.Forms.Button btn_employee_upload;
         private System.Windows.Forms.ListBox lb_employees;
         private System.Windows.Forms.RadioButton rb_male;
         private System.Windows.Forms.RadioButton rb_female;
