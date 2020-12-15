@@ -26,7 +26,7 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <returns>A list of all bookings</returns>
         [HttpGet]
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2, 3")]
         public HttpResponseMessage GetAllBookings()
         {
             try
@@ -40,9 +40,13 @@ namespace HairForceOne.WebService.Controllers
                 }
             }
             // return HttpStatusCode with execption
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -53,7 +57,7 @@ namespace HairForceOne.WebService.Controllers
         /// <returns>A list of all bookings from the specified date</returns>
         [HttpPost]
         [Route("date")]
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2, 3")]
         public HttpResponseMessage GetBookingsByDate([FromBody] DateTime date)
         {
             try
@@ -77,6 +81,7 @@ namespace HairForceOne.WebService.Controllers
         /// <returns>A list of all bookings from the lo</returns>
         [HttpGet]
         [Route("mybookings")]
+        [Authorize(Roles = "1")]
         public HttpResponseMessage GetBookingsByUser()
         {
             try
@@ -101,7 +106,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="id">Id of the booking that is retrieved</param>
         /// <returns>A single booking object</returns>
         [HttpGet]
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2, 3")]
         public HttpResponseMessage GetBooking(int id)
         {
             try
@@ -125,6 +130,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="booking">booking object to store in the DB.</param>
         /// <returns>the id of the created booking</returns>
         [HttpPost]
+        [Authorize (Roles = "2,3")]
         public HttpResponseMessage CreateBooking([FromBody] Booking booking)
         {
             try
@@ -157,6 +163,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="booking">the specific booking containing new values</param>
         /// <returns>the id of the updated booking</returns>
         [HttpPut]
+        [Authorize (Roles = "2,3")]
         public HttpResponseMessage UpdateBooking(Booking booking)
         {
             try
@@ -190,7 +197,7 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <param name="bookingId">the id of the specific booking to delete</param>
         /// <returns>A status code</returns>
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2,3")]
         [HttpDelete]
         public HttpResponseMessage DeleteBooking(int bookingId)
         {

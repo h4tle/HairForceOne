@@ -1,4 +1,5 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Model;
+using Meziantou.Framework.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             client = new HttpClient();
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
             // skal sætte token ind
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "Your Oauth token");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
         // navngiv metode
         public NotImplementedException Create(Booking booking)
@@ -77,17 +78,17 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 
         public List<Booking> GetAllBookings()
         {
+            try
+            {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"bookings/");
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
                 return JsonConvert.DeserializeObject<List<Booking>>(responseTask.Result.Content.ReadAsStringAsync().Result);
             }
-            else
+            catch (HttpRequestException e)
             {
-                throw new NotImplementedException();
+                throw e;
             }
+            
         }
 
 
