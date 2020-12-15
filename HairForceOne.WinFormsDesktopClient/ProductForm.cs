@@ -29,7 +29,7 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void ProductForm_Load(object sender, EventArgs e)
         {
-            listBox1.DataSource = productsController.GetProducts();
+            listBox1.DataSource = productsController.GetAllProducts();
             listBox1.DisplayMember = "Title";
         }
 
@@ -41,7 +41,6 @@ namespace HairForceOne.WinFormsDesktopClient
                 txt_brand.Text = selectedProduct.Brand;
                 txt_title.Text = selectedProduct.Title;
                 txt_description.Text = selectedProduct.Description;
-                txt_weight.Text = selectedProduct.Weight;
                 txt_price.Text = selectedProduct.RetailPrice.ToString();
                 if (selectedProduct.Gender == "Female")
                 {
@@ -66,8 +65,8 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 malefemale = "Male";
             }
-            Product p = new Product(selectedProduct.ProductId, txt_brand.Text, txt_title.Text, txt_description.Text, txt_weight.Text, selectedProduct.PurchasePrice, decimal.Parse(txt_price.Text), selectedProduct.Color, malefemale);
-            productsController.Update(p);
+            Product p = new Product(selectedProduct.ProductId, txt_brand.Text, txt_title.Text, txt_description.Text, selectedProduct.PurchasePrice, decimal.Parse(txt_price.Text), selectedProduct.Color, malefemale);
+            productsController.EditProduct(p);
             ReloadForm();
         }
 
@@ -76,19 +75,18 @@ namespace HairForceOne.WinFormsDesktopClient
             txt_brand.Clear();
             txt_title.Clear();
             txt_description.Clear();
-            txt_weight.Clear();
             txt_price.Clear();
             rb_female.Checked = false;
             rb_male.Checked = false;
             listBox1.SelectedIndex = -1;
             listBox1.DataSource = null;
-            listBox1.DataSource = productsController.GetProducts();
+            listBox1.DataSource = productsController.GetAllProducts();
             listBox1.DisplayMember = "Title";
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            productsController.Delete(selectedProduct.ProductId);
+            productsController.DeleteProduct(selectedProduct.ProductId);
             ReloadForm();
         }
 

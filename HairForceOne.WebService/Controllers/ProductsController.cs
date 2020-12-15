@@ -13,7 +13,7 @@ namespace HairForceOne.WebService.Controllers
     /// This class contains the dapper methods that handles the Product instance and SQL connection
     /// </summary>
 
-    [AllowAnonymous]
+    [Authorize]
     public class ProductsController : ApiController
     {
         /// <summary>
@@ -21,7 +21,6 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <returns>A List of Products</returns>
 
-        [AllowAnonymous]
         [HttpGet]
         public HttpResponseMessage GetAllProducts()
         {
@@ -36,7 +35,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -46,7 +45,6 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="brand"></param>
         /// <returns>A List of Products by Brand</returns>
 
-        [AllowAnonymous]
         [HttpGet]
         public HttpResponseMessage GetProductsByBrand(string brand)
         {
@@ -62,7 +60,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -72,7 +70,6 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="gender"></param>
         /// <returns>A List of Products by Gender</returns>
 
-        [AllowAnonymous]
         [HttpGet]
         public HttpResponseMessage GetAllProductsByGender(string gender)
         {
@@ -88,7 +85,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -98,7 +95,6 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="id"></param>
         /// <returns>A Product object by ProductId</returns>
 
-        [AllowAnonymous]
         [HttpGet]
         public HttpResponseMessage GetProduct(int id)
         {
@@ -113,7 +109,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -123,7 +119,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="product"></param>
         /// <returns></returns>
 
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "2,3")]
         [HttpPost]
         public HttpResponseMessage CreateProduct([FromBody] Product product)
         {
@@ -147,7 +143,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -158,7 +154,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="product"></param>
         /// <returns></returns>
 
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "2,3")]
         [HttpPut]
         public HttpResponseMessage EditProduct(Product product)
         {
@@ -182,7 +178,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -192,7 +188,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="id"></param>
 
         // HVAD FANDEN?! int id
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "2,3")]
         [HttpDelete]
         public HttpResponseMessage DeleteProduct(int id)
         {
@@ -207,7 +203,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
     }

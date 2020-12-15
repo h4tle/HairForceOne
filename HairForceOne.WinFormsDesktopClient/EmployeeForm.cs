@@ -90,7 +90,7 @@ namespace HairForceOne.WinFormsDesktopClient
             }
             Employee employee = new Employee(selectedEmployee.EmployeeId, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int) num_employee_exp.Value, malefemale, txt_employee_biography.Text, null, selectedEmployee.Salt, role);
             employee.Password = txt_employee_password.Text;
-            employeesController.Update(employee);
+            employeesController.EditEmployee(employee);
             ReloadForm();
         }
 
@@ -114,7 +114,7 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            employeesController.Delete(selectedEmployee.EmployeeId);
+            employeesController.DeleteEmployee(selectedEmployee.EmployeeId);
             ReloadForm();
         }
 

@@ -9,10 +9,10 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 {
     public interface IProductsController
     {
-        List<Product> GetProducts();
+        List<Product> GetAllProducts();
         Service GetProduct(int id);
-        NotImplementedException Create(Product product);
-        NotImplementedException Update(Product product);
-        NotImplementedException Delete(int id);
+        NotImplementedException CreateNewProduct(Product product);
+        NotImplementedException EditProduct(Product product);
+        NotImplementedException DeleteProduct(int id);
     }
 }

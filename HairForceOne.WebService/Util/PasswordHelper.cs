@@ -60,7 +60,7 @@ namespace HairForceOne.WebService.Util
         // hasher og salter pass og tjekker om det er ens med det hashede og saltede pass fra db
 
         /// <summary>
-        /// This method compares the input password with the computed PasswordHash the included unique salt 
+        /// This method compares the input password with the computed PasswordHash the included unique salt
         /// </summary>
         /// <param name="password"></param>
         /// <param name="passwordHash"></param>

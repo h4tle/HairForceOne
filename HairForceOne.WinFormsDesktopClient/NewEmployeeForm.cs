@@ -47,7 +47,7 @@ namespace HairForceOne.WinFormsDesktopClient
             
             Employee employee = new Employee(0, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int)num_employee_exp.Value, malefemale, txt_employee_biography.Text, null, null, role);
             employee.Password = txt_employee_password.Text;
-            employeesController.Create(employee);
+            employeesController.CreateNewEmployee(employee);
             this.Close();
         }
         private void textBoxes_TextChanged(object sender, EventArgs e)

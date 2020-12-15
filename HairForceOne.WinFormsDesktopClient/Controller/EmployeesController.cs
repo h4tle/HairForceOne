@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -17,17 +16,51 @@ using System.Threading.Tasks;
 // async
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
-    class EmployeesController : IEmployeesController
+    /// <summary>
+    /// This class contains the HttpClient methods that handles the Employee instance
+    /// </summary>
+    internal class EmployeesController : IEmployeesController
     {
-        HttpClient client = new HttpClient();
+        private readonly HttpClient client = new HttpClient();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmployeesController"/> class.
+        /// </summary>
         public EmployeesController()
         {
-            client = new HttpClient();
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
 
-        public NotImplementedException Create(Employee employee)
+        /// <summary>
+        /// This method gets a list of all Employee objects using HttpClient
+        /// </summary>
+        /// <returns>A list of Employees</returns>
+        public List<Employee> GetEmployees()
+        {
+            Task<HttpResponseMessage> responseTask = client.GetAsync($"employees");
+            responseTask.Wait();
+            List<Employee> employees = JsonConvert.DeserializeObject<List<Employee>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            return employees;
+        }
+
+        /// <summary>
+        /// This method gets a specific EmployeeId from the list of Employee objects using HttpClient
+        ///
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>An Employee object by EmployeeId</returns>
+        public Employee GetEmployee(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// This methods posts a new Employee object using HttpClient
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        public NotImplementedException CreateNewEmployee(Employee employee)
         {
             var JEmployee = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PostAsync($"employees/", JEmployee);
@@ -43,9 +76,15 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-        public NotImplementedException Delete(int id)
+        /// <summary>
+        /// This method updates the exsisting Employee object using HttpClient
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        public NotImplementedException EditEmployee(Employee employee)
         {
-            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"employees/{id}");
+            var JEmployee = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> responseTask = client.PutAsync($"employees/{employee.EmployeeId}", JEmployee);
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)
@@ -58,23 +97,14 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-        public List<Employee> GetEmployees()
+        /// <summary>
+        /// This method deletes the Employee object from the database, using HttpClient
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public NotImplementedException DeleteEmployee(int id)
         {
-            Task<HttpResponseMessage> responseTask = client.GetAsync($"employees");
-            responseTask.Wait();
-            List<Employee> l = JsonConvert.DeserializeObject<List<Employee>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return l;
-        }
-
-        public Employee GetProduct(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public NotImplementedException Update(Employee employee)
-        {
-            var JEmployee = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client.PutAsync($"employees/{employee.EmployeeId}", JEmployee);
+            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"employees/{id}");
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)

@@ -1,13 +1,6 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // ændring af navne
@@ -15,24 +8,21 @@ namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class ServiceForm : Form
     {
-        ServicesController sc = new ServicesController();
-        Service selectedService;
+        private ServicesController sc = new ServicesController();
+        private Service selectedService;
+
         public ServiceForm()
         {
             InitializeComponent();
-            
         }
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-
         }
 
         private void ServiceForm_Load_1(object sender, EventArgs e)
         {
-            listBox1.DataSource = sc.GetServices();
+            listBox1.DataSource = sc.GetAllServices();
             //foreach (Service s in sc.GetServices())
             //{
             //    listBox1.Items.Add(s);
@@ -42,22 +32,21 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void listBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if(listBox1.SelectedIndex != -1)
+            if (listBox1.SelectedIndex != -1)
             {
-            selectedService = (Service)listBox1.SelectedItem;
-            textBox1.Text = selectedService.Title;
-            textBox2.Text = selectedService.Description;
-            textBox3.Text = selectedService.Duration.ToString();
-            textBox4.Text = selectedService.Price.ToString();
-            if(selectedService.Gender == "Female")
-            {
-                rb_female.Checked = true;
-            }
-            else
-            {
-                rb_male.Checked = true;
-            }
-
+                selectedService = (Service)listBox1.SelectedItem;
+                textBox1.Text = selectedService.Title;
+                textBox2.Text = selectedService.Description;
+                textBox3.Text = selectedService.Duration.ToString();
+                textBox4.Text = selectedService.Price.ToString();
+                if (selectedService.Gender == "Female")
+                {
+                    rb_female.Checked = true;
+                }
+                else
+                {
+                    rb_male.Checked = true;
+                }
             }
         }
 
@@ -73,7 +62,7 @@ namespace HairForceOne.WinFormsDesktopClient
                 malefemale = "Male";
             }
             Service s = new Service(selectedService.ServiceId, textBox1.Text, textBox2.Text, int.Parse(textBox3.Text), decimal.Parse(textBox4.Text), malefemale);
-            sc.Update(s);
+            sc.EditService(s);
             ReloadForm();
         }
 
@@ -87,13 +76,13 @@ namespace HairForceOne.WinFormsDesktopClient
             rb_male.Checked = false;
             listBox1.SelectedIndex = -1;
             listBox1.DataSource = null;
-            listBox1.DataSource = sc.GetServices();
+            listBox1.DataSource = sc.GetAllServices();
             listBox1.DisplayMember = "Title";
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            sc.Delete(selectedService.ServiceId);
+            sc.DeleteService(selectedService.ServiceId);
             ReloadForm();
         }
 
@@ -103,6 +92,7 @@ namespace HairForceOne.WinFormsDesktopClient
             f.FormClosed += F2_FormClosed;
             f.ShowDialog();
         }
+
         private void F2_FormClosed(object sender, FormClosedEventArgs e)
         {
             ReloadForm();

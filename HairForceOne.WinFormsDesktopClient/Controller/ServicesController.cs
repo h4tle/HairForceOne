@@ -1,10 +1,9 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Model;
+using Meziantou.Framework.Win32;
 using Newtonsoft.Json;
-using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -16,81 +15,108 @@ using System.Threading.Tasks;
 // navngiv metoder
 // async
 // fjern RestSharp
+
+/// <summary>
+/// This class contains the HttpClient methods that handles the Service instance
+/// </summary>
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
-    class ServicesController : IServicesController
+     internal class ServicesController : IServicesController
     {
-        private RestClient client;
-        private HttpClient client2;
+        private readonly HttpClient client = new HttpClient();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServicesController"/> class.
+        /// </summary>
         public ServicesController()
         {
-            client = new RestClient(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
-
-            client2 = new HttpClient();
-            client2.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
-            client2.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "Your Oauth token");
+            client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
-        public NotImplementedException Create(Service service)
+
+        /// <summary>
+        /// This method gets a list of all Service objects using HttpClient
+        /// </summary>
+        /// <returns>A List of Services</returns>
+
+        public List<Service> GetAllServices()
         {
-            var JService = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client2.PostAsync($"services/", JService);
+            Task<HttpResponseMessage> responseTask = client.GetAsync($"services");
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            List<Service> services = JsonConvert.DeserializeObject<List<Service>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            return services;
         }
 
-        public NotImplementedException Delete(int id)
-        {
-            Task<HttpResponseMessage> responseTask = client2.DeleteAsync($"services/{id}");
-            responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
-        }
-
+        /// <summary>
+        /// This method gets a specific ServiceId from the list of Service objects using HttpClient
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A Service object by ServiceId</returns>
         public Service GetService(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Service> GetServices()
+        /// <summary>
+        /// This method posts a new Service object using HttpClint
+        /// </summary>
+        /// <param name="service"></param>
+        /// <returns></returns>
+        public NotImplementedException CreateNewService(Service service)
         {
-            var request = new RestRequest("services", Method.GET);
-            IRestResponse response = client.Execute(request);
-            List<Service> l = JsonConvert.DeserializeObject<List<Service>>(response.Content);
-            return l;
+            var JService = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> responseTask = client.PostAsync($"services/", JService);
+            responseTask.Wait();
+
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return new NotImplementedException();
+            }
+            else
+            {
+                return new NotImplementedException();
+            }
         }
 
-        public NotImplementedException Update(Service service)
+        /// <summary>
+        /// This method updates the exsisting Service object using HttpClient
+        /// </summary>
+        /// <param name="service"></param>
+        /// <returns></returns>
+        public NotImplementedException EditService(Service service)
         {
+            var JService = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> responseTask = client.PutAsync($"services/{service.ServiceId}", JService);
+            responseTask.Wait();
 
-                var JService = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
-                Task<HttpResponseMessage> responseTask = client2.PutAsync($"services/{service.ServiceId}", JService);
-                responseTask.Wait();
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return new NotImplementedException();
+            }
+            else
+            {
+                return new NotImplementedException();
+            }
+        }
 
-                if (responseTask.Result.IsSuccessStatusCode)
-                {
-                    return new NotImplementedException();
-                }
-                else
-                {
-                    return new NotImplementedException();
-                }
-            
+        /// <summary>
+        /// This method deletes the Service object from the database, using HttpClient
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public NotImplementedException DeleteService(int id)
+        {
+            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"services/{id}");
+            responseTask.Wait();
+
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return new NotImplementedException();
+            }
+            else
+            {
+                return new NotImplementedException();
+            }
         }
     }
 }

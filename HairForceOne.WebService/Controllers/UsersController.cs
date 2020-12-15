@@ -24,7 +24,6 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <returns>A List of Users</returns>
 
-        [Authorize(Roles = "1")]
         [HttpGet]
         public HttpResponseMessage GetAllUsers()
         {
@@ -39,7 +38,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -48,10 +47,6 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <returns>A User object by UserId</returns>
 
-        //[Authorize(Roles = "1")]
-        //[AllowAnonymous]
-
-        // HVAD FANDEN?! int id
         [HttpGet]
         public HttpResponseMessage GetUser(int id)
         {
@@ -69,7 +64,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -79,7 +74,6 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-
         [AllowAnonymous]
         [HttpPost]
         public HttpResponseMessage CreateNewUser([FromBody] User user)
@@ -110,7 +104,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -156,7 +150,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -164,9 +158,6 @@ namespace HairForceOne.WebService.Controllers
         /// This method deletes the User Object from the database, using a specific UserId
         /// </summary>
         /// <param name="id"></param>
-        //[Authorize(Roles = "admin")]
-
-        // HVAD FANDEN?! int id
         [Authorize(Roles = "1")]
         [HttpDelete]
         public HttpResponseMessage DeleteUser(int id)
@@ -184,7 +175,7 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
     }

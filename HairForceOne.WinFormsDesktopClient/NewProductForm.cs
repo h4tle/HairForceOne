@@ -34,8 +34,8 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 malefemale = "Male";
             }
-            Product p = new Product(0, txt_brand.Text, txt_title.Text, txt_description.Text, txt_weight.Text, decimal.Parse(txt_purchaseprice.Text), decimal.Parse(txt_retailprice.Text), null, malefemale);
-            productsController.Create(p);
+            Product p = new Product(0, txt_brand.Text, txt_title.Text, txt_description.Text, decimal.Parse(txt_purchaseprice.Text), decimal.Parse(txt_retailprice.Text), null, malefemale);
+            productsController.CreateNewProduct(p);
             this.Close();
         }
 
@@ -47,6 +47,11 @@ namespace HairForceOne.WinFormsDesktopClient
         private void EnableButton()
         {
             btn_create.Enabled = !Controls.OfType<TextBox>().Any(x => string.IsNullOrEmpty(x.Text));
+        }
+
+        private void NewProductForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

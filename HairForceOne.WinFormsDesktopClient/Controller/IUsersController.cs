@@ -10,8 +10,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
     interface IUsersController
     {
         List<User> GetUsers();
-        NotImplementedException Create(User user);
-        NotImplementedException Update(User user);
-        NotImplementedException Delete(int id);
+        NotImplementedException CreateNewUser(User user);
+        NotImplementedException EditUser(User user);
+        NotImplementedException DeleteUser(int id);
     }
 }
