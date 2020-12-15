@@ -82,6 +82,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"bookings/");
             responseTask.Wait();
+                List<Booking> bookings;
+                responseTask.Result.Content.ReadAsStringAsync().Result.TryGetContentValue<List<Booking>>(out bookings);
                 return JsonConvert.DeserializeObject<List<Booking>>(responseTask.Result.Content.ReadAsStringAsync().Result);
             }
             catch (HttpRequestException e)

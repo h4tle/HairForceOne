@@ -25,8 +25,10 @@ namespace WebServiceUnitTest
 
             try
             {
-                var b = bookingController.GetAllBookings();
-                Assert.AreEqual();
+                var result = bookingController.GetAllBookings();
+                List<Booking> bookings;
+                result.TryGetContentValue<List<Booking>>(out bookings);
+                Assert.IsTrue(bookings.Count > 0);
             }
             catch (Exception e) {
                 Assert.Fail();
