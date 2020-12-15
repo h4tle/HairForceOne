@@ -73,7 +73,7 @@
             // 
             this.btn_create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
             this.btn_create.Enabled = false;
-            this.btn_create.Location = new System.Drawing.Point(401, 424);
+            this.btn_create.Location = new System.Drawing.Point(400, 348);
             this.btn_create.Name = "btn_create";
             this.btn_create.Size = new System.Drawing.Size(75, 23);
             this.btn_create.TabIndex = 85;
@@ -192,7 +192,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(533, 457);
+            this.ClientSize = new System.Drawing.Size(533, 393);
             this.Controls.Add(this.lbl_retailprice);
             this.Controls.Add(this.txt_retailprice);
             this.Controls.Add(this.rb_female);

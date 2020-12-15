@@ -48,7 +48,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbb_employee_roles = new System.Windows.Forms.ComboBox();
             this.lbl_employee_roles = new System.Windows.Forms.Label();
-            this.btn_create = new System.Windows.Forms.Button();
+            this.Btn_Create_Employee = new System.Windows.Forms.Button();
             this.lb_employees = new System.Windows.Forms.ListBox();
             this.rb_male = new System.Windows.Forms.RadioButton();
             this.rb_female = new System.Windows.Forms.RadioButton();
@@ -252,16 +252,16 @@
             this.lbl_employee_roles.TabIndex = 61;
             this.lbl_employee_roles.Text = "Rolle:";
             // 
-            // btn_create
+            // Btn_Create_Employee
             // 
-            this.btn_create.BackColor = System.Drawing.Color.Lime;
-            this.btn_create.Location = new System.Drawing.Point(304, 488);
-            this.btn_create.Name = "btn_create";
-            this.btn_create.Size = new System.Drawing.Size(159, 33);
-            this.btn_create.TabIndex = 63;
-            this.btn_create.Text = "Opret";
-            this.btn_create.UseVisualStyleBackColor = false;
-            this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
+            this.Btn_Create_Employee.BackColor = System.Drawing.Color.Lime;
+            this.Btn_Create_Employee.Location = new System.Drawing.Point(304, 488);
+            this.Btn_Create_Employee.Name = "Btn_Create_Employee";
+            this.Btn_Create_Employee.Size = new System.Drawing.Size(159, 33);
+            this.Btn_Create_Employee.TabIndex = 63;
+            this.Btn_Create_Employee.Text = "Opret ny Medarbejder";
+            this.Btn_Create_Employee.UseVisualStyleBackColor = false;
+            this.Btn_Create_Employee.Click += new System.EventHandler(this.btn_create_Click);
             // 
             // lb_employees
             // 
@@ -325,7 +325,7 @@
             this.Controls.Add(this.rb_female);
             this.Controls.Add(this.rb_male);
             this.Controls.Add(this.lb_employees);
-            this.Controls.Add(this.btn_create);
+            this.Controls.Add(this.Btn_Create_Employee);
             this.Controls.Add(this.cbb_employee_roles);
             this.Controls.Add(this.lbl_employee_roles);
             this.Controls.Add(this.label3);
@@ -377,7 +377,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbb_employee_roles;
         private System.Windows.Forms.Label lbl_employee_roles;
-        private System.Windows.Forms.Button btn_create;
+        private System.Windows.Forms.Button Btn_Create_Employee;
         private System.Windows.Forms.ListBox lb_employees;
         private System.Windows.Forms.RadioButton rb_male;
         private System.Windows.Forms.RadioButton rb_female;

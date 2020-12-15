@@ -32,7 +32,7 @@
             this.btn_backtomain = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_create = new System.Windows.Forms.Button();
+            this.Btn_create_Service = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -90,16 +90,16 @@
             this.btn_delete.UseVisualStyleBackColor = false;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
-            // btn_create
+            // Btn_create_Service
             // 
-            this.btn_create.BackColor = System.Drawing.Color.Lime;
-            this.btn_create.Location = new System.Drawing.Point(304, 488);
-            this.btn_create.Name = "btn_create";
-            this.btn_create.Size = new System.Drawing.Size(159, 33);
-            this.btn_create.TabIndex = 32;
-            this.btn_create.Text = "Opret";
-            this.btn_create.UseVisualStyleBackColor = false;
-            this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
+            this.Btn_create_Service.BackColor = System.Drawing.Color.Lime;
+            this.Btn_create_Service.Location = new System.Drawing.Point(304, 488);
+            this.Btn_create_Service.Name = "Btn_create_Service";
+            this.Btn_create_Service.Size = new System.Drawing.Size(159, 33);
+            this.Btn_create_Service.TabIndex = 32;
+            this.Btn_create_Service.Text = "Opret ny Service";
+            this.Btn_create_Service.UseVisualStyleBackColor = false;
+            this.Btn_create_Service.Click += new System.EventHandler(this.btn_create_Click);
             // 
             // textBox1
             // 
@@ -190,7 +190,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(220, 139);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(275, 290);
             this.listBox1.TabIndex = 43;
@@ -200,7 +200,7 @@
             // 
             this.rb_male.AutoSize = true;
             this.rb_male.Location = new System.Drawing.Point(614, 409);
-            this.rb_male.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_male.Margin = new System.Windows.Forms.Padding(2);
             this.rb_male.Name = "rb_male";
             this.rb_male.Size = new System.Drawing.Size(52, 17);
             this.rb_male.TabIndex = 44;
@@ -212,7 +212,7 @@
             // 
             this.rb_female.AutoSize = true;
             this.rb_female.Location = new System.Drawing.Point(719, 409);
-            this.rb_female.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rb_female.Margin = new System.Windows.Forms.Padding(2);
             this.rb_female.Name = "rb_female";
             this.rb_female.Size = new System.Drawing.Size(58, 17);
             this.rb_female.TabIndex = 45;
@@ -238,7 +238,7 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.btn_create);
+            this.Controls.Add(this.Btn_create_Service);
             this.Controls.Add(this.btn_delete);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_backtomain);
@@ -257,7 +257,7 @@
         private System.Windows.Forms.Button btn_backtomain;
         private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Button btn_delete;
-        private System.Windows.Forms.Button btn_create;
+        private System.Windows.Forms.Button Btn_create_Service;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;

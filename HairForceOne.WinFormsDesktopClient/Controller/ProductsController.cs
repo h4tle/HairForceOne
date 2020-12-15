@@ -48,6 +48,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="id"></param>
         /// <returns>A Product object by ProductId</returns>
+        //Todo
         public Service GetProduct(int id)
         {
             throw new NotImplementedException();

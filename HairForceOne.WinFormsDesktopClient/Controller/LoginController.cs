@@ -29,6 +29,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// <param name="Email"></param>
         /// <param name="Password"></param>
         /// <returns></returns>
+        // Todo
         public bool Login(string Email, string Password)
         {
             bool LoggedIn = false;

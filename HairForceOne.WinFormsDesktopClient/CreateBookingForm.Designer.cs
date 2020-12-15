@@ -70,14 +70,14 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(1008, 682);
+            this.dataGridView1.Size = new System.Drawing.Size(1008, 701);
             this.dataGridView1.TabIndex = 30;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dateTimePicker
             // 
             this.dateTimePicker.Location = new System.Drawing.Point(839, 33);
-            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(135, 20);
             this.dateTimePicker.TabIndex = 33;
@@ -87,7 +87,7 @@
             // 
             this.lb_availabletimes.FormattingEnabled = true;
             this.lb_availabletimes.Location = new System.Drawing.Point(839, 55);
-            this.lb_availabletimes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lb_availabletimes.Margin = new System.Windows.Forms.Padding(2);
             this.lb_availabletimes.Name = "lb_availabletimes";
             this.lb_availabletimes.Size = new System.Drawing.Size(135, 225);
             this.lb_availabletimes.TabIndex = 34;
@@ -97,7 +97,7 @@
             // 
             this.lb_users.FormattingEnabled = true;
             this.lb_users.Location = new System.Drawing.Point(475, 33);
-            this.lb_users.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lb_users.Margin = new System.Windows.Forms.Padding(2);
             this.lb_users.Name = "lb_users";
             this.lb_users.Size = new System.Drawing.Size(179, 173);
             this.lb_users.TabIndex = 35;
@@ -106,7 +106,7 @@
             // 
             this.lb_employee.FormattingEnabled = true;
             this.lb_employee.Location = new System.Drawing.Point(669, 33);
-            this.lb_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lb_employee.Margin = new System.Windows.Forms.Padding(2);
             this.lb_employee.Name = "lb_employee";
             this.lb_employee.Size = new System.Drawing.Size(160, 173);
             this.lb_employee.TabIndex = 36;
@@ -118,7 +118,7 @@
             this.lv_services.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lv_services.HideSelection = false;
             this.lv_services.Location = new System.Drawing.Point(85, 33);
-            this.lv_services.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lv_services.Margin = new System.Windows.Forms.Padding(2);
             this.lv_services.MultiSelect = false;
             this.lv_services.Name = "lv_services";
             this.lv_services.Size = new System.Drawing.Size(169, 168);
@@ -133,7 +133,7 @@
             this.lv_products.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lv_products.HideSelection = false;
             this.lv_products.Location = new System.Drawing.Point(287, 33);
-            this.lv_products.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lv_products.Margin = new System.Windows.Forms.Padding(2);
             this.lv_products.Name = "lv_products";
             this.lv_products.Size = new System.Drawing.Size(169, 168);
             this.lv_products.TabIndex = 38;
@@ -145,7 +145,7 @@
             this.btn_createBooking.BackColor = System.Drawing.Color.Lime;
             this.btn_createBooking.Enabled = false;
             this.btn_createBooking.Location = new System.Drawing.Point(466, 287);
-            this.btn_createBooking.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_createBooking.Margin = new System.Windows.Forms.Padding(2);
             this.btn_createBooking.Name = "btn_createBooking";
             this.btn_createBooking.Size = new System.Drawing.Size(117, 40);
             this.btn_createBooking.TabIndex = 39;
@@ -158,7 +158,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(1008, 682);
+            this.ClientSize = new System.Drawing.Size(1008, 701);
             this.Controls.Add(this.btn_createBooking);
             this.Controls.Add(this.lv_products);
             this.Controls.Add(this.lv_services);
