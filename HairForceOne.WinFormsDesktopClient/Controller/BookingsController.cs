@@ -94,7 +94,6 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 
         public List<Booking> GetBookingsByDate(DateTime date)
         {
-
             var JDate = new StringContent(JsonConvert.SerializeObject(date), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PostAsync($"bookings/date/", JDate);
             responseTask.Wait();
