@@ -167,7 +167,7 @@
             // 
             // btn_createbooking
             // 
-            this.btn_createbooking.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_createbooking.BackColor = System.Drawing.Color.Lime;
             this.btn_createbooking.Location = new System.Drawing.Point(363, 446);
             this.btn_createbooking.Name = "btn_createbooking";
             this.btn_createbooking.Size = new System.Drawing.Size(328, 35);

@@ -45,6 +45,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             return ul;
         }
 
+        // Todo
         public NotImplementedException CreateNewUser(User user)
         {
             var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
@@ -61,6 +62,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
+        // Todo
+
         public NotImplementedException EditUser(User user)
         {
             var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
@@ -76,6 +79,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 return new NotImplementedException();
             }
         }
+
+        // Todo
 
         public NotImplementedException DeleteUser(int id)
         {

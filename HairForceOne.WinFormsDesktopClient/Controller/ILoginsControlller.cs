@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
-    interface ILoginsControlller
+    internal interface ILoginsControlller
     {
+         bool Login(string Email, string Password);
     }
 }
