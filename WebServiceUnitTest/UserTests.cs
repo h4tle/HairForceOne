@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Net.Http;
+using System.Web.Configuration;
 using System.Web.Http;
 using HairForceOne.WebService.Controllers;
 using HairForceOne.WebService.Model;
@@ -9,32 +12,29 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace WebServiceUnitTest
 {
     [TestClass]
-    public class ProductTests
+    public class UserTests
     {
         [TestMethod]
-        public void Test_GetAllProducts()
+        public void Test_GetAllUsers()
         {
-            //Arrange
-            var productsController = new ProductsController()
+            var usersController = new UsersController()
             {
                 Request = new System.Net.Http.HttpRequestMessage(),
                 Configuration = new HttpConfiguration()
             };
+
             try
             {
-            //Acts
-            var result = productsController.GetAllProducts();
-            List<Product> products;
-            result.TryGetContentValue<List<Product>>(out products);
-
-            //Assert
-            Assert.IsTrue(products.Count > 0);
-
+                var result = usersController.GetAllUsers();
+                List<User> users;
+                result.TryGetContentValue<List<User>>(out users);
+                Assert.IsTrue(users.Count > 0);
             }
             catch (Exception e)
             {
                 Assert.Fail();
             }
         }
+
     }
 }

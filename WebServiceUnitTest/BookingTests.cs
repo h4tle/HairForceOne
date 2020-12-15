@@ -15,7 +15,7 @@ namespace WebServiceUnitTest
     public class BookingTests
     {
         [TestMethod]
-        public void Test_GetAll()
+        public void Test_GetAllBookings()
         {
             var bookingController = new BookingsController()
             {
