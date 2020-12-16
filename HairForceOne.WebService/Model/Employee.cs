@@ -62,6 +62,7 @@
         /// Gets and sets the RoleId for the Employee instance
         /// </summary>
         public int RoleId { get; set; }
+
         public string Password { get; set; }
 
         public Employee(int EmployeeId_, string FirstName_, string LastName_, string Email_, string PhoneNo_, int Experience_, string Gender_, string Biography_, string PasswordHash_, string Salt_, int RoleId_)

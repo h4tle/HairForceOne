@@ -1,13 +1,7 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
@@ -17,7 +11,8 @@ namespace HairForceOne.WinFormsDesktopClient
     // tjek om enable af create knap virker
     internal partial class NewEmployeeForm : Form
     {
-        EmployeesController employeesController;
+        private EmployeesController employeesController;
+
         public NewEmployeeForm(EmployeesController employeesController)
         {
             this.employeesController = employeesController;
@@ -44,12 +39,13 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 role = 3;
             }
-            
+
             Employee employee = new Employee(0, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int)num_employee_exp.Value, malefemale, txt_employee_biography.Text, null, null, role);
             employee.Password = txt_employee_password.Text;
             employeesController.CreateNewEmployee(employee);
             this.Close();
         }
+
         private void textBoxes_TextChanged(object sender, EventArgs e)
         {
             EnableButton();
@@ -59,6 +55,5 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             btn_create.Enabled = !Controls.OfType<TextBox>().Any(x => string.IsNullOrEmpty(x.Text));
         }
-
     }
 }

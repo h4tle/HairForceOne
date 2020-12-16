@@ -1,13 +1,7 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // ændring af navne
@@ -16,7 +10,8 @@ namespace HairForceOne.WinFormsDesktopClient
 {
     internal partial class NewProductForm : Form
     {
-        ProductsController productsController;
+        private ProductsController productsController;
+
         public NewProductForm(ProductsController productsController)
         {
             this.productsController = productsController;
@@ -51,7 +46,6 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void NewProductForm_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

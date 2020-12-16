@@ -5,12 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-
 
 // håndter exceptions (custom exception??)
 // tag exception fra statuscode og håndter den
@@ -19,9 +17,10 @@ using System.Threading.Tasks;
 // async
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
-    class BookingsController : IBookingsController
+    internal class BookingsController : IBookingsController
     {
-        HttpClient client = new HttpClient();
+        private HttpClient client = new HttpClient();
+
         public BookingsController()
         {
             client = new HttpClient();
@@ -29,6 +28,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             // skal sætte token ind
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
+
         // navngiv metode
         public NotImplementedException Create(Booking booking)
         {
@@ -50,10 +50,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
             catch (SqlException e)
             {
-
                 throw e;
             }
-            
         }
 
         public NotImplementedException Delete(int bookingId)
@@ -80,17 +78,15 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             try
             {
-            Task<HttpResponseMessage> responseTask = client.GetAsync($"bookings/");
-            responseTask.Wait();
+                Task<HttpResponseMessage> responseTask = client.GetAsync($"bookings/");
+                responseTask.Wait();
                 return JsonConvert.DeserializeObject<List<Booking>>(responseTask.Result.Content.ReadAsStringAsync().Result);
             }
             catch (HttpRequestException e)
             {
                 throw e;
             }
-            
         }
-
 
         public List<Booking> GetBookingsByDate(DateTime date)
         {
@@ -110,8 +106,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 
         public List<Booking> GetBookingsByEmployee(Employee employee, DateTime date)
         {
-            List<Booking> bookings = GetBookingsByDate(date); 
-            if(employee == null)
+            List<Booking> bookings = GetBookingsByDate(date);
+            if (employee == null)
             {
                 return bookings;
             }
@@ -120,7 +116,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 List<Booking> employeeBookings = new List<Booking>();
                 foreach (Booking booking in bookings)
                 {
-                    if(booking.EmployeeId == employee.EmployeeId)
+                    if (booking.EmployeeId == employee.EmployeeId)
                     {
                         employeeBookings.Add(booking);
                     }
@@ -144,6 +140,5 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 throw new NotImplementedException();
             }
         }
-
     }
 }

@@ -1,13 +1,6 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // ændring af navne
@@ -15,8 +8,9 @@ namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class ProductForm : Form
     {
-        ProductsController productsController = new ProductsController();
-        Product selectedProduct;
+        private ProductsController productsController = new ProductsController();
+        private Product selectedProduct;
+
         public ProductForm()
         {
             InitializeComponent();
@@ -24,7 +18,6 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-
         }
 
         private void ProductForm_Load(object sender, EventArgs e)
@@ -37,7 +30,7 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             if (listBox1.SelectedIndex != -1)
             {
-                selectedProduct = (Product) listBox1.SelectedItem;
+                selectedProduct = (Product)listBox1.SelectedItem;
                 txt_brand.Text = selectedProduct.Brand;
                 txt_title.Text = selectedProduct.Title;
                 txt_description.Text = selectedProduct.Description;
@@ -50,7 +43,6 @@ namespace HairForceOne.WinFormsDesktopClient
                 {
                     rb_male.Checked = true;
                 }
-
             }
         }
 

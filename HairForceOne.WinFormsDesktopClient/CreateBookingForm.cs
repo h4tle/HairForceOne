@@ -2,12 +2,6 @@
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // implementer User
@@ -16,10 +10,11 @@ namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class CreateBookingForm : Form
     {
-        ServicesController servicesController = new ServicesController();
-        ProductsController productsController = new ProductsController();
-        EmployeesController employeeController = new EmployeesController();
-        BookingsController bookingsController = new BookingsController();
+        private ServicesController servicesController = new ServicesController();
+        private ProductsController productsController = new ProductsController();
+        private EmployeesController employeeController = new EmployeesController();
+        private BookingsController bookingsController = new BookingsController();
+
         //UsersController usersController = new UsersController();
         public CreateBookingForm()
         {
@@ -28,7 +23,6 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void BookingForm_Load(object sender, EventArgs e)
@@ -51,11 +45,11 @@ namespace HairForceOne.WinFormsDesktopClient
                 i.ToolTipText = product.RetailPrice.ToString();
                 lv_products.Items.Add(i);
             }
-
         }
+
         private void lists_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lb_employee.SelectedIndex > -1 && lv_services.CheckedItems.Count > 0 && dateTimePicker.Value >= DateTime.Now.AddHours(-1))
+            if (lb_employee.SelectedIndex > -1 && lv_services.CheckedItems.Count > 0 && dateTimePicker.Value >= DateTime.Now.AddHours(-1))
             {
                 Event ev = new Event(dateTimePicker.Value, getDuration(), ((Employee)lb_employee.SelectedItem).EmployeeId);
                 lb_availabletimes.DataSource = bookingsController.GetAvailableTimes(ev);
@@ -104,6 +98,7 @@ namespace HairForceOne.WinFormsDesktopClient
             }
             btn_createBooking.Enabled = false;
         }
+
         private int getDuration()
         {
             int duration = 0;
@@ -114,6 +109,7 @@ namespace HairForceOne.WinFormsDesktopClient
             }
             return duration;
         }
+
         private decimal GetTotalPrice()
         {
             decimal totalPrice = 0;

@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 /// </summary>
 namespace HairForceOne.WinFormsDesktopClient.Controller
 {
-     internal class ServicesController : IServicesController
+    internal class ServicesController : IServicesController
     {
         private readonly HttpClient client = new HttpClient();
 

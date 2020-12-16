@@ -59,7 +59,7 @@ namespace HairForceOne.WebService.Controllers
                         return Request.CreateResponse(HttpStatusCode.OK, bookings);
                     }
                 }
-                }
+            }
             // return HttpStatusCode with execption
             catch (SqlException)
             {

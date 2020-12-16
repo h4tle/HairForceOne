@@ -1,13 +1,6 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
@@ -17,8 +10,9 @@ namespace HairForceOne.WinFormsDesktopClient
 
     public partial class EmployeeForm : Form
     {
-        EmployeesController employeesController = new EmployeesController();
-        Employee selectedEmployee;
+        private EmployeesController employeesController = new EmployeesController();
+        private Employee selectedEmployee;
+
         public EmployeeForm()
         {
             InitializeComponent();
@@ -34,7 +28,7 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             if (lb_employees.SelectedIndex != -1)
             {
-                selectedEmployee = (Employee) lb_employees.SelectedItem;
+                selectedEmployee = (Employee)lb_employees.SelectedItem;
                 txt_employee_biography.Text = selectedEmployee.Biography;
                 txt_employee_email.Text = selectedEmployee.Email;
                 txt_employee_firstname.Text = selectedEmployee.FirstName;
@@ -60,7 +54,6 @@ namespace HairForceOne.WinFormsDesktopClient
                 {
                     rb_male.Checked = true;
                 }
-
             }
         }
 
@@ -88,7 +81,7 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 txt_employee_password.Text = null;
             }
-            Employee employee = new Employee(selectedEmployee.EmployeeId, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int) num_employee_exp.Value, malefemale, txt_employee_biography.Text, null, selectedEmployee.Salt, role);
+            Employee employee = new Employee(selectedEmployee.EmployeeId, txt_employee_firstname.Text, txt_employee_lastname.Text, txt_employee_email.Text, txt_employee_phoneno.Text, (int)num_employee_exp.Value, malefemale, txt_employee_biography.Text, null, selectedEmployee.Salt, role);
             employee.Password = txt_employee_password.Text;
             employeesController.EditEmployee(employee);
             ReloadForm();

@@ -1,25 +1,19 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
-    // ændring af navne
+// ændring af navne
 
 {
     public partial class BookingForm : Form
     {
-        ServicesController servicesController = new ServicesController();
-        ProductsController productsController = new ProductsController();
-        EmployeesController employeeController = new EmployeesController();
-        BookingsController bookingsController = new BookingsController();
+        private ServicesController servicesController = new ServicesController();
+        private ProductsController productsController = new ProductsController();
+        private EmployeesController employeeController = new EmployeesController();
+        private BookingsController bookingsController = new BookingsController();
+
         //UsersController usersController = new UsersController();
         public BookingForm()
         {
@@ -32,13 +26,10 @@ namespace HairForceOne.WinFormsDesktopClient
             cb_employee.DisplayMember = "FirstName";
             //dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
             dgv_bookings.DataSource = bookingsController.GetAllBookings();
-
-
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            
             Booking booking = (Booking)dgv_bookings.CurrentRow.DataBoundItem;
             bookingsController.Delete(booking.BookingId);
             dgv_bookings.ClearSelection();
@@ -47,8 +38,7 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void dateTime1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem,dateTime1.SelectionStart);
-
+            dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
         }
 
         private void cb_employee_SelectedIndexChanged(object sender, EventArgs e)

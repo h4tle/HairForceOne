@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HairForceOne.WinFormsDesktopClient.Model
+﻿namespace HairForceOne.WinFormsDesktopClient.Model
 {
-	public class Employee
-	{
-		public int EmployeeId { get; set; }
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
-		public string Email { get; set; }
-		public string PhoneNo { get; set; }
-		public int Experience { get; set; }
-		public string Gender { get; set; }
-		public string Biography { get; set; }
-		public string PasswordHash { get; set; }
+    public class Employee
+    {
+        public int EmployeeId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNo { get; set; }
+        public int Experience { get; set; }
+        public string Gender { get; set; }
+        public string Biography { get; set; }
+        public string PasswordHash { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
-		public int RoleId { get; set; }
+        public int RoleId { get; set; }
 
         public Employee(int EmployeeId_, string FirstName_, string LastName_, string Email_, string PhoneNo_, int Experience_, string Gender_, string Biography_, string PasswordHash_, string Salt_, int RoleId_)
         {

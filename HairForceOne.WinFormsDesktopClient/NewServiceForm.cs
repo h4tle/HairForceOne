@@ -1,14 +1,8 @@
-﻿using System;
-using HairForceOne.WinFormsDesktopClient.Controller;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 // ændring af navne
 // tjek om enable af create knap virker
@@ -16,7 +10,8 @@ namespace HairForceOne.WinFormsDesktopClient
 {
     internal partial class NewServiceForm : Form
     {
-        ServicesController sc;
+        private ServicesController sc;
+
         public NewServiceForm(ServicesController sc)
         {
             this.sc = sc;
@@ -51,7 +46,6 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void NewServiceForm_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

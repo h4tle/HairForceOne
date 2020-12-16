@@ -1,12 +1,4 @@
-﻿using HairForceOne.WinFormsDesktopClient.Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 // ændring af navne
@@ -18,7 +10,6 @@ namespace HairForceOne.WinFormsDesktopClient
     {
         public MainForm()
         {
-            
             InitializeComponent();
         }
 
@@ -29,27 +20,23 @@ namespace HairForceOne.WinFormsDesktopClient
             //this.TopMost = true;
             //this.FormBorderStyle = FormBorderStyle.None;
             //this.WindowState = FormWindowState.Maximized;
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void lbl_main_next_Click(object sender, EventArgs e)
         {
-
         }
 
         private void lbl_main_watch_Click(object sender, EventArgs e)
         {
-
         }
 
         private void clockTimer_Tick(object sender, EventArgs e)
         {
-           lbl_main_watch.Text = DateTime.Now.ToString("g");
+            lbl_main_watch.Text = DateTime.Now.ToString("g");
         }
 
         private void btn_service_Click(object sender, EventArgs e)
@@ -85,7 +72,6 @@ namespace HairForceOne.WinFormsDesktopClient
             Form CreateBookingForm = new CreateBookingForm();
             CreateBookingForm.Show();
             this.Hide();
-
         }
 
         private void btn_user_Click(object sender, EventArgs e)

@@ -39,6 +39,7 @@
         /// Gets and sets the Gender for the Product instance
         /// </summary>
         public string Gender { get; set; }
+
         public int Quantity { get; set; }
 
         public Product(int ProductId_, string Brand_, string Title_, string Description_, decimal PurchasePrice_, decimal RetailPrice_, string Gender_, int Quantity_)
