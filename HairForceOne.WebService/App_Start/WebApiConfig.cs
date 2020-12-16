@@ -19,7 +19,7 @@ namespace HairForceOne.WebService
             // Web API routes
 
             // Route specific actions
-            //config.MapHttpAttributeRoutes();
+            config.MapHttpAttributeRoutes();
             // Default Routes
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
