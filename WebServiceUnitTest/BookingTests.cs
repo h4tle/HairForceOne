@@ -14,7 +14,7 @@ namespace WebServiceUnitTest
     [TestClass]
     public class BookingTests
     {
-        BookingsController bookingsController;
+        private BookingsController bookingsController;
 
         [TestInitialize]
         public void Setup()
@@ -27,8 +27,9 @@ namespace WebServiceUnitTest
         }
 
         [TestMethod]
-        public void Test_GetAll()
+        public void Test_GetAllBookings()
         {
+            //Arrange
             try
             {
                 var result = bookingsController.GetAllBookings();
