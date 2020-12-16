@@ -17,9 +17,10 @@ namespace WebServiceUnitTest
     {
         private TransactionScope scope;
         private ServicesController servicesController;
+
         /// <summary>
         /// This method instantiate the ServicesController instance and the TransactionScope instance
-        /// 
+        ///
         /// </summary>
         [TestInitialize]
         public void Setup()
@@ -39,10 +40,10 @@ namespace WebServiceUnitTest
         public void Test_GetAllServices()
         {
             //Arrange
+            var result = servicesController.GetAllServices();
             try
             {
                 //Acts
-                var result = servicesController.GetAllServices();
                 List<Service> services;
                 result.TryGetContentValue<List<Service>>(out services);
 
@@ -58,20 +59,18 @@ namespace WebServiceUnitTest
         /// <summary>
         /// This test executes the GetService method to retrieves a Services by ServiceID
         /// </summary>
-        /// <param name="id"></param>
         [TestMethod]
         public void Test_GetService()
         {
             //Arrange
+            var result = servicesController.GetService(1);
             try
             {
                 //Acts
-                var result = servicesController.GetService(1);
+                Service service;
 
                 //Assert
-                Service service;
                 Assert.IsTrue(result.TryGetContentValue<Service>(out service));
-
                 Assert.AreEqual(1, service.ServiceId);
             }
             catch (Exception e)
@@ -79,6 +78,7 @@ namespace WebServiceUnitTest
                 Assert.Fail();
             }
         }
+
         /// <summary>
         /// This test executes the CreateNewService() with a new Service to check for SuccessStatusCode
         /// </summary>
@@ -94,17 +94,24 @@ namespace WebServiceUnitTest
                 },
                 Configuration = new HttpConfiguration()
             };
+            try
+            {
+                // Act
+                Service service = new Service() { ServiceId = 1, Title = "Test1", Description = "Test1", Duration = 30, Price = 300, Gender = "Male" };
+                var response = servicesController.CreateNewService(service);
 
-            // Act
-            Service service = new Service() { ServiceId = 1, Title = "Test1", Description = "Test1", Duration = 30, Price = 300, Gender = "Male" };
-            var response = servicesController.CreateNewService(service);
-
-            // Assert
-            Assert.IsTrue(response.IsSuccessStatusCode);
-            Assert.AreEqual("Test1", service.Title);
+                // Assert
+                Assert.IsTrue(response.IsSuccessStatusCode);
+                Assert.AreEqual("Test1", service.Title);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail();
+            }
         }
+
         /// <summary>
-        /// This test executes the GetService() to retrieve an service
+        /// This test executes the GetService() to retrieve a service
         /// Than executes the EditService() method with an update in the Title, checks for SucessStatuscode and the two Titles not being Equal
         /// </summary>
         [TestMethod]
@@ -119,23 +126,30 @@ namespace WebServiceUnitTest
                 },
                 Configuration = new HttpConfiguration()
             };
+            try
+            {
+                // Act
+                var result = servicesController.GetService(1);
+                Service service;
+                result.TryGetContentValue<Service>(out service);
+                string noneupdatedtitle = service.Title;
+                service.Title = "Test";
+                var response = servicesController.EditService(service);
+                var newresult = servicesController.GetService(1);
+                Service actual;
 
-            // Act
-            var result = servicesController.GetService(1);
-            Service service;
-            result.TryGetContentValue<Service>(out service);
-            string noneupdatedtitle = service.Title;
-            service.Title = "Test2";
-            var response = servicesController.EditService(service);
-            var newresult = servicesController.GetService(1);
-            Service actual;
+                newresult.TryGetContentValue<Service>(out actual);
 
-            newresult.TryGetContentValue<Service>(out actual);
-
-            // Assert
-            Assert.IsTrue(response.IsSuccessStatusCode);
-            Assert.AreNotEqual(actual.Title, noneupdatedtitle);
+                // Assert
+                Assert.IsTrue(response.IsSuccessStatusCode);
+                Assert.AreNotEqual(actual.Title, noneupdatedtitle);
+            }
+            catch (Exception e)
+            {
+                Assert.Fail();
+            }
         }
+
         /// <summary>
         /// This method executes the Dispose() that cleans the Scope
         /// </summary>

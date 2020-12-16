@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Net.Http;
-using System.Transactions;
-using System.Web.Configuration;
-using System.Web.Http;
-using HairForceOne.WebService.Controllers;
+﻿using HairForceOne.WebService.Controllers;
 using HairForceOne.WebService.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Transactions;
+using System.Web.Http;
 
 namespace WebServiceUnitTest
 {
@@ -28,6 +25,7 @@ namespace WebServiceUnitTest
         {
             scope.Dispose();
         }
+
         [TestMethod]
         public void Test_GetAllUsers()
         {
@@ -49,6 +47,5 @@ namespace WebServiceUnitTest
                 Assert.Fail();
             }
         }
-
     }
 }

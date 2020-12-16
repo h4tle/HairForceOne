@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Net.Http;
-using System.Web.Configuration;
-using System.Web.Http;
-using HairForceOne.WebService.Controllers;
+﻿using HairForceOne.WebService.Controllers;
 using HairForceOne.WebService.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace WebServiceUnitTest
 {
@@ -37,7 +34,8 @@ namespace WebServiceUnitTest
                 result.TryGetContentValue<List<Booking>>(out bookings);
                 Assert.IsTrue(bookings.Count > 0);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 Assert.Fail();
             }
         }
@@ -64,13 +62,13 @@ namespace WebServiceUnitTest
             service.Gender = "male";
             service.Price = 27;
             service.Title = "Jeg har skidt";
-            List <Service> services = new List<Service>();
+            List<Service> services = new List<Service>();
             services.Add(service);
 
             booking.Services = services;
 
             //Act
-                var createdResult = bookingsController.CreateBooking(booking);
+            var createdResult = bookingsController.CreateBooking(booking);
             //Assert
             Assert.IsFalse(createdResult.IsSuccessStatusCode);
 
@@ -80,6 +78,5 @@ namespace WebServiceUnitTest
 
             Assert.AreEqual(startBookings.Count, endBookings.Count);
         }
-
     }
 }
