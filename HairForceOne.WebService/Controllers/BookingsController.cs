@@ -34,13 +34,32 @@ namespace HairForceOne.WebService.Controllers
             try
             {
                 //hfo_Booking
-                string sql = "SELECT * FROM hfo_Booking";
-                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                string sqlBooking = "SELECT * FROM hfo_Booking";
+                string sqlService = "EXEC GetServicesForBooking @BookingId";
+                string sqlProduct = "EXEC GetProductsForBooking @BookingId";
+                using (var scope = new TransactionScope())
                 {
-                    List<Booking> bookings = connection.Query<Booking>(sql).AsList();
-                    return Request.CreateResponse(HttpStatusCode.OK, bookings);
+                    using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                    {
+                        List<Booking> bookings = connection.Query<Booking>(sqlBooking).AsList();
+
+                        connection.Open();
+                        using (var transaction = connection.BeginTransaction())
+                        {
+                            foreach (Booking booking in bookings)
+                            {
+                                List<Service> services = transaction.Query<Service>(sqlService, new { booking.BookingId }).AsList();
+                                booking.Services = services;
+                                List<Product> products = transaction.Query<Product>(sqlProduct, new { booking.BookingId }).AsList();
+                                booking.Products = products;
+                            }
+                            transaction.Commit();
+                            scope.Complete();
+                        }
+                        return Request.CreateResponse(HttpStatusCode.OK, bookings);
+                    }
                 }
-            }
+                }
             // return HttpStatusCode with execption
             catch (SqlException)
             {
@@ -132,7 +151,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="booking">booking object to store in the DB.</param>
         /// <returns>the id of the created booking</returns>
         [HttpPost]
-        [Authorize (Roles = "2,3")]
+        [Authorize(Roles = "2,3")]
         public HttpResponseMessage CreateBooking([FromBody] Booking booking)
         {
             try
@@ -147,8 +166,6 @@ namespace HairForceOne.WebService.Controllers
                 {
                     using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                     {
-                        connection.Open();
-
                         int BookingId = connection.QuerySingle<int>(bookingSql, new
                         {
                             booking.TotalPrice,
@@ -159,17 +176,15 @@ namespace HairForceOne.WebService.Controllers
                             booking.Duration,
                         });
 
-
                         using (var transaction = connection.BeginTransaction())
                         {
-
                             foreach (Service s in booking.Services)
                             {
                                 var productId = transaction.Execute(serviceSql, new
                                 {
                                     s.ServiceId,
                                     BookingId
-                            });
+                                });
                             }
 
                             foreach (Product p in booking.Products)
@@ -183,13 +198,10 @@ namespace HairForceOne.WebService.Controllers
                             }
                             transaction.Commit();
                             scope.Complete();
-                            connection.Close();
                             return Request.CreateResponse(HttpStatusCode.Accepted, BookingId);
-
                         }
                     }
                 }
-                
             }
             catch (Exception e)
             {
@@ -203,7 +215,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="booking">the specific booking containing new values</param>
         /// <returns>the id of the updated booking</returns>
         [HttpPut]
-        [Authorize (Roles = "2,3")]
+        [Authorize(Roles = "2,3")]
         public HttpResponseMessage UpdateBooking(Booking booking)
         {
             try
