@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,7 @@ namespace HairForceOne.WinFormsDesktopClient.Model
 			this.IsDone = isDone;
         }
 
+		[JsonConstructor]
 		public Booking(int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment, List<Service> serivces, List<Product> products)
 		{
 			this.UserId = userId;

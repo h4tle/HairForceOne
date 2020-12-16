@@ -83,11 +83,15 @@ namespace HairForceOne.WebService.Controllers
         {
             try
             {
-                string sql = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0";
+                string sqlBooking = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0";
+                string sqlService = "EXEC GetServicesForBooking @BookingId";
+                string sqlProduct = "EXEC GetProductsForBooking @BookingId";
+                
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    List<Booking> bookings = connection.Query<Booking>(sql, new { date }).AsList();
-                    return Request.CreateResponse(HttpStatusCode.OK, bookings);
+                    List<Booking> bookings = connection.Query<Booking>(sqlBooking, new { date }).AsList();
+                    using (var transaction)
+                        return Request.CreateResponse(HttpStatusCode.OK, bookings);
                 }
             }
             catch (SqlException e)
@@ -175,6 +179,8 @@ namespace HairForceOne.WebService.Controllers
                             booking.StartTime,
                             booking.Duration,
                         });
+
+                        connection.Open();
 
                         using (var transaction = connection.BeginTransaction())
                         {

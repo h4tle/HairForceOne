@@ -28,6 +28,8 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void BookingForm_Load(object sender, EventArgs e)
         {
+            lb_Products.DisplayMember = "Title";
+            lb_Services.DisplayMember = "Title";
             cb_employee.DataSource = employeeController.GetEmployees();
             cb_employee.DisplayMember = "FirstName";
             //dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
@@ -54,6 +56,20 @@ namespace HairForceOne.WinFormsDesktopClient
         private void cb_employee_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
+        }
+
+        private void dgv_bookings_SelectionChanged(object sender, EventArgs e)
+        {
+            if(dgv_bookings.SelectedRows.Count > 0)
+            {
+            lb_Services.DataSource = ((Booking)dgv_bookings.SelectedRows[0].DataBoundItem).Services;
+            lb_Products.DataSource = ((Booking)dgv_bookings.SelectedRows[0].DataBoundItem).Products;
+            }
+            else
+            {
+                lb_Services.DataSource = null;
+                lb_Products.DataSource = null;
+            }
         }
     }
 }
