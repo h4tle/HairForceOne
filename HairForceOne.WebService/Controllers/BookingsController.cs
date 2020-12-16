@@ -86,11 +86,12 @@ namespace HairForceOne.WebService.Controllers
                 string sqlBooking = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0";
                 string sqlService = "EXEC GetServicesForBooking @BookingId";
                 string sqlProduct = "EXEC GetProductsForBooking @BookingId";
-                using (var scope = new TransactionScope()) { 
-                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                using (var scope = new TransactionScope())
                 {
-                    List<Booking> bookings = connection.Query<Booking>(sqlBooking, new { date }).AsList();
-                    connection.Open();
+                    using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                    {
+                        List<Booking> bookings = connection.Query<Booking>(sqlBooking, new { date }).AsList();
+                        connection.Open();
                         using (var transaction = connection.BeginTransaction())
                         {
                             foreach (Booking booking in bookings)
@@ -103,7 +104,7 @@ namespace HairForceOne.WebService.Controllers
                             transaction.Commit();
                             scope.Complete();
                         }
-                    return Request.CreateResponse(HttpStatusCode.OK, bookings);
+                        return Request.CreateResponse(HttpStatusCode.OK, bookings);
                     }
                 }
             }

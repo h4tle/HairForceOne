@@ -30,18 +30,19 @@ namespace HairForceOne.WinFormsDesktopClient.Model
             this.IsDone = isDone;
         }
 
-		[JsonConstructor]
-		public Booking(int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment, List<Service> serivces, List<Product> products)
-		{
-			this.UserId = userId;
-			this.EmployeeId = employeeId;
-			this.StartTime = startTime;
-			this.Duration = duration;
-			this.TotalPrice = totalPrice;
-			this.Comment = comment;
-			this.Services = serivces;
-			this.Products = products;
-		}
+        [JsonConstructor]
+        public Booking(int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment, List<Service> serivces, List<Product> products)
+        {
+            this.UserId = userId;
+            this.EmployeeId = employeeId;
+            this.StartTime = startTime;
+            this.Duration = duration;
+            this.TotalPrice = totalPrice;
+            this.Comment = comment;
+            this.Services = serivces;
+            this.Products = products;
+        }
+
         public Booking(int v)
         {
         }

@@ -77,7 +77,6 @@
   <ItemGroup>
     <Compile Include="BookingTests.cs" />
     <Compile Include="EmployeeTests.cs" />
-    <Compile Include="LoginTests.cs" />
     <Compile Include="ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTests.cs" />
