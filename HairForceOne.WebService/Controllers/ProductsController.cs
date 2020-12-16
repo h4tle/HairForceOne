@@ -121,7 +121,7 @@ namespace HairForceOne.WebService.Controllers
 
         [Authorize(Roles = "2,3")]
         [HttpPost]
-        public HttpResponseMessage CreateProduct([FromBody] Product product)
+        public HttpResponseMessage CreateNewProduct([FromBody] Product product)
         {
             try
             {
