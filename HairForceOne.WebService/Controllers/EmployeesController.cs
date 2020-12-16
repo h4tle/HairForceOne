@@ -27,7 +27,6 @@ namespace HairForceOne.WebService.Controllers
         [HttpGet]
         public HttpResponseMessage GetAllEmployees()
         {
-            var test231 = HttpContext.Current.User.Identity;
             try
             {
                 string sql = "SELECT * FROM hfo_Employee";

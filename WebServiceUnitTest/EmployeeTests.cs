@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Net.Http;
+using System.Transactions;
 using System.Web.Configuration;
 using System.Web.Http;
 using HairForceOne.WebService.Controllers;
@@ -14,6 +15,19 @@ namespace WebServiceUnitTest
     [TestClass]
     public class EmployeeTests
     {
+        private TransactionScope scope;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            scope = new TransactionScope();
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            scope.Dispose();
+        }
         [TestMethod]
         public void Test_GetAllEmployees()
         {

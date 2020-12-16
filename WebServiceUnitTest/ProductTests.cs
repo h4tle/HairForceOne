@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Transactions;
 using System.Web.Http;
 using HairForceOne.WebService.Controllers;
 using HairForceOne.WebService.Model;
@@ -11,6 +12,19 @@ namespace WebServiceUnitTest
     [TestClass]
     public class ProductTests
     {
+        private TransactionScope scope;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            scope = new TransactionScope();
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            scope.Dispose();
+        }
         [TestMethod]
         public void Test_GetAllProducts()
         {

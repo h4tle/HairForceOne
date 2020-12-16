@@ -13,7 +13,8 @@ namespace HairForceOne.WebService.Controllers
     /// This class contains the dapper methods that handles the Service instance and SQL connection
     /// </summary>
 
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     public class ServicesController : ApiController
     {
         /// <summary>
@@ -94,7 +95,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="service"></param>
         /// <returns>A Service object by ServiceId</returns>
 
-        [Authorize(Roles = "2,3")]
+        //[Authorize(Roles = "2,3")]
         [HttpPost]
         public HttpResponseMessage CreateNewService([FromBody] Service service)
         {
@@ -127,7 +128,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="service"></param>
         /// <returns></returns>
 
-        [Authorize(Roles = "2,3")]
+        //[Authorize(Roles = "2,3")]
         [HttpPut]
         public HttpResponseMessage EditService(Service service)
         {
@@ -159,7 +160,7 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <param name="id"></param>
 
-        [Authorize(Roles = "2,3")]
+        //[Authorize(Roles = "2,3")]
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
