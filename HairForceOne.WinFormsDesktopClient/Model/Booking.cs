@@ -17,6 +17,8 @@ namespace HairForceOne.WinFormsDesktopClient.Model
 		public string Comment { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool IsDone { get; set; }
+        public List<Service> Services { get; set; }
+        public List<Product> Products { get; set; }
 
         public Booking(int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment, DateTime createdAt, bool isDone)
         {
@@ -30,7 +32,7 @@ namespace HairForceOne.WinFormsDesktopClient.Model
 			this.IsDone = isDone;
         }
 
-		public Booking(int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment)
+		public Booking(int userId, int employeeId, DateTime startTime, int duration, decimal totalPrice, string comment, List<Service> serivces, List<Product> products)
 		{
 			this.UserId = userId;
 			this.EmployeeId = employeeId;
@@ -38,8 +40,10 @@ namespace HairForceOne.WinFormsDesktopClient.Model
 			this.Duration = duration;
 			this.TotalPrice = totalPrice;
 			this.Comment = comment;
+			this.Services = serivces;
+			this.Products = products;
 		}
-        public Booking()
+        public Booking(int v)
         {
 
         }

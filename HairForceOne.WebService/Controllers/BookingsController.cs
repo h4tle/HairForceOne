@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Dapper.Transaction;
 using HairForceOne.WebService.Model;
 using Microsoft.AspNet.Identity;
 using System;
@@ -8,6 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Transactions;
 using System.Web;
 using System.Web.Http;
 
@@ -135,23 +137,61 @@ namespace HairForceOne.WebService.Controllers
         {
             try
             {
-                string sql = "INSERT INTO hfo_Booking (TotalPrice, EmployeeId, UserId, Comment, StartTime, Duration)" +
-                             "VALUES (@TotalPrice, @EmployeeId, @UserId, @Comment, @StartTime, @Duration)";
-                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                string bookingSql = "INSERT INTO hfo_Booking (TotalPrice, EmployeeId, UserId, Comment, StartTime, Duration)" +
+                             "VALUES (@TotalPrice, @EmployeeId, @UserId, @Comment, @StartTime, @Duration); SELECT CAST(SCOPE_IDENTITY() as int)";
+                string serviceSql = "INSERT INTO hfo_ServiceLine (ServiceId, BookingId)" +
+                            "VALUES (@ServiceId, @BookingId)";
+                string productSql = "INSERT INTO hfo_ProductLine (ProductId, BookingId, Quantity)" +
+                            "VALUES (@ProductId, @BookingId, @Quantity)";
+                using (var scope = new TransactionScope())
                 {
-                    var BookingId = connection.Execute(sql, new
+                    using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                     {
-                        booking.TotalPrice,
-                        booking.EmployeeId,
-                        booking.UserId,
-                        booking.Comment,
-                        booking.StartTime,
-                        booking.Duration,
-                    });
-                    return Request.CreateResponse(HttpStatusCode.Accepted, BookingId);
+                        connection.Open();
+
+                        int BookingId = connection.QuerySingle<int>(bookingSql, new
+                        {
+                            booking.TotalPrice,
+                            booking.EmployeeId,
+                            booking.UserId,
+                            booking.Comment,
+                            booking.StartTime,
+                            booking.Duration,
+                        });
+
+
+                        using (var transaction = connection.BeginTransaction())
+                        {
+
+                            foreach (Service s in booking.Services)
+                            {
+                                var productId = transaction.Execute(serviceSql, new
+                                {
+                                    s.ServiceId,
+                                    BookingId
+                            });
+                            }
+
+                            foreach (Product p in booking.Products)
+                            {
+                                var productId = transaction.Execute(productSql, new
+                                {
+                                    p.ProductId,
+                                    BookingId,
+                                    p.Quantity
+                                });
+                            }
+                            transaction.Commit();
+                            scope.Complete();
+                            connection.Close();
+                            return Request.CreateResponse(HttpStatusCode.Accepted, BookingId);
+
+                        }
+                    }
                 }
+                
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, e);
             }

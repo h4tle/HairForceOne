@@ -132,7 +132,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         public List<TimeSpan> GetAvailableTimes(Event e)
         {
             var JEvent = new StringContent(JsonConvert.SerializeObject(e), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client.PostAsync($"events/", JEvent);
+            Task<HttpResponseMessage> responseTask = client.PostAsync($"bookings/availabletimes", JEvent);
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)
