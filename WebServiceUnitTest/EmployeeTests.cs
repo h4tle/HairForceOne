@@ -16,33 +16,31 @@ namespace WebServiceUnitTest
     public class EmployeeTests
     {
         private TransactionScope scope;
+        private EmployeesController employeesController;
 
         [TestInitialize]
-        public void TestInitialize()
+        public void Setup()
         {
             scope = new TransactionScope();
-        }
-
-        [TestCleanup]
-        public void TestCleanup()
-        {
-            scope.Dispose();
-        }
-        [TestMethod]
-        public void Test_GetAllEmployees()
-        {
-            var employeesController = new EmployeesController()
+            employeesController = new EmployeesController()
             {
                 Request = new System.Net.Http.HttpRequestMessage(),
                 Configuration = new HttpConfiguration()
             };
+        }
 
+
+        [TestMethod]
+        public void Test_GetAllEmployees()
+        {
+            // Arrange
             try
             {
-
+                // Act
                 var result = employeesController.GetAllEmployees();
                 List<Employee> employees;
                 result.TryGetContentValue<List<Employee>>(out employees);
+                // Assert
                 Assert.IsTrue(employees.Count > 0);
             }
             catch (Exception e)
@@ -51,5 +49,10 @@ namespace WebServiceUnitTest
             }
         }
 
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            scope.Dispose();
+        }
     }
 }
