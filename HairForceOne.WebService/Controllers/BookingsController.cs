@@ -83,11 +83,28 @@ namespace HairForceOne.WebService.Controllers
         {
             try
             {
-                string sql = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0";
+                string sqlBooking = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0";
+                string sqlService = "EXEC GetServicesForBooking @BookingId";
+                string sqlProduct = "EXEC GetProductsForBooking @BookingId";
+                using (var scope = new TransactionScope()) { 
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    List<Booking> bookings = connection.Query<Booking>(sql, new { date }).AsList();
+                    List<Booking> bookings = connection.Query<Booking>(sqlBooking, new { date }).AsList();
+                    connection.Open();
+                        using (var transaction = connection.BeginTransaction())
+                        {
+                            foreach (Booking booking in bookings)
+                            {
+                                List<Service> services = transaction.Query<Service>(sqlService, new { booking.BookingId }).AsList();
+                                booking.Services = services;
+                                List<Product> products = transaction.Query<Product>(sqlProduct, new { booking.BookingId }).AsList();
+                                booking.Products = products;
+                            }
+                            transaction.Commit();
+                            scope.Complete();
+                        }
                     return Request.CreateResponse(HttpStatusCode.OK, bookings);
+                    }
                 }
             }
             catch (SqlException e)
@@ -175,6 +192,8 @@ namespace HairForceOne.WebService.Controllers
                             booking.StartTime,
                             booking.Duration,
                         });
+
+                        connection.Open();
 
                         using (var transaction = connection.BeginTransaction())
                         {
