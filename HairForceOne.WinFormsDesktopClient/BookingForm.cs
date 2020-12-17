@@ -50,10 +50,10 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void dgv_bookings_SelectionChanged(object sender, EventArgs e)
         {
-            if(dgv_bookings.SelectedRows.Count > 0)
+            if (dgv_bookings.SelectedRows.Count > 0)
             {
-            lb_Services.DataSource = ((Booking)dgv_bookings.SelectedRows[0].DataBoundItem).Services;
-            lb_Products.DataSource = ((Booking)dgv_bookings.SelectedRows[0].DataBoundItem).Products;
+                lb_Services.DataSource = ((Booking)dgv_bookings.SelectedRows[0].DataBoundItem).Services;
+                lb_Products.DataSource = ((Booking)dgv_bookings.SelectedRows[0].DataBoundItem).Products;
                 lb_Products.DisplayMember = "Title";
                 lb_Services.DisplayMember = "Title";
             }

@@ -29,7 +29,9 @@ namespace WebServiceUnitTest
                 Configuration = new HttpConfiguration()
             };
         }
-
+        /// <summary>
+        /// This test executes the GetAllEmployees() method to retrieves a list, we check if the list is greater than 0
+        /// </summary>
         [TestMethod]
         public void Test_GetAllEmployees()
         {
@@ -57,6 +59,7 @@ namespace WebServiceUnitTest
         public void Test_GetEmployee()
         {
             //Arrange
+
             var result = employeesController.GetEmployee(1);
             try
             {
@@ -91,12 +94,12 @@ namespace WebServiceUnitTest
             try
             {
                 // Act
-                Employee employee = new Employee() { EmployeeId = 1, FirstName = "Test", LastName = "Test1", Email = "test@test.dk", PhoneNo = "11223344", Experience = 2, Gender = "Male", Biography = "Test", Password = "12345678", RoleId = 2, PasswordHash = "", Salt = "" };
+                Employee employee = new Employee() { EmployeeId = 1, FirstName = "TestEmployee", LastName = "TestEmployee", Email = "test@test.dk", PhoneNo = "11223344", Experience = 2, Gender = "Male", Biography = "Test", Password = "12345678", RoleId = 2, PasswordHash = "", Salt = "" };
                 var response = employeesController.CreateNewEmployee(employee);
 
                 // Assert
                 Assert.IsTrue(response.IsSuccessStatusCode);
-                Assert.AreEqual("Test", employee.FirstName);
+                Assert.AreEqual("TestEmployee", employee.FirstName);
             }
             catch (Exception e)
             {
