@@ -32,9 +32,9 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         // Todo
         public bool Login(string Email, string Password)
         {
+
             bool LoggedIn = false;
-            using (client)
-            {
+            
                 var responseTask = client.PostAsync("token", new StringContent(string.Format("grant_type=password&username={0}&password={1}", Email, Password), Encoding.UTF8));
 
                 responseTask.Wait();
@@ -55,7 +55,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 {
                     return LoggedIn;
                 }
-            }
+            
         }
     }
 }

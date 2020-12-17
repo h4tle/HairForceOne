@@ -18,6 +18,6 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 
         NotImplementedException Delete(int bookingId);
 
-        NotImplementedException Edit(Booking b);
+        bool Edit(Booking b);
     }
 }

@@ -38,5 +38,16 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             usersController.DeleteUser(selectedUser.UserId);
         }
+
+        private void btn_backtomain_Click(object sender, EventArgs e)
+        {
+            this.Owner.Show();
+            this.Close();
+        }
+
+        private void UserForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Show();
+        }
     }
 }

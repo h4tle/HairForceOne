@@ -69,9 +69,12 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-        public NotImplementedException Edit(Booking b)
+        public bool Edit(Booking booking)
         {
-            throw new NotImplementedException();
+            var JBooking = new StringContent(JsonConvert.SerializeObject(booking), Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> responseTask = client.PutAsync($"bookings/{booking.BookingId}", JBooking);
+            responseTask.Wait();
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         public List<Booking> GetAllBookings()

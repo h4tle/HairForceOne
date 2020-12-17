@@ -30,7 +30,10 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 this.Hide();
                 var main = new MainForm();
+                main.Owner = this;
                 main.Show();
+                txt_password.Clear();
+                txt_email.Clear();
             }
             else
             {

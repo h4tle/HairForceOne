@@ -93,5 +93,16 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             ReloadForm();
         }
+
+        private void btn_backtomain_Click(object sender, EventArgs e)
+        {
+            this.Owner.Show();
+            this.Close();
+        }
+
+        private void ProductForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Show();
+        }
     }
 }
