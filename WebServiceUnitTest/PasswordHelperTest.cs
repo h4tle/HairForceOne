@@ -21,7 +21,6 @@ namespace WebServiceUnitTest
         {
             var teststring = "";
             var testsalt = PasswordHelper.GenerateSalt();
-
             Assert.IsTrue(testsalt.Length > 0);
         }
 
