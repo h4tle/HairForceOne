@@ -159,6 +159,7 @@
             this.Btn_deleteProduct.Text = "Slet";
             this.Btn_deleteProduct.UseVisualStyleBackColor = false;
             this.Btn_deleteProduct.Visible = false;
+            this.Btn_deleteProduct.Click += new System.EventHandler(this.Btn_deleteProduct_Click);
             // 
             // Btn_addService
             // 
@@ -169,6 +170,7 @@
             this.Btn_addService.Text = "Tilføj";
             this.Btn_addService.UseVisualStyleBackColor = true;
             this.Btn_addService.Visible = false;
+            this.Btn_addService.Click += new System.EventHandler(this.Btn_addService_Click);
             // 
             // Btn_addProduct
             // 
@@ -179,6 +181,7 @@
             this.Btn_addProduct.Text = "Tilføj";
             this.Btn_addProduct.UseVisualStyleBackColor = true;
             this.Btn_addProduct.Visible = false;
+            this.Btn_addProduct.Click += new System.EventHandler(this.Btn_addProduct_Click);
             // 
             // btn_edit
             // 

@@ -30,6 +30,8 @@ namespace HairForceOne.WinFormsDesktopClient
             //dgv_bookings.DataSource = bookingsController.GetAllBookings();
         }
 
+        
+
         private void btn_delete_Click(object sender, EventArgs e)
         {
             Booking booking = (Booking)dgv_bookings.CurrentRow.DataBoundItem;
@@ -119,6 +121,8 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void btn_edit_CheckedChanged(object sender, EventArgs e)
         {
+            if (dgv_bookings.Rows.Count > 0)
+            {
             if (btn_edit.Checked)
             {
                 dgv_bookings.ReadOnly = false;
@@ -141,6 +145,7 @@ namespace HairForceOne.WinFormsDesktopClient
                 Btn_addService.Visible = false;
                 Btn_deleteService.Visible = false;
                 Btn_deleteProduct.Visible = false;
+            }
             }
         }
 
@@ -189,6 +194,53 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 //dgv_bookings.DataSource = bookingsController.GetBookingsByEmployee((Employee)cb_employee.SelectedItem, dateTime1.SelectionStart);
             }
+        }
+
+        private void Btn_addService_Click(object sender, EventArgs e)
+        {
+            AddServiceForm addServiceForm = new AddServiceForm();
+            addServiceForm.Owner = this;
+            addServiceForm.Show();
+        }
+
+        internal void addNewService(Service service)
+        {
+            Booking booking = (Booking)dgv_bookings.CurrentRow.DataBoundItem;
+            booking.Services.Add(service);
+            lb_Services.DataSource = null;
+            lb_Services.DataSource = ((Booking)dgv_bookings.CurrentRow.DataBoundItem).Services;
+            lb_Services.DisplayMember = "Title";
+        }
+
+        internal void addNewProduct(Product product)
+        {
+            Booking booking = (Booking)dgv_bookings.CurrentRow.DataBoundItem;
+            booking.Products.Add(product);
+            lb_Products.DataSource = null;
+            lb_Products.DataSource = ((Booking)dgv_bookings.CurrentRow.DataBoundItem).Products;
+            lb_Products.DisplayMember = "Title";
+        }
+
+        private void Btn_addProduct_Click(object sender, EventArgs e)
+        {
+            AddProductForm addProductForm = new AddProductForm();
+            addProductForm.Owner = this;
+            addProductForm.Show();
+        }
+
+        private void Btn_deleteProduct_Click(object sender, EventArgs e)
+        {
+            Booking booking = (Booking)dgv_bookings.CurrentRow.DataBoundItem;
+            for (int i = 0; i < booking.Products.Count; i++)
+            {
+                if (((Product)lb_Products.SelectedItem).Equals(booking.Products[i]))
+                {
+                    booking.Products.RemoveAt(i);
+                }
+            }
+            lb_Products.DataSource = null;
+            lb_Products.DataSource = ((Booking)dgv_bookings.CurrentRow.DataBoundItem).Products;
+            lb_Products.DisplayMember = "Title";
         }
     }
 }

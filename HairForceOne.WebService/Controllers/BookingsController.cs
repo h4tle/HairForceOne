@@ -253,22 +253,56 @@ namespace HairForceOne.WebService.Controllers
         {
             try
             {
-                string sql = "UPDATE hfo_Booking SET TotalPrice = @TotalPrice, EmployeeId = @EmployeeId, UserId = @UserId, Comment = @Comment, StartTime = @StartTime, Duration = @Duration, IsDone = @IsDone WHERE BookingId = @BookingId";
-                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                using (var scope = new TransactionScope())
                 {
-                    int BookingId = connection.Execute(sql, new
+                    string updateSql = "EXEC UpdateServiceAndProductLines @BookingId";
+                    string serviceSql = "INSERT INTO hfo_ServiceLine (ServiceId, BookingId)" +
+                            "VALUES (@ServiceId, @BookingId)";
+                    string productSql = "INSERT INTO hfo_ProductLine (ProductId, BookingId, Quantity)" +
+                             "VALUES (@ProductId, @BookingId, @Quantity)";
+                    string bookingSql = "UPDATE hfo_Booking SET TotalPrice = @TotalPrice, EmployeeId = @EmployeeId, UserId = @UserId, Comment = @Comment, StartTime = @StartTime, Duration = @Duration, IsDone = @IsDone WHERE BookingId = @BookingId";
+                    using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                     {
-                        booking.TotalPrice,
-                        booking.EmployeeId,
-                        booking.UserId,
-                        booking.Comment,
-                        booking.StartTime,
-                        booking.Duration,
-                        booking.CreatedAt,
-                        booking.IsDone,
-                        booking.BookingId,
-                    });
-                    return Request.CreateResponse(HttpStatusCode.OK, BookingId);
+                        int BookingId = connection.Execute(bookingSql, new
+                        {
+                            booking.TotalPrice,
+                            booking.EmployeeId,
+                            booking.UserId,
+                            booking.Comment,
+                            booking.StartTime,
+                            booking.Duration,
+                            booking.IsDone,
+                            booking.BookingId,
+                        });
+                        connection.Open();
+                        connection.Execute(updateSql, new { booking.BookingId });
+                        connection.Open();
+
+                        using (var transaction = connection.BeginTransaction())
+                        {
+                                foreach (Service s in booking.Services)
+                                {
+                                    var serviceId = transaction.Execute(serviceSql, new
+                                    {
+                                        s.ServiceId,
+                                        BookingId
+                                    });
+                                }
+
+                                foreach (Product p in booking.Products)
+                                {
+                                    var productId = transaction.Execute(productSql, new
+                                    {
+                                        p.ProductId,
+                                        BookingId,
+                                        p.Quantity
+                                    });
+                                }
+                                transaction.Commit();
+                            }
+                        scope.Complete();
+                            return Request.CreateResponse(HttpStatusCode.OK, BookingId);
+                    }
                 }
             }
             catch (SqlException e)
