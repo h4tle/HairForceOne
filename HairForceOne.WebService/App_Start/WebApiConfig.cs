@@ -14,11 +14,11 @@ namespace HairForceOne.WebService
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-
             // Web API routes
 
             // Route specific actions
             config.MapHttpAttributeRoutes();
+
             // Default Routes
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

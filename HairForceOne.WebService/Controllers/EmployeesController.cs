@@ -36,9 +36,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, employees);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -67,9 +71,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, employee);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -111,9 +119,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.Accepted, EmployeeId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -159,9 +171,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, EmployeeId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -187,9 +203,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
     }

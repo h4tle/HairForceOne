@@ -1,20 +1,14 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class AddServiceForm : Form
     {
-            ServicesController servicesController = new ServicesController();
+        private ServicesController servicesController = new ServicesController();
+
         public AddServiceForm()
         {
             InitializeComponent();

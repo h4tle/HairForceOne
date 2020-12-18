@@ -34,9 +34,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, services);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Services kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -59,9 +63,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, services);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Services kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -83,9 +91,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, service);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Services kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -116,9 +128,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.Created, ServiceId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Services kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -173,9 +189,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Services kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
     }

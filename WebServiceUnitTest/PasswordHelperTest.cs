@@ -1,11 +1,10 @@
-﻿using System;
-using System.Transactions;
-using HairForceOne.WebService.Util;
+﻿using HairForceOne.WebService.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Transactions;
 
 namespace WebServiceUnitTest
 {
-    class PasswordHelperTest
+    internal class PasswordHelperTest
     {
         private TransactionScope scope;
         //private PasswordHelper passwordHelper;

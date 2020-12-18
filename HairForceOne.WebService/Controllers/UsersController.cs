@@ -36,9 +36,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, users);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bruger kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -62,9 +66,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, user);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bruger kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -102,9 +110,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.Created, UserId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bruger kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -148,9 +160,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, UserId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bruger kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -173,9 +189,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bruger kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
     }

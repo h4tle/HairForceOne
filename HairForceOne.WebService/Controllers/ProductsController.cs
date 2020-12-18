@@ -33,9 +33,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, products);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -58,9 +62,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, products);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -83,9 +91,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, products);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -107,9 +119,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, product);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -141,9 +157,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.Accepted);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -176,9 +196,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, ProductId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -201,9 +225,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
     }

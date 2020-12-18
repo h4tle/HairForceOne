@@ -1,5 +1,4 @@
 ﻿namespace HairForceOne.WebService.Model
-// husk password
 {
     /// <summary>
     /// This class contains all the properties for the Employee instance

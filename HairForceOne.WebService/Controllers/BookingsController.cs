@@ -183,7 +183,6 @@ namespace HairForceOne.WebService.Controllers
                 {
                     using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                     {
-
                         int BookingId = connection.QuerySingle<int>(bookingSql, new
                         {
                             booking.TotalPrice,
@@ -217,18 +216,18 @@ namespace HairForceOne.WebService.Controllers
                                 });
                             }
                             transaction.Commit();
-                                string sqlGetBookings = "EXEC GetConcurrencyBookings @EmployeeId, @StartTime, @Duration";
-                                var concurrentBookings = connection.Query<Booking>(sqlGetBookings, new
-                                {
-                                    booking.EmployeeId,
-                                    booking.StartTime,
-                                    booking.Duration
-                                }).AsList();
-                                if (concurrentBookings.Count != 1)
-                                {
-                                    scope.Dispose();
-                                    return Request.CreateResponse(HttpStatusCode.BadRequest);
-                                }
+                            string sqlGetBookings = "EXEC GetConcurrencyBookings @EmployeeId, @StartTime, @Duration";
+                            var concurrentBookings = connection.Query<Booking>(sqlGetBookings, new
+                            {
+                                booking.EmployeeId,
+                                booking.StartTime,
+                                booking.Duration
+                            }).AsList();
+                            if (concurrentBookings.Count != 1)
+                            {
+                                scope.Dispose();
+                                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                            }
 
                             scope.Complete();
                             return Request.CreateResponse(HttpStatusCode.Accepted, BookingId);
@@ -280,28 +279,28 @@ namespace HairForceOne.WebService.Controllers
 
                         using (var transaction = connection.BeginTransaction())
                         {
-                                foreach (Service s in booking.Services)
+                            foreach (Service s in booking.Services)
+                            {
+                                var serviceId = transaction.Execute(serviceSql, new
                                 {
-                                    var serviceId = transaction.Execute(serviceSql, new
-                                    {
-                                        s.ServiceId,
-                                        BookingId
-                                    });
-                                }
-
-                                foreach (Product p in booking.Products)
-                                {
-                                    var productId = transaction.Execute(productSql, new
-                                    {
-                                        p.ProductId,
-                                        BookingId,
-                                        p.Quantity
-                                    });
-                                }
-                                transaction.Commit();
+                                    s.ServiceId,
+                                    BookingId
+                                });
                             }
+
+                            foreach (Product p in booking.Products)
+                            {
+                                var productId = transaction.Execute(productSql, new
+                                {
+                                    p.ProductId,
+                                    BookingId,
+                                    p.Quantity
+                                });
+                            }
+                            transaction.Commit();
+                        }
                         scope.Complete();
-                            return Request.CreateResponse(HttpStatusCode.OK, BookingId);
+                        return Request.CreateResponse(HttpStatusCode.OK, BookingId);
                     }
                 }
             }

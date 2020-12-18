@@ -25,7 +25,7 @@ namespace HairForceOne.WebService
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/api/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(60), //token expiration time
-                Provider = new OAuthProvider() // oauthprovider is a custom implementation
+                Provider = new OAuthProvider() // oauthprovider is our custom implementation
             };
 
             // configuring the application

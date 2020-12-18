@@ -40,6 +40,10 @@
         /// </summary>
         public string Gender { get; set; }
 
+        /// <summary>
+        /// Gets and sets the Quantity for the Product instance
+        /// </summary>
+
         public int Quantity { get; set; }
 
         public Product(int ProductId_, string Brand_, string Title_, string Description_, decimal PurchasePrice_, decimal RetailPrice_, string Gender_, int Quantity_)

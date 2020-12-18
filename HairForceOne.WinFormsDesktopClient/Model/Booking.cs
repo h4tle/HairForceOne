@@ -43,7 +43,7 @@ namespace HairForceOne.WinFormsDesktopClient.Model
             this.Products = products;
         }
 
-        public Booking(int v)
+        public Booking()
         {
         }
     }

@@ -38,8 +38,8 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"products");
             responseTask.Wait();
-            List<Product> l = JsonConvert.DeserializeObject<List<Product>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return l;
+            List<Product> products = JsonConvert.DeserializeObject<List<Product>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            return products;
         }
 
         /// <summary>
