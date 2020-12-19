@@ -41,11 +41,10 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"users");
             responseTask.Wait();
-            List<User> ul = JsonConvert.DeserializeObject<List<User>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return ul;
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            return users;
         }
 
-        // Todo
         public NotImplementedException CreateNewUser(User user)
         {
             var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
@@ -62,8 +61,6 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-        // Todo
-
         public NotImplementedException EditUser(User user)
         {
             var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
@@ -79,8 +76,6 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 return new NotImplementedException();
             }
         }
-
-        // Todo
 
         public NotImplementedException DeleteUser(int id)
         {

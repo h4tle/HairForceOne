@@ -30,8 +30,6 @@ namespace HairForceOne.WinFormsDesktopClient
             //dgv_bookings.DataSource = bookingsController.GetAllBookings();
         }
 
-        
-
         private void btn_delete_Click(object sender, EventArgs e)
         {
             Booking booking = (Booking)dgv_bookings.CurrentRow.DataBoundItem;
@@ -80,10 +78,10 @@ namespace HairForceOne.WinFormsDesktopClient
             }
             else
             {
-            lb_Products.DataSource = ((Booking)dgv_bookings.CurrentRow.DataBoundItem).Products;
-            lb_Services.DataSource = ((Booking)dgv_bookings.CurrentRow.DataBoundItem).Services;
-            lb_Products.DisplayMember = "Title";
-            lb_Services.DisplayMember = "Title";
+                lb_Products.DataSource = ((Booking)dgv_bookings.CurrentRow.DataBoundItem).Products;
+                lb_Services.DataSource = ((Booking)dgv_bookings.CurrentRow.DataBoundItem).Services;
+                lb_Products.DisplayMember = "Title";
+                lb_Services.DisplayMember = "Title";
             }
             //if (dgv_bookings.SelectedRows.Count > 0)
             //{
@@ -123,29 +121,29 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             if (dgv_bookings.Rows.Count > 0)
             {
-            if (btn_edit.Checked)
-            {
-                dgv_bookings.ReadOnly = false;
-                Btn_SaveEdit.Enabled = true;
-                DataGridViewCell cell = dgv_bookings[1, dgv_bookings.CurrentRow.Index];
-                dgv_bookings.CurrentCell = cell;
-                dgv_bookings.BeginEdit(true);
-                btn_checkout.Enabled = false;
-                Btn_addProduct.Visible = true;
-                Btn_addService.Visible = true;
-                Btn_deleteService.Visible = true;
-                Btn_deleteProduct.Visible = true;
-            }
-            else
-            {
-                dgv_bookings.ReadOnly = true;
-                Btn_SaveEdit.Enabled = false;
-                btn_checkout.Enabled = true;
-                Btn_addProduct.Visible = false;
-                Btn_addService.Visible = false;
-                Btn_deleteService.Visible = false;
-                Btn_deleteProduct.Visible = false;
-            }
+                if (btn_edit.Checked)
+                {
+                    dgv_bookings.ReadOnly = false;
+                    Btn_SaveEdit.Enabled = true;
+                    DataGridViewCell cell = dgv_bookings[1, dgv_bookings.CurrentRow.Index];
+                    dgv_bookings.CurrentCell = cell;
+                    dgv_bookings.BeginEdit(true);
+                    btn_checkout.Enabled = false;
+                    Btn_addProduct.Visible = true;
+                    Btn_addService.Visible = true;
+                    Btn_deleteService.Visible = true;
+                    Btn_deleteProduct.Visible = true;
+                }
+                else
+                {
+                    dgv_bookings.ReadOnly = true;
+                    Btn_SaveEdit.Enabled = false;
+                    btn_checkout.Enabled = true;
+                    Btn_addProduct.Visible = false;
+                    Btn_addService.Visible = false;
+                    Btn_deleteService.Visible = false;
+                    Btn_deleteProduct.Visible = false;
+                }
             }
         }
 
@@ -185,7 +183,6 @@ namespace HairForceOne.WinFormsDesktopClient
             lb_Services.DataSource = null;
             lb_Services.DataSource = ((Booking)dgv_bookings.CurrentRow.DataBoundItem).Services;
             lb_Services.DisplayMember = "Title";
-
         }
 
         private void dgv_bookings_ReadOnlyChanged(object sender, EventArgs e)

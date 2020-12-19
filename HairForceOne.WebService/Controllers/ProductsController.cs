@@ -123,7 +123,7 @@ namespace HairForceOne.WebService.Controllers
             {
                 var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
-                    ReasonPhrase = "Produktet kan ikke hentes. Prøv igen senere"
+                    ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
                 };
                 throw new HttpResponseException(msg);
             }

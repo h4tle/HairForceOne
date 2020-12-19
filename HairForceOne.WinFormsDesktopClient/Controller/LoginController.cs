@@ -32,30 +32,28 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         // Todo
         public bool Login(string Email, string Password)
         {
-
             bool LoggedIn = false;
-            
-                var responseTask = client.PostAsync("token", new StringContent(string.Format("grant_type=password&username={0}&password={1}", Email, Password), Encoding.UTF8));
 
-                responseTask.Wait();
-                if (responseTask.Result.IsSuccessStatusCode)
-                {
-                    Token token = JsonConvert.DeserializeObject<Token>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            var responseTask = client.PostAsync("token", new StringContent(string.Format("grant_type=password&username={0}&password={1}", Email, Password), Encoding.UTF8));
 
-                    // Meziantou.Framework.Win32
-                    CredentialManager.WriteCredential(
-                    applicationName: "Token",
-                    userName: Email,
-                    secret: token.AccessToken,
-                    persistence: CredentialPersistence.Session);
-                    LoggedIn = true;
-                    return LoggedIn;
-                }
-                else
-                {
-                    return LoggedIn;
-                }
-            
+            responseTask.Wait();
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                Token token = JsonConvert.DeserializeObject<Token>(responseTask.Result.Content.ReadAsStringAsync().Result);
+
+                // Meziantou.Framework.Win32
+                CredentialManager.WriteCredential(
+                applicationName: "Token",
+                userName: Email,
+                secret: token.AccessToken,
+                persistence: CredentialPersistence.Session);
+                LoggedIn = true;
+                return LoggedIn;
+            }
+            else
+            {
+                return LoggedIn;
+            }
         }
     }
 }

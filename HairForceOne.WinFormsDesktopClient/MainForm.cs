@@ -87,7 +87,7 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             if (!this.Owner.Visible)
             {
-            Application.Exit();
+                Application.Exit();
             }
         }
 

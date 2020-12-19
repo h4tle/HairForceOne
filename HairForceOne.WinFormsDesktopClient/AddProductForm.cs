@@ -1,20 +1,14 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Controller;
 using HairForceOne.WinFormsDesktopClient.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class AddProductForm : Form
     {
-        ProductsController productsController = new ProductsController();
+        private ProductsController productsController = new ProductsController();
+
         public AddProductForm()
         {
             InitializeComponent();
