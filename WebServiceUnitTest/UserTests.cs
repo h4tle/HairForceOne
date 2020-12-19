@@ -46,7 +46,7 @@ namespace WebServiceUnitTest
                 // Assert
                 Assert.IsTrue(users.Count > 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -70,7 +70,7 @@ namespace WebServiceUnitTest
                 Assert.IsTrue(result.TryGetContentValue<User>(out user));
                 Assert.AreEqual(1, user.UserId);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -101,7 +101,7 @@ namespace WebServiceUnitTest
                 Assert.IsTrue(response.IsSuccessStatusCode);
                 Assert.AreEqual("TestUser", user.FirstName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }

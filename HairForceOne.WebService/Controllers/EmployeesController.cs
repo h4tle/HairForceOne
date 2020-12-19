@@ -16,6 +16,7 @@ namespace HairForceOne.WebService.Controllers
     /// <summary>
     /// This class contains the dapper methods that handles the Employee instance and SQL connection
     /// </summary>
+    [RoutePrefix("api/employees")]
     [Authorize]
     public class EmployeesController : ApiController
     {
@@ -36,9 +37,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, employees);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Medarbejdere kunne ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -47,17 +52,16 @@ namespace HairForceOne.WebService.Controllers
         /// </summary>
         /// <returns>A Employee object by EmployeeId</returns>
 
-        //[Authorize(Roles = "1")]
         //[AllowAnonymous]
 
-        // HVAD FANDEN?! int id
+        [Authorize(Roles = "2, 3")]
         [HttpGet]
-        public HttpResponseMessage GetEmployee(int id)
+        [Route("myemployee")]
+        public HttpResponseMessage GetEmployee()
         {
             try
             {
-                // Identity contains the UserId
-                //string EmployeeId = HttpContext.Current.Employee.Identity.GetEmployeeId();
+                // Identity contains the EmployeeId
                 string EmployeeId = HttpContext.Current.User.Identity.GetUserId();
 
                 string sql = "SELECT * FROM hfo_Employee WHERE EmployeeId = @EmployeeId";
@@ -67,9 +71,36 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, employee);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Din profil kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
+            }
+        }
+
+        [Authorize(Roles = "3")]
+        [HttpGet]
+        public HttpResponseMessage GetEmployee(int EmployeeId)
+        {
+            try
+            {
+                string sql = "SELECT * FROM hfo_Employee WHERE EmployeeId = @EmployeeId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    Employee employee = connection.QuerySingleOrDefault<Employee>(sql, new { EmployeeId });
+                    return Request.CreateResponse(HttpStatusCode.OK, employee);
+                }
+            }
+            catch (SqlException)
+            {
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Medarbejderen kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -111,9 +142,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.Accepted, EmployeeId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Medarbejderen kan ikke oprettes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -159,9 +194,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, EmployeeId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Medarbejderen kan ikke redigeres. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -174,22 +213,24 @@ namespace HairForceOne.WebService.Controllers
         // HVAD FANDEN?! int id
         [Authorize(Roles = "3")]
         [HttpDelete]
-        public HttpResponseMessage DeleteEmployee(int id)
+        public HttpResponseMessage DeleteEmployee(int EmployeeId)
         {
             try
             {
-                string EmpoyeeId = HttpContext.Current.User.Identity.GetUserId();
-
                 string sql = "DELETE FROM hfo_Employee WHERE EmployeeId = @EmployeeId";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    connection.Execute(sql, new { EmpoyeeId });
+                    connection.Execute(sql, new { EmployeeId });
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
             catch (SqlException e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Medarbejderen kunne ikke slettes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
     }

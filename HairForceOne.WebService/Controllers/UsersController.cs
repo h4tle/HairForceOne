@@ -15,7 +15,7 @@ namespace HairForceOne.WebService.Controllers
     /// <summary>
     /// This class contains the dapper methods that handles the User instance and SQL connection
     /// </summary>
-
+    [RoutePrefix("api/users")]
     [Authorize]
     public class UsersController : ApiController
     {
@@ -36,9 +36,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, users);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Brugere kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -48,7 +52,8 @@ namespace HairForceOne.WebService.Controllers
         /// <returns>A User object by UserId</returns>
 
         [HttpGet]
-        public HttpResponseMessage GetUser(int id)
+        [Route("myuser")]
+        public HttpResponseMessage GetUser()
         {
             try
             {
@@ -62,9 +67,37 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, user);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Din profil kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
+            }
+        }
+
+        [Authorize(Roles = "2, 3")]
+        [HttpGet]
+        public HttpResponseMessage GetUser(int UserId)
+        {
+            try
+            {
+                // Identity contains the UserId
+                string sql = "SELECT * FROM hfo_User WHERE UserId = @UserId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    User user = connection.QuerySingleOrDefault<User>(sql, new { UserId });
+                    return Request.CreateResponse(HttpStatusCode.OK, user);
+                }
+            }
+            catch (SqlException)
+            {
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Brugeren kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -102,9 +135,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.Created, UserId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Brugeren kan ikke oprettes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -115,7 +152,7 @@ namespace HairForceOne.WebService.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
 
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2, 3")]
         [HttpPut]
         public HttpResponseMessage EditUser(User user)
         {
@@ -148,9 +185,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, UserId);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Brugeren kan ikke opdateres. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -158,7 +199,7 @@ namespace HairForceOne.WebService.Controllers
         /// This method deletes the User Object from the database, using a specific UserId
         /// </summary>
         /// <param name="id"></param>
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "2, 3")]
         [HttpDelete]
         public HttpResponseMessage DeleteUser(int id)
         {
@@ -173,9 +214,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Brugeren kan ikke slettes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
     }

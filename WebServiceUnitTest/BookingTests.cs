@@ -34,7 +34,7 @@ namespace WebServiceUnitTest
                 result.TryGetContentValue<List<Booking>>(out bookings);
                 Assert.IsTrue(bookings.Count > 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }

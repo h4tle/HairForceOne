@@ -19,7 +19,6 @@ namespace WebServiceUnitTest
         [TestMethod]
         public void ShouldReturnRightSaltLenght()
         {
-            var teststring = "";
             var testsalt = PasswordHelper.GenerateSalt();
             Assert.IsTrue(testsalt.Length > 0);
         }

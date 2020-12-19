@@ -51,7 +51,7 @@ namespace WebServiceUnitTest
                 //Assert
                 Assert.IsTrue(products.Count > 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -74,7 +74,7 @@ namespace WebServiceUnitTest
                 Assert.IsTrue(result.TryGetContentValue<Product>(out product));
                 Assert.AreEqual(1, product.ProductId);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -105,7 +105,7 @@ namespace WebServiceUnitTest
                 Assert.IsTrue(response.IsSuccessStatusCode);
                 Assert.AreEqual("Test", product.Title);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -145,7 +145,7 @@ namespace WebServiceUnitTest
                 Assert.IsTrue(response.IsSuccessStatusCode);
                 Assert.AreNotEqual(actual.Title, noneupdatedtitle);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }

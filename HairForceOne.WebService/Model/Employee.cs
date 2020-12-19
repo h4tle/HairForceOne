@@ -1,4 +1,6 @@
-﻿namespace HairForceOne.WebService.Model
+﻿using Newtonsoft.Json;
+
+namespace HairForceOne.WebService.Model
 // husk password
 {
     /// <summary>
@@ -51,11 +53,13 @@
         /// Gets and sets the PasswordHash for the Employee instance
         /// </summary>
 
+        [JsonIgnore]
         public string PasswordHash { get; set; }
 
         /// <summary>
         /// Gets and sets the Salt for the Employee instance
         /// </summary>
+        [JsonIgnore]
         public string Salt { get; set; }
 
         /// <summary>

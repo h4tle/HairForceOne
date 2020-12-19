@@ -60,7 +60,6 @@ namespace HairForceOne.WebService.Controllers
                     }
                 }
             }
-            // return HttpStatusCode with execption
             catch (SqlException)
             {
                 var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
@@ -108,9 +107,13 @@ namespace HairForceOne.WebService.Controllers
                     }
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -120,7 +123,6 @@ namespace HairForceOne.WebService.Controllers
         /// <returns>A list of all bookings from the lo</returns>
         [HttpGet]
         [Route("mybookings")]
-        [Authorize(Roles = "1")]
         public HttpResponseMessage GetBookingsByUser()
         {
             try
@@ -133,9 +135,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, bookings);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -157,9 +163,13 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK, booking);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -213,7 +223,7 @@ namespace HairForceOne.WebService.Controllers
                                 {
                                     p.ProductId,
                                     BookingId,
-                                    p.Quantity
+                                    Quantity = 1
                                 });
                             }
                             transaction.Commit();
@@ -236,9 +246,13 @@ namespace HairForceOne.WebService.Controllers
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Booking kan ikke oprettes. Prøv igen"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -305,9 +319,13 @@ namespace HairForceOne.WebService.Controllers
                     }
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Booking kan ikke opdateres. Prøv igen senere"
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
@@ -329,32 +347,39 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookingen kunne ikke slettes. Prøv igen."
+                };
+                throw new HttpResponseException(msg);
             }
         }
 
         [HttpPost]
         [Route("availabletimes")]
-        public IEnumerable<TimeSpan> GetAvialableTimes(Event ev)
+        public HttpResponseMessage GetAvialableTimes(Event ev)
         {
-            var newTimezz = ev.SelectedDate.Date.AddTicks(DateTime.Now.TimeOfDay.Ticks);
+            // Sets the time of the selected date to be the current time
+            var currentTime = ev.SelectedDate.Date.AddTicks(DateTime.Now.TimeOfDay.Ticks);
             TimeSpan Duration = new TimeSpan(0, ev.Duration, 0);
-            int empId = ev.EmployeeId;
-            TimeSpan open = new TimeSpan(9, 0, 0);
-            if (newTimezz.TimeOfDay < open)
+            int employeeId = ev.EmployeeId;
+            TimeSpan openHour = new TimeSpan(9, 0, 0);
+            // Checks if the current time is earlier than the open time
+            if (currentTime.TimeOfDay < openHour)
             {
-                DateTime test2 = newTimezz.Date.AddTicks(open.Ticks);
-                newTimezz = test2;
+                DateTime sameAsOpenHour = currentTime.Date.AddTicks(openHour.Ticks);
+                currentTime = sameAsOpenHour;
             }
-            TimeSpan close = new TimeSpan(16, 0, 0);
+            TimeSpan closeHour = new TimeSpan(16, 0, 0);
             TimeSpan interval = new TimeSpan(0, 15, 0);
-            DateTime selectedDate = new DateTime((newTimezz.Ticks + interval.Ticks - 1) / interval.Ticks * interval.Ticks, newTimezz.Kind);
+            DateTime selectedDate = new DateTime((currentTime.Ticks + interval.Ticks - 1) / interval.Ticks * interval.Ticks, currentTime.Kind);
+            // Checks if the selected date is the same as the current date and sets the start time to the open time if not
             if (selectedDate.Date != DateTime.Now.Date)
             {
-                DateTime test3 = selectedDate.Date.AddTicks(open.Ticks);
-                selectedDate = test3;
+                DateTime sameAsOpenHour = selectedDate.Date.AddTicks(openHour.Ticks);
+                selectedDate = sameAsOpenHour;
             }
             try
             {
@@ -363,47 +388,55 @@ namespace HairForceOne.WebService.Controllers
                 {
                     var result = connection.Query<Booking>(sql, new
                     {
-                        employeeId = empId,
+                        employeeId,
                         selectedDate,
                     });
-                    List<Booking> events = result.OrderBy(d => d.StartTime).ToList();
+                    //Sorts the list of bookings in ascending order
+                    List<Booking> bookings = result.OrderBy(d => d.StartTime).ToList();
                     //Calculating available times
                     List<TimeSpan> availableTimes = new List<TimeSpan>();
-                    for (TimeSpan i = selectedDate.TimeOfDay; i < close; i = i + interval)
+                    for (TimeSpan i = selectedDate.TimeOfDay; i < closeHour; i = i + interval)
                     {
-                        if (i + Duration > close)
+                        //Checks if the selected time and duration is after the closing hour.
+                        if (i + Duration > closeHour)
                         {
-                            return availableTimes;
+                            return Request.CreateResponse(HttpStatusCode.OK, availableTimes);
                         }
-                        bool avail = true;
-                        for (int i2 = 0; i2 < events.Count; i2++)
+                        bool available = true;
+                        for (int i2 = 0; i2 < bookings.Count; i2++)
                         {
-                            TimeSpan eventDuration = new TimeSpan(0, events.ElementAt(i2).Duration, 0);
-                            if (i + Duration <= events.ElementAt(i2).StartTime.TimeOfDay || i >= events.ElementAt(i2).StartTime.TimeOfDay.Add(eventDuration))
+                            TimeSpan bookingDuration = new TimeSpan(0, bookings.ElementAt(i2).Duration, 0);
+                            //Checks if the the booking overlaps with our selected time
+                            if (i + Duration <= bookings.ElementAt(i2).StartTime.TimeOfDay || i >= bookings.ElementAt(i2).StartTime.TimeOfDay.Add(bookingDuration))
                             {
                             }
                             else
                             {
+                                //Removes booking if we've already checked all overlapping times
                                 if (i2 > 0)
                                 {
-                                    events.RemoveAt(i2 - 1);
+                                    bookings.RemoveAt(i2 - 1);
                                 }
-                                avail = false;
+                                available = false;
                                 break;
                             }
                         }
-                        if (avail)
+                        // If no bookings overlapped, add to list of avaliable times
+                        if (available)
                         {
                             availableTimes.Add(i);
                         }
                     }
-
-                    return availableTimes;
+                    return Request.CreateResponse(HttpStatusCode.OK, availableTimes);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                throw e;
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Ledige tider kan ikke hentes. Prøv igen."
+                };
+                throw new HttpResponseException(msg);
             }
         }
     }

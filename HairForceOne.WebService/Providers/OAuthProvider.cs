@@ -43,11 +43,10 @@ namespace HairForceOne.WebService.Providers
                     {
                         if (PasswordHelper.ComparePass(password, user.PasswordHash, user.Salt))
                         {
-                            // nye claims / færre claims
                             var Claims = new List<Claim>();
                             Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
                             Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
-                            Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
+                            Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString()));
                             Claims.Add(new Claim(ClaimTypes.Role, user.RoleId.ToString()));
                             ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
 
