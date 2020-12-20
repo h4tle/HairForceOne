@@ -125,5 +125,10 @@ namespace HairForceOne.WinFormsDesktopClient
             }
             return totalPrice;
         }
+
+        private void CreateBookingForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Owner.Show();
+        }
     }
 }
