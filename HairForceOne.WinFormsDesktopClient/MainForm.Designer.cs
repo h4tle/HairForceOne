@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btn_checkout = new System.Windows.Forms.Button();
             this.btn_service = new System.Windows.Forms.Button();
             this.btn_employee = new System.Windows.Forms.Button();
             this.btn_product = new System.Windows.Forms.Button();
@@ -45,22 +44,12 @@
             this.clockTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // btn_checkout
-            // 
-            this.btn_checkout.Location = new System.Drawing.Point(1266, 211);
-            this.btn_checkout.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_checkout.Name = "btn_checkout";
-            this.btn_checkout.Size = new System.Drawing.Size(224, 346);
-            this.btn_checkout.TabIndex = 0;
-            this.btn_checkout.Text = "Checkout";
-            this.btn_checkout.UseVisualStyleBackColor = true;
-            // 
             // btn_service
             // 
-            this.btn_service.Location = new System.Drawing.Point(268, 211);
+            this.btn_service.Location = new System.Drawing.Point(217, 137);
             this.btn_service.Margin = new System.Windows.Forms.Padding(0);
             this.btn_service.Name = "btn_service";
-            this.btn_service.Size = new System.Drawing.Size(224, 346);
+            this.btn_service.Size = new System.Drawing.Size(149, 225);
             this.btn_service.TabIndex = 1;
             this.btn_service.Text = "Service";
             this.btn_service.UseVisualStyleBackColor = true;
@@ -68,10 +57,10 @@
             // 
             // btn_employee
             // 
-            this.btn_employee.Location = new System.Drawing.Point(768, 211);
+            this.btn_employee.Location = new System.Drawing.Point(623, 137);
             this.btn_employee.Margin = new System.Windows.Forms.Padding(0);
             this.btn_employee.Name = "btn_employee";
-            this.btn_employee.Size = new System.Drawing.Size(224, 346);
+            this.btn_employee.Size = new System.Drawing.Size(149, 225);
             this.btn_employee.TabIndex = 3;
             this.btn_employee.Text = "Employee";
             this.btn_employee.UseVisualStyleBackColor = true;
@@ -79,10 +68,10 @@
             // 
             // btn_product
             // 
-            this.btn_product.Location = new System.Drawing.Point(518, 211);
+            this.btn_product.Location = new System.Drawing.Point(420, 137);
             this.btn_product.Margin = new System.Windows.Forms.Padding(0);
             this.btn_product.Name = "btn_product";
-            this.btn_product.Size = new System.Drawing.Size(224, 346);
+            this.btn_product.Size = new System.Drawing.Size(149, 225);
             this.btn_product.TabIndex = 2;
             this.btn_product.Text = "Product";
             this.btn_product.UseVisualStyleBackColor = true;
@@ -90,10 +79,10 @@
             // 
             // btn_user
             // 
-            this.btn_user.Location = new System.Drawing.Point(1020, 211);
+            this.btn_user.Location = new System.Drawing.Point(823, 137);
             this.btn_user.Margin = new System.Windows.Forms.Padding(0);
             this.btn_user.Name = "btn_user";
-            this.btn_user.Size = new System.Drawing.Size(224, 346);
+            this.btn_user.Size = new System.Drawing.Size(149, 225);
             this.btn_user.TabIndex = 4;
             this.btn_user.Text = "User";
             this.btn_user.UseVisualStyleBackColor = true;
@@ -101,10 +90,9 @@
             // 
             // btn_settings
             // 
-            this.btn_settings.Location = new System.Drawing.Point(1346, 823);
-            this.btn_settings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_settings.Location = new System.Drawing.Point(897, 535);
             this.btn_settings.Name = "btn_settings";
-            this.btn_settings.Size = new System.Drawing.Size(112, 35);
+            this.btn_settings.Size = new System.Drawing.Size(75, 23);
             this.btn_settings.TabIndex = 5;
             this.btn_settings.Text = "Indstillinger";
             this.btn_settings.UseVisualStyleBackColor = true;
@@ -113,10 +101,9 @@
             // 
             this.btn_logout.BackColor = System.Drawing.Color.Red;
             this.btn_logout.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btn_logout.Location = new System.Drawing.Point(1377, 18);
-            this.btn_logout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_logout.Location = new System.Drawing.Point(918, 12);
             this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(112, 35);
+            this.btn_logout.Size = new System.Drawing.Size(75, 23);
             this.btn_logout.TabIndex = 6;
             this.btn_logout.Text = "Log ud";
             this.btn_logout.UseVisualStyleBackColor = false;
@@ -127,10 +114,9 @@
             this.lbl_mainheader.AutoSize = true;
             this.lbl_mainheader.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_mainheader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.lbl_mainheader.Location = new System.Drawing.Point(530, 65);
-            this.lbl_mainheader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_mainheader.Location = new System.Drawing.Point(353, 42);
             this.lbl_mainheader.Name = "lbl_mainheader";
-            this.lbl_mainheader.Size = new System.Drawing.Size(500, 82);
+            this.lbl_mainheader.Size = new System.Drawing.Size(338, 55);
             this.lbl_mainheader.TabIndex = 7;
             this.lbl_mainheader.Text = "HairForceOne";
             // 
@@ -139,10 +125,9 @@
             this.lbl_main_next.AutoSize = true;
             this.lbl_main_next.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_main_next.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.lbl_main_next.Location = new System.Drawing.Point(46, 657);
-            this.lbl_main_next.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_main_next.Location = new System.Drawing.Point(31, 427);
             this.lbl_main_next.Name = "lbl_main_next";
-            this.lbl_main_next.Size = new System.Drawing.Size(261, 25);
+            this.lbl_main_next.Size = new System.Drawing.Size(176, 16);
             this.lbl_main_next.TabIndex = 8;
             this.lbl_main_next.Text = "Næste kunde klokken: 12:30";
             this.lbl_main_next.Click += new System.EventHandler(this.Lbl_main_next_Click);
@@ -152,10 +137,9 @@
             this.lbl_main_counter.AutoSize = true;
             this.lbl_main_counter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_main_counter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.lbl_main_counter.Location = new System.Drawing.Point(46, 700);
-            this.lbl_main_counter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_main_counter.Location = new System.Drawing.Point(31, 455);
             this.lbl_main_counter.Name = "lbl_main_counter";
-            this.lbl_main_counter.Size = new System.Drawing.Size(202, 25);
+            this.lbl_main_counter.Size = new System.Drawing.Size(135, 16);
             this.lbl_main_counter.TabIndex = 9;
             this.lbl_main_counter.Text = "Antal kunder i dag: 14";
             // 
@@ -163,10 +147,9 @@
             // 
             this.lbl_main_watch.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_main_watch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.lbl_main_watch.Location = new System.Drawing.Point(544, 774);
-            this.lbl_main_watch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_main_watch.Location = new System.Drawing.Point(363, 503);
             this.lbl_main_watch.Name = "lbl_main_watch";
-            this.lbl_main_watch.Size = new System.Drawing.Size(486, 252);
+            this.lbl_main_watch.Size = new System.Drawing.Size(324, 164);
             this.lbl_main_watch.TabIndex = 10;
             this.lbl_main_watch.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lbl_main_watch.Click += new System.EventHandler(this.Lbl_main_watch_Click);
@@ -174,10 +157,9 @@
             // btn_createbooking
             // 
             this.btn_createbooking.BackColor = System.Drawing.Color.Lime;
-            this.btn_createbooking.Location = new System.Drawing.Point(544, 686);
-            this.btn_createbooking.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_createbooking.Location = new System.Drawing.Point(363, 446);
             this.btn_createbooking.Name = "btn_createbooking";
-            this.btn_createbooking.Size = new System.Drawing.Size(492, 54);
+            this.btn_createbooking.Size = new System.Drawing.Size(328, 35);
             this.btn_createbooking.TabIndex = 11;
             this.btn_createbooking.Text = "Opret Booking";
             this.btn_createbooking.UseVisualStyleBackColor = false;
@@ -185,10 +167,10 @@
             // 
             // btn_booking
             // 
-            this.btn_booking.Location = new System.Drawing.Point(26, 211);
+            this.btn_booking.Location = new System.Drawing.Point(17, 137);
             this.btn_booking.Margin = new System.Windows.Forms.Padding(0);
             this.btn_booking.Name = "btn_booking";
-            this.btn_booking.Size = new System.Drawing.Size(224, 346);
+            this.btn_booking.Size = new System.Drawing.Size(149, 225);
             this.btn_booking.TabIndex = 12;
             this.btn_booking.Text = "Booking";
             this.btn_booking.UseVisualStyleBackColor = true;
@@ -202,10 +184,10 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(1512, 1049);
+            this.ClientSize = new System.Drawing.Size(1008, 682);
             this.Controls.Add(this.btn_booking);
             this.Controls.Add(this.btn_createbooking);
             this.Controls.Add(this.lbl_main_watch);
@@ -218,8 +200,6 @@
             this.Controls.Add(this.btn_employee);
             this.Controls.Add(this.btn_product);
             this.Controls.Add(this.btn_service);
-            this.Controls.Add(this.btn_checkout);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
@@ -231,8 +211,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btn_checkout;
         private System.Windows.Forms.Button btn_service;
         private System.Windows.Forms.Button btn_employee;
         private System.Windows.Forms.Button btn_product;

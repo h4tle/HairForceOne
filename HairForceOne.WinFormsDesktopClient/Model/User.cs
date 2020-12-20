@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace HairForceOne.WinFormsDesktopClient.Model
+﻿namespace HairForceOne.WinFormsDesktopClient.Model
 {
     public class User
     {
