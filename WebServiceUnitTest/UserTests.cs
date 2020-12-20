@@ -131,7 +131,7 @@ namespace WebServiceUnitTest
                 User user;
                 result.TryGetContentValue<User>(out user);
                 string noneupdatedtitle = user.FirstName;
-                user.FirstName = "Test";
+                user.FirstName = "Anders";
                 var response = usersController.EditUser(user);
                 var newresult = usersController.GetUser(1);
                 User actual;

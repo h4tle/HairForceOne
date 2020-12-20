@@ -178,7 +178,7 @@ namespace HairForceOne.WebService.Controllers
                         user.LastName,
                         user.Email,
                         user.PhoneNo,
-                        user.Password,
+                        user.PasswordHash,
                         user.Salt
                     });
 

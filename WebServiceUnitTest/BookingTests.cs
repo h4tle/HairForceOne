@@ -54,10 +54,11 @@ namespace WebServiceUnitTest
             booking.Duration = 30;
             booking.StartTime = DateTime.Now;
             booking.UserId = 1;
-            booking.EmployeeId = 3;
+            booking.EmployeeId = 2;
             booking.Products = null;
             Service service = new Service();
             service.Duration = 30;
+            service.ServiceId = 1;
             service.Description = "Blob";
             service.Gender = "male";
             service.Price = 27;

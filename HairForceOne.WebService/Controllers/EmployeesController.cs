@@ -224,7 +224,7 @@ namespace HairForceOne.WebService.Controllers
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {

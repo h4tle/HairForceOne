@@ -247,11 +247,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (Exception)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Booking kan ikke oprettes. Prøv igen"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
