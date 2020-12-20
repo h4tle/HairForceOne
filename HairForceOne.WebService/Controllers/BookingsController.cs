@@ -34,7 +34,7 @@ namespace HairForceOne.WebService.Controllers
             try
             {
                 //hfo_Booking
-                string sqlBooking = "SELECT * FROM hfo_Booking";
+                string sqlBooking = "SELECT * FROM hfo_Booking WHERE isDone = 0";
                 string sqlService = "EXEC GetServicesForBooking @BookingId";
                 string sqlProduct = "EXEC GetProductsForBooking @BookingId";
                 using (var scope = new TransactionScope())
@@ -82,7 +82,7 @@ namespace HairForceOne.WebService.Controllers
         {
             try
             {
-                string sqlBooking = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0";
+                string sqlBooking = "SELECT * FROM hfo_Booking WHERE datediff(dd, StartTime, @date) = 0 AND isDone = 0";
                 string sqlService = "EXEC GetServicesForBooking @BookingId";
                 string sqlProduct = "EXEC GetProductsForBooking @BookingId";
                 using (var scope = new TransactionScope())
@@ -128,7 +128,7 @@ namespace HairForceOne.WebService.Controllers
             try
             {
                 string UserId = HttpContext.Current.User.Identity.GetUserId();
-                string sql = "SELECT * FROM hfo_Booking WHERE UserId = @UserId";
+                string sql = "SELECT * FROM hfo_Booking WHERE UserId = @UserId AND isDone = 0";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     List<Booking> bookings = connection.Query<Booking>(sql, new { UserId }).AsList();
@@ -167,7 +167,7 @@ namespace HairForceOne.WebService.Controllers
             {
                 var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
-                    ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
+                    ReasonPhrase = "Booking kan ikke hentes. Prøv igen senere"
                 };
                 throw new HttpResponseException(msg);
             }
@@ -381,7 +381,7 @@ namespace HairForceOne.WebService.Controllers
             }
             try
             {
-                string sql = $"SELECT * FROM hfo_Booking WHERE DATEDIFF( d , StartTime , @selectedDate ) = 0 AND EmployeeId = @employeeId";
+                string sql = $"SELECT * FROM hfo_Booking WHERE DATEDIFF( d , StartTime , @selectedDate ) = 0 AND EmployeeId = @employeeId AND isDone = 0";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
                     var result = connection.Query<Booking>(sql, new

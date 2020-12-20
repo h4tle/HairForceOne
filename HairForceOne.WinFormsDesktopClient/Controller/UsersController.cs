@@ -91,5 +91,21 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
                 return new NotImplementedException();
             }
         }
+
+        public User GetUser(int id)
+        {
+            Task<HttpResponseMessage> responseTask = client.GetAsync($"users/{id}");
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                User user = JsonConvert.DeserializeObject<User>(responseTask.Result.Content.ReadAsStringAsync().Result);
+                return user;
+            }
+            else
+            {
+                throw new HttpRequestException();
+            }
+            
+            
+        }
     }
 }

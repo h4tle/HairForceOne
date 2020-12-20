@@ -29,6 +29,15 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
 
+        internal bool CheckOut(Booking booking)
+        {
+            booking.IsDone = true;
+            var JBooking = new StringContent(JsonConvert.SerializeObject(booking), Encoding.UTF8, "application/json");
+            Task<HttpResponseMessage> responseTask = client.PutAsync($"bookings/{booking.BookingId}", JBooking);
+            responseTask.Wait();
+            return responseTask.Result.IsSuccessStatusCode;
+        }
+
         // navngiv metode
         public NotImplementedException Create(Booking booking)
         {
