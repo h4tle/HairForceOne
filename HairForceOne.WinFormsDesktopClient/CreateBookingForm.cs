@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-// implementer User
-// ændring af navne
 namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class CreateBookingForm : Form
@@ -14,8 +12,7 @@ namespace HairForceOne.WinFormsDesktopClient
         private ProductsController productsController = new ProductsController();
         private EmployeesController employeeController = new EmployeesController();
         private BookingsController bookingsController = new BookingsController();
-
-        //UsersController usersController = new UsersController();
+        private UsersController usersController = new UsersController();
         public CreateBookingForm()
         {
             InitializeComponent();
@@ -29,6 +26,8 @@ namespace HairForceOne.WinFormsDesktopClient
         {
             lb_employee.DataSource = employeeController.GetEmployees();
             lb_employee.DisplayMember = "FirstName";
+            Lb_Users.DataSource = usersController.GetUsers();
+            Lb_Users.DisplayMember = "FirstName";
             foreach (Service service in servicesController.GetAllServices())
             {
                 ListViewItem i = new ListViewItem();
@@ -85,7 +84,8 @@ namespace HairForceOne.WinFormsDesktopClient
             {
                 products.Add((Product)item.Tag);
             }
-            Booking booking = new Booking(1, ((Employee)lb_employee.SelectedItem).EmployeeId, selectedDate, getDuration(), GetTotalPrice(), "Dette er en test kommentar fra DesktopClient", services, products);
+            User user = (User)Lb_Users.SelectedItem;
+            Booking booking = new Booking(user.UserId, ((Employee)lb_employee.SelectedItem).EmployeeId, selectedDate, getDuration(), GetTotalPrice(), "Dette er en test kommentar fra DesktopClient", services, products);
             bookingsController.Create(booking);
             lb_availabletimes.DataSource = null;
             foreach (ListViewItem service in lv_services.CheckedItems)

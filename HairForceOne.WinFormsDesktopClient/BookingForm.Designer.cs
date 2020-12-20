@@ -49,8 +49,7 @@
             // 
             this.dateTime1.BackColor = System.Drawing.SystemColors.Control;
             this.dateTime1.CalendarDimensions = new System.Drawing.Size(1, 2);
-            this.dateTime1.Location = new System.Drawing.Point(17, 47);
-            this.dateTime1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dateTime1.Location = new System.Drawing.Point(26, 72);
             this.dateTime1.Name = "dateTime1";
             this.dateTime1.TabIndex = 3;
             this.dateTime1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.dateTime1_DateChanged);
@@ -61,15 +60,14 @@
             this.dgv_bookings.AllowUserToDeleteRows = false;
             this.dgv_bookings.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgv_bookings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_bookings.Location = new System.Drawing.Point(207, 69);
-            this.dgv_bookings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_bookings.Location = new System.Drawing.Point(310, 106);
             this.dgv_bookings.MultiSelect = false;
             this.dgv_bookings.Name = "dgv_bookings";
             this.dgv_bookings.ReadOnly = true;
             this.dgv_bookings.RowHeadersWidth = 62;
             this.dgv_bookings.RowTemplate.Height = 28;
             this.dgv_bookings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_bookings.Size = new System.Drawing.Size(509, 284);
+            this.dgv_bookings.Size = new System.Drawing.Size(764, 437);
             this.dgv_bookings.TabIndex = 4;
             this.dgv_bookings.ReadOnlyChanged += new System.EventHandler(this.dgv_bookings_ReadOnlyChanged);
             this.dgv_bookings.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_bookings_RowLeave);
@@ -78,10 +76,9 @@
             // cb_employee
             // 
             this.cb_employee.FormattingEnabled = true;
-            this.cb_employee.Location = new System.Drawing.Point(207, 47);
-            this.cb_employee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_employee.Location = new System.Drawing.Point(310, 72);
             this.cb_employee.Name = "cb_employee";
-            this.cb_employee.Size = new System.Drawing.Size(134, 21);
+            this.cb_employee.Size = new System.Drawing.Size(199, 28);
             this.cb_employee.TabIndex = 5;
             this.cb_employee.SelectedIndexChanged += new System.EventHandler(this.cb_employee_SelectedIndexChanged);
             // 
@@ -89,10 +86,9 @@
             // 
             this.btn_delete.BackColor = System.Drawing.Color.Red;
             this.btn_delete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_delete.Location = new System.Drawing.Point(207, 368);
-            this.btn_delete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_delete.Location = new System.Drawing.Point(310, 566);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(65, 21);
+            this.btn_delete.Size = new System.Drawing.Size(98, 32);
             this.btn_delete.TabIndex = 6;
             this.btn_delete.Text = "Slet";
             this.btn_delete.UseVisualStyleBackColor = false;
@@ -101,10 +97,9 @@
             // btn_checkout
             // 
             this.btn_checkout.BackColor = System.Drawing.Color.Lime;
-            this.btn_checkout.Location = new System.Drawing.Point(398, 368);
-            this.btn_checkout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_checkout.Location = new System.Drawing.Point(597, 566);
             this.btn_checkout.Name = "btn_checkout";
-            this.btn_checkout.Size = new System.Drawing.Size(65, 23);
+            this.btn_checkout.Size = new System.Drawing.Size(98, 35);
             this.btn_checkout.TabIndex = 7;
             this.btn_checkout.Text = "Check ud";
             this.btn_checkout.UseVisualStyleBackColor = false;
@@ -113,27 +108,28 @@
             // lb_Services
             // 
             this.lb_Services.FormattingEnabled = true;
-            this.lb_Services.Location = new System.Drawing.Point(755, 47);
-            this.lb_Services.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lb_Services.ItemHeight = 20;
+            this.lb_Services.Location = new System.Drawing.Point(1132, 72);
             this.lb_Services.Name = "lb_Services";
-            this.lb_Services.Size = new System.Drawing.Size(225, 134);
+            this.lb_Services.Size = new System.Drawing.Size(336, 204);
             this.lb_Services.TabIndex = 9;
             // 
             // lb_Products
             // 
             this.lb_Products.FormattingEnabled = true;
-            this.lb_Products.Location = new System.Drawing.Point(755, 268);
-            this.lb_Products.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lb_Products.ItemHeight = 20;
+            this.lb_Products.Location = new System.Drawing.Point(1132, 412);
             this.lb_Products.Name = "lb_Products";
-            this.lb_Products.Size = new System.Drawing.Size(225, 134);
+            this.lb_Products.Size = new System.Drawing.Size(336, 204);
             this.lb_Products.TabIndex = 10;
             // 
             // btn_backtomain
             // 
             this.btn_backtomain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.btn_backtomain.Location = new System.Drawing.Point(17, 9);
+            this.btn_backtomain.Location = new System.Drawing.Point(26, 14);
+            this.btn_backtomain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_backtomain.Name = "btn_backtomain";
-            this.btn_backtomain.Size = new System.Drawing.Size(75, 23);
+            this.btn_backtomain.Size = new System.Drawing.Size(112, 35);
             this.btn_backtomain.TabIndex = 31;
             this.btn_backtomain.Text = "Tilbage";
             this.btn_backtomain.UseVisualStyleBackColor = false;
@@ -143,10 +139,9 @@
             // 
             this.Btn_deleteService.BackColor = System.Drawing.Color.Red;
             this.Btn_deleteService.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Btn_deleteService.Location = new System.Drawing.Point(913, 183);
-            this.Btn_deleteService.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_deleteService.Location = new System.Drawing.Point(1370, 282);
             this.Btn_deleteService.Name = "Btn_deleteService";
-            this.Btn_deleteService.Size = new System.Drawing.Size(65, 23);
+            this.Btn_deleteService.Size = new System.Drawing.Size(98, 35);
             this.Btn_deleteService.TabIndex = 32;
             this.Btn_deleteService.Text = "Slet";
             this.Btn_deleteService.UseVisualStyleBackColor = false;
@@ -157,10 +152,9 @@
             // 
             this.Btn_deleteProduct.BackColor = System.Drawing.Color.Red;
             this.Btn_deleteProduct.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Btn_deleteProduct.Location = new System.Drawing.Point(913, 405);
-            this.Btn_deleteProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_deleteProduct.Location = new System.Drawing.Point(1370, 623);
             this.Btn_deleteProduct.Name = "Btn_deleteProduct";
-            this.Btn_deleteProduct.Size = new System.Drawing.Size(65, 23);
+            this.Btn_deleteProduct.Size = new System.Drawing.Size(98, 35);
             this.Btn_deleteProduct.TabIndex = 33;
             this.Btn_deleteProduct.Text = "Slet";
             this.Btn_deleteProduct.UseVisualStyleBackColor = false;
@@ -170,10 +164,9 @@
             // Btn_addService
             // 
             this.Btn_addService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.Btn_addService.Location = new System.Drawing.Point(843, 183);
-            this.Btn_addService.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_addService.Location = new System.Drawing.Point(1264, 282);
             this.Btn_addService.Name = "Btn_addService";
-            this.Btn_addService.Size = new System.Drawing.Size(65, 23);
+            this.Btn_addService.Size = new System.Drawing.Size(98, 35);
             this.Btn_addService.TabIndex = 34;
             this.Btn_addService.Text = "Tilføj";
             this.Btn_addService.UseVisualStyleBackColor = false;
@@ -183,10 +176,9 @@
             // Btn_addProduct
             // 
             this.Btn_addProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
-            this.Btn_addProduct.Location = new System.Drawing.Point(843, 405);
-            this.Btn_addProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_addProduct.Location = new System.Drawing.Point(1264, 623);
             this.Btn_addProduct.Name = "Btn_addProduct";
-            this.Btn_addProduct.Size = new System.Drawing.Size(65, 23);
+            this.Btn_addProduct.Size = new System.Drawing.Size(98, 35);
             this.Btn_addProduct.TabIndex = 35;
             this.Btn_addProduct.Text = "Tilføj";
             this.Btn_addProduct.UseVisualStyleBackColor = false;
@@ -199,13 +191,12 @@
             this.btn_edit.AutoSize = true;
             this.btn_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
             this.btn_edit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_edit.Location = new System.Drawing.Point(568, 368);
-            this.btn_edit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btn_edit.MinimumSize = new System.Drawing.Size(65, 23);
+            this.btn_edit.Location = new System.Drawing.Point(852, 566);
+            this.btn_edit.MinimumSize = new System.Drawing.Size(98, 35);
             this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(79, 23);
+            this.btn_edit.Size = new System.Drawing.Size(98, 35);
             this.btn_edit.TabIndex = 36;
-            this.btn_edit.Text = "Gem Rediger";
+            this.btn_edit.Text = "Rediger";
             this.btn_edit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_edit.UseVisualStyleBackColor = false;
             this.btn_edit.CheckedChanged += new System.EventHandler(this.btn_edit_CheckedChanged);
@@ -214,10 +205,9 @@
             // 
             this.Btn_SaveEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(167)))), ((int)(((byte)(122)))));
             this.Btn_SaveEdit.Enabled = false;
-            this.Btn_SaveEdit.Location = new System.Drawing.Point(651, 368);
-            this.Btn_SaveEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Btn_SaveEdit.Location = new System.Drawing.Point(976, 566);
             this.Btn_SaveEdit.Name = "Btn_SaveEdit";
-            this.Btn_SaveEdit.Size = new System.Drawing.Size(65, 23);
+            this.Btn_SaveEdit.Size = new System.Drawing.Size(98, 35);
             this.Btn_SaveEdit.TabIndex = 37;
             this.Btn_SaveEdit.Text = "Gem";
             this.Btn_SaveEdit.UseVisualStyleBackColor = false;
@@ -225,10 +215,10 @@
             // 
             // BookingForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(78)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(1008, 682);
+            this.ClientSize = new System.Drawing.Size(1512, 1049);
             this.Controls.Add(this.Btn_SaveEdit);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.Btn_addProduct);
@@ -243,7 +233,6 @@
             this.Controls.Add(this.cb_employee);
             this.Controls.Add(this.dgv_bookings);
             this.Controls.Add(this.dateTime1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "BookingForm";
             this.Text = "Booking";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BookingForm_FormClosed);
