@@ -1,5 +1,4 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Model;
-using System;
 using System.Collections.Generic;
 
 namespace HairForceOne.WinFormsDesktopClient.Controller
@@ -8,10 +7,10 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
     {
         List<User> GetUsers();
 
-        NotImplementedException CreateNewUser(User user);
+        bool CreateNewUser(User user);
 
-        NotImplementedException EditUser(User user);
+        bool EditUser(User user);
 
-        NotImplementedException DeleteUser(int id);
+        bool DeleteUser(int id);
     }
 }

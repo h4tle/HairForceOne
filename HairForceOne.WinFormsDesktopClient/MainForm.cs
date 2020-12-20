@@ -37,48 +37,60 @@ namespace HairForceOne.WinFormsDesktopClient
 
         private void Btn_service_Click(object sender, EventArgs e)
         {
-            Form serviceForm = new ServiceForm();
-            serviceForm.Owner = this;
+            Form serviceForm = new ServiceForm
+            {
+                Owner = this
+            };
             serviceForm.Show();
             this.Hide();
         }
 
         private void Btn_product_Click(object sender, EventArgs e)
         {
-            Form productForm = new ProductForm();
-            productForm.Owner = this;
+            Form productForm = new ProductForm
+            {
+                Owner = this
+            };
             productForm.Show();
             this.Hide();
         }
 
         private void Btn_employee_Click(object sender, EventArgs e)
         {
-            Form employeeForm = new EmployeeForm();
-            employeeForm.Owner = this;
+            Form employeeForm = new EmployeeForm
+            {
+                Owner = this
+            };
             employeeForm.Show();
             this.Hide();
         }
 
         private void Btn_booking_Click(object sender, EventArgs e)
         {
-            Form BookingForm = new BookingForm();
-            BookingForm.Owner = this;
+            Form BookingForm = new BookingForm
+            {
+                Owner = this
+            };
             BookingForm.Show();
             this.Hide();
         }
 
         private void Btn_createbooking_Click(object sender, EventArgs e)
         {
-            Form CreateBookingForm = new CreateBookingForm();
-            CreateBookingForm.Owner = this;
+            Form CreateBookingForm = new CreateBookingForm
+            {
+                Owner = this
+            };
             CreateBookingForm.Show();
             this.Hide();
         }
 
         private void Btn_user_Click(object sender, EventArgs e)
         {
-            Form UserForm = new UserForm();
-            UserForm.Owner = this;
+            Form UserForm = new UserForm
+            {
+                Owner = this
+            };
             UserForm.Show();
             this.Hide();
         }

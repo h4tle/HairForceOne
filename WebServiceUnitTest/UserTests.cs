@@ -40,8 +40,7 @@ namespace WebServiceUnitTest
             try
             {
                 // Act
-                List<User> users;
-                result.TryGetContentValue<List<User>>(out users);
+                result.TryGetContentValue<List<User>>(out List<User> users);
 
                 // Assert
                 Assert.IsTrue(users.Count > 0);
@@ -64,10 +63,9 @@ namespace WebServiceUnitTest
             try
             {
                 //Acts
-                User user;
 
                 //Assert
-                Assert.IsTrue(result.TryGetContentValue<User>(out user));
+                Assert.IsTrue(result.TryGetContentValue<User>(out User user));
                 Assert.AreEqual(1, user.UserId);
             }
             catch (Exception)
@@ -128,15 +126,13 @@ namespace WebServiceUnitTest
             {
                 // Act
                 var result = usersController.GetUser(1);
-                User user;
-                result.TryGetContentValue<User>(out user);
+                result.TryGetContentValue<User>(out User user);
                 string noneupdatedtitle = user.FirstName;
                 user.FirstName = "Anders";
                 var response = usersController.EditUser(user);
                 var newresult = usersController.GetUser(1);
-                User actual;
 
-                newresult.TryGetContentValue<User>(out actual);
+                newresult.TryGetContentValue<User>(out User actual);
 
                 // Assert
                 Assert.IsTrue(response.IsSuccessStatusCode);

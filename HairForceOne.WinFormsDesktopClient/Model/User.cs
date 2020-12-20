@@ -20,9 +20,9 @@
             this.Password = Password_;
             this.Roles = Roles_;
         }
+
         public User()
         {
-
         }
     }
 }

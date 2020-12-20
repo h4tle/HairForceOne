@@ -6,17 +6,18 @@ namespace HairForceOne.WinFormsDesktopClient
 {
     public partial class CheckoutForm : Form
     {
-        BookingsController bookingController = new BookingsController();
-        UsersController usersController = new UsersController();
-        EmployeesController employeesController = new EmployeesController();
-        Booking booking;
+        private readonly BookingsController bookingController = new BookingsController();
+        private readonly UsersController usersController = new UsersController();
+        private readonly EmployeesController employeesController = new EmployeesController();
+        private readonly Booking booking;
+
         public CheckoutForm(Booking booking)
         {
             this.booking = booking;
             InitializeComponent();
         }
 
-        private void btn_backtomain_Click(object sender, System.EventArgs e)
+        private void Btn_backtomain_Click(object sender, System.EventArgs e)
         {
             this.Close();
         }
@@ -26,7 +27,7 @@ namespace HairForceOne.WinFormsDesktopClient
             this.Owner.Show();
         }
 
-        private void btn_checkout_Click(object sender, System.EventArgs e)
+        private void Btn_checkout_Click(object sender, System.EventArgs e)
         {
             bookingController.CheckOut(booking);
             this.Owner.Close();

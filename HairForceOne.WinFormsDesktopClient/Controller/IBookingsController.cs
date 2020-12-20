@@ -14,9 +14,9 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 
         List<TimeSpan> GetAvailableTimes(Event e);
 
-        NotImplementedException Create(Booking b);
+        bool Create(Booking b);
 
-        NotImplementedException Delete(int bookingId);
+        bool Delete(int bookingId);
 
         bool Edit(Booking b);
     }

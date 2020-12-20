@@ -40,19 +40,33 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"employees");
             responseTask.Wait();
-            List<Employee> employees = JsonConvert.DeserializeObject<List<Employee>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return employees;
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<List<Employee>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         /// <summary>
         /// This method gets a specific EmployeeId from the list of Employee objects using HttpClient
-        ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns>An Employee object by EmployeeId</returns>
         public Employee GetEmployee(int id)
         {
-            throw new NotImplementedException();
+            Task<HttpResponseMessage> responseTask = client.GetAsync($"employees/{id}");
+            responseTask.Wait();
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<Employee>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         /// <summary>
@@ -60,20 +74,12 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
-        public NotImplementedException CreateNewEmployee(Employee employee)
+        public bool CreateNewEmployee(Employee employee)
         {
             var JEmployee = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PostAsync($"employees/", JEmployee);
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -81,20 +87,12 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
-        public NotImplementedException EditEmployee(Employee employee)
+        public bool EditEmployee(Employee employee)
         {
             var JEmployee = new StringContent(JsonConvert.SerializeObject(employee), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PutAsync($"employees/{employee.EmployeeId}", JEmployee);
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -102,19 +100,11 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public NotImplementedException DeleteEmployee(int id)
+        public bool DeleteEmployee(int id)
         {
             Task<HttpResponseMessage> responseTask = client.DeleteAsync($"employees/{id}");
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
     }
 }

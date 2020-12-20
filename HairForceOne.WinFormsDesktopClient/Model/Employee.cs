@@ -25,9 +25,9 @@
             this.Biography = Biography_;
             this.RoleId = RoleId_;
         }
+
         public Employee()
         {
-
         }
     }
 }

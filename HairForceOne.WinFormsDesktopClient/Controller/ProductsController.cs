@@ -38,8 +38,14 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"products");
             responseTask.Wait();
-            List<Product> products = JsonConvert.DeserializeObject<List<Product>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return products;
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<List<Product>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         /// <summary>
@@ -59,20 +65,12 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public NotImplementedException CreateNewProduct(Product product)
+        public bool CreateNewProduct(Product product)
         {
             var JProduct = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PostAsync($"products/", JProduct);
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -80,20 +78,12 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public NotImplementedException EditProduct(Product product)
+        public bool EditProduct(Product product)
         {
             var JProduct = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PutAsync($"products/{product.ProductId}", JProduct);
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -101,19 +91,11 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public NotImplementedException DeleteProduct(int id)
+        public bool DeleteProduct(int id)
         {
             Task<HttpResponseMessage> responseTask = client.DeleteAsync($"products/{id}");
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
     }
 }

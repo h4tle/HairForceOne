@@ -37,36 +37,30 @@ namespace HairForceOne.WebService.Controllers
                 string sqlBooking = "SELECT * FROM hfo_Booking WHERE isDone = 0";
                 string sqlService = "EXEC GetServicesForBooking @BookingId";
                 string sqlProduct = "EXEC GetProductsForBooking @BookingId";
-                using (var scope = new TransactionScope())
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                    connection.Open();
+                    using (var transaction = connection.BeginTransaction())
                     {
-                        List<Booking> bookings = connection.Query<Booking>(sqlBooking).AsList();
-
-                        connection.Open();
-                        using (var transaction = connection.BeginTransaction())
+                        List<Booking> bookings = transaction.Query<Booking>(sqlBooking).AsList();
+                        foreach (Booking booking in bookings)
                         {
-                            foreach (Booking booking in bookings)
-                            {
-                                List<Service> services = transaction.Query<Service>(sqlService, new { booking.BookingId }).AsList();
-                                booking.Services = services;
-                                List<Product> products = transaction.Query<Product>(sqlProduct, new { booking.BookingId }).AsList();
-                                booking.Products = products;
-                            }
-                            transaction.Commit();
-                            scope.Complete();
+                            List<Service> services = transaction.Query<Service>(sqlService, new { booking.BookingId }).AsList();
+                            booking.Services = services;
+                            List<Product> products = transaction.Query<Product>(sqlProduct, new { booking.BookingId }).AsList();
+                            booking.Products = products;
                         }
+                        transaction.Commit();
                         return Request.CreateResponse(HttpStatusCode.OK, bookings);
                     }
                 }
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -109,11 +103,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -128,20 +121,33 @@ namespace HairForceOne.WebService.Controllers
             try
             {
                 string UserId = HttpContext.Current.User.Identity.GetUserId();
-                string sql = "SELECT * FROM hfo_Booking WHERE UserId = @UserId AND isDone = 0";
+                string sqlBooking = "SELECT * FROM hfo_Booking WHERE UserId = @UserId AND isDone = 0";
+                string sqlService = "EXEC GetServicesForBooking @BookingId";
+                string sqlProduct = "EXEC GetProductsForBooking @BookingId";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    List<Booking> bookings = connection.Query<Booking>(sql, new { UserId }).AsList();
-                    return Request.CreateResponse(HttpStatusCode.OK, bookings);
+                    connection.Open();
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        List<Booking> bookings = transaction.Query<Booking>(sqlBooking, new { UserId }).AsList();
+                        foreach (Booking booking in bookings)
+                        {
+                            List<Service> services = transaction.Query<Service>(sqlService, new { booking.BookingId }).AsList();
+                            booking.Services = services;
+                            List<Product> products = transaction.Query<Product>(sqlProduct, new { booking.BookingId }).AsList();
+                            booking.Products = products;
+                        }
+                        transaction.Commit();
+                        return Request.CreateResponse(HttpStatusCode.OK, bookings);
+                    }
                 }
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Bookings kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -152,24 +158,37 @@ namespace HairForceOne.WebService.Controllers
         /// <returns>A single booking object</returns>
         [HttpGet]
         [Authorize(Roles = "2, 3")]
-        public HttpResponseMessage GetBooking(int id)
+        public HttpResponseMessage GetBooking(int BookingId)
         {
             try
             {
-                string sql = "SELECT * FROM hfo_Booking WHERE BookingId = @BookingId";
+                string sqlService = "EXEC GetServicesForBooking @BookingId";
+                string sqlProduct = "EXEC GetProductsForBooking @BookingId";
+                string sqlBooking = "SELECT * FROM hfo_Booking WHERE BookingId = @BookingId";
                 using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                 {
-                    Booking booking = connection.QuerySingleOrDefault<Booking>(sql, new { BookingId = id });
-                    return Request.CreateResponse(HttpStatusCode.OK, booking);
+                    connection.Open();
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        Booking booking = connection.QuerySingleOrDefault<Booking>(sqlBooking, new { BookingId });
+
+                        List<Service> services = transaction.Query<Service>(sqlService, new { booking.BookingId }).AsList();
+                        booking.Services = services;
+
+                        List<Product> products = transaction.Query<Product>(sqlProduct, new { booking.BookingId }).AsList();
+                        booking.Products = products;
+
+                        transaction.Commit();
+                        return Request.CreateResponse(HttpStatusCode.OK, booking);
+                    }
                 }
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Booking kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -267,6 +286,8 @@ namespace HairForceOne.WebService.Controllers
             {
                 using (var scope = new TransactionScope())
                 {
+                    int newDuration = 0;
+                    decimal newTotalPrice = 0;
                     string updateSql = "EXEC UpdateServiceAndProductLines @BookingId";
                     string serviceSql = "INSERT INTO hfo_ServiceLine (ServiceId, BookingId)" +
                             "VALUES (@ServiceId, @BookingId)";
@@ -275,55 +296,56 @@ namespace HairForceOne.WebService.Controllers
                     string bookingSql = "UPDATE hfo_Booking SET TotalPrice = @TotalPrice, EmployeeId = @EmployeeId, UserId = @UserId, Comment = @Comment, StartTime = @StartTime, Duration = @Duration, IsDone = @IsDone WHERE BookingId = @BookingId";
                     using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
                     {
-                        int BookingId = connection.Execute(bookingSql, new
-                        {
-                            booking.TotalPrice,
-                            booking.EmployeeId,
-                            booking.UserId,
-                            booking.Comment,
-                            booking.StartTime,
-                            booking.Duration,
-                            booking.IsDone,
-                            booking.BookingId,
-                        });
                         connection.Open();
-                        connection.Execute(updateSql, new { booking.BookingId });
-                        connection.Open();
-
                         using (var transaction = connection.BeginTransaction())
                         {
-                            foreach (Service s in booking.Services)
+                            transaction.Execute(updateSql, new { booking.BookingId });
+
+                            foreach (Service service in booking.Services)
                             {
+                                newDuration += service.Duration;
                                 var serviceId = transaction.Execute(serviceSql, new
                                 {
-                                    s.ServiceId,
-                                    BookingId
+                                    service.ServiceId,
+                                    booking.BookingId
                                 });
                             }
 
-                            foreach (Product p in booking.Products)
+                            foreach (Product product in booking.Products)
                             {
+                                newTotalPrice += product.RetailPrice;
                                 var productId = transaction.Execute(productSql, new
                                 {
-                                    p.ProductId,
-                                    BookingId,
-                                    p.Quantity
+                                    product.ProductId,
+                                    booking.BookingId,
+                                    Quantity = 1
                                 });
                             }
+
+                            int BookingId = transaction.Execute(bookingSql, new
+                            {
+                                TotalPrice = newTotalPrice,
+                                booking.EmployeeId,
+                                booking.UserId,
+                                booking.Comment,
+                                booking.StartTime,
+                                Duration = newDuration,
+                                booking.IsDone,
+                                booking.BookingId,
+                            });
                             transaction.Commit();
                         }
                         scope.Complete();
-                        return Request.CreateResponse(HttpStatusCode.OK, BookingId);
+                        return Request.CreateResponse(HttpStatusCode.OK);
                     }
                 }
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Booking kan ikke opdateres. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -355,6 +377,11 @@ namespace HairForceOne.WebService.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets all available times for the selected date and employee
+        /// </summary>
+        /// <param name="ev">Object containing the selected date, the selected employee and the duration of the booking</param>
+        /// <returns>A list of TimeSpan objects with available times</returns>
         [HttpPost]
         [Route("availabletimes")]
         public HttpResponseMessage GetAvialableTimes(Event ev)
@@ -393,7 +420,7 @@ namespace HairForceOne.WebService.Controllers
                     List<Booking> bookings = result.OrderBy(d => d.StartTime).ToList();
                     //Calculating available times
                     List<TimeSpan> availableTimes = new List<TimeSpan>();
-                    for (TimeSpan i = selectedDate.TimeOfDay; i < closeHour; i = i + interval)
+                    for (TimeSpan i = selectedDate.TimeOfDay; i < closeHour; i += interval)
                     {
                         //Checks if the selected time and duration is after the closing hour.
                         if (i + Duration > closeHour)
@@ -430,11 +457,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Ledige tider kan ikke hentes. Prøv igen."
                 };
-                throw new HttpResponseException(msg);
             }
         }
     }

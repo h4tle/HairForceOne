@@ -1,5 +1,4 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Model;
-using System;
 using System.Collections.Generic;
 
 namespace HairForceOne.WinFormsDesktopClient.Controller
@@ -10,10 +9,10 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 
         Employee GetEmployee(int id);
 
-        NotImplementedException CreateNewEmployee(Employee employee);
+        bool CreateNewEmployee(Employee employee);
 
-        NotImplementedException EditEmployee(Employee employee);
+        bool EditEmployee(Employee employee);
 
-        NotImplementedException DeleteEmployee(int id);
+        bool DeleteEmployee(int id);
     }
 }

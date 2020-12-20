@@ -1,5 +1,4 @@
 ﻿using HairForceOne.WinFormsDesktopClient.Model;
-using System;
 using System.Collections.Generic;
 
 namespace HairForceOne.WinFormsDesktopClient.Controller
@@ -10,10 +9,10 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 
         Service GetService(int id);
 
-        NotImplementedException CreateNewService(Service Service);
+        bool CreateNewService(Service Service);
 
-        NotImplementedException EditService(Service Service);
+        bool EditService(Service Service);
 
-        NotImplementedException DeleteService(int id);
+        bool DeleteService(int id);
     }
 }

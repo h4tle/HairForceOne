@@ -19,43 +19,37 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
 {
     internal class BookingsController : IBookingsController
     {
-        private HttpClient client = new HttpClient();
+        private HttpClient Client { get; set; }
 
         public BookingsController()
         {
-            client = new HttpClient();
-            client.BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"]);
+            Client = new HttpClient
+            {
+                BaseAddress = new Uri(ConfigurationManager.AppSettings["HairForceOneApiURL"])
+            };
             // skal sætte token ind
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
+            Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CredentialManager.ReadCredential(applicationName: "Token").Password);
         }
 
         internal bool CheckOut(Booking booking)
         {
             booking.IsDone = true;
             var JBooking = new StringContent(JsonConvert.SerializeObject(booking), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client.PutAsync($"bookings/{booking.BookingId}", JBooking);
+            Task<HttpResponseMessage> responseTask = Client.PutAsync($"bookings/{booking.BookingId}", JBooking);
             responseTask.Wait();
             return responseTask.Result.IsSuccessStatusCode;
         }
 
         // navngiv metode
-        public NotImplementedException Create(Booking booking)
+        public bool Create(Booking booking)
         {
             try
             {
                 var JBooking = new StringContent(JsonConvert.SerializeObject(booking), Encoding.UTF8, "application/json");
-                Task<HttpResponseMessage> responseTask = client.PostAsync($"bookings/", JBooking);
+                Task<HttpResponseMessage> responseTask = Client.PostAsync($"bookings/", JBooking);
                 responseTask.Wait();
 
-                if (responseTask.Result.IsSuccessStatusCode)
-                {
-                    return new NotImplementedException();
-                }
-                else
-                {
-                    // tag exception fra statuscode og håndter den
-                    throw new NotImplementedException();
-                }
+                return responseTask.Result.IsSuccessStatusCode;
             }
             catch (SqlException e)
             {
@@ -63,47 +57,40 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
             }
         }
 
-        public NotImplementedException Delete(int bookingId)
+        public bool Delete(int bookingId)
         {
-            Task<HttpResponseMessage> responseTask = client.DeleteAsync($"bookings/{bookingId}");
+            Task<HttpResponseMessage> responseTask = Client.DeleteAsync($"bookings/{bookingId}");
             responseTask.Wait();
 
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         public bool Edit(Booking booking)
         {
             var JBooking = new StringContent(JsonConvert.SerializeObject(booking), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client.PutAsync($"bookings/{booking.BookingId}", JBooking);
+            Task<HttpResponseMessage> responseTask = Client.PutAsync($"bookings/{booking.BookingId}", JBooking);
             responseTask.Wait();
             return responseTask.Result.IsSuccessStatusCode;
         }
 
         public List<Booking> GetAllBookings()
         {
-            try
+            Task<HttpResponseMessage> responseTask = Client.GetAsync($"bookings/");
+            responseTask.Wait();
+            if (responseTask.Result.IsSuccessStatusCode)
             {
-                Task<HttpResponseMessage> responseTask = client.GetAsync($"bookings/");
-                responseTask.Wait();
                 return JsonConvert.DeserializeObject<List<Booking>>(responseTask.Result.Content.ReadAsStringAsync().Result);
             }
-            catch (HttpRequestException e)
+            else
             {
-                throw e;
+                throw new NotImplementedException();
             }
         }
 
         public List<Booking> GetBookingsByDate(DateTime date)
         {
             var JDate = new StringContent(JsonConvert.SerializeObject(date), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client.PostAsync($"bookings/date/", JDate);
+            Task<HttpResponseMessage> responseTask = Client.PostAsync($"bookings/date/", JDate);
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)
@@ -140,7 +127,7 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         public List<TimeSpan> GetAvailableTimes(Event e)
         {
             var JEvent = new StringContent(JsonConvert.SerializeObject(e), Encoding.UTF8, "application/json");
-            Task<HttpResponseMessage> responseTask = client.PostAsync($"bookings/availabletimes", JEvent);
+            Task<HttpResponseMessage> responseTask = Client.PostAsync($"bookings/availabletimes", JEvent);
             responseTask.Wait();
 
             if (responseTask.Result.IsSuccessStatusCode)

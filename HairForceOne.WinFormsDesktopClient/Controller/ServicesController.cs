@@ -43,8 +43,14 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"services");
             responseTask.Wait();
-            List<Service> services = JsonConvert.DeserializeObject<List<Service>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return services;
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<List<Service>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         /// <summary>
@@ -62,20 +68,12 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        public NotImplementedException CreateNewService(Service service)
+        public bool CreateNewService(Service service)
         {
             var JService = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PostAsync($"services/", JService);
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -83,20 +81,12 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="service"></param>
         /// <returns></returns>
-        public NotImplementedException EditService(Service service)
+        public bool EditService(Service service)
         {
             var JService = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PutAsync($"services/{service.ServiceId}", JService);
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         /// <summary>
@@ -104,19 +94,11 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public NotImplementedException DeleteService(int id)
+        public bool DeleteService(int id)
         {
             Task<HttpResponseMessage> responseTask = client.DeleteAsync($"services/{id}");
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
     }
 }

@@ -113,7 +113,7 @@
             this.btn_checkout.TabIndex = 21;
             this.btn_checkout.Text = "Afslut handel";
             this.btn_checkout.UseVisualStyleBackColor = false;
-            this.btn_checkout.Click += new System.EventHandler(this.btn_checkout_Click);
+            this.btn_checkout.Click += new System.EventHandler(this.Btn_checkout_Click);
             // 
             // lbl_booking_name
             // 
@@ -173,7 +173,7 @@
             this.btn_backtomain.TabIndex = 27;
             this.btn_backtomain.Text = "Tilbage";
             this.btn_backtomain.UseVisualStyleBackColor = false;
-            this.btn_backtomain.Click += new System.EventHandler(this.btn_backtomain_Click);
+            this.btn_backtomain.Click += new System.EventHandler(this.Btn_backtomain_Click);
             // 
             // Lb_Products
             // 

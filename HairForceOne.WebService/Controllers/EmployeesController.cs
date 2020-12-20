@@ -39,11 +39,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Medarbejdere kunne ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -73,14 +72,14 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Din profil kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
+        [Route("{EmployeeId}")]
         [Authorize(Roles = "3")]
         [HttpGet]
         public HttpResponseMessage GetEmployee(int EmployeeId)
@@ -96,11 +95,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Medarbejderen kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -144,11 +142,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Medarbejderen kan ikke oprettes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -196,11 +193,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Medarbejderen kan ikke redigeres. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -226,11 +222,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Medarbejderen kunne ikke slettes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
     }

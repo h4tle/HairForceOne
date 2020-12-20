@@ -41,71 +41,51 @@ namespace HairForceOne.WinFormsDesktopClient.Controller
         {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"users");
             responseTask.Wait();
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(responseTask.Result.Content.ReadAsStringAsync().Result);
-            return users;
+            if (responseTask.Result.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<List<User>>(responseTask.Result.Content.ReadAsStringAsync().Result);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        public NotImplementedException CreateNewUser(User user)
+        public bool CreateNewUser(User user)
         {
             var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PostAsync($"users/", JUser);
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
-        public NotImplementedException EditUser(User user)
+        public bool EditUser(User user)
         {
             var JUser = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
             Task<HttpResponseMessage> responseTask = client.PutAsync($"users/{user.UserId}", JUser);
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
-        public NotImplementedException DeleteUser(int id)
+        public bool DeleteUser(int id)
         {
             Task<HttpResponseMessage> responseTask = client.DeleteAsync($"users/{id}");
             responseTask.Wait();
-
-            if (responseTask.Result.IsSuccessStatusCode)
-            {
-                return new NotImplementedException();
-            }
-            else
-            {
-                return new NotImplementedException();
-            }
+            return responseTask.Result.IsSuccessStatusCode;
         }
 
         public User GetUser(int id)
         {
             Task<HttpResponseMessage> responseTask = client.GetAsync($"users/{id}");
+            responseTask.Wait();
             if (responseTask.Result.IsSuccessStatusCode)
             {
-                User user = JsonConvert.DeserializeObject<User>(responseTask.Result.Content.ReadAsStringAsync().Result);
-                return user;
+                return JsonConvert.DeserializeObject<User>(responseTask.Result.Content.ReadAsStringAsync().Result);
             }
             else
             {
-                throw new HttpRequestException();
+                throw new NotImplementedException();
             }
-            
-            
         }
     }
 }

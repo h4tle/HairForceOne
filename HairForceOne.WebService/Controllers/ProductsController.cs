@@ -35,11 +35,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -64,11 +63,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -93,11 +91,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -121,11 +118,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Produkter kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -159,11 +155,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Produktet kan ikke oprettes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -198,11 +193,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Produktet kan ikke opdateres. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -226,11 +220,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Produktet kan ikke slettes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
     }

@@ -38,11 +38,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Brugere kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -69,14 +68,14 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Din profil kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
+        [Route("{UserId}")]
         [Authorize(Roles = "2, 3")]
         [HttpGet]
         public HttpResponseMessage GetUser(int UserId)
@@ -93,11 +92,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Brugeren kan ikke hentes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -137,11 +135,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Brugeren kan ikke oprettes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
@@ -187,21 +184,19 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Brugeren kan ikke opdateres. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
 
         /// <summary>
         /// This method deletes the User Object from the database, using a specific UserId
         /// </summary>
-        /// <param name="id"></param>
         [Authorize(Roles = "2, 3")]
         [HttpDelete]
-        public HttpResponseMessage DeleteUser(int id)
+        public HttpResponseMessage DeleteUser()
         {
             try
             {
@@ -216,11 +211,10 @@ namespace HairForceOne.WebService.Controllers
             }
             catch (SqlException)
             {
-                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     ReasonPhrase = "Brugeren kan ikke slettes. Prøv igen senere"
                 };
-                throw new HttpResponseException(msg);
             }
         }
     }
