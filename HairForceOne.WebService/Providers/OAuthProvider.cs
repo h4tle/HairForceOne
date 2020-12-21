@@ -20,7 +20,6 @@ namespace HairForceOne.WebService.Providers
             await Task.Run(() => context.Validated());
         }
 
-        // Gennemgå metode, skriv kommentarer
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
@@ -29,13 +28,11 @@ namespace HairForceOne.WebService.Providers
                 string password = context.Password;
 
                 // searching the user in the database
-                //var user = conn.QuerySingleOrDefault<Employee>("SELECT * FROM hfo_Employee WHERE Email =@Email",
-                //    new { Email });
-
                 var result = conn.QueryMultiple("SELECT * FROM hfo_Employee WHERE Email = @Email; SELECT * FROM hfo_User WHERE Email = @Email",
                     new { Email });
                 Employee employee = result.ReadSingleOrDefault<Employee>();
                 User user = result.ReadSingleOrDefault<User>();
+
                 // if the user is found, claims are added
                 if (user != null || employee != null)
                 {
