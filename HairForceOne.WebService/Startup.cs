@@ -19,6 +19,7 @@ namespace HairForceOne.WebService
         public void Configuration(IAppBuilder app)
         {
             app.UseCors(CorsOptions.AllowAll); // enables cross origin http requests
+            
             // creating options object
             var oauthoptions = new OAuthAuthorizationServerOptions
             {

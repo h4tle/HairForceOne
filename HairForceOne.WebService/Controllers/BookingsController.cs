@@ -378,6 +378,35 @@ namespace HairForceOne.WebService.Controllers
         }
 
         /// <summary>
+        /// Deletes a booking from the DB.
+        /// </summary>
+        /// <param name="bookingId">the id of the specific booking to delete</param>
+        /// <returns>A status code</returns>
+        [HttpDelete]
+        [Route("mybookings/{bookingId}")]
+        public HttpResponseMessage RemoveUserBooking(int bookingId)
+        {
+            try
+            {
+                string UserId = HttpContext.Current.User.Identity.GetUserId();
+                string sql = "DELETE FROM hfo_Booking WHERE BookingId = @bookingId AND UserId = @UserId";
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Hildur"].ConnectionString))
+                {
+                    connection.Execute(sql, new { bookingId, UserId });
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+            }
+            catch (SqlException)
+            {
+                var msg = new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                {
+                    ReasonPhrase = "Bookingen kunne ikke slettes. Prøv igen."
+                };
+                throw new HttpResponseException(msg);
+            }
+        }
+
+        /// <summary>
         /// Gets all available times for the selected date and employee
         /// </summary>
         /// <param name="ev">Object containing the selected date, the selected employee and the duration of the booking</param>
