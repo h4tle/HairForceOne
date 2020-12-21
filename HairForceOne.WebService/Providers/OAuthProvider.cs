@@ -40,11 +40,13 @@ namespace HairForceOne.WebService.Providers
                     {
                         if (PasswordHelper.ComparePass(password, user.PasswordHash, user.Salt))
                         {
-                            var Claims = new List<Claim>();
-                            Claims.Add(new Claim(ClaimTypes.Name, user.FirstName));
-                            Claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
-                            Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString()));
-                            Claims.Add(new Claim(ClaimTypes.Role, user.RoleId.ToString()));
+                            var Claims = new List<Claim>
+                            {
+                                new Claim(ClaimTypes.Name, user.FirstName),
+                                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                                new Claim("LoggedOn", DateTime.Now.ToString()),
+                                new Claim(ClaimTypes.Role, user.RoleId.ToString())
+                            };
                             ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
 
                             // Ticket har din identity
@@ -56,12 +58,14 @@ namespace HairForceOne.WebService.Providers
                     {
                         if (PasswordHelper.ComparePass(password, employee.PasswordHash, employee.Salt))
                         {
-                            var Claims = new List<Claim>();
-                            Claims.Add(new Claim(ClaimTypes.Name, employee.FirstName));
-                            Claims.Add(new Claim(ClaimTypes.NameIdentifier, employee.EmployeeId.ToString()));
-                            Claims.Add(new Claim("LoggedOn", DateTime.Now.ToString())); // ??
-                            Claims.Add(new Claim(ClaimTypes.Role, employee.RoleId.ToString()));
-                            Claims.Add(new Claim("Experience", employee.Experience.ToString()));
+                            var Claims = new List<Claim>
+                            {
+                                new Claim(ClaimTypes.Name, employee.FirstName),
+                                new Claim(ClaimTypes.NameIdentifier, employee.EmployeeId.ToString()),
+                                new Claim("LoggedOn", DateTime.Now.ToString()), // ??
+                                new Claim(ClaimTypes.Role, employee.RoleId.ToString()),
+                                new Claim("Experience", employee.Experience.ToString())
+                            };
                             ClaimsIdentity oAuthClaimIdentity = new ClaimsIdentity(Claims, context.Options.AuthenticationType);
 
                             // Ticket har din identity
@@ -74,14 +78,6 @@ namespace HairForceOne.WebService.Providers
                 {
                     context.SetError("Wrong Crendentials", "Provided username and password is incorrect");
                 }
-            }
-        }
-
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.Current.GetOwinContext().Authentication;
             }
         }
     }
